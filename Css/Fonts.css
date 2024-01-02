@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'Avenir LT Pro';
+	src: local('Avenir Next LT Pro Regular'), url('Avenir Next LT Pro Regular.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Candara';
+	src: local('Candara'), url('Candara Font.ttf') format('truetype');
+}
