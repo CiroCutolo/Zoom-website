@@ -42,7 +42,7 @@ body{
 .navigation-bar ul li{
     display: inline-block;
     line-height: 80px;
-    margin: 0 25px;
+    margin: 0 55px;
 }
 
 .navigation-bar ul li a{
@@ -87,12 +87,6 @@ label #cancel{
 
 @media (max-width: 1118px){
     div .logo{
-        left: 6%;
-    }
-}
-
-@media (max-width: 944px){
-    div .logo{
         left: 5%;
     }
     .navigation-bar ul li a{
@@ -100,7 +94,9 @@ label #cancel{
     }
 }
 
-@media (max-width: 860px){
+
+
+@media (max-width: 1024px){
     label #btn{
         display: block;
     }
@@ -126,5 +122,12 @@ label #cancel{
     }
     #check:checked ~ ul{
         left: 0;
+    }
+    #check:checked ~ label #btn{
+        display: none;
+    }
+
+    #check:checked ~ label #cancel{
+        display: block;
     }
 }
