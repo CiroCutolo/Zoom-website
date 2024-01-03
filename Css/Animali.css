@@ -1,0 +1,13 @@
+@import url(Css/Font.css);
+
+.filter-selector{
+    font-family: 'Candara', Arial, Serif;
+    border-style: solid;
+    border-width: 2px;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    
+}
+
+
