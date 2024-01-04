@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Animali - Zoom</title>
+        <link rel="stylesheet" href="Css/Fonts.css">
+        <link rel="stylesheet" href="Css/Animali.css">
+    </head>
+    <Body>
+        <div id="Filter-Container">
+            <div>
+                <select class="filter-selector" name="selettore-categoria">
+                    <option value data-label="Seleziona una categoria zoologica" onclick="filterSelection('all')">Seleziona una categoria di animali</option>
+                    <option value="21" data-label="Anfibi" onclick="filterSelection('Anfibi')">Anfibi</option>
+                    <option value="22" data-label="Mammiferi" onclick="filterSelection('Mammiferi')">Mammiferi</option>
+                    <option value="23" data-label="Rettili" onclick="filterSelection('Rettili')">Rettili</option>
+                    <option value="24" data-label="Volatili" onclick="filterSelection('Volatili')">Volatili</option>
+                </select>
+            </div>
+            <div>
+                <select class="filter-selector" name="selettore-area">
+                    <option value data-label="Seleziona un'area geografica" onclick="filterSelection('all')">Seleziona un'area geografica</option>
+                    <option value="21" data-label="Anfibi" onclick="filterSelection('Asia')">Asia</option>
+                    <option value="22" data-label="Mammiferi" onclick="filterSelection('Africa')">Africa</option>
+                    <option value="23" data-label="Rettili" onclick="filterSelection('America')">America</option>
+                    <option value="24" data-label="Volatili" onclick="filterSelection('Europa')">Europa</option>
+                    <option value="24" data-label="Volatili" onclick="filterSelection('Oceania')">Oceania</option>
+                </select>
+            </div>
+        </div> 
+        <div id="Animals-Container">
+            
+        </div>
+    </Body>
+</html>
