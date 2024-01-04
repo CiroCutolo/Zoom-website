@@ -8,7 +8,9 @@
     //PERMETTERE ALL'UTENTE DI MODIFICARE I DATI 
     $titolo="REGISTRAZIONE";
     $titoloBottone="Registrati";
-    /*$nome="";
+    $utenteEsistente = false;
+
+    $nome="";
     $cognome="";
     $password="";
     $confermaPassword="";
@@ -30,11 +32,11 @@
             $email = $row[2];
             $password = $row[3];
             $confermaPassword = $row[3];
-            $eta = $row[4];
+            $data = $row[4];
         }
 
 
-    }*/
+    }
 
     //PRELEVARE I DATI DELL'UTENTE DAL FORM E INSERIRLI NEL DATABASE
     if(isset($_GET["action"]) && ($_GET["action"] == "registra")){ //verifico se il form è stato completato
@@ -42,8 +44,8 @@
         //prelevo tutti i dati inseriti dall'utente
         $nome = pg_escape_literal($conn,$_POST["nome"]);
         $cognome = pg_escape_literal($conn,$_POST["cognome"]); //sostituisce i caratteri speciali per poterli inserire
-        $password = pg_escape_literal($conn,$_POST["password"]);
-        $email =pg_escape_literal($conn,$_POST["email"]);
+        $password = pg_escape_literal($conn,$_POST["Password"]);
+        $email =pg_escape_literal($conn,$_POST["Email"]);
         $data = $_POST["data_di_nascita"];
 
         //calcolo l'età
@@ -52,10 +54,16 @@
 
 
         //controlla quanti utenti con l'email prelevata dal form sono presenti(se più di 0, significa che l'utente è già registrato)
-        $tmpQuery = "SELECT nome FROM utenti WHERE email = '".$_POST["email"]."'";
-        $result = pg_query($conn, $tmpQuery);
+        $tmpQuery = "SELECT COUNT (nome) AS numero FROM utenti WHERE email = '".$_POST["Email"]."'";
+        $result = pg_query($conn,$tmpQuery); //salva nella prima colonna il numero di utenti presenti con l'email specificata
 
-        if($result > 0){
+        while($row = pg_fetch_row($result)){
+            $num = $row[0]; //recupera il primo campo della colonna, quindi il numero di utenti presenti
+        }
+
+        $utenteEsistente = false;
+
+        if($num > 0){ //controlla se è gia presente un utente con la stessa email
             $utenteEsistente = true;  
         }
         else{
@@ -80,7 +88,7 @@
 
             function controllaLunghezza(campo,len){
                 switch(campo.id){
-                    case "password":
+                    case "Password":
                         if(campo.value.length < len){
                             alert(campo.id + ": inserire almeno " + len + " caratteri");
                             campo.focus();
@@ -121,19 +129,19 @@
                 res = controllaLunghezza(document.getElementById("nome"),15);
                 if(res){
                     res = controllaLunghezza(document.getElementById("cognome"),15);
-
                 }
                 if(res){
-                    res = controllaLunghezza(document.getElementById("password"),6);
+                    res = controllaLunghezza(document.getElementById("Password"),6);
                 }
                 if(res){
-                    res = controllaPassword(document.getElementById("conferma_password"),document.getElementById("password"));
+                    res = controllaPassword(document.getElementById("conferma_password"),document.getElementById("Password"));
                 }
+                return res;
 
             }
 
             <?php if ($utenteEsistente) { ?>
-                    alert("Esiste già un utente con l'email: <?php echo $_POST["email"] ?>");
+                    alert("Esiste già un utente con l'email: <?php echo $_POST["Email"] ?>");
                 <?php } ?>
  
         </script>
@@ -143,24 +151,24 @@
     <body>
     <?php include 'header.html';?>
 
-    <form id = "form" action="registrazione.php?action=registra" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
+    <form onsubmit = "return controllaForm()" id = "form" action="registrazione.php?action=registra" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
         <div style = "text-align:center">
             <h1> <?php echo $titolo;?> </h1>
             <br/>
             <br><br>
-            <input type="text" id="nome" name = "nome" placeholder="Nome" required>
-            <input type="text" id="cognome" name = "cognome" placeholder="Cognome" required>
+            <input type="text" id="nome" name = "nome" placeholder="Nome" required value="<?php echo $nome?>">
+            <input type="text" id="cognome" name = "cognome" placeholder="Cognome" required value="<?php echo $cognome?>">
             <br><br>
 
-            <input type="date" id="data_di_nascita" name = "data_di_nascita" max="<?php echo date('Y-m-d');?>" required>
-            <input type="email" id="email" name = "email" placeholder="Email" required>
+            <input type="date" id="data_di_nascita" name = "data_di_nascita" max="<?php echo date('Y-m-d');?>" required  value="<?php echo $data?>">
+            <input type="email" id="Email" name = "Email" placeholder="Email" required  value="<?php echo $email?>">
             <br><br>
 
-            <input type="password" id="password" name = "password" placeholder="Password" required>
-            <input type="password" id="conferma_password" name = "conferma_password" placeholder="Conferma password" required>
+            <input type="password" id="Password" name = "Password" placeholder="Password" required value="<?php echo $password?>">
+            <input type="password" id="conferma_password" name = "conferma_password" placeholder="Conferma password" required value="<?php echo $confermaPassword?>">
             <br><br>
 
-            <input type="submit" id="registrati" value="<?php echo $titoloBottone;?>" onclick = "controllaForm()">
+            <input type="submit" id="registrati" value="<?php echo $titoloBottone;?>">
         </div>
 
     
