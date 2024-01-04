@@ -141,7 +141,7 @@
     </head>
 
     <body>
-    <?php include 'menubar.html';?>
+    <?php include 'header.html';?>
 
     <form id = "form" action="registrazione.php?action=registra" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
         <div style = "text-align:center">
