@@ -42,16 +42,11 @@
     if(isset($_GET["action"]) && ($_GET["action"] == "registra")){ //verifico se il form è stato completato
 
         //prelevo tutti i dati inseriti dall'utente
-        $nome = pg_escape_literal($conn,$_POST["nome"]);
-        $cognome = pg_escape_literal($conn,$_POST["cognome"]); //sostituisce i caratteri speciali per poterli inserire
-        $password = pg_escape_literal($conn,$_POST["Password"]);
-        $email =pg_escape_literal($conn,$_POST["Email"]);
-        $data = $_POST["data_di_nascita"];
-
-        //calcolo l'età
-        $oggi = date("Y-m-d");
-        $eta = (date("Y")-date("Y",strtotime($data)));
-
+        $Nome = pg_escape_literal($conn,$_POST["nome"]);
+        $Cognome = pg_escape_literal($conn,$_POST["cognome"]); //sostituisce i caratteri speciali per poterli inserire
+        $Password = pg_escape_literal($conn,$_POST["Password"]);
+        $Email =pg_escape_literal($conn,$_POST["Email"]);
+        $Data = $_POST["data_di_nascita"];
 
         //controlla quanti utenti con l'email prelevata dal form sono presenti(se più di 0, significa che l'utente è già registrato)
         $tmpQuery = "SELECT COUNT (nome) AS numero FROM utenti WHERE email = '".$_POST["Email"]."'";
@@ -61,14 +56,12 @@
             $num = $row[0]; //recupera il primo campo della colonna, quindi il numero di utenti presenti
         }
 
-        $utenteEsistente = false;
-
         if($num > 0){ //controlla se è gia presente un utente con la stessa email
             $utenteEsistente = true;  
         }
         else{
             //inserisco i dati nel database
-            $query = "INSERT INTO utenti (nome, cognome, password, email, età) VALUES ($nome, $cognome, $password, $email, $eta)";
+            $query = "INSERT INTO utenti (nome, cognome, password, email, data_di_nascita) VALUES ($Nome, $Cognome, $Password, $Email, '$Data')";
             //esegue la query, inserendo i dati
             $result = pg_query($conn, $query);     
         }
@@ -85,6 +78,19 @@
         <link rel="stylesheet" href="registrazione.css?<?php echo rand();?>" type="text/css">
 
         <script type = "text/javascript">
+
+            function abilita(){ //abilita il submit solo se sono stati inseriti tutti i campi
+                
+                if((document.getElementById("nome").value == "") || (document.getElementById("cognome").value == "") || (document.getElementById("data_di_nascita").value == "")
+                    || (document.getElementById("Email").value == "") || (document.getElementById("Password").value == "") || (document.getElementById("conferma_password").value == "")){
+                        
+                        document.getElementById("registrati").setAttribute('disabled', '');
+
+                }
+                else{
+                    document.getElementById("registrati").removeAttribute('disabled');
+                }
+            }
 
             function controllaLunghezza(campo,len){
                 switch(campo.id){
@@ -142,7 +148,21 @@
 
             <?php if ($utenteEsistente) { ?>
                     alert("Esiste già un utente con l'email: <?php echo $_POST["Email"] ?>");
-                <?php } ?>
+            <?php } ?>
+
+
+            //creo l'azione mostra/nascondi password
+            const togglePassword = document.getElementById("togglePassword");
+            const password = document.getElementById("Password");
+            
+            if(togglePassword){
+                togglePassword.addEventListener('click', function () {
+                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                    password.setAttribute('type', type);
+                
+                    this.classList.toggle('fa-eye');
+                });
+            }
  
         </script>
 
@@ -150,25 +170,30 @@
 
     <body>
     <?php include 'header.html';?>
+    <hr size="2" color="black" noshade>
 
-    <form onsubmit = "return controllaForm()" id = "form" action="registrazione.php?action=registra" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
+    <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="registrazione.php?action=registra" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
         <div style = "text-align:center">
             <h1> <?php echo $titolo;?> </h1>
-            <br/>
-            <br><br>
-            <input type="text" id="nome" name = "nome" placeholder="Nome" required value="<?php echo $nome?>">
-            <input type="text" id="cognome" name = "cognome" placeholder="Cognome" required value="<?php echo $cognome?>">
+            <br>
+            <div id="campi_obbligatori">Inserisci <b>tutti</b> i campi per poter procedere alla registrazione. </div>
             <br><br>
 
-            <input type="date" id="data_di_nascita" name = "data_di_nascita" max="<?php echo date('Y-m-d');?>" required  value="<?php echo $data?>">
-            <input type="email" id="Email" name = "Email" placeholder="Email" required  value="<?php echo $email?>">
+            <input type="text" id="nome" name = "nome" placeholder="Nome" required value="<?php echo $nome?>" onchange="abilita()">
+            <input type="text" id="cognome" name = "cognome" placeholder="Cognome" required value="<?php echo $cognome?>" onchange="abilita()">
             <br><br>
 
-            <input type="password" id="Password" name = "Password" placeholder="Password" required value="<?php echo $password?>">
-            <input type="password" id="conferma_password" name = "conferma_password" placeholder="Conferma password" required value="<?php echo $confermaPassword?>">
+            <input type="date" id="data_di_nascita" name = "data_di_nascita" max="<?php echo date('Y-m-d');?>" required  value="<?php echo $data?>" onchange="abilita()">
+            <input type="email" id="Email" name = "Email" placeholder="E-mail" required  value="<?php echo $email?>" onchange="abilita()">
             <br><br>
 
-            <input type="submit" id="registrati" value="<?php echo $titoloBottone;?>">
+            <input type="password" id="Password" name = "Password" placeholder="Password" required value="<?php echo $password?>" onchange="abilita()">
+                <i class="far fa-eye-slash" id="togglePassword"></i>
+            <input type="password" id="conferma_password" name = "conferma_password" placeholder="Conferma password" required value="<?php echo $confermaPassword?>" onchange="abilita()">
+                <i class="far fa-eye-slash" id="togglePassword"></i>
+            <br><br>
+
+            <input type="submit" id="registrati" value="<?php echo $titoloBottone;?>" disabled>
         </div>
 
     
