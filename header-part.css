@@ -1,0 +1,22 @@
+.buy-tickets-container{
+    max-width: 80%;
+    position: relative;
+    margin: auto;
+    background-color: white;
+    height: 100px;
+}
+
+.buy-tickets-content{
+    text-align: center;
+    padding-top: 40px;
+}
+
+.map-container{
+    max-width: 80%;
+    position: relative;
+    margin: auto;
+}
+
+.map-content img{
+    max-width: 100%;
+}
