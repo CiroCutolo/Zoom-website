@@ -150,7 +150,7 @@ label #cancel{
                 transform 20ms ease-in-out 0ms;
 }
 
-.popup.active{
+.popup.activete{
     top: 50%;
     opacity: 1;
     transform: translate(-50%,-50%) scale(1);
