@@ -4,10 +4,8 @@
     error_reporting(E_ALL);
 
     include("connessione.php"); //connessione al database
-    $_SESSION("isLogged")=false; // VARIABILE DI SESSIONE PER INDICARE UTENTE LOGGATO
-    //PERMETTERE ALL'UTENTE DI MODIFICARE I DATI 
-    $titolo="REGISTRAZIONE";
-    $titoloBottone="Registrati";
+    $_SESSION["isLogged"]=""; // VARIABILE DI SESSIONE PER INDICARE UTENTE LOGGATO
+ 
     $utenteEsistente = false;
 
     $nome="";
@@ -16,27 +14,6 @@
     $confermaPassword="";
     $email="";
     $data="";
-
-    if(isset($_GET["action"]) && ($_GET["action"] == "modifica")){ //verifico se l'utente vuole modificare dei dati
-        $titolo="MODIFICA DATI UTENTE";
-        $titoloBottone="Aggiorna";
-
-        //cerca nel database tutti i campi corrispondenti all'email dell'utente 
-        $tmpQuery = "SELECT * FROM utenti WHERE email = '".$_GET["email"]."'";
-        $result = pg_query($conn, $tmpQuery);
-
-        //scorre tutti i campi della linea dell'utente e li inserisce nel form, di modo che modifica solo quello desiderato
-        while($row = pg_fetch_row($result)){
-            $nome = $row[0];
-            $cognome = $row[1];
-            $email = $row[2];
-            $password = $row[3];
-            $confermaPassword = $row[3];
-            $data = $row[4];
-        }
-
-
-    }
 
     //PRELEVARE I DATI DELL'UTENTE DAL FORM E INSERIRLI NEL DATABASE
     if(isset($_GET["action"]) && ($_GET["action"] == "registra")){ //verifico se il form è stato completato
@@ -64,7 +41,7 @@
             $query = "INSERT INTO utenti (nome, cognome, password, email, data_di_nascita) VALUES ($Nome, $Cognome, $Password, $Email, '$Data')";
             //esegue la query, inserendo i dati
             $result = pg_query($conn, $query);   
-            $_SESSION("isLogged")=true; //UTENTE REGISTRATO E' ANCHE LOGGATO, SI AVVIA LA SESSIONE
+            $_SESSION["isLogged"]= $Email; //UTENTE REGISTRATO E' ANCHE LOGGATO, SI AVVIA LA SESSIONE
         }
     }
 ?>
@@ -86,7 +63,7 @@
 
     <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="registrazione.php?action=registra" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
         <div style = "text-align:center">
-            <h1> <?php echo $titolo;?> </h1>
+            <h1>Registrazione</h1>
             <br>
             <div id="campi_obbligatori">Inserisci <b>tutti</b> i campi per poter procedere alla registrazione. </div>
             <br><br>
@@ -105,7 +82,7 @@
                 <i class="far fa-eye-slash" id="togglePassword1"></i>
             <br><br>
 
-            <input type="submit" id="registrati" value="<?php echo $titoloBottone;?>" disabled>
+            <input type="submit" id="registrati" value="Registrati" disabled>
         </div>
 
     

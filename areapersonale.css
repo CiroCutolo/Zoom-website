@@ -1,0 +1,75 @@
+body{
+    background-color: #e5d1bf;
+    font-family: 'Candara';
+}
+form{
+    margin: 60px;
+}
+
+input{
+    font-family: 'Candara';
+    height: 20px;
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #e5d1bf;
+    border-radius: 10px;
+}
+
+input[type=submit]{
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Candara';
+    height: 40px;
+    width: 150px;
+    border: 1px solid #e5d1bf;
+    border-radius: 10px;
+    
+}
+
+h1{
+    font-family: 'Candara';
+    text-align: center;
+    margin-top: 40px; 
+}
+
+.campi_obbligatori{
+    font-family: 'Candara';
+    text-align: center;
+}
+
+ #togglePassword, #togglePassword1 {
+    margin-left: -30px;
+    cursor: pointer;
+    width: 26px;
+}
+button{
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Candara';
+    height: 40px;
+    width: 150px;
+    border: 1px solid #e5d1bf;
+    border-radius: 10px;
+    
+}
+
+#home, #mostra_acquisti, #mostra_dati {
+    margin: 0 auto;
+    margin-top: 20px !important;
+    width:60%;
+    height: 500px;
+    background-color: #e3c6ac;
+    border: 2px solid #000000;
+
+}
+.nascosto{
+    display: none;
+}
+
+.visibile{
+    display: block;
+}
+span { 
+    display: inline-block;
+    width: 150px;
+}
