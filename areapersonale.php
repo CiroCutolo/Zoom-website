@@ -80,7 +80,7 @@
         <meta charset="utf-8">
         <meta name="author" content="Aurora Campione">
         <meta name="description" content="pagina di registrazione">
-        <link rel="stylesheet" href="areapersonale.css" type="text/css">
+        <link rel="stylesheet" href="areapersonale.css?<?php echo rand();?>" type="text/css">
 
     </head>
 
@@ -93,8 +93,7 @@
         <button id="storico" onclick="mostraAcquisti()">I tuoi acquisti</button>
         <div id="home"></div>
         <div id="mostra_dati" class="nascosto" >
-
-            <h1>DATI</h1>
+            <br><br>
             <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="areapersonale.php?action=modifica" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
                 <div style = "text-align:center">        
                     <span>Nome: </span><input type="text" id="nome" name = "nome" placeholder="Nome" required value="<?php echo $nome?>" onchange="abilita()" onkeyup="abilita()">
