@@ -19,31 +19,32 @@
         <div class="mySlides fade">
             <img src="image_slider/volatili.jpg" width="100%">
         </div>
-
+  
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-
+  
     <br>
+  
     <div class="dot_image">
         <span class="dot" onclick="currentSlides(1)"></span>
         <span class="dot" onclick="currentSlides(2)"></span>
         <span class="dot" onclick="currentSlides(3)"></span>
         <span class="dot" onclick="currentSlides(4)"></span>
     </div>
-
+  
     <script>
         var slideIndex = 1;
         showSlides(slideIndex);
-
+  
         function plusSlides(n){
             showSlides(slideIndex += n);
         }
-
+  
         function currentSlides(n){
             showSlides(slideIndex = n);
         }
-
+  
         function showSlides(n){
             var i;
             var slides = document.getElementsByClassName("mySlides");
@@ -62,12 +63,12 @@
             }
             slides[slideIndex-1].style.display = "block";
             dots[slideIndex-1].className += " active";
-
+  
         }
-
-        /*var slideIndex=0;
+  
+        var slideIndex=0;
         showSlides();
-
+  
         function showSlides(){
             var i;
             var slides = document.getElementsByClassName("mySlides");
@@ -78,12 +79,11 @@
             if(slideIndex > slides.length){
                 slideIndex = 1;
             }
-
+  
             slides[slideIndex-1].style.display = "block";
             setTimeout(showSlides, 5000);
-        }*/
+        }
     </script>
-
 
 
   </body>
