@@ -8,15 +8,37 @@
   <body>
     <div class="slidershow-container">
         <div class="mySlides fade">
+            <p class="text1-anfibi">Vieni a trovarci!</p>
+            <p class="text2-anfibi">Esplora il nostro parco</p>
+            <p><form action="#"><button class="button-anfibi">SCOPRI COME</button></form></p>
+            <p class="icon-area">
+              <a href="#"><img class="icon" src="image_slider\icona-anfibi.png"></a>
+              <span class="text-area">Anfibi</span>
+            </p>
             <img src="image_slider\anfibi.jpg" width="100%">
         </div>
         <div class="mySlides fade">
+          <p class="text1-mammiferi">Consulta la nostra sezione animali</p>
+          <p class="text2-mammiferi">Riconoscili tutti!</p>
+          <p><form action="#"><button class="button-mammiferi">LEGGI ORA</button></form></p>
+          <p class="icon-area">
+            <a href="#"><img class="icon" src="image_slider\icona-mammiferi.png"></a>
+            <span class="text-area-mammiferi">Mammiferi</span>
+          </p>
             <img src="image_slider/mammiferi.jpg" width="100%">
         </div>
         <div class="mySlides fade">
+          <p class="icon-area">
+            <a href="#"><img class="icon" src="image_slider\icona-rettili.png"></a>
+            <span class="text-area">Rettili</span>
+          </p>
             <img src="image_slider/rettili.jpg" width="100%">
         </div>
         <div class="mySlides fade">
+          <p class="icon-area">
+            <a href="#"><img class="icon" src="image_slider\icona-volatili.png"></a>
+            <span class="text-area">Volatili</span>
+          </p>
             <img src="image_slider/volatili.jpg" width="100%">
         </div>
 
@@ -32,10 +54,10 @@
         <span class="dot" onclick="currentSlides(2)"></span>
         <span class="dot" onclick="currentSlides(3)"></span>
     </div>
-
+    <br>
     <script>
         var slideIndex = 0;
-        const interval = 3000;
+        const interval = 5000;
         var slides = document.getElementsByClassName("mySlides");
         var dots = document.getElementsByClassName("dot");
         slides[slideIndex].style.display = "block";
