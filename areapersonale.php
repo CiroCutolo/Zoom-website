@@ -23,13 +23,17 @@
 
 
 
-    //PRELEVARE I DATI MODIFICATI DALL'UTENTE NEL FORM E INSERIRLI NEL DATABASE
+    //PRELEVARE I DATI MODIFICATI DALL'UTENTE NEL FORM PER INSERIRLI NEL DATABASE
     if(isset($_GET["action"]) && ($_GET["action"] == "modifica")){ //verifico se il form è stato completato
 
         //prelevo tutti i dati dal form
         $Nome = pg_escape_literal($conn,$_POST["nome"]);
         $Cognome = pg_escape_literal($conn,$_POST["cognome"]); //sostituisce i caratteri speciali per poterli inserire
-        $Password = pg_escape_literal($conn,$_POST["Password"]);
+
+        $passwordCriptata = password_hash($_POST["Password"], PASSWORD_DEFAULT); //cripto la password
+
+        $Password = pg_escape_literal($conn,$passwordCriptata);
+
         $Email =pg_escape_literal($conn,$_POST["Email"]);
         $Data = $_POST["data_di_nascita"];
 
@@ -71,6 +75,7 @@
         $password = $row[3];
         $data =  date_format(date_create($row[4]),"d-m-Y"); ;
     }
+
     ?>
 
     <!DOCTYPE html>
@@ -86,14 +91,16 @@
 
     <body>
     <?php include 'header.html';?>
+
     <hr size="2" color="black" noshade>
 
     <div style = "text-align:center">
+        <br>
         <button id="dati" onclick="mostraDati()">I tuoi dati</button>
         <button id="storico" onclick="mostraAcquisti()">I tuoi acquisti</button>
-        <div id="home"></div>
-        <div id="mostra_dati" class="nascosto" >
+        <div id="mostra_dati" class="visibile" >
             <br><br>
+            <div>Ecco i dati del tuo account: è possibile modificarli selezionando i campi interessati</div>
             <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="areapersonale.php?action=modifica" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
                 <div style = "text-align:center">        
                     <span>Nome: </span><input type="text" id="nome" name = "nome" placeholder="Nome" required value="<?php echo $nome?>" onchange="abilita()" onkeyup="abilita()">
@@ -106,11 +113,9 @@
                     <span>Email: </span><input type="text" id="Email" name = "Email" placeholder="E-mail" required  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()">
                     <br><br>
         
-                    <span>Password: </span><input type="password" id="Password" name = "Password" placeholder="Password" required value="<?php echo $password?>" onchange="abilita()" onkeyup="abilita()">
+                    <span>Password: </span><input type="password" id="Password" name = "Password" placeholder="Imposta una nuova password" required>
                         <i class="far fa-eye-slash" id="togglePassword"></i>
-                        <br>
-
-                    <br>
+                    <br><br>
                     <input type="submit" id="registrati" value="Aggiorna dati" disabled>
                 </div>
         
@@ -121,10 +126,32 @@
 
         <div id="mostra_acquisti" class="nascosto" >
 
-            <h1>ACQUISTI</h1>
+            <div style = "text-align:center; overflow-y: auto; height: 80%;">
+                <table>
+                    <tr><th>CODICE BIGLIETTO</th><th>DATA DI ACQUISTO</th><th>PREZZO</th><th>TIPOLOGIA</th></tr>
+                <?php
+                    //PRELEVO I BIGLIETTI ACQUISTATI 
+                    //cerca nel database tutti i biglietti corrispondenti all'email dell'utente 
+                    $tmpQuery = "SELECT codice_biglietto, data, prezzo, tipologia FROM biglietti_acquistati A INNER JOIN biglietti B ON A.codice_biglietto = B.codice WHERE utente = '".     $_SESSION["isLogged"] ."'";
+                    $result = pg_query($conn, $tmpQuery);
 
+                    //scorre tutti i campi della linea del biglietto indicato e li inserisce nelle righe della tabella
+                    while($row = pg_fetch_row($result)){
+                        $codiceBiglietto = $row[0];
+                        $data =  date_format(date_create($row[1]),"d-m-Y"); //inverte la data
+                        $prezzo = $row[2]; 
+                        $tipologia = $row[3]; ?>
+
+                        <tr><td><?php echo $codiceBiglietto?></td><td><?php echo $data?></td><td><?php echo $prezzo?></td><td><?php echo $tipologia?></td></tr>
+
+                    <?php }
+                    
+
+                    ?>
+                </table>
+            </div>
         </div>
-        <br><br>
+        <br>
         <button id="logout" onclick="logout()">Logout</button>
     </div>
 
@@ -135,14 +162,12 @@
             divAcquisti=document.getElementById("mostra_acquisti");
             divDati.className="visibile";
             divAcquisti.className="nascosto";
-            document.getElementById("home").className="nascosto";
         }
         function mostraAcquisti(){
             divDati=document.getElementById("mostra_dati");
             divAcquisti=document.getElementById("mostra_acquisti");
             divDati.className="nascosto";
             divAcquisti.className="visibile";
-            document.getElementById("home").className="nascosto";
         }
 
 
@@ -150,7 +175,7 @@
         function abilita(){ //abilita il submit solo se sono stati inseriti tutti i campi
             
             if((document.getElementById("nome").value == "") || (document.getElementById("cognome").value == "") || (document.getElementById("data_di_nascita").value == "")
-                || (document.getElementById("Email").value == "") || (document.getElementById("Password").value == "")){
+                || (document.getElementById("Email").value == "")){
                     
                     document.getElementById("registrati").setAttribute('disabled', '');
 

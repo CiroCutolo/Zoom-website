@@ -42,12 +42,13 @@ h1{
     cursor: pointer;
     width: 26px;
 }
+
 button{
     text-align: center;
     font-weight: bold;
     font-family: 'Candara';
     height: 40px;
-    width: 150px;
+    padding: 0 20px 0 20px;
     border: 1px solid #e5d1bf;
     border-radius: 10px;
     
@@ -61,6 +62,7 @@ button{
     background-color: #d3bead;
 
 }
+
 .nascosto{
     display: none;
 }
@@ -72,4 +74,14 @@ span {
     display: inline-block;
     width: 150px;
 
+}
+
+th, td{
+    padding: 15px;
+
+}
+
+table{
+    width: 60%;
+    margin: 0 auto;
 }

@@ -21,9 +21,14 @@
         //prelevo tutti i dati inseriti dall'utente
         $Nome = pg_escape_literal($conn,$_POST["nome"]);
         $Cognome = pg_escape_literal($conn,$_POST["cognome"]); //sostituisce i caratteri speciali per poterli inserire
-        $Password = pg_escape_literal($conn,$_POST["Password"]);
+
+        $passwordCriptata = password_hash($_POST["Password"], PASSWORD_DEFAULT); //cripto la password
+
+        $Password = pg_escape_literal($conn,$passwordCriptata);
         $Email =pg_escape_literal($conn,$_POST["Email"]);
         $Data = $_POST["data_di_nascita"];
+
+        
 
         //controlla quanti utenti con l'email prelevata dal form sono presenti(se più di 0, significa che l'utente è già registrato)
         $tmpQuery = "SELECT COUNT (nome) AS numero FROM utenti WHERE email = '".$_POST["Email"]."'";
@@ -80,7 +85,7 @@
                 <i class="far fa-eye-slash" id="togglePassword"></i>
             <input type="password" id="conferma_password" name = "conferma_password" placeholder="Conferma password" required value="<?php echo $confermaPassword?>" onchange="abilita()" onkeyup="abilita()">
                 <i class="far fa-eye-slash" id="togglePassword1"></i>
-            <br><br>
+            <br><br><br>
 
             <input type="submit" id="registrati" value="Registrati" disabled>
         </div>
