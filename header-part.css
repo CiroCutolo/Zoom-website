@@ -5,23 +5,52 @@ body{
     background: #e5d1bf;
 }
 *{
-   margin: 0; 
+   margin: 0;
    padding: 0;
    list-style: none;
    text-decoration: none;
 }
 
+.tag{
+  opacity: 0;
+  transform: translate(0,10vh);
+  transition: all 2s;
+}
+
+.tag.visible {
+  opacity: 1;
+  transform: translate(0,0);
+}
 .buy-tickets-container{
     max-width: 80%;
     position: relative;
     margin: auto;
     background-color: white;
-    height: 100px;
+    height: 200px;
 }
 
+
+#selector1{
+  width: 400px;
+  height: 50px;
+  border: none;
+  border-radius: 3px;
+  background-color: #94c6c7;
+  padding-left: 25px;
+}
+
+#selector2{
+  width: 400px;
+  height: 50px;
+  border: none;
+  border-radius: 3px;
+  background-color: #94c6c7;
+  padding-left: 25px;
+}
 .buy-tickets-content{
-    text-align: center;
-    padding-top: 40px;
+    padding-top: 10px;
+    padding-left: 30px;
+    font-size: 30px;
 }
 
 .map-container{

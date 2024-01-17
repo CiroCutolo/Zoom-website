@@ -7,16 +7,51 @@
     <title></title>
   </head>
   <body>
+  <div class="tag tickets">
     <div class="buy-tickets-container">
-        <div class="buy-tickets-content">
-          Registrati per acquistare!
-        </div>
-      </div>
+          <div class="buy-tickets-content">
+           <!--Registrati per acquistare! -->
+           <p>ACQUISTA IL TUO BIGLIETTO</p>
+             <p>Adulti</p>
+              <select id="selector1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+             </select>
+             <p>Bambini</p>
+             <select id="selector2">
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+               <option>4</option>
+             </select>
+         </div>
+   </div>
+ </div>
       <br>
+ <div class="tag map">
       <div class="map-container">
         <div class="map-content">
           <img src="zoo-map.jpeg" width="100%">
         </div>
       </div>
+ </div>
       </body>
+      <!-- <script type="text/javascript">
+      $(document).on("scroll", function() {
+        var pageTop = $(document).scrollTop();
+        var pageBottom = pageTop + $(window).height();
+        var tags = $(".tag");
+
+        for (var i = 0; i < tags.length; i++) {
+          var tag = tags[i];
+          if ($(tag).position().top < pageBottom) {
+            $(tag).addClass("visible");
+          } else {
+            $(tag).removeClass("visible");
+          }
+        }
+      });
+      </script> -->
     </html>
