@@ -11,22 +11,37 @@
     <div class="buy-tickets-container">
           <div class="buy-tickets-content">
            <!--Registrati per acquistare! -->
-           <p>ACQUISTA IL TUO BIGLIETTO</p>
-             <p>Adulti</p>
+           <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
+             <p class="buy-tickets-textcontent">Adulti
               <select id="selector1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <script>
+                  var i = 0;
+                  for (i = 0; i <= 10 ; i++){
+                    document.write("<option>" + i + "</option>");
+                  }
+                </script>
              </select>
-             <p>Bambini</p>
+             </p>
+             <p class="buy-tickets-textcontent">Bambini
              <select id="selector2">
-               <option>1</option>
-               <option>2</option>
-               <option>3</option>
-               <option>4</option>
+               <script>
+                 var i = 0;
+                 for (i = 0; i <= 10 ; i++){
+                   document.write("<option>" + i + "</option>");
+                 }
+               </script>
              </select>
+             </p>
+             <p class="buy-tickets-textcontent">Data della visita</p>
+             <p><input type="date" class="date-picker"></input>
+             </p>
          </div>
+         <div class="btn-tickets-container">
+           <button class="btn-tickets">ACQUISTA</button>
+         </div>
+   </div>
+   <div>
+     <img class="photo-giraffe" src="foto-giraffa.png">
    </div>
  </div>
       <br>
@@ -38,7 +53,9 @@
       </div>
  </div>
       </body>
-      <!-- <script type="text/javascript">
+      <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+      <script type="text/javascript">
+      var $ = jQuery;
       $(document).on("scroll", function() {
         var pageTop = $(document).scrollTop();
         var pageBottom = pageTop + $(window).height();
@@ -53,5 +70,5 @@
           }
         }
       });
-      </script> -->
+      </script>
     </html>
