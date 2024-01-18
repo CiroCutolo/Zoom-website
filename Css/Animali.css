@@ -31,11 +31,11 @@
 }
 
 @media (max-width: 1024px){
-    .filter-container {
+    .filter-container .animal-container {
         flex-wrap: wrap;
     }
 
-    .filter-column {
+    .filter-column .animal{
         max-width: 1024px;
         margin: 15px 10px 10px 15px;
     }
@@ -52,15 +52,27 @@
 
 
 .animal{
-    display: block;
+    position: relative;
+    min-height: 1px;
+    display: inline-flex;
+    width: 300px;
+    min-height: 300px;
+    margin: 20px;
+
+}
+
+.animal-image-section{
     font-family: 'Candara', Arial, Serif;
     border-style: solid;
     border-width: 2px;
     padding: 10px;
-    width: 20%;
-    height: 200px;
+    width: 100%;
+    display: block;
+    height: auto;
     min-height: auto;
-    margin: 20px;
+    max-width: 250px;
+    max-height: 250px;
+    text-align: center;
 }
 
 .animal h1{
@@ -70,6 +82,6 @@
 }
 
 .animal img{
-    width: 170px;
-    height: 150px;
+    width: 230px;
+    height: 190px;
 }
