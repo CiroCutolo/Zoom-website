@@ -50,7 +50,21 @@
           <img class="photo" src="foto-tucano.png">
    </div>
    <div class="buy-tickets-container">
-      ciao
+      <?php 
+      $today = date("d-m-Y");
+      $current_year = date("Y");
+      $winterstart_time = "1-11-" . ($current_year-1);
+      $winterend_time = "31-3-" . $current_year;
+      $summerstart_time = "1-4-" . $current_year;
+      $summerend_time = "31-10-" . $current_year;
+      if( strtotime($today) > strtotime($winterstart_time) && strtotime($today) < strtotime($winterend_time) ) {
+        echo "periodo invernale";
+      }else if ( strtotime($today) > strtotime($summerstart_time) && strtotime($today) < strtotime($summerend_time) ){
+        echo "peiodo estivo";
+      }else{
+        echo "nuovo periodo invernale";
+      }
+      ?>
    </div>
  </div>
       <br>

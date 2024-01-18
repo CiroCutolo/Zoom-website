@@ -8,6 +8,6 @@
   <body>
     <?php include 'header.html';?>
     <?php include 'slider.html';?>
-    <?php include 'header-part.html';?>
+    <?php include 'header-part.php';?>
   </body>
 </html>
