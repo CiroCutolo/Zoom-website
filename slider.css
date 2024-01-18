@@ -1,0 +1,280 @@
+@import url(Css/Fonts.css);
+.slidershow-container, .dot_image{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Candara';
+}
+
+
+.mySlides{
+    display: none;
+}
+
+.slidershow-container img{
+    vertical-align: middle;
+}
+
+.slidershow-container{
+    max-width: 80%;
+    position: relative;
+    margin: auto;
+}
+
+.slidershow-container .text1-anfibi{
+    top: 70%;
+    left: 70%;
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+
+    animation: 5s anim-lineUp ease-out infinite;
+}
+
+.slidershow-container .text1-mammiferi{
+    top: 20%;
+    left: 60%;
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+
+    animation: 5s anim-lineUp ease-out infinite;
+}
+.slidershow-container .text2-anfibi{
+    top: 76%;
+    left: 70%;
+    position: absolute;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+
+    animation: 5s anim-lineUp ease-out infinite;
+}
+.slidershow-container .text2-mammiferi{
+    top: 34%;
+    left: 60%;
+    position: absolute;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+
+    animation: 5s anim-lineUp ease-out infinite;
+}
+
+.slidershow-container .button-anfibi{
+  position: absolute;
+  top: 84%;
+  left:70%;
+  padding: 12px 12px 12px 12px;
+  border-radius: 2px;
+  border: none;
+  background-color: #f09c13;
+  color: white;
+  font-size: 18px;
+
+  animation: 5s anim-lineUp ease-out infinite;
+}
+
+.slidershow-container .button-mammiferi{
+  position: absolute;
+  top: 42%;
+  left:60%;
+  padding: 12px 12px 12px 12px;
+  border-radius: 2px;
+  border: none;
+  background-color: #f09c13;
+  color: white;
+  font-size: 18px;
+
+  animation: 5s anim-lineUp ease-out infinite;
+}
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.slidershow-container .icon-area{
+  position: absolute;
+  border-radius: 0 0 50% 70%;
+  width: 400px;
+  height: 150px;
+  color: black;
+  background: #f09c13;
+
+}
+.slidershow-container .icon-area .text-area{
+  position: relative;
+  left: 15%;
+  top:10%;
+  font-size: 45px;
+  font-weight: bold;
+  color: #1c1c1c;
+}
+
+.slidershow-container .icon-area .text-area-mammiferi{
+  position: relative;
+  left: 10%;
+  top:10%;
+  font-size: 45px;
+  font-weight: bold;
+  color: #1c1c1c;
+}
+@media (max-width: 1300px){
+  .slidershow-container .icon-area{
+    width: 300px;
+    height: 100px;
+  }
+
+  .slidershow-container .icon-area .text-area{
+      left: 10%;
+      font-size: 35px;
+  }
+
+  .slidershow-container .icon-area .text-area-mammiferi{
+      font-size: 30px;
+      left: 7%;
+  }
+
+  .slidershow-container .text1-anfibi,
+  .slidershow-container .text1-mammiferi
+  {
+      font-size: 30px;
+  }
+
+  .slidershow-container .text2-anfibi,
+  .slidershow-container .text2-mammiferi
+  {
+      font-size: 25px;
+  }
+
+  .slidershow-container .button-anfibi,
+  .slidershow-container .button-mammiferi
+  {
+      font-size: 15px;
+  }
+}
+
+@media (max-width: 1000px){
+  .slidershow-container .icon-area{
+    width: 200px;
+    height: 100px;
+  }
+  .slidershow-container .icon-area .text-area{
+      left: 5%;
+      font-size: 25px;
+  }
+  .slidershow-container .icon-area .text-area-mammiferi{
+      font-size: 15px;
+      left: 5%;
+  }
+
+  .slidershow-container .text1-anfibi,
+  .slidershow-container .text1-mammiferi
+  {
+     font-size: 20px;
+  }
+
+  .slidershow-container .text2-anfibi
+  .slidershow-container .text2-mammiferi
+  {
+    font-size: 15px;
+  }
+
+  .slidershow-container .button-anfibi,
+  .slidershow-container .button-mammiferi
+  {
+    font-size: 8px;
+  }
+
+}
+
+.slidershow-container .icon-area .icon{
+  object-fit: contain;
+  width: auto;
+  padding-top: 20px;
+  padding-left: 40px;
+}
+.slidershow-container .prev ,.slidershow-container .next{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width:auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: blod;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.slidershow-container .next{
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.slidershow-container .prev:hover,.slidershow-container .next:hover{
+    font-size: 25px;
+    background: black;
+}
+.dot_image{
+    text-align: center;
+}
+.dot_image .dot{
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: backgroud-color 0.6s ease;
+}
+
+.dot_image .act,
+.dot_image .dot:hover{
+    background-color: #717171;
+}
+
+.fade{
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade{
+    from{opacity: .1;}
+    to{opacity: 1;}
+}
+@keyframes fade {
+  from{opacity: .4;}
+  to{opacity: 1;}
+}
+
+@media only screen and (max-width: 300px){
+    .prev, .next {
+        font-size: 11px;
+    }
+    .dot{
+        height: 10px;
+        width: 10px;
+    }
+
+}

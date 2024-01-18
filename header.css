@@ -2,8 +2,11 @@
 body{
     font-family: 'Candara';
     height: 120px;
+    background: #e5d1bf;
+    margin: 0;
+
 }
-*{
+ .header *{
    margin: 0; 
    padding: 0;
    list-style: none;
@@ -12,7 +15,6 @@ body{
 
 .navigation-bar{
     height: 120px;
-    background: #e5d1bf;
 }
 
 .logo{
@@ -21,9 +23,10 @@ body{
     position: absolute;
     left: 7%;
 }
-.navigation-bar ul li a img{
+.navigation-bar ul li img{
     width: 50px;
     height: 50px;
+    vertical-align: middle;
 }
 
 .navigation-bar ul{
@@ -48,11 +51,15 @@ body{
 .navigation-bar ul li a{
     position: relative;
     color: black;
-    padding: 5px;
+    padding: 16px;
     font-size: 18px;
     text-transform: uppercase;
 }
 
+.navigation-bar ul button{
+    border: none;
+    background: #e5d1bf;
+}
 .navigation-bar ul li a:before{
     position: absolute;
     content: '';
@@ -94,8 +101,6 @@ label #cancel{
     }
 }
 
-
-
 @media (max-width: 1024px){
     label #btn{
         display: block;
@@ -110,6 +115,7 @@ label #cancel{
         left: -100%;
         transition: all .5s;
         text-align: center;
+        z-index: 999;
     }
     .navigation-bar ul li{
         display: block;
@@ -131,3 +137,95 @@ label #cancel{
         display: block;
     }
 }
+
+.popup{
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%,-50%) scale(1.25);
+    width: 380px;
+    padding: 20px 30px;
+    background: white;
+    border-radius: 10px;
+    transition: top 6ms ease-in-out 200ms,
+                opacity 200ms ease-in-out 0ms,
+                transform 20ms ease-in-out 0ms;
+}
+
+.popup.activete{
+    top: 50%;
+    opacity: 1;
+    transform: translate(-50%,-50%) scale(1);
+    transition: top 0ms ease-in-out 0ms,
+                opacity 200ms ease-in-out 0ms,
+                transform 20ms ease-in-out 0ms;
+    z-index: 999;
+}
+
+
+.popup #close-btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.popup .form h2{
+    text-align: center;
+    color: black;
+    margin: 10px 0px 20px;
+    font-size: 25px;
+}
+
+.popup .form .form-element{
+    margin: 15px 0px;
+}
+
+.popup .form .form-element label{
+    font-size: 14px;
+    color: black;
+}
+
+.popup .form .form-element input{
+    margin-top: 5px;
+    display: block;
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.button-container{
+    display: flex;
+    margin: auto;
+    position: relative;
+}
+
+.button-section{
+    position: relative;
+    min-height: 1px;
+    display: flex;
+    width: 100%;
+    margin: 3px 20px 3px 20px;
+}
+
+.popup .form button{
+    width: 150px;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background-color: #222;
+    color: #f5f5f5;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
