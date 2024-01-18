@@ -4,7 +4,7 @@ body{
     height: 120px;
     background: #e5d1bf;
 }
-.header{
+*{
    margin: 0; 
    padding: 0;
    list-style: none;
