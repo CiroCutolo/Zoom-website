@@ -54,13 +54,13 @@
     date di inizio e fine dell'orario estivo/invernale. Il confronto viene effettuato trasformando le date nel formato Unix timestamp in modo da
     avere una quantità intera da poter inserire in una condizione if. La parte di tariffe resta statica.-->
       <?php 
-      $today = date("d-m-Y");
+      //"1-4-2024" = date("d-m-Y");
       $current_year = date("Y");
       $winterstart_time = "1-11-" . ($current_year-1);
       $winterend_time = "31-3-" . $current_year;
       $summerstart_time = "1-4-" . $current_year;
       $summerend_time = "31-10-" . $current_year;
-      if( (strtotime($today) > strtotime($winterstart_time) && strtotime($today) < strtotime($winterend_time) ) || ( strtotime($today) == strtotime($winterstart_time) || strtotime($today) == strtotime($winterend_time))) {
+      if( (strtotime("1-4-2024") > strtotime($winterstart_time) && strtotime("1-4-2024") < strtotime($winterend_time) ) || ( strtotime("1-4-2024") == strtotime($winterstart_time) || strtotime("1-4-2024") == strtotime($winterend_time))) {
       ?>
       <div class="hours">
         <img src="foto-winter.png">
@@ -69,7 +69,7 @@
         <div>Weekend e festivi invariati</div>
       </div>
       <?php 
-      }else if ( (strtotime($today) > strtotime($summerstart_time) && strtotime($today) < strtotime($summerend_time)) || ( strtotime($today) == strtotime($summerstart_time) || strtotime($today) == strtotime($summerend_time))){
+      }else if ( (strtotime("1-4-2024") > strtotime($summerstart_time) && strtotime("1-4-2024") < strtotime($summerend_time)) || ( strtotime("1-4-2024") == strtotime($summerstart_time) || strtotime("1-4-2024") == strtotime($summerend_time))){
       ?>
       <div class="hours">
         <img src="foto-summer.png">
