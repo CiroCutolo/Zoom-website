@@ -93,6 +93,21 @@ body{
   border-radius: 10px;
 }
 
+.hours{
+  text-align: center;
+  padding-top: 7%;
+}
+
+.price{
+  text-align: center;
+  padding-top: 7%;
+}
+
+.price .btn-tickets-container {
+  padding-left: 0;
+  padding-top: 0;
+}
+
 .map-container{
     max-width: 80%;
     position: relative;
