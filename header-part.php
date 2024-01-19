@@ -102,16 +102,30 @@
         </div>
       </div>
    </div>
-</div>
-<br>
- <div class="tag map">
+  </div>
+  <br>
+  <div class="tag map">
+      <div class="buy-tickets-container">
+        <div class="map-text">
+          <img src="icona-mappa.png">
+          <h2>Consulta la nostra mappa</h2>
+          <div>Scopri tutte le aree dei nostri animali</div>
+          <div>ed i nostri servizi</div>
+        </div>
+      </div>
       <div class="map-container">
         <div class="map-content">
           <img src="zoo-map.png" width="100%">
         </div>
       </div>
- </div>
-      </body>
+  </div>
+  <br>
+  <br>
+  <footer>
+    <hr>
+    <small>©2024 Gruppo 22. Design by Gruppo 22 </small>
+  </footer>
+  </body>
       <script src="https://code.jquery.com/jquery-latest.min.js"></script>
       <script type="text/javascript">
       var $ = jQuery;
