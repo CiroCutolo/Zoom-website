@@ -105,7 +105,7 @@
   </div>
   <br>
   <div class="tag map">
-      <div class="buy-tickets-container">
+      <div class="buy-tickets-container1">
         <div class="map-text">
           <img src="icona-mappa.png">
           <h2>Consulta la nostra mappa</h2>
