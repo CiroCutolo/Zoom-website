@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <script src="https://kit.fontawesome.com/9491817803.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="header-part.css?<?php echo rand();?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title></title>
   </head>
   <body>
@@ -122,8 +123,14 @@
   <br>
   <br>
   <footer>
-    <hr>
-    <small>©2024 Gruppo 22. Design by Gruppo 22 </small>
+  <hr>
+  <div class="row">
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-instagram"></i></a>
+    <a href="#"><i class="fa fa-youtube"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+  </div>
+  <div> ©2024 Gruppo 22. Design by Gruppo 22 </div>
   </footer>
   </body>
       <script src="https://code.jquery.com/jquery-latest.min.js"></script>

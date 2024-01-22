@@ -129,9 +129,31 @@ body{
 }
 
 hr{
-  color: #cccccc;
+  color:gray;
 }
 
 footer{
   height: 50%;
+  text-align: center;
+}
+footer .div{
+  text-align: center;
+}
+footer .row{
+  width:100%;
+  margin:1% 0%;
+  padding:0.6% 0%;
+  color:gray;
+  font-size: x-large;
+}
+  
+footer .row a{
+  text-decoration:none;
+  color:gray;
+  transition:0.5s;
+  margin-right: 0.5%;
+}
+  
+footer .row a:hover{
+  color:#fff;
 }
