@@ -50,7 +50,7 @@
             </div>
           </div>
 
-          <script>
+          <script type="text/javascript">
             document.querySelector("#show-login").addEventListener("click",function(){
               document.querySelector(".popup").classList.add("activete");
             });
@@ -58,9 +58,7 @@
             document.querySelector(".popup #close-btn").addEventListener("click",function(){
               document.querySelector(".popup").classList.remove("activete");
             });
-
-
-            </script>
+          </script>
 
         </div>
       </div>
