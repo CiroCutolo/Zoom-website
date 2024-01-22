@@ -160,6 +160,7 @@ label #cancel{
     transition: top 0ms ease-in-out 0ms,
                 opacity 200ms ease-in-out 0ms,
                 transform 20ms ease-in-out 0ms;
+    box-sizing: unset;
     z-index: 999;
 }
 

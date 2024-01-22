@@ -9,13 +9,15 @@
       //salvo il risultato all'intero della riga restituita dalla quary che sarà sicuramente diversa da flase nel caso in cui trova l'utente
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);
-
+      
+      //reindirizzo alla pagina precedentemente visitata
+      $url = $_SERVER['HTTP_REFERER'];
       if($row != false){
-          header("refresh:0;url=home.php");
+        header("Location: $url");
+        exit;
       }else{
-        echo '<script type="text/javascript">
-        alert("Password o email errati");
-        </script>';
+        header("Location: $url");
+        exit;
       }
 
   }
@@ -37,9 +39,9 @@
       </label>
       <img class="logo" src="logo-removebg.png">
       <ul>
-        <li class="text"><a href="#">Home</a></li>
-        <li class="text"><a href="#">Animali</a></li>
-        <li class="text"><a href="#">Acquisto biglietti</a></li>
+        <li class="text"><a href="home.php">Home</a></li>
+        <li class="text"><a href="Animali.php">Animali</a></li>
+        <li class="text"><a href="aquistobiglietti.php">Acquisto biglietti</a></li>
         <button id="show-login"><li class="image"><a><img src="user_icon.png"></a></li></button>
       </ul>
     </div>
