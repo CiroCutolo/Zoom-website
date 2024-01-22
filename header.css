@@ -216,7 +216,8 @@ label #cancel{
     margin: 3px 20px 3px 20px;
 }
 
-.popup .form button{
+.popup .form button, 
+#login-btn{
     width: 150px;
     height: 40px;
     border: none;
@@ -228,4 +229,7 @@ label #cancel{
     cursor: pointer;
 }
 
+.popup .form .form-element #login-btn{
+    margin-top: 0px;
+}
 

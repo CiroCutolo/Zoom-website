@@ -1,3 +1,25 @@
+<?php
+    include("connessione.php");
+
+    if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){
+      $email_form=$_POST['email'];
+      $pw_form=$_POST['pw'];
+      //effettuo la connessione al database e seleziono email e password dalla tabella utenti che sono uguali a email e passowrd inseriti nel form
+      $sql = "SELECT email,password FROM utenti WHERE utenti.email='$email_form' and utenti.password='$pw_form' ";
+      //salvo il risultato all'intero della riga restituita dalla quary che sarà sicuramente diversa da flase nel caso in cui trova l'utente
+      $ret = pg_query($conn,$sql);
+      $row = pg_fetch_row($ret);
+
+      if($row != false){
+          header("refresh:0;url=home.php");
+      }else{
+        echo '<script type="text/javascript">
+        alert("Password o email errati");
+        </script>';
+      }
+
+  }
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -26,22 +48,23 @@
       <button id="close-btn"><span class="fas fa-times"></span></button>
       <div class = "form">
         <h2>Accedi</h2>
-        <div class="form-element">
-          <label for="email">Email</label>
-          <input type="text" id="email" placeholder="Inserisci email">
-        </div>
-        <div class="form-element">
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Inserisci password">
-        </div>
-        <div class="button-container">
-          <div class="button-section">
-            <div class="form-element" id="login">
-            <a href="#">
-              <button>Accedi</button>
-            </a>
+        <form action="home.php?action=accedi" method="post">
+          <div class="form-element">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="Inserisci email" onchange="abilitalogin()" onkeyup="abilitalogin()">
           </div>
-        </div>
+          <div class="form-element">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="pw" placeholder="Inserisci password" onchange="abilitalogin()" onkeyup="abilitalogin()">
+          </div>
+          <div class="button-container">
+            <div class="button-section">
+              <div class="form-element" id="login">
+              <a href="#">
+                <input id="login-btn" type="submit" value="Accedi" disabled>
+              </a>
+            </div>
+          </div>
           <div class="button-section">
             <div class="form-element" id="signin">
               <a href="#">
@@ -49,7 +72,7 @@
             </a>
             </div>
           </div>
-
+        </form>
           <script type="text/javascript">
             document.querySelector("#show-login").addEventListener("click",function(){
               document.querySelector(".popup").classList.add("activete");
@@ -58,6 +81,14 @@
             document.querySelector(".popup #close-btn").addEventListener("click",function(){
               document.querySelector(".popup").classList.remove("activete");
             });
+
+            function abilitalogin(){
+              if (document.getElementById("email").value == "" || document.getElementById("password").value == ""){
+                document.getElementById("login-btn").setAttribute('disabled',"");
+              }else{
+                document.getElementById("login-btn").removeAttribute('disabled');
+              }
+            }
           </script>
 
         </div>
