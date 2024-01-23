@@ -6,12 +6,14 @@
     session_start();
     include("connessione.php"); //connessione al database
     
-    //if (isset(($_SESSION["isLogged"])) && $_SESSION["isLogged"]!="") //se la sessione è aperta, ma l'utente non 
+    //if (isset(($_SESSION["isLogged"])) && $_SESSION["isLogged"]=="") //se la sessione è aperta, ma l'utente non ha fatto il login
         //header('Location: /home.php'); 
 
-
-
-    $_SESSION["isLogged"]="auroracampione@gmail.com"; //momentaneo per provare
+    $_SESSION["isLogged"]="auroracampione@gmail.com";
+    
+    if(!isset($_SESSION["isLogged"])){
+        header('Location: /home.php');
+    }
 
     $nome="";
     $cognome="";

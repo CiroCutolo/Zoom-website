@@ -1,6 +1,8 @@
 <?php
     include("connessione.php");
 
+    session_start();
+
     if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){
       $email_form=$_POST['email'];
       $pw_form=$_POST['pw'];
@@ -14,7 +16,6 @@
       $url = $_SERVER['HTTP_REFERER'];
       if($row != false){
         //avvio della sessione nel caso in cui il login va a buon fine
-        session_start();
         $_SESSION["isLogged"] = $email_form;
         echo "<script>
         alert('Login avvenuto con successo!');
