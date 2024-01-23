@@ -92,7 +92,7 @@
     <body>
     <?php include 'header.html';?>
 
-    <hr size="2" color="black" noshade>
+    <hr size="2" color="black" noshade text-sh>
 
     <div style = "text-align:center">
         <br>
