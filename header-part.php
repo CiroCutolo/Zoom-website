@@ -116,13 +116,11 @@
   <div class="tag map">
       <div class="buy-tickets-container1">
         <div class="map-text">
-          <img src="icona-mappa.png">
-          <h2>Consulta la nostra mappa</h2>
-          <div>Scopri tutte le aree dei nostri animali</div>
-          <div>ed i nostri servizi</div>
+          <div>
+            <img src="icona-mappa.png">
+            <h2>Consulta la nostra mappa</h2>
+            Scopri tutte le aree dei nostri animali ed i nostri servizi</div>
         </div>
-      </div>
-      <div class="map-container">
         <div class="map-content">
           <img src="zoo-map.png" width="100%">
         </div>

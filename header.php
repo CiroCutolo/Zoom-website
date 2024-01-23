@@ -72,13 +72,13 @@
               <div class="form-element" id="login">
                 <input id="login-btn" type="submit" value="Accedi" disabled>
             </div>
-          </div>
-          <div class="button-section">
-            <div class="form-element" id="signin">
-              <a href="registrazione.php">
-              <button>Registrati</button>
-            </a>
             </div>
+            <div class="button-section">
+              <div class="form-element" id="signin">
+                <a href="registrazione.php">
+                <button>Registrati</button>
+                </a>
+              </div>
           </div>
         </form>
         <?php if(!isset($_SESSION["isLogged"])) { ?>
