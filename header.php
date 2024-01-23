@@ -93,7 +93,7 @@
           </script>
           <?php }else{ ?>
             <script type="text/javascript">
-            document.querySelector("#show-login").addEventListener("click",function(){
+                document.querySelector("#show-login").addEventListener("click",function(){
                 window.location.href = "areapersonale.php";
             });
             </script>
