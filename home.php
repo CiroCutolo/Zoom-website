@@ -13,3 +13,12 @@
     <?php include 'header-part.php';?>
   </body>
 </html>
+
+<?php
+
+if(isset($_GET["action"]) && ($_GET["action"] == "logout")){ //verifico se il form è stato completato
+  session_destroy();
+}
+
+
+?>
