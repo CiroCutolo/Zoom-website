@@ -14,7 +14,6 @@
           <!--Se la sessione è diversa da null, entrerò nel ramo else per permettere l'acquisto, in caso contrario visualizzo
           la sezione con un reindirizzamento alla pagina di registrazione-->
           <?php 
-          session_start();
           if(!isset($_SESSION["isLogged"])) { ?>
             <div class="buy-tickets-textcontent">Registrati o accedi per acquistare!</div>
 

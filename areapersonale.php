@@ -3,14 +3,13 @@
     ini_set('display_startup_errors' ,1);
     error_reporting(E_ALL);
 
-    session_start();
     include("connessione.php"); //connessione al database
     
     //if (isset(($_SESSION["isLogged"])) && $_SESSION["isLogged"]=="") //se la sessione è aperta, ma l'utente non ha fatto il login
         //header('Location: /home.php'); 
 
     $_SESSION["isLogged"]="auroracampione@gmail.com";
-    
+
     if(!isset($_SESSION["isLogged"])){
         header('Location: /home.php');
     }
