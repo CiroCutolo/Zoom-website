@@ -117,9 +117,10 @@
       <div class="buy-tickets-container1">
         <div class="map-text">
           <div>
-            <img src="icona-mappa.png">
+            <img src="1.png" width="35%">
             <h2>Consulta la nostra mappa</h2>
-            Scopri tutte le aree dei nostri animali ed i nostri servizi</div>
+            Scopri tutte le aree dei nostri animali ed i nostri servizi
+          </div>
         </div>
         <div class="map-content">
           <img src="zoo-map.png" width="100%">
