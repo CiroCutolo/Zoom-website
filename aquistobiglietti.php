@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="./Css/acquistobiglietti.css">
 	</head>
 	<body>
-		<?php include './header.html';?>
+		<?php include './header.php';?>
 
 		<div class="container tipologia">
 			<h1>Biglietti</h1>

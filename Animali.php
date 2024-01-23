@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="header.css">
     </head>
     <body>
-        <?php include 'header.html' ?>
+        <?php include 'header.php' ?>
         <div class="filter-container" id="filters">
             <div class="filter-column">
                 <select class="filter-selector" id="typeDropdown">

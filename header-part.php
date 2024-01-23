@@ -4,13 +4,18 @@
     <meta charset="utf-8">
     <script src="https://kit.fontawesome.com/9491817803.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="header-part.css?<?php echo rand();?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title></title>
   </head>
   <body>
   <div class="tag tickets">
     <div class="buy-tickets-container">
           <div class="buy-tickets-content">
-           <!--Registrati per acquistare! -->
+          <!--Se la sessione è diversa da null, entrerò nel ramo else per permettere l'acquisto, in caso contrario visualizzo
+          la sezione con un reindirizzamento alla pagina di registrazione-->
+          <?php if($_SESSION["isLogged"] == "false") { ?>
+              <p class="buy-tickets-textcontent">Registrati per acquistare!</p>
+          <?php }else{ ?>
            <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
              <p class="buy-tickets-textcontent">Adulti
               <select id="selector1">
@@ -33,12 +38,13 @@
              </select>
              </p>
              <p class="buy-tickets-textcontent">Data della visita</p>
-             <p><input type="date" class="date-picker"></input>
+             <p><input type="date" class="date-picker" max="<?php echo date('Y-m-d');?>"></input>
              </p>
          </div>
          <div class="btn-tickets-container">
            <button class="btn-tickets">ACQUISTA</button>
          </div>
+         <?php } ?>
    </div>
    <div>
      <img class="photo" src="foto-giraffa.png">
@@ -54,13 +60,13 @@
     date di inizio e fine dell'orario estivo/invernale. Il confronto viene effettuato trasformando le date nel formato Unix timestamp in modo da
     avere una quantità intera da poter inserire in una condizione if. La parte di tariffe resta statica.-->
       <?php 
-      //"1-4-2024" = date("d-m-Y");
+      $today = date("d-m-Y");
       $current_year = date("Y");
       $winterstart_time = "1-11-" . ($current_year-1);
       $winterend_time = "31-3-" . $current_year;
       $summerstart_time = "1-4-" . $current_year;
       $summerend_time = "31-10-" . $current_year;
-      if( (strtotime("1-4-2024") > strtotime($winterstart_time) && strtotime("1-4-2024") < strtotime($winterend_time) ) || ( strtotime("1-4-2024") == strtotime($winterstart_time) || strtotime("1-4-2024") == strtotime($winterend_time))) {
+      if( (strtotime($today) > strtotime($winterstart_time) && strtotime($today) < strtotime($winterend_time) ) || ( strtotime($today) == strtotime($winterstart_time) || strtotime($today) == strtotime($winterend_time))) {
       ?>
       <div class="hours">
         <img src="foto-winter.png">
@@ -69,7 +75,7 @@
         <div>Weekend e festivi invariati</div>
       </div>
       <?php 
-      }else if ( (strtotime("1-4-2024") > strtotime($summerstart_time) && strtotime("1-4-2024") < strtotime($summerend_time)) || ( strtotime("1-4-2024") == strtotime($summerstart_time) || strtotime("1-4-2024") == strtotime($summerend_time))){
+      }else if ( (strtotime($today) > strtotime($summerstart_time) && strtotime($today) < strtotime($summerend_time)) || ( strtotime($today) == strtotime($summerstart_time) || strtotime($today) == strtotime($summerend_time))){
       ?>
       <div class="hours">
         <img src="foto-summer.png">
@@ -102,16 +108,36 @@
         </div>
       </div>
    </div>
-</div>
-<br>
- <div class="tag map">
+  </div>
+  <br>
+  <div class="tag map">
+      <div class="buy-tickets-container1">
+        <div class="map-text">
+          <img src="icona-mappa.png">
+          <h2>Consulta la nostra mappa</h2>
+          <div>Scopri tutte le aree dei nostri animali</div>
+          <div>ed i nostri servizi</div>
+        </div>
+      </div>
       <div class="map-container">
         <div class="map-content">
           <img src="zoo-map.png" width="100%">
         </div>
       </div>
- </div>
-      </body>
+  </div>
+  <br>
+  <br>
+  <footer>
+  <hr>
+  <div class="row">
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-instagram"></i></a>
+    <a href="#"><i class="fa fa-youtube"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+  </div>
+  <div> ©2024 Gruppo 22. Design by Gruppo 22 </div>
+  </footer>
+  </body>
       <script src="https://code.jquery.com/jquery-latest.min.js"></script>
       <script type="text/javascript">
       var $ = jQuery;

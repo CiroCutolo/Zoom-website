@@ -6,7 +6,7 @@
     <title>Home</title>
   </head>
   <body>
-    <?php include 'header.html';?>
+    <?php include 'header.php';?>
     <?php include 'slider.html';?>
     <?php include 'header-part.php';?>
   </body>

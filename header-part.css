@@ -19,10 +19,10 @@ body{
 .tag{
   opacity: 0;
   transform: translate(0,10vh);
-  transition: all 5s;
+  transition: all 3s;
 }
 
-.tag.tickets,.tag.openingtime{
+.tag.tickets,.tag.openingtime,.tag.map{
   display: grid;
   grid-template-columns: 50% 50%;
   margin: auto;
@@ -37,6 +37,16 @@ body{
     -moz-box-shadow: 2px 4px 2px #e1c8b2;
     -webkit-box-shadow: 2px 4px 2px #e1c8b2;
     box-shadow: 10px 10px 2px #e1c8b2;
+}
+.buy-tickets-container1{
+  max-width: 100%;
+  position: relative;
+  background-color: #f4e9df;
+  height: 100%;
+  -moz-box-shadow: 2px 4px 2px #e1c8b2;
+  -webkit-box-shadow: 2px 4px 2px #e1c8b2;
+  box-shadow: 10px 10px 2px #e1c8b2;
+  border-radius: 100% 100% 100% 100%;
 }
 
 .photo {
@@ -93,14 +103,14 @@ body{
   border-radius: 10px;
 }
 
-.hours{
+.hours, .price {
   text-align: center;
   padding-top: 7%;
 }
 
-.price{
+.map-text{
   text-align: center;
-  padding-top: 7%;
+  padding-top: 12%;
 }
 
 .price .btn-tickets-container {
@@ -116,4 +126,34 @@ body{
 
 .map-content img{
     max-width: 100%;
+}
+
+hr{
+  color:gray;
+}
+
+footer{
+  height: 50%;
+  text-align: center;
+}
+footer .div{
+  text-align: center;
+}
+footer .row{
+  width:100%;
+  margin:1% 0%;
+  padding:0.6% 0%;
+  color:gray;
+  font-size: x-large;
+}
+  
+footer .row a{
+  text-decoration:none;
+  color:gray;
+  transition:0.5s;
+  margin-right: 0.5%;
+}
+  
+footer .row a:hover{
+  color:#fff;
 }

@@ -160,6 +160,7 @@ label #cancel{
     transition: top 0ms ease-in-out 0ms,
                 opacity 200ms ease-in-out 0ms,
                 transform 20ms ease-in-out 0ms;
+    box-sizing: unset;
     z-index: 999;
 }
 
@@ -216,7 +217,8 @@ label #cancel{
     margin: 3px 20px 3px 20px;
 }
 
-.popup .form button{
+.popup .form button, 
+#login-btn{
     width: 150px;
     height: 40px;
     border: none;
@@ -228,4 +230,7 @@ label #cancel{
     cursor: pointer;
 }
 
+.popup .form .form-element #login-btn{
+    margin-top: 0px;
+}
 
