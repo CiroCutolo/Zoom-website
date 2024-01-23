@@ -103,17 +103,17 @@
             <div>Ecco i dati del tuo account: è possibile modificarli selezionando i campi interessati</div>
             <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="areapersonale.php?action=modifica" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
                 <div style = "text-align:center">        
-                    <span>Nome: </span><input type="text" id="nome" name = "nome" placeholder="Nome" required value="<?php echo $nome?>" onchange="abilita()" onkeyup="abilita()">
+                    <span>Nome: </span><input type="text" id="nome" name = "nome" placeholder="Nome" value="<?php echo $nome?>" onchange="abilita()" onkeyup="abilita()">
                     <br><br>
-                    <span>Cognome: </span><input type="text" id="cognome" name = "cognome" placeholder="Cognome" required value="<?php echo $cognome?>" onchange="abilita()" onkeyup="abilita()">
+                    <span>Cognome: </span><input type="text" id="cognome" name = "cognome" placeholder="Cognome" value="<?php echo $cognome?>" onchange="abilita()" onkeyup="abilita()">
                     <br><br>
 
-                    <span>Data di nascita: </span><input type="text" id="data_di_nascita" name = "data_di_nascita" max="<?php echo date('Y-m-d');?>" required  value="<?php echo $data?>" onchange="abilita()" onkeyup="abilita()">
+                    <span>Data di nascita: </span><input type="text" id="data_di_nascita" name = "data_di_nascita" max="<?php echo date('Y-m-d');?>"  value="<?php echo $data?>" onchange="abilita()" onkeyup="abilita()">
                     <br><br>
-                    <span>Email: </span><input type="text" id="Email" name = "Email" placeholder="E-mail" required  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()">
+                    <span>Email: </span><input type="text" id="Email" name = "Email" placeholder="E-mail"  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()">
                     <br><br>
         
-                    <span>Password: </span><input type="password" id="Password" name = "Password" placeholder="Imposta una nuova password" required>
+                    <span>Password: </span><input type="password" id="Password" name = "Password" placeholder="Imposta una nuova password">
                         <i class="far fa-eye-slash" id="togglePassword"></i>
                     <br><br>
                     <input type="submit" id="registrati" value="Aggiorna dati" disabled>
@@ -152,7 +152,7 @@
             </div>
         </div>
         <br>
-        <button id="logout" onclick="logout()">Logout</button>
+        <button id="logout" onclick="logout()">Esci</button onclick="esci()">
     </div>
 
 
@@ -172,7 +172,7 @@
 
 
 
-        function abilita(){ //abilita il submit solo se sono stati inseriti tutti i campi
+        function abilita(){
             
             if((document.getElementById("nome").value == "") || (document.getElementById("cognome").value == "") || (document.getElementById("data_di_nascita").value == "")
                 || (document.getElementById("Email").value == "")){
@@ -188,7 +188,7 @@
         function controllaLunghezza(campo,len){
             switch(campo.id){
                 case "Password":
-                    if(campo.value.length < len){
+                    if(campo.value.length < len && campo.value!=""){
                         alert(campo.id + ": inserire almeno " + len + " caratteri");
                         campo.focus();
                         return false;
@@ -245,6 +245,15 @@
         });
 
         abilita();
+
+        function esci(){
+            $_SESSION["isLogged"]="";
+            <?php
+                session_destroy();
+            ?>
+
+            header('Location: /home.php'); 
+        }
     </script>
 
     </body>
