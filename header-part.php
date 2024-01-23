@@ -11,7 +11,11 @@
   <div class="tag tickets">
     <div class="buy-tickets-container">
           <div class="buy-tickets-content">
-           <!--Registrati per acquistare! -->
+          <!--Se la sessione è diversa da null, entrerò nel ramo else per permettere l'acquisto, in caso contrario visualizzo
+          la sezione con un reindirizzamento alla pagina di registrazione-->
+          <?php if($_SESSION["isLogged"] == "false") { ?>
+              <p class="buy-tickets-textcontent">Registrati per acquistare!</p>
+          <?php }else{ ?>
            <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
              <p class="buy-tickets-textcontent">Adulti
               <select id="selector1">
@@ -40,6 +44,7 @@
          <div class="btn-tickets-container">
            <button class="btn-tickets">ACQUISTA</button>
          </div>
+         <?php } ?>
    </div>
    <div>
      <img class="photo" src="foto-giraffa.png">

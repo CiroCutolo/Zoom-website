@@ -90,7 +90,7 @@
     </head>
 
     <body>
-    <?php include 'header.html';?>
+    <?php include 'header.php';?>
 
     <hr size="2" color="black" noshade>
 

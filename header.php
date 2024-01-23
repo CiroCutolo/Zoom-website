@@ -10,14 +10,23 @@
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);
       
-      //reindirizzo alla pagina precedentemente visitata
+      $_SESSION["isLogged"] = "false";
+
+      //reindirizzo alla pagina precedentemente visitata mostrando un messaggio di successo o insuccesso del login
       $url = $_SERVER['HTTP_REFERER'];
       if($row != false){
-        header("Location: $url");
-        exit;
+        //avvio della sessione nel caso in cui il login va a buon fine
+        session_start();
+        $_SESSION["isLogged"] = "true";
+        echo "<script>
+        alert('Login avvenuto con successo!');
+        window.location.href='$url';
+        </script>";
       }else{
-        header("Location: $url");
-        exit;
+        echo "<script>
+        alert('Password o email errate!');
+        window.location.href='$url';
+        </script>";
       }
 
   }
@@ -27,7 +36,7 @@
   <head>
     <meta charset="utf-8">
     <script src="https://kit.fontawesome.com/9491817803.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="header.css?<?php echo rand();?>">
     <title>Header - Zoom</title>
   </head>
   <body>
@@ -62,19 +71,18 @@
           <div class="button-container">
             <div class="button-section">
               <div class="form-element" id="login">
-              <a href="#">
                 <input id="login-btn" type="submit" value="Accedi" disabled>
-              </a>
             </div>
           </div>
           <div class="button-section">
             <div class="form-element" id="signin">
-              <a href="#">
+              <a href="registrazione.php">
               <button>Registrati</button>
             </a>
             </div>
           </div>
         </form>
+        <?php if($_SESSION["isLogged"] == "false") { ?>
           <script type="text/javascript">
             document.querySelector("#show-login").addEventListener("click",function(){
               document.querySelector(".popup").classList.add("activete");
@@ -83,7 +91,15 @@
             document.querySelector(".popup #close-btn").addEventListener("click",function(){
               document.querySelector(".popup").classList.remove("activete");
             });
-
+          </script>
+          <?php }else{ ?>
+            <script type="text/javascript">
+            document.querySelector("#show-login").addEventListener("click",function(){
+                window.location.href = "areapersonale.php";
+            });
+            </script>
+          <?php } ?>
+          <script>
             function abilitalogin(){
               if (document.getElementById("email").value == "" || document.getElementById("password").value == ""){
                 document.getElementById("login-btn").setAttribute('disabled',"");
