@@ -3,7 +3,7 @@
 	padding: 20px;
 }
 
-.acquisto_body.h1 {color: #0e84ab;}
+.acquisto_body h1 {color: #0e84ab;}
 .acquisto_body h2, .acquisto_body h3, .acquisto_body h4, .warning {color: #fe8500;}
 
 .orari{margin-bottom: 10px;}

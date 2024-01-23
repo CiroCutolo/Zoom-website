@@ -4,10 +4,10 @@
 		<title>Acquisto biglietti - Zoom</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="./Css/acquistobiglietti.css?<?php echo rand();?>" type="text/css">
-		<script type = "text/javascript" src="JS\filterSelection.js"></script>
+		<script src="JS\function.js" type="text/javascript" ></script>
 	</head>
 	<body class="acquisto_body">
-		<?php include './header.html';?>
+		<?php include './header.php';?>
 
 		<div class="container tipologia">
 			<h1>Biglietti</h1>
@@ -85,7 +85,8 @@
 							</div>
 							<div id="infoPanel" style="display: block;">
 								<p>
-								Il biglietto d’ingresso non è in alcun caso rimborsabile, né modificabile ad eccezione di eventi straordinari per cui la struttura rimarrà chiusa.<br/>
+								Il biglietto d’ingresso non è in alcun caso rimborsabile, né modificabile ad eccezione di eventi straordinari per cui la struttura rimarrà chiusa.
+								</p><p>
 								Puoi acquistare online il tuo biglietto entro le ore 23.59 del giorno precedente alla tua visita.
 								</p>
 							</div>
@@ -125,6 +126,13 @@
 										Adulti e ragazzi dai 10 anni in su
 									</p>
 								</div>
+							</div>
+							<div id="infoPanel" style="display: none;">
+								<p>
+								Il biglietto d’ingresso non è in alcun caso rimborsabile, né modificabile ad eccezione di eventi straordinari per cui la struttura rimarrà chiusa.
+								</p><p>
+								Puoi acquistare online il tuo biglietto entro le ore 23.59 del giorno precedente alla tua visita.
+								</p>
 							</div>
 						</fieldset>
 					</div>
