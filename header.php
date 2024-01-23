@@ -10,14 +10,12 @@
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);
       
-      $_SESSION["isLogged"] = "false";
-
       //reindirizzo alla pagina precedentemente visitata mostrando un messaggio di successo o insuccesso del login
       $url = $_SERVER['HTTP_REFERER'];
       if($row != false){
         //avvio della sessione nel caso in cui il login va a buon fine
         session_start();
-        $_SESSION["isLogged"] = "true";
+        $_SESSION["isLogged"] = $email_form;
         echo "<script>
         alert('Login avvenuto con successo!');
         window.location.href='$url';
@@ -82,7 +80,7 @@
             </div>
           </div>
         </form>
-        <?php if($_SESSION["isLogged"] == "false") { ?>
+        <?php if(!isset($_SESSION["isLogged"])) { ?>
           <script type="text/javascript">
             document.querySelector("#show-login").addEventListener("click",function(){
               document.querySelector(".popup").classList.add("activete");

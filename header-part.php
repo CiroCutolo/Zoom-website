@@ -13,8 +13,10 @@
           <div class="buy-tickets-content">
           <!--Se la sessione è diversa da null, entrerò nel ramo else per permettere l'acquisto, in caso contrario visualizzo
           la sezione con un reindirizzamento alla pagina di registrazione-->
-          <?php if($_SESSION["isLogged"] == "false") { ?>
-              <p class="buy-tickets-textcontent">Registrati per acquistare!</p>
+          <?php if(!isset($_SESSION["isLogged"])) { ?>
+            <div class="buy-tickets-textcontent">Registrati o accedi per acquistare!</div>
+
+          </div>
           <?php }else{ ?>
            <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
              <p class="buy-tickets-textcontent">Adulti
