@@ -153,7 +153,7 @@
             </div>
         </div>
         <br>
-        <button id="logout" onclick="logout()">Esci</button onclick="esci()">
+        <button id="logout" onclick="esci()">Esci</button>
     </div>
 
 
@@ -246,15 +246,6 @@
         });
 
         abilita();
-
-        function esci(){
-            $_SESSION["isLogged"]="";
-            <?php
-                session_destroy();
-            ?>
-
-            header('Location: /home.php'); 
-        }
     </script>
 
     </body>

@@ -49,7 +49,7 @@
       <ul>
         <li class="text"><a href="home.php">Home</a></li>
         <li class="text"><a href="Animali.php">Animali</a></li>
-        <li class="text"><a href="aquistobiglietti.php">Acquisto biglietti</a></li>
+        <li class="text"><a href="acquistobiglietti.php">Acquisto biglietti</a></li>
         <button id="show-login"><li class="image"><a><img src="user_icon.png"></a></li></button>
       </ul>
     </div>
