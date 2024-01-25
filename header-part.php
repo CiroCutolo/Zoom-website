@@ -11,7 +11,14 @@
   <div class="tag tickets">
     <div class="buy-tickets-container">
           <div class="buy-tickets-content">
-           <!--Registrati per acquistare! -->
+          <!--Se la sessione è diversa da null, entrerò nel ramo else per permettere l'acquisto, in caso contrario visualizzo
+          la sezione con un reindirizzamento alla pagina di registrazione-->
+          <?php 
+          if(!isset($_SESSION["isLogged"])) { ?>
+            <div class="buy-tickets-textcontent">Registrati o accedi per acquistare!</div>
+
+          </div>
+          <?php }else{ ?>
            <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
              <p class="buy-tickets-textcontent">Adulti
               <select id="selector1">
@@ -40,6 +47,7 @@
          <div class="btn-tickets-container">
            <button class="btn-tickets">ACQUISTA</button>
          </div>
+         <?php } ?>
    </div>
    <div>
      <img class="photo" src="foto-giraffa.png">
@@ -108,13 +116,12 @@
   <div class="tag map">
       <div class="buy-tickets-container1">
         <div class="map-text">
-          <img src="icona-mappa.png">
-          <h2>Consulta la nostra mappa</h2>
-          <div>Scopri tutte le aree dei nostri animali</div>
-          <div>ed i nostri servizi</div>
+          <div>
+            <img src="1.png" width="35%">
+            <h2>Consulta la nostra mappa</h2>
+            Scopri tutte le aree dei nostri animali ed i nostri servizi
+          </div>
         </div>
-      </div>
-      <div class="map-container">
         <div class="map-content">
           <img src="zoo-map.png" width="100%">
         </div>

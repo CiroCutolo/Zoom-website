@@ -1,17 +1,18 @@
 <?php
-    ini_set('display_errors', 1);
+    ini_set('display_errors', 0);
     ini_set('display_startup_errors' ,1);
     error_reporting(E_ALL);
 
     session_start();
     include("connessione.php"); //connessione al database
     
-    //if (isset(($_SESSION["isLogged"])) && $_SESSION["isLogged"]!="") //se la sessione è aperta, ma l'utente non 
+    //if (isset(($_SESSION["isLogged"])) && $_SESSION["isLogged"]=="") //se la sessione è aperta, ma l'utente non ha fatto il login
         //header('Location: /home.php'); 
 
 
-
-    $_SESSION["isLogged"]="auroracampione@gmail.com"; //momentaneo per provare
+    if(!isset($_SESSION["isLogged"])){
+        header('Location: /home.php');
+    }
 
     $nome="";
     $cognome="";
@@ -90,9 +91,9 @@
     </head>
 
     <body>
-    <?php include 'header.html';?>
+    <?php include 'header.php';?>
 
-    <hr size="2" color="black" noshade>
+    <hr size="2" color="black" noshade text-sh>
 
     <div style = "text-align:center">
         <br>
@@ -103,17 +104,17 @@
             <div>Ecco i dati del tuo account: è possibile modificarli selezionando i campi interessati</div>
             <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="areapersonale.php?action=modifica" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
                 <div style = "text-align:center">        
-                    <span>Nome: </span><input type="text" id="nome" name = "nome" placeholder="Nome" required value="<?php echo $nome?>" onchange="abilita()" onkeyup="abilita()">
+                    <span>Nome: </span><input type="text" id="nome" name = "nome" placeholder="Nome" value="<?php echo $nome?>" onchange="abilita()" onkeyup="abilita()">
                     <br><br>
-                    <span>Cognome: </span><input type="text" id="cognome" name = "cognome" placeholder="Cognome" required value="<?php echo $cognome?>" onchange="abilita()" onkeyup="abilita()">
+                    <span>Cognome: </span><input type="text" id="cognome" name = "cognome" placeholder="Cognome" value="<?php echo $cognome?>" onchange="abilita()" onkeyup="abilita()">
                     <br><br>
 
-                    <span>Data di nascita: </span><input type="text" id="data_di_nascita" name = "data_di_nascita" max="<?php echo date('Y-m-d');?>" required  value="<?php echo $data?>" onchange="abilita()" onkeyup="abilita()">
+                    <span>Data di nascita: </span><input type="text" id="data_di_nascita" name = "data_di_nascita" max="<?php echo date('Y-m-d');?>"  value="<?php echo $data?>" onchange="abilita()" onkeyup="abilita()">
                     <br><br>
-                    <span>Email: </span><input type="text" id="Email" name = "Email" placeholder="E-mail" required  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()">
+                    <span>Email: </span><input type="text" id="Email" name = "Email" placeholder="E-mail"  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()">
                     <br><br>
         
-                    <span>Password: </span><input type="password" id="Password" name = "Password" placeholder="Imposta una nuova password" required>
+                    <span>Password: </span><input type="password" id="Password" name = "Password" placeholder="Imposta una nuova password">
                         <i class="far fa-eye-slash" id="togglePassword"></i>
                     <br><br>
                     <input type="submit" id="registrati" value="Aggiorna dati" disabled>
@@ -152,11 +153,16 @@
             </div>
         </div>
         <br>
-        <button id="logout" onclick="logout()">Logout</button>
+        <button id="logout" onclick="esci()">Esci</button>
     </div>
 
 
     <script type="text/javascript">
+        function esci() {
+            window.location.href='/home.php?action=logout';
+        }
+
+
         function mostraDati(){
             divDati=document.getElementById("mostra_dati");
             divAcquisti=document.getElementById("mostra_acquisti");
@@ -172,7 +178,7 @@
 
 
 
-        function abilita(){ //abilita il submit solo se sono stati inseriti tutti i campi
+        function abilita(){
             
             if((document.getElementById("nome").value == "") || (document.getElementById("cognome").value == "") || (document.getElementById("data_di_nascita").value == "")
                 || (document.getElementById("Email").value == "")){
@@ -188,7 +194,7 @@
         function controllaLunghezza(campo,len){
             switch(campo.id){
                 case "Password":
-                    if(campo.value.length < len){
+                    if(campo.value.length < len && campo.value!=""){
                         alert(campo.id + ": inserire almeno " + len + " caratteri");
                         campo.focus();
                         return false;

@@ -3,8 +3,8 @@
     $port = '5432';
     $db = 'gruppo22';
     $username = 'www';
-    $password = 'tw2024'; //poi deve essere tw2024
-    $connection_string = "host = $host port = $port dbname = $db user = $username password = $password"; 
+    $pass = 'tw2024'; //poi deve essere tw2024
+    $connection_string = "host = $host port = $port dbname = $db user = $username password = $pass"; 
     //echo $connection_string;
 
     $conn = pg_connect($connection_string)

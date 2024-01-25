@@ -1,11 +1,12 @@
 <?php
-    ini_set('display_errors', 1);
+    ini_set('display_errors', 0);
     ini_set('display_startup_errors' ,1);
     error_reporting(E_ALL);
 
     include("connessione.php"); //connessione al database
+    session_start();
+
     $_SESSION["isLogged"]=""; // VARIABILE DI SESSIONE PER INDICARE UTENTE LOGGATO
- 
     $utenteEsistente = false;
 
     $nome="";
@@ -63,7 +64,7 @@
     </head>
 
     <body>
-    <?php include 'header.html';?>
+    <?php include 'header.php';?>
     <hr size="2" color="black" noshade>
 
     <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="registrazione.php?action=registra" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">

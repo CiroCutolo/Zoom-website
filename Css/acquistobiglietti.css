@@ -1,13 +1,69 @@
 .container {
-	border: 1px black solid;
+	border-bottom: 1px dotted black;
 	padding: 20px;
-	display: list-item;
-
 }
 
-h1 {
-	color: green;	
+.acquisto_body h1 {color: #0e84ab;}
+.acquisto_body h2, .acquisto_body h3, .acquisto_body h4, .warning {color: #fe8500;}
+
+.orari{margin-bottom: 10px;}
+.lastaccess{
+	margin-top: 0;
+	padding-left: 20.5px;
 }
-h2 {
-	color: darkorange;
+
+.selezione form{
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+.interi, .ridotti{
+	-webkit-flex: 1;
+   	-ms-flex: 1;
+   	flex: 1;
+}
+
+.fa-info-circle{
+	font-size: 13px;
+	color: #0e84ab;
+	float: right;
+	padding: 5px;
+}
+
+.ridotto-image img, .intero-image img{
+	float: left;
+	padding: 10px;
+    color: white;
+    background-color: #0e84ab;
+    border: 2px solid white;
+    height: 40px;
+    width: 40px;
+	margin-right: 10px;
+}
+
+.interi-text, .ridotti-text{
+	color: #fe8500;
+	background-color: #0e84ab;
+	padding: 5px;
+	font-weight: bold;
+	box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+.interi fieldset, .ridotti fieldset{
+	background-color: antiquewhite;
+	border-color: #0e84ab;
+	box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.15);
+	margin: 10px;
+}
+
+.numberPicker{float: right;}
+
+.numberPicker select {
+    border: 1px solid #999;
+    width: 125px;
+    height: 38px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 20px;
 }

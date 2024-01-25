@@ -22,9 +22,15 @@ body{
   transition: all 3s;
 }
 
-.tag.tickets,.tag.openingtime,.tag.map{
+.tag.tickets,.tag.openingtime{
   display: grid;
   grid-template-columns: 50% 50%;
+  margin: auto;
+  position: relative;
+  max-width: 80%;
+}
+
+.tag.map{
   margin: auto;
   position: relative;
   max-width: 80%;
@@ -46,7 +52,7 @@ body{
   -moz-box-shadow: 2px 4px 2px #e1c8b2;
   -webkit-box-shadow: 2px 4px 2px #e1c8b2;
   box-shadow: 10px 10px 2px #e1c8b2;
-  border-radius: 100% 100% 100% 100%;
+  display: flex;
 }
 
 .photo {
@@ -110,7 +116,8 @@ body{
 
 .map-text{
   text-align: center;
-  padding-top: 12%;
+  padding-top: 5%;
+  display: flex;
 }
 
 .price .btn-tickets-container {
@@ -123,7 +130,9 @@ body{
     position: relative;
     margin: auto;
 }
-
+.map-content{
+    display: flex;
+}
 .map-content img{
     max-width: 100%;
 }
