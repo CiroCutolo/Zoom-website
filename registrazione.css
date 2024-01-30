@@ -43,11 +43,11 @@ h1{
     cursor: pointer;
     width: 26px;
 }
-.lineaOmbra  {
-    width: 100%;
-    height: 20px;
-    margin-top: -20px;
-    -webkit-box-shadow: 0 4px 6px -6px #222;
-    -moz-box-shadow: 0 4px 6px -6px #222;
-    box-shadow: 0 4px 6px -6px #222;
-  }
+
+#leopardo{
+    -webkit-filter: blur(5px); 
+    -moz-filter: blur(5px); 
+    -o-filter: blur(5px); 
+    -ms-filter: blur(5px);
+}
+

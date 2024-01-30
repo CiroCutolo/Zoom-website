@@ -71,7 +71,6 @@
 
     <body>
     <?php include 'header.php';?>
-    <div class="lineaOmbra"></div>
 
     <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="registrazione.php?action=registra&paginaSorgente=<?php echo $_GET['paginaSorgente']?>" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
         <div style = "text-align:center">
@@ -94,11 +93,11 @@
                 <i class="far fa-eye-slash" id="togglePassword1"></i>
             <br><br><br>
 
-            <input type="submit" id="registrati" value="Registrati" disabled>
+            <input id="leopardo "type="submit" id="registrati" value="Registrati" disabled>
         </div>
-
-    
     </form>
+
+    <img src="leopardo.png"> 
 
     <script type = "text/javascript">
 
