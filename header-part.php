@@ -42,7 +42,7 @@
              </select>
              </p>
              <p class="buy-tickets-textcontent">Data della visita</p>
-             <p><input type="date" class="date-picker" max="<?php echo date('Y-m-d');?>"></input>
+             <p><input type="date" class="date-picker" min="<?php echo date('Y-m-d');?>"></input>
              </p>
          </div>
          <div class="btn-tickets-container">
