@@ -71,17 +71,18 @@
             <div class="button-section">
               <div class="form-element" id="login">
                 <input id="login-btn" type="submit" value="Accedi" disabled>
-            </div>
+              </div>
             </div>
             <div class="button-section">
               <div class="form-element" id="signin">
-                <a href="registrazione.php">
-                <button>Registrati</button>
+                <a href="registrazione.php?paginaSorgente=<?php echo $_SERVER['REQUEST_URI']?>">
+                <button type="button">Registrati</button>
                 </a>
               </div>
+            </div>
           </div>
         </form>
-        <?php if(!isset($_SESSION["isLogged"])) { ?>
+        <?php if((!isset($_SESSION["isLogged"])) || ($_SESSION["isLogged"] == "")) { ?>
           <script type="text/javascript">
             document.querySelector("#show-login").addEventListener("click",function(){
               document.querySelector(".popup").classList.add("activete");

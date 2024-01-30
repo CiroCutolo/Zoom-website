@@ -39,6 +39,8 @@
             $num = $row[0]; //recupera il primo campo della colonna, quindi il numero di utenti presenti
         }
 
+        $url = $_GET['paginaSorgente'];
+
         if($num > 0){ //controlla se è gia presente un utente con la stessa email
             $utenteEsistente = true;  
         }
@@ -47,8 +49,11 @@
             $query = "INSERT INTO utenti (nome, cognome, password, email, data_di_nascita) VALUES ($Nome, $Cognome, $Password, $Email, '$Data')";
             //esegue la query, inserendo i dati
             $result = pg_query($conn, $query);   
-            $_SESSION["isLogged"]= $Email; //UTENTE REGISTRATO E' ANCHE LOGGATO, SI AVVIA LA SESSIONE
-        }
+            $_SESSION["isLogged"]= $Email; //UTENTE REGISTRATO E' ANCHE LOGGATO, SI AVVIA LA SESSIONE?>
+            <script>
+                window.location.href='<?php echo $url?>';
+            </script>
+        <?php }
     }
 ?>
 
@@ -65,9 +70,9 @@
 
     <body>
     <?php include 'header.php';?>
-    <hr size="2" color="black" noshade>
+    <div class="lineaOmbra"></div>
 
-    <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="registrazione.php?action=registra" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
+    <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="registrazione.php?action=registra&paginaSorgente=<?php echo $_GET['paginaSorgente']?>" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
         <div style = "text-align:center">
             <h1>Registrazione</h1>
             <br>
