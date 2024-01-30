@@ -39,7 +39,7 @@
             $num = $row[0]; //recupera il primo campo della colonna, quindi il numero di utenti presenti
         }
 
-        $url = $_GET['paginaSorgente'];
+        $url = $_GET['paginaSorgente']; //preleva il valore della pagina che ha chiamato la registrazione
 
         if($num > 0){ //controlla se è gia presente un utente con la stessa email
             $utenteEsistente = true;  
@@ -52,6 +52,7 @@
             $_SESSION["isLogged"]= $Email; //UTENTE REGISTRATO E' ANCHE LOGGATO, SI AVVIA LA SESSIONE?>
             <script>
                 window.location.href='<?php echo $url?>';
+                //ritorna alla pagina che ha chiamato la registrazione
             </script>
         <?php }
     }
