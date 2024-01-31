@@ -100,11 +100,11 @@
       </div>
     </div>
     <script>
+    var popup = document.getElementsByClassName("popup");
     /* When the user clicks on the button, 
     toggle between hiding and showing the dropdown content */
     function menutendina() {
       <?php if((!isset($_SESSION["isLogged"])) || ($_SESSION["isLogged"] == "")) { ?>
-              var popup = document.getElementsByClassName("popup");
               popup[0].classList.add("activate");
           <?php }else{ ?>
               document.getElementById("myDropdown").classList.toggle("show");
