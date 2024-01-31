@@ -29,3 +29,10 @@ $('body').on("change", 'select', function() {
   }
 });
 
+document.querySelector("#show-details-ranamuta").addEventListener("click",function(){
+  document.querySelector(".animal-details-popup").classList.add("activete");
+});
+
+document.querySelector(".popup #close-button").addEventListener("click",function(){
+  document.querySelector(".animal-details-popup").classList.remove("activete");
+});
