@@ -41,3 +41,9 @@ openButton.addEventListener("click", () => {
 closeButton.addEventListener("click", () => {
   animaldeatailspopup.classList.remove("open");
 });
+
+
+
+$("#animal-form").submit(function(e) {
+  e.preventDefault();
+});
