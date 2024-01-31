@@ -35,9 +35,12 @@
         <div class="Animals-Container" id="animalsContainer">
             <div class="animal All Anfibi Africa" > 
                 <div class="animal-image-section" id="show-details-ranamuta">
-                <button id="show-details-ranamuta" value="ranamuta" name="animal"><a><img src="https://cdn.sci.news/images/enlarge10/image_11627e-Hyperolius-ukaguruensis.jpg" alt=""></a></button>
-                <h1>Rana muta della tanzania</h1>
+                    <form id="animal-form" action="" method="POST">
+                        <button id="show-details-ranamuta" value="ranamuta" name="animal"><a><img src="https://cdn.sci.news/images/enlarge10/image_11627e-Hyperolius-ukaguruensis.jpg" alt=""></a></button>
+                    </form>
+                    <h1>Rana muta della tanzania</h1>
                 </div>
+
             </div>
             <div class="animal All Mammiferi Africa">
                 <div class="animal-image-section" id="show-details-giraffa">
@@ -193,13 +196,88 @@
 
         <?php
             $animal = $_POST["animal"];
-            
+
             switch($animal){
                 case "ranamuta":
                     require('AnimalsPopupsMods/ranamuta.php');
                 break; 
+                case "giraffareticolata":
+                    require('AnimalsPopupsMods/giraffareticolata.php');
+                break; 
+                case "leoneafricano":
+                    require('AnimalsPopupsMods/leoneafricano.php');
+                break; 
+                case "coccodrillodelnilo":
+                    require('AnimalsPopupsMods/coccodrillodelnilo.php');
+                break; 
+                case "faraonacrestata":
+                    require('AnimalsPopupsMods/faraonacrestata.php');
+                break; 
+                case "neolamprologus":
+                    require('AnimalsPopupsMods/neolamprologus.php');
+                break; 
+                case "ranafreccia":
+                    require('AnimalsPopupsMods/ranafreccia.php');
+                break; 
+                case "coyote":
+                    require('AnimalsPopupsMods/coyote.php');
+                break; 
+                case "iguanadaitubercoli":
+                    require('AnimalsPopupsMods/iguanadaitubercoli.php');
+                break; 
+                case "anatramuta":
+                    require('AnimalsPopupsMods/anatramuta.php');
+                break; 
+                case "guppy":
+                    require('AnimalsPopupsMods/guppy.php');
+                break; 
+                case "atelopusvarius":
+                    require('AnimalsPopupsMods/atelopusvarius.php');
+                break; 
+                case "tigremalese":
+                    require('AnimalsPopupsMods/tigremalese.php');
+                break; 
+                case "gekotokai":
+                    require('AnimalsPopupsMods/gekotokai.php');
+                break; 
+                case "aironecenerino":
+                    require('AnimalsPopupsMods/aironecenerino.php');
+                break; 
+                case "bettasplendens":
+                    require('AnimalsPopupsMods/bettasplendens.php');
+                break; 
+                case "raganellapadana":
+                    require('AnimalsPopupsMods/raganellapadana.php');
+                break; 
+                case "riccioeuropeo":
+                    require('AnimalsPopupsMods/riccioeuropeo.php');
+                break; 
+                case "tartarugacaretta":
+                    require('AnimalsPopupsMods/tartarugacaretta.php');
+                break; 
+                case "gruccionecomune":
+                    require('AnimalsPopupsMods/gruccionecomune.php');
+                break; 
+                case "ippocampo":
+                    require('AnimalsPopupsMods/ippocampo.php');
+                break; 
+                case "rospodellecanne":
+                    require('AnimalsPopupsMods/rospodellecanne.php');
+                break; 
+                case "dingo":
+                    require('AnimalsPopupsMods/dingo.php');
+                break; 
+                case "clamidosauro":
+                    require('AnimalsPopupsMods/clamidosauro.php');
+                break; 
+                case "emu":
+                    require('AnimalsPopupsMods/emu.php');
+                break; 
+                case "pescesanpietro":
+                    require('AnimalsPopupsMods/pescesanpietro.php');
+                break; 
             }
-        ?>
+        ?> 
 
         <div class="animal-details-popup" id="animal-details-popup">
             <div class="popup-text-container">
