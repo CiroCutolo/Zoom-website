@@ -130,16 +130,6 @@
   </div>
   <br>
   <br>
-  <footer>
-  <hr>
-  <div class="row">
-    <a href="#"><i class="fa fa-facebook"></i></a>
-    <a href="#"><i class="fa fa-instagram"></i></a>
-    <a href="#"><i class="fa fa-youtube"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
-  </div>
-  <div> ©2024 Gruppo 22. Design by Gruppo 22 </div>
-  </footer>
   </body>
       <script src="https://code.jquery.com/jquery-latest.min.js"></script>
       <script type="text/javascript">

@@ -11,6 +11,7 @@
     <?php include 'header.php';?>
     <?php include 'slider.html';?>
     <?php include 'header-part.php';?>
+    <?php include 'footer.php';?>
   </body>
 </html>
 
