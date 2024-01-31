@@ -35,7 +35,7 @@
         <div class="Animals-Container" id="animalsContainer">
             <div class="animal All Anfibi Africa" > 
                 <div class="animal-image-section" id="show-details-ranamuta">
-                <button id="show-details-ranamuta"><a><img src="https://cdn.sci.news/images/enlarge10/image_11627e-Hyperolius-ukaguruensis.jpg" alt=""></a></button>
+                <button id="show-details-ranamuta" value="ranamuta" name="animal"><a><img src="https://cdn.sci.news/images/enlarge10/image_11627e-Hyperolius-ukaguruensis.jpg" alt=""></a></button>
                 <h1>Rana muta della tanzania</h1>
                 </div>
             </div>
@@ -191,22 +191,26 @@
             </div>
         </div>
 
-        <div class="animal-details-popup">
+        <?php
+            $animal = $_POST["animal"];
+            
+            switch($animal){
+                case "ranamuta":
+                    require('AnimalsPopupsMods/ranamuta.php');
+                break; 
+            }
+        ?>
+
+        <div class="animal-details-popup" id="animal-details-popup">
             <div class="popup-text-container">
-                <div class="animal-name">
-                    <h1><?php echo $animaldetails['animal.title'] ?></h1>
-                </div>
-                <div class="animal-description">
-                    <p><?php echo $animaldetails["animal.description"] ?></p>
-                </div>
-                <div class="exit-button">
-                    <button id="close-button">Chiudi la scheda</button>
-                </div>
+                <h1><?php echo $animaldetails['animal.title'] ?></h1>
+                <p><?php echo $animaldetails['animal.description'] ?></p>
+                <button id="close-button">Chiudi la scheda</button>
             </div>    
         </div>
 
         <script src="https://code.jquery.com/jquery-latest.min.js "></script>
-        <script src="JS/filterSelection.js"></script>
+        <script src="JS/filterSelection.js?<?php echo rand();?>"></script>
         
     </body>
 </html>
