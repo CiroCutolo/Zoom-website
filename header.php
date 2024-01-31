@@ -64,7 +64,7 @@
           </div>
           <div class="lineaOmbra"></div>
           <a href="areapersonale.php">Area Personale</a>
-          <a href="#">Esci</a>
+          <a onclick="esci()">Esci</a>
         </div>
       </ul>
     </div>
@@ -132,6 +132,10 @@
     if (myDropdown.classList.contains('show')) {
       myDropdown.classList.remove('show');
     }
+    }
+
+    function esci() {
+      window.location.href='/home.php?action=logout';
     }
   }
 </script>

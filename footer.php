@@ -8,7 +8,7 @@
 </head>
 <body>
 <footer>
-  <hr>
+<div class="lineaOmbra"></div>
   <div class="row">
     <a href="#"><i class="fa fa-facebook"></i></a>
     <a href="#"><i class="fa fa-instagram"></i></a>
