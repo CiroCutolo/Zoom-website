@@ -50,8 +50,10 @@
         <li class="text"><a href="home.php">Home</a></li>
         <li class="text"><a href="Animali.php">Animali</a></li>
         <li class="text"><a href="acquistobiglietti.php">Acquisto biglietti</a></li>
-        <button class="dropbtn" onclick="menutendina()"><li class="image"><a><img src="user_icon.png"></a></li><i class="fa fa-caret-down"></i></button>
+        <button class="dropbtn" onclick="menutendina()"></button>
         <div class="dropdown-content" id="myDropdown">
+          <div>Ciao Utente</div>
+          <div>Email</div>
           <a href="#">Link 1</a>
           <a href="#">Link 2</a>
           <a href="#">Link 3</a>
