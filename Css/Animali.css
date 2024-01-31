@@ -80,6 +80,15 @@ select{
     background-color: #f09c13;
 }
 
+.animal-image-section button{
+    border: none;
+    background: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+
 .animal h1{
     font-family: 'Candara', Arial, sans-serif;
     font-size:medium;
@@ -93,4 +102,34 @@ select{
     border-bottom: 10px solid #241a08;
     border-bottom-left-radius: 0%;
     border-bottom-right-radius: 0%;
+}
+
+.animal-details-popup{
+    background-color: rgba(0,0,0,0.3);
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.animal-details-popup.open{
+    opacity: 1;
+    z-index: 999;
+}
+
+.popup-text-container{
+    background-color: #fff;
+    width: 380px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px 25px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
