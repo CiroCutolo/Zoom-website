@@ -18,6 +18,7 @@
                     <option value="Mammiferi">Mammiferi</option>
                     <option value="Rettili">Rettili</option>
                     <option value="Volatili">Volatili</option>
+                    <option value="Pesci">Pesci</option>
                 </select>
             </div>
             <div class="filter-column">
@@ -32,9 +33,9 @@
             </div>
         </div> 
         <div class="Animals-Container" id="animalsContainer">
-            <div class="animal All Anfibi Africa">
+            <div class="animal All Anfibi Africa" > 
                 <div class="animal-image-section" id="show-details-ranamuta">
-                <img src="https://cdn.sci.news/images/enlarge10/image_11627e-Hyperolius-ukaguruensis.jpg" alt="">
+                <button id="show-details-ranamuta"><a><img src="https://cdn.sci.news/images/enlarge10/image_11627e-Hyperolius-ukaguruensis.jpg" alt=""></a></button>
                 <h1>Rana muta della tanzania</h1>
                 </div>
             </div>
@@ -62,6 +63,12 @@
                 <h1>Faraona crestata</h1>
                 </div>
             </div>
+            <div class="animal All Pesci Africa">
+                <div class="animal-image-section" id="show-details-neolamprologus">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Neolamprologus_tretocephalus.jpg/345px-Neolamprologus_tretocephalus.jpg" alt="">
+                <h1>Neolamprologus</h1>
+                </div>
+            </div>
             <div class="animal All Anfibi America">
                 <div class="animal-image-section" id="show-details-ranafreccia">
                 <img src="image_slider/anfibi.jpg" alt="">
@@ -84,6 +91,12 @@
                 <div class="animal-image-section" id="show-details-anatramuta">
                 <img src="https://s3.animalia.bio/animals/photos/full/1.25x1/KdFYpl5NDyCN1Bj9OsxB.webp" alt="">
                 <h1>Anantra muta</h1>
+                </div>
+            </div>
+            <div class="animal All Pesci America">
+                <div class="animal-image-section" id="show-details-guppy">
+                <img src="https://www.zooplus.it/magazine/wp-content/uploads/2023/09/guppy.jpeg" alt="">
+                <h1>Guppy</h1>
                 </div>
             </div>
             <div class="animal All Anfibi Asia">
@@ -110,6 +123,12 @@
                 <h1>Airone cenerino</h1>
                 </div>
             </div>
+            <div class="animal All Pesci Asia">
+                <div class="animal-image-section" id="show-details-bettasplendens">
+                <img src="https://www.viridea.it/wp-content/uploads/2009/09/Pesce-combattente-Betta-splendens.jpg" alt="">
+                <h1>Betta splendens</h1>
+                </div>
+            </div>
             <div class="animal All Anfibi Europa">
                 <div class="animal-image-section" id="show-details-raganellapadana">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Hyla_perrini_Casalbeltrame.jpg/150px-Hyla_perrini_Casalbeltrame.jpg" alt="">
@@ -117,7 +136,7 @@
                 </div>
             </div>
             <div class="animal All Mammiferi Europa">
-                <div class="animal-image-section" id="show-details">
+                <div class="animal-image-section" id="show-details-riccioeuropeo">
                 <img src="https://www.ecomuseomartesana.it/wp-content/uploads/2020/10/PPPAFA0141-image0.jpg" alt="">
                 <h1>Riccio europeo</h1>
                 </div>
@@ -132,6 +151,12 @@
                 <div class="animal-image-section" id="show-details-merope">
                 <img src="image_slider/volatili.jpg" alt="">
                 <h1>Gruccione comune</h1>
+                </div>
+            </div>
+            <div class="animal All Pesci Europa">
+                <div class="animal-image-section" id="show-details-ippocampo">
+                <img src="https://media.istockphoto.com/id/115883723/photo/sea-horse.jpg?s=612x612&w=0&k=20&c=Qy9aiIYrEnaR6M5jVvHeNgcS77VUW8fTBOxBAnqtoyQ=" alt="">
+                <h1>Ippocampo</h1>
                 </div>
             </div>
             <div class="animal All Anfibi Oceania">
@@ -158,7 +183,28 @@
                 <h1>Emù</h1>
                 </div>
             </div>
+            <div class="animal All Pesci Oceania">
+                <div class="animal-image-section" id="show-details-pescesanpietro">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Zeus.faber_2.jpg/330px-Zeus.faber_2.jpg" alt="">
+                <h1>Pesce San Pietro</h1>
+                </div>
+            </div>
         </div>
+
+        <div class="animal-details-popup">
+            <div class="popup-text-container">
+                <div class="animal-name">
+                    <h1><?php echo $animaldetails['animal.title'] ?></h1>
+                </div>
+                <div class="animal-description">
+                    <p><?php echo $animaldetails["animal.description"] ?></p>
+                </div>
+                <div class="exit-button">
+                    <button id="close-button">Chiudi la scheda</button>
+                </div>
+            </div>    
+        </div>
+
         <script src="https://code.jquery.com/jquery-latest.min.js "></script>
         <script src="JS/filterSelection.js"></script>
         
