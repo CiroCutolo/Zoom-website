@@ -50,12 +50,17 @@
         <li class="text"><a href="home.php">Home</a></li>
         <li class="text"><a href="Animali.php">Animali</a></li>
         <li class="text"><a href="acquistobiglietti.php">Acquisto biglietti</a></li>
-        <button id="show-login"><li class="image"><a><img src="user_icon.png"></a></li></button>
+        <button class="dropbtn" onclick="menutendina()"><li class="image"><a><img src="user_icon.png"></a></li><i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-content" id="myDropdown">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
       </ul>
     </div>
 
-    <div class = "popup">
-      <button id="close-btn"><span class="fas fa-times"></span></button>
+    <div class="popup">
+      <button id="close-btn" onclick="chiudipopup()"><span class="fas fa-times"></span></button>
       <div class = "form">
         <h2>Accedi</h2>
         <form action="home.php?action=accedi" method="post">
@@ -82,23 +87,6 @@
             </div>
           </div>
         </form>
-        <?php if((!isset($_SESSION["isLogged"])) || ($_SESSION["isLogged"] == "")) { ?>
-          <script type="text/javascript">
-            document.querySelector("#show-login").addEventListener("click",function(){
-              document.querySelector(".popup").classList.add("activete");
-            });
-
-            document.querySelector(".popup #close-btn").addEventListener("click",function(){
-              document.querySelector(".popup").classList.remove("activete");
-            });
-          </script>
-          <?php }else{ ?>
-            <script type="text/javascript">
-                document.querySelector("#show-login").addEventListener("click",function(){
-                window.location.href = "areapersonale.php";
-            });
-            </script>
-          <?php } ?>
           <script>
             function abilitalogin(){
               if (document.getElementById("email").value == "" || document.getElementById("password").value == ""){
@@ -108,10 +96,35 @@
               }
             }
           </script>
-
         </div>
       </div>
     </div>
+    <script>
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function menutendina() {
+      <?php if((!isset($_SESSION["isLogged"])) || ($_SESSION["isLogged"] == "")) { ?>
+              var popup = document.getElementsByClassName("popup");
+              popup[0].classList.add("activate");
+          <?php }else{ ?>
+              document.getElementById("myDropdown").classList.toggle("show");
+          <?php } ?>
+    }
+
+    function chiudipopup(){
+              popup[0].classList.remove("activate"); 
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(e) {
+    if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("myDropdown");
+    if (myDropdown.classList.contains('show')) {
+      myDropdown.classList.remove('show');
+    }
+    }
+  }
+</script>
     <div class="lineaOmbra"></div>
 
   </body>
