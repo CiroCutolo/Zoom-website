@@ -29,21 +29,41 @@ $('body').on("change", 'select', function() {
   }
 });
 
+function popupFunc(clickedElem){
 
-const openButton = document.getElementById("show-details-ranamuta");
-const closeButton = document.getElementById("close-button");
-const animaldeatailspopup = document.getElementById("animal-details-popup");
+  $.ajax({
+    url: "Animali.php",
+    type: "get",
+    data: {
+        animalValue: $(clickedElem).val()
+    }
+  });
 
-openButton.addEventListener("click", () => {
-  animaldeatailspopup.classList.add("open");
-});
+  // var btn = clickedElem.id;
+  // const openButton = document.getElementById(btn);
+  // const closeButton = document.getElementById("close-button");
+  // const animaldeatailspopup = document.getElementById("animal-details-popup");
 
-closeButton.addEventListener("click", () => {
-  animaldeatailspopup.classList.remove("open");
-});
+  // openButton.addEventListener("click", () => {
+  //   animaldeatailspopup.classList.add("open");
+  // });
+  
+  // closeButton.addEventListener("click", () => {
+  //   animaldeatailspopup.classList.remove("open");
+  // });
 
 
 
-$("#animal-form").submit(function(e) {
-  e.preventDefault();
-});
+}
+
+// const openButton = document.getElementsByClassName("show-details");
+// const closeButton = document.getElementById("close-button");
+// const animaldeatailspopup = document.getElementById("animal-details-popup");
+
+// openButton.addEventListener("click", () => {
+//   animaldeatailspopup.classList.add("open");
+// });
+
+// closeButton.addEventListener("click", () => {
+//   animaldeatailspopup.classList.remove("open");
+// });
