@@ -91,9 +91,8 @@
     </head>
 
     <body>
-        <?php include 'header.php';?>
-    
-        <div class="areapersonale" style = "text-align:center">
+        <?php include 'header.php';?>    
+        <div id="areapersonale" style = "text-align:center">
             <br>
             <a title="Guarda i tuoi dati" href="javascript:mostraDati()"><i class="fa fa-2x fa-user" id="dati"></i></a>
             <a title="Guarda i tuoi acquisti" href="javascript:mostraAcquisti()"><i class="fa fa-2x fa-shopping-bag" id="storico"></i></a>
@@ -121,10 +120,7 @@
                             <input type="submit" id="registrati" value="Aggiorna dati">
                         </div>
                     </form>
-                </div>  
-                <a title="Guarda i tuoi dati" href="javascript:mostraDati()"><i class="fa fa-2x fa-user" id="dati"></i></a>
-                <a title="Guarda i tuoi acquisti" href="javascript:mostraAcquisti()"><i class="fa fa-2x fa-shopping-bag" id="storico"></i></a>
-                <a title="Esci" href="javascript:esci()"><i class="fa fa-2x fa-sign-out" id="logout"></i></a>        
+                </div>        
             </div>
 
             <div id="mostra_acquisti" class="nascosto" >

@@ -50,8 +50,8 @@ body{
 .leopardo #togglePassword, #togglePassword1 {
     position: absolute;
     margin: -30px;
-    left: 48.5%;
-    top: 105%;
+    left: 123%;
+    top: 218%;
     cursor: pointer;
     width: 26px;
     float: left;

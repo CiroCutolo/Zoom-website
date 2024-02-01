@@ -56,11 +56,6 @@ body{
 
 }
 
-.areapersonale #dati, .areapersonale #storico, .areapersonale #logout {
-   color: black;
-   margin-right: 30px;
-   cursor: pointer;
-}
 
 .leone form{
     position: relative;
@@ -77,6 +72,8 @@ body{
     padding-left: 150px;
     color: white;
     margin-top: -40px;
+    z-index: -1;
+
 }
   
 .leone::before {    
@@ -143,7 +140,11 @@ body{
     padding: 10px;
 }
 
-
+#areapersonale #dati, #areapersonale #storico, #areapersonale #logout {
+    color: black;
+    margin-right: 30px;
+    cursor: pointer;
+ }
 @media screen and (max-width: 640px) {
     .leone input{
         width: 60%;
