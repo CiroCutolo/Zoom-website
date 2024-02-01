@@ -71,34 +71,33 @@
 
     <body>
     <?php include 'header.php';?>
-
-    <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="registrazione.php?action=registra&paginaSorgente=<?php echo $_GET['paginaSorgente']?>" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
-        <div style = "text-align:center">
-            <h1>Registrazione</h1>
+		
+    <div class="leopardo">	
+        <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="registrazione.php?action=registra&paginaSorgente=<?php echo $_GET['paginaSorgente']?>" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
+        
+            <div id="scritta">
+                <h1>Registrazione</h1>
+                <div id="campi_obbligatori"><b>Inserisci TUTTI i campi per poter procedere alla registrazione.</b> </div>
+            </div>    
             <br>
-            <div id="campi_obbligatori">Inserisci <b>tutti</b> i campi per poter procedere alla registrazione. </div>
+            <input type="text" id="nome" name = "nome" placeholder="Nome" value="<?php echo $nome?>" onchange="abilita()" onkeyup="abilita()">
+            <input type="text" id="cognome" name = "cognome" placeholder="Cognome" value="<?php echo $cognome?>" onchange="abilita()" onkeyup="abilita()">
             <br><br>
 
-            <input type="text" id="nome" name = "nome" placeholder="Nome" required value="<?php echo $nome?>" onchange="abilita()" onkeyup="abilita()">
-            <input type="text" id="cognome" name = "cognome" placeholder="Cognome" required value="<?php echo $cognome?>" onchange="abilita()" onkeyup="abilita()">
+            <input type="date" id="data_di_nascita" name = "data_di_nascita" max="<?php echo date('Y-m-d');?>"  value="<?php echo $data?>" onchange="abilita()" onkeyup="abilita()">
+            <input type="email" id="Email" name = "Email" placeholder="E-mail"  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()">
             <br><br>
 
-            <input type="date" id="data_di_nascita" name = "data_di_nascita" max="<?php echo date('Y-m-d');?>" required  value="<?php echo $data?>" onchange="abilita()" onkeyup="abilita()">
-            <input type="email" id="Email" name = "Email" placeholder="E-mail" required  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()">
-            <br><br>
-
-            <input type="password" id="Password" name = "Password" placeholder="Password" required value="<?php echo $password?>" onchange="abilita()" onkeyup="abilita()">
+            <input type="password" id="Password" name = "Password" placeholder="Password" value="<?php echo $password?>" onchange="abilita()" onkeyup="abilita()">
                 <i class="far fa-eye-slash" id="togglePassword"></i>
-            <input type="password" id="conferma_password" name = "conferma_password" placeholder="Conferma password" required value="<?php echo $confermaPassword?>" onchange="abilita()" onkeyup="abilita()">
+            <input type="password" id="conferma_password" name = "conferma_password" placeholder="Conferma password" value="<?php echo $confermaPassword?>" onchange="abilita()" onkeyup="abilita()">
                 <i class="far fa-eye-slash" id="togglePassword1"></i>
-            <br><br><br>
+            <br><br>
 
-            <input id="leopardo "type="submit" id="registrati" value="Registrati" disabled>
-        </div>
-    </form>
-
-    <img src="leopardo.png"> 
-
+            <input type="submit" id="registrati" value="Registrati" disabled>
+        </form>
+    </div>
+   
     <script type = "text/javascript">
 
         function abilita(){ //abilita il submit solo se sono stati inseriti tutti i campi

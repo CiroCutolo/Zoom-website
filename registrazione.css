@@ -13,7 +13,11 @@ input{
     padding: 10px;
     width: 200px;
     border: 1px solid #e5d1bf;
-    border-radius: 10px;
+    border-radius: 10px; 
+    margin-right: 10px;
+    margin-left: 20px;
+
+
 }
 
 input[type=submit]{
@@ -22,9 +26,9 @@ input[type=submit]{
     font-family: 'Candara';
     height: 40px;
     width: 150px;
-    border: 1px solid #e5d1bf;
-    border-radius: 10px;
-    
+    border: 1px solid black;
+    border-radius: 10px; 
+    margin-left: 180px;   
 }
 
 h1{
@@ -38,16 +42,89 @@ h1{
     text-align: center;
 }
 
- #togglePassword, #togglePassword1 {
-    margin-left: -30px;
+#togglePassword, #togglePassword1 {
+    margin-left: -33px;
     cursor: pointer;
     width: 26px;
 }
 
-#leopardo{
-    -webkit-filter: blur(5px); 
-    -moz-filter: blur(5px); 
-    -o-filter: blur(5px); 
-    -ms-filter: blur(5px);
+.leopardo form{
+    position: relative;
+}
+  
+.leopardo{
+    position: relative; 
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    padding-left: 130px;
+}
+  
+.leopardo::before {    
+    content: "";
+    border-radius: 150px;
+    margin: 50px 180px 50px 180px;
+    background-image: url("leopardo1.png");
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
 }
 
+#scritta{
+    margin-top: -70px;
+    padding-bottom: 40px;
+    font-size:large;
+    margin-left: 25px;
+    
+}
+
+
+@media screen and (max-width: 900px) {
+    input{
+        width: 70%;
+        margin-bottom: 10px;
+    }
+    
+    input[type=submit]{
+        margin-top: 20px;
+        width: 50%;    
+    }  
+
+    #scritta{
+        font-size: medium;  
+        margin-left: 0px;
+    }
+
+    .leopardo{
+        height: 700px;
+        justify-content: center;
+        text-align: center;
+        padding-left: 0px;
+    }
+      
+    .leopardo::before {    
+        margin: 50px 20px 50px 20px;
+    }
+
+    .leopardo br {
+        display: none;
+    }
+
+    #togglePassword, #togglePassword1 {
+        margin-left: -35px;
+    }
+
+    input[type=submit]{
+        margin-left: 0px;   
+    }
+    
+}
+  
