@@ -46,7 +46,9 @@
              </p>
          </div>
          <div class="btn-tickets-container">
+           <a href="acquistobiglietti.php">
            <button class="btn-tickets">ACQUISTA</button>
+           </a>
          </div>
          <?php } ?>
    </div>
@@ -108,7 +110,9 @@
       </div>
       <div class="price">
         <div class="btn-tickets-container">
+          <a href="acquistobiglietti.php">
           <button class="btn-tickets">LEGGI DI PIÙ</button>
+          </a>
         </div>
       </div>
    </div>
