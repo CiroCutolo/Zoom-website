@@ -6,17 +6,23 @@
     if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){
       $email_form=$_POST['email'];
       $pw_form=$_POST['pw'];
-      //effettuo la connessione al database e seleziono email e password dalla tabella utenti che sono uguali a email e passowrd inseriti nel form
-      $sql = "SELECT email,password FROM utenti WHERE utenti.email='$email_form' and utenti.password='$pw_form' ";
-      //salvo il risultato all'intero della riga restituita dalla quary che sarà sicuramente diversa da flase nel caso in cui trova l'utente
+      //effettuo la connessione al database e seleziono email e password dalla tabella utenti che sono uguali a email e passowrd inseriti nel form.
+      //prelevo anche il valore del nome e del cognome per poi salvarli all'interno di variabili di sessione per monitorare lo stato dell'utente
+      $sql = "SELECT email,password,nome,cognome FROM utenti WHERE utenti.email='$email_form' and utenti.password='$pw_form' ";
+      
+      //salvo il risultato all'interno della riga restituita dalla quary che sarà sicuramente diversa da flase nel caso in cui trova l'utente
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);
+      $_SESSION["email"] = $row[0];
+      $_SESSION["nome"] = $row[2];
+      $_SESSION["cognome"] = $row[3];
       
       //reindirizzo alla pagina precedentemente visitata mostrando un messaggio di successo o insuccesso del login
       $url = $_SERVER['HTTP_REFERER'];
       if($row != false){
         //avvio della sessione nel caso in cui il login va a buon fine
         $_SESSION["isLogged"] = $email_form;
+
         echo "<script>
         alert('Login avvenuto con successo!');
         window.location.href='$url';
@@ -52,11 +58,13 @@
         <li class="text"><a href="acquistobiglietti.php">Acquisto biglietti</a></li>
         <button class="dropbtn" onclick="menutendina()"></button>
         <div class="dropdown-content" id="myDropdown">
-          <div>Ciao Utente</div>
-          <div>Email</div>
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <div class="contenitore-info">
+            <div class="logo-iniziali"> <div class="iniziali"><?php echo mb_substr($_SESSION["nome"],0,1) . mb_substr($_SESSION["cognome"],0,1) ?></div></div>
+            <div class="info-utente"><h3><?php echo $_SESSION["nome"] . " " . $_SESSION["cognome"] ?></h3><?php echo $_SESSION["email"] ?></div>
+          </div>
+          <div class="lineaOmbra"></div>
+          <a href="areapersonale.php">Area Personale</a>
+          <a onclick="esci()">Esci</a>
         </div>
       </ul>
     </div>
@@ -124,6 +132,10 @@
     if (myDropdown.classList.contains('show')) {
       myDropdown.classList.remove('show');
     }
+    }
+
+    function esci() {
+      window.location.href='/home.php?action=logout';
     }
   }
 </script>

@@ -23,6 +23,7 @@ input[type=submit]{
     width: 150px;
     border: 1px solid #e5d1bf;
     border-radius: 10px;
+    margin-left: 145px;
     
 }
 
@@ -37,10 +38,11 @@ h1{
     text-align: center;
 }
 
- #togglePassword, #togglePassword1 {
-    margin-left: -30px;
+#togglePassword {
+    margin-left: -26px;
     cursor: pointer;
     width: 26px;
+    color: black;
 }
 
 button{
@@ -54,15 +56,6 @@ button{
     
 }
 
-#home, #mostra_acquisti, #mostra_dati {
-    margin: 0 auto;
-    margin-top: 20px !important;
-    width:60%;
-    height: 500px;
-    background-color: #d3bead;
-
-}
-
 .nascosto{
     display: none;
 }
@@ -70,6 +63,7 @@ button{
 .visibile{
     display: block;
 }
+
 span { 
     display: inline-block;
     width: 150px;
@@ -84,4 +78,84 @@ th, td{
 table{
     width: 60%;
     margin: 0 auto;
+}
+
+#dati, #storico, #logout {
+   color: black;
+   margin-right: 30px;
+   cursor: pointer;
+
+}
+
+.leone form{
+    position: relative;
+}
+  
+.leone{
+    position: relative; 
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    padding-left: 150px;
+    color: white;
+    margin-top: -40px;
+}
+  
+.leone::before {    
+    content: "";
+    border-radius: 150px;
+    margin: 60px 200px 60px 200px;
+    background-image: url("leone.jpg");
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+}
+
+#scritta{
+    margin-top: -70px;
+    padding-bottom: 50px;
+    font-size:large;
+    
+}
+
+
+@media screen and (max-width: 900px) {
+    input{
+        width: 60%;
+        margin-bottom: 10px;
+    }
+    
+    input[type=submit]{
+        margin-top: 20px;
+        width: 50%;    
+    }  
+
+    #scritta{
+        font-size: medium;  
+    }
+
+    .leone{
+        height: 650px;
+        padding-left: 0px;
+    }
+      
+    .leone::before {    
+        margin: 50px 20px 50px 20px;
+    }
+
+    .leone br {
+        display: none;
+    }
+
+    #togglePassword {
+        margin-left: -30px;
+    }
 }
