@@ -1,9 +1,5 @@
 @import url(Css/Fonts.css);
 
-*{
-    box-sizing: border-box;
-}
-
 .filter-container{
     display: flex;
     margin-right: auto;
@@ -27,21 +23,23 @@
     display: block;
     height: auto;
     min-height: auto;
-    border-radius: 5%;
 }
 
 select{
     background-color: #a4d2d3;
+    border-radius: 7px;
 }
 
 @media (max-width: 1024px){
     .filter-container .animal-container {
         flex-wrap: wrap;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
     }
 
     .filter-column .animal{
         max-width: 1024px;
-        margin: 15px 10px 10px 15px;
     }
 
 }
@@ -51,6 +49,10 @@ select{
     margin-right: auto;
     margin-left: auto;
     position: relative;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 

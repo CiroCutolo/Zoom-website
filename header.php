@@ -13,15 +13,16 @@
       //salvo il risultato all'interno della riga restituita dalla quary che sarà sicuramente diversa da flase nel caso in cui trova l'utente
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);
-      $_SESSION["email"] = $row[0];
-      $_SESSION["nome"] = $row[2];
-      $_SESSION["cognome"] = $row[3];
       
       //reindirizzo alla pagina precedentemente visitata mostrando un messaggio di successo o insuccesso del login
       $url = $_SERVER['HTTP_REFERER'];
       if($row != false){
         //avvio della sessione nel caso in cui il login va a buon fine
         $_SESSION["isLogged"] = $email_form;
+
+        $_SESSION["email"] = $row[0];
+        $_SESSION["nome"] = $row[2];
+        $_SESSION["cognome"] = $row[3];
 
         echo "<script>
         alert('Login avvenuto con successo!');
@@ -64,7 +65,7 @@
           </div>
           <div class="lineaOmbra"></div>
           <a href="areapersonale.php">Area Personale</a>
-          <a onclick="esci()">Esci</a>
+          <a onclick="esci_2()">Esci</a>
         </div>
       </ul>
     </div>
@@ -134,7 +135,7 @@
     }
     }
 
-    function esci() {
+    function esci_2() {
       window.location.href='/home.php?action=logout';
     }
   }
