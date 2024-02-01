@@ -1,9 +1,5 @@
 @import url(Css/Fonts.css);
 
-*{
-    box-sizing: border-box;
-}
-
 .filter-container{
     display: flex;
     margin-right: auto;
