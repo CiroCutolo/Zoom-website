@@ -54,7 +54,7 @@
       </label>
       <img class="logo" src="logo-removebg.png">
       <ul>
-        <li class="text"><a href="home.php">Home</a></li>
+        <li class="text"><a name="home" href="home.php">Home</a></li>
         <li class="text"><a href="Animali.php">Animali</a></li>
         <li class="text"><a href="acquistobiglietti.php">Acquisto biglietti</a></li>
         <button class="dropbtn" onclick="menutendina()"></button>
