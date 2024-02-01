@@ -12,7 +12,7 @@
             <p class="text2-anfibi">Esplora il nostro parco</p>
             <p><a href="acquistobiglietti.php"><button class="button-anfibi">SCOPRI COME</button></a></p>
             <p class="icon-area">
-              <a href="#"><img class="icon" src="image_slider\icona-anfibi.png"></a>
+              <a href="Animali.php?categoria=Anfibi"><img class="icon" src="image_slider\icona-anfibi.png"></a>
               <span class="text-area">Anfibi</span>
             </p>
             <img src="image_slider\anfibi.jpg" width="100%">
