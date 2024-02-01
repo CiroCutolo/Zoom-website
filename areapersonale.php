@@ -91,9 +91,8 @@
     </head>
 
     <body>
-        <?php include 'header.php';?>
-
-        <div style = "text-align:center">
+        <?php include 'header.php';?>    
+        <div id="areapersonale" style = "text-align:center">
             <br>
             <a title="Guarda i tuoi dati" href="javascript:mostraDati()"><i class="fa fa-2x fa-user" id="dati"></i></a>
             <a title="Guarda i tuoi acquisti" href="javascript:mostraAcquisti()"><i class="fa fa-2x fa-shopping-bag" id="storico"></i></a>
@@ -113,19 +112,20 @@
                             <br><br>
                             <span>Email: </span><input type="text" id="Email" name = "Email" placeholder="E-mail"  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()">
                             <br><br>
-                
-                            <span>Password: </span><input type="password" id="Password" name = "Password" placeholder="Imposta una nuova password">
+                            <div id="passwordCONocchio">
+                                <span>Password: </span><input type="password" id="Password" name = "Password" placeholder="Imposta una nuova password">
                                 <i class="far fa-eye-slash" id="togglePassword"></i>
-                            <br><br>
-                            <input type="submit" id="registrati" value="Aggiorna dati" disabled>
+                                <br><br>
+                            </div>
+                            <input type="submit" id="registrati" value="Aggiorna dati">
                         </div>
                     </form>
-                </div>          
+                </div>        
             </div>
 
             <div id="mostra_acquisti" class="nascosto" >
 
-                <div style = "text-align:center; overflow-y: auto; height: 80%;">
+                <div class="tigre">
                     <table>
                         <tr><th>CODICE BIGLIETTO</th><th>DATA DI ACQUISTO</th><th>PREZZO</th><th>TIPOLOGIA</th></tr>
                     <?php
@@ -150,13 +150,12 @@
                     </table>
                 </div>
             </div>
-
         </div>
 
 
         <script type="text/javascript">
             function esci() {
-                window.location.href='/home.php?action=logout';
+                window.location.href='home.php?action=logout';
             }
 
             function mostraDati(){

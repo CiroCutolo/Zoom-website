@@ -3,7 +3,7 @@
 	<head>			
 		<title>Acquisto biglietti - Zoom</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="./Css/acquistobiglietti.css?<?php echo rand();?>" type="text/css">
+		<link rel="stylesheet" href="Css\acquistobiglietti.css?<?php echo rand();?>" type="text/css">
 		<script src="JS\function.js" type="text/javascript" ></script>
 	</head>
 	<body class="acquisto_body">
@@ -56,7 +56,7 @@
 								<div class="intero-image">
 									<img src="img\man_woman.png" alt="men_woman_image"/>
 								</div>
-								<a href="#" class="information" onclick="moreInfo()">
+								<a href="#" class="information" onclick="moreInfo('infoPanel-1')">
 									<i class="fa fa-info-circle"></i>
 								</a>
 								<div class="price">
@@ -83,7 +83,7 @@
 									</p>
 								</div>
 							</div>
-							<div id="infoPanel" style="display: block;">
+							<div class="infoPanel" id="infoPanel-1" style="display: none;">
 								<p>
 								Il biglietto d’ingresso non è in alcun caso rimborsabile, né modificabile ad eccezione di eventi straordinari per cui la struttura rimarrà chiusa.
 								</p><p>
@@ -100,7 +100,7 @@
 								<div class="ridotto-image">
 									<img src="img\elder_child.png" alt="elder_child_image"/>
 								</div>
-								<a href="#" class="information" onclick="moreInfo()">
+								<a href="#" class="information" onclick="moreInfo('infoPanel-2')">
 									<i class="fa fa-info-circle"></i>
 								</a>
 								<div class="price">
@@ -127,7 +127,7 @@
 									</p>
 								</div>
 							</div>
-							<div id="infoPanel" style="display: none;">
+							<div class="infoPanel" id="infoPanel-2" style="display: none;">
 								<p>
 								Il biglietto d’ingresso non è in alcun caso rimborsabile, né modificabile ad eccezione di eventi straordinari per cui la struttura rimarrà chiusa.
 								</p><p>

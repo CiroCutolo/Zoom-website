@@ -2,11 +2,8 @@ body{
     background-color: #e5d1bf;
     font-family: 'Candara';
 }
-form{
-    margin: 60px;
-}
 
-input{
+.leone input{
     font-family: 'Candara';
     height: 20px;
     padding: 10px;
@@ -15,7 +12,7 @@ input{
     border-radius: 10px;
 }
 
-input[type=submit]{
+.leone input[type=submit]{
     text-align: center;
     font-weight: bold;
     font-family: 'Candara';
@@ -27,33 +24,22 @@ input[type=submit]{
     
 }
 
-h1{
-    font-family: 'Candara';
-    text-align: center;
-    margin-top: 40px; 
-}
-
 .campi_obbligatori{
     font-family: 'Candara';
     text-align: center;
 }
 
-#togglePassword {
-    margin-left: -26px;
+.leone #passwordCONocchio{
+    position: relative;
+}
+
+.leone #togglePassword {
+    position: absolute;
+    margin: -30px;
+    top: 43px;
     cursor: pointer;
     width: 26px;
     color: black;
-}
-
-button{
-    text-align: center;
-    font-weight: bold;
-    font-family: 'Candara';
-    height: 40px;
-    padding: 0 20px 0 20px;
-    border: 1px solid #e5d1bf;
-    border-radius: 10px;
-    
 }
 
 .nascosto{
@@ -64,31 +50,16 @@ button{
     display: block;
 }
 
-span { 
+.leone span { 
     display: inline-block;
     width: 150px;
 
 }
 
-th, td{
-    padding: 15px;
-
-}
-
-table{
-    width: 60%;
-    margin: 0 auto;
-}
-
-#dati, #storico, #logout {
-   color: black;
-   margin-right: 30px;
-   cursor: pointer;
-
-}
 
 .leone form{
     position: relative;
+    margin: 60px;
 }
   
 .leone{
@@ -101,6 +72,8 @@ table{
     padding-left: 150px;
     color: white;
     margin-top: -40px;
+    z-index: -1;
+
 }
   
 .leone::before {    
@@ -126,14 +99,59 @@ table{
     
 }
 
+.tigre{
+    overflow-y: auto; 
+    position: relative; 
+    height: 700px;
+    display: flex;
+    justify-content: right;
+    padding-left: 150px;
+    color: white;
+}
+  
+.tigre::before {    
+    content: "";
+    border-radius: 150px;
+    margin: 20px 150px 20px 150px;
+    background-image: url("TIGRE.jpg");
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+}
 
-@media screen and (max-width: 900px) {
-    input{
+.tigre table{
+    width: 60%;
+    margin: 0 auto;
+    z-index: 1;
+    padding-left: 370px;
+    margin-top: 80px;
+    display: table-row;
+    font-size: medium;
+
+}
+
+.tigre th{
+    padding: 10px;
+}
+
+#areapersonale #dati, #areapersonale #storico, #areapersonale #logout {
+    color: black;
+    margin-right: 30px;
+    cursor: pointer;
+ }
+@media screen and (max-width: 640px) {
+    .leone input{
         width: 60%;
         margin-bottom: 10px;
     }
     
-    input[type=submit]{
+    .leone input[type=submit]{
         margin-top: 20px;
         width: 50%;    
     }  
@@ -155,7 +173,7 @@ table{
         display: none;
     }
 
-    #togglePassword {
+    .leone #togglePassword {
         margin-left: -30px;
     }
 }

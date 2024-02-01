@@ -87,13 +87,15 @@
             <input type="date" id="data_di_nascita" name = "data_di_nascita" max="<?php echo date('Y-m-d');?>"  value="<?php echo $data?>" onchange="abilita()" onkeyup="abilita()">
             <input type="email" id="Email" name = "Email" placeholder="E-mail"  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()">
             <br><br>
-
-            <input type="password" id="Password" name = "Password" placeholder="Password" value="<?php echo $password?>" onchange="abilita()" onkeyup="abilita()">
+            <div id="passwordCONocchio">
+                <input type="password" id="Password" name = "Password" placeholder="Password" value="<?php echo $password?>" onchange="abilita()" onkeyup="abilita()">
                 <i class="far fa-eye-slash" id="togglePassword"></i>
-            <input type="password" id="conferma_password" name = "conferma_password" placeholder="Conferma password" value="<?php echo $confermaPassword?>" onchange="abilita()" onkeyup="abilita()">
+            </div>
+            <div id="confermapasswordCONocchio">
+                <input type="password" id="conferma_password" name = "conferma_password" placeholder="Conferma password" value="<?php echo $confermaPassword?>" onchange="abilita()" onkeyup="abilita()">
                 <i class="far fa-eye-slash" id="togglePassword1"></i>
-            <br><br>
-
+            </div>
+            <br>
             <input type="submit" id="registrati" value="Registrati" disabled>
         </form>
     </div>
