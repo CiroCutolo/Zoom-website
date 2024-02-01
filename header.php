@@ -65,7 +65,7 @@
           </div>
           <div class="lineaOmbra"></div>
           <a href="areapersonale.php">Area Personale</a>
-          <a onclick="esci_2()">Esci</a>
+          <a onclick="esci_menu()">Esci</a>
         </div>
       </ul>
     </div>
@@ -112,8 +112,7 @@
     </div>
     <script>
     var popup = document.getElementsByClassName("popup");
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
+    /* Quando l'utente clicca il bottone dell'utente compare il menu a tendina nel caso sia stato effettuato .... */
     function menutendina() {
       <?php if((!isset($_SESSION["isLogged"])) || ($_SESSION["isLogged"] == "")) { ?>
               popup[0].classList.add("activate");
@@ -128,18 +127,19 @@
 
     // Close the dropdown if the user clicks outside of it
     window.onclick = function(e) {
-    if (!e.target.matches('.dropbtn')) {
-    var myDropdown = document.getElementById("myDropdown");
-    if (myDropdown.classList.contains('show')) {
-      myDropdown.classList.remove('show');
-    }
-    }
+      if (!e.target.matches('.dropbtn')) {
+        var myDropdown = document.getElementById("myDropdown");
+        if (myDropdown.classList.contains('show')) {
+          myDropdown.classList.remove('show');
+        }
+      }
+    }   
 
-    function esci_2() {
-      window.location.href='/home.php?action=logout';
+    function esci_menu() {
+      window.location.href= 'home.php?action=logout';
     }
-  }
 </script>
+
     <div class="lineaOmbra"></div>
 
   </body>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -19,6 +17,6 @@
 if(isset($_GET["action"]) && ($_GET["action"] == "logout")){ //verifico se il form è stato completato
   session_destroy();?>
   <script>
-    window.location.href='/home.php';
+      window.location.href= 'home.php';
   </script>
 <?php }?>
