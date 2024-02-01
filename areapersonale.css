@@ -2,11 +2,8 @@ body{
     background-color: #e5d1bf;
     font-family: 'Candara';
 }
-form{
-    margin: 60px;
-}
 
-input{
+.leone input{
     font-family: 'Candara';
     height: 20px;
     padding: 10px;
@@ -15,7 +12,7 @@ input{
     border-radius: 10px;
 }
 
-input[type=submit]{
+.leone input[type=submit]{
     text-align: center;
     font-weight: bold;
     font-family: 'Candara';
@@ -27,33 +24,16 @@ input[type=submit]{
     
 }
 
-h1{
-    font-family: 'Candara';
-    text-align: center;
-    margin-top: 40px; 
-}
-
 .campi_obbligatori{
     font-family: 'Candara';
     text-align: center;
 }
 
-#togglePassword {
+.leone #togglePassword {
     margin-left: -26px;
     cursor: pointer;
     width: 26px;
     color: black;
-}
-
-button{
-    text-align: center;
-    font-weight: bold;
-    font-family: 'Candara';
-    height: 40px;
-    padding: 0 20px 0 20px;
-    border: 1px solid #e5d1bf;
-    border-radius: 10px;
-    
 }
 
 .nascosto{
@@ -64,7 +44,7 @@ button{
     display: block;
 }
 
-span { 
+.leone span { 
     display: inline-block;
     width: 150px;
 
@@ -80,7 +60,7 @@ table{
     margin: 0 auto;
 }
 
-#dati, #storico, #logout {
+.areapersonale #dati, .areapersonale #storico, .areapersonale #logout {
    color: black;
    margin-right: 30px;
    cursor: pointer;
@@ -89,6 +69,7 @@ table{
 
 .leone form{
     position: relative;
+    margin: 60px;
 }
   
 .leone{

@@ -3,11 +3,7 @@ body{
     font-family: 'Candara';
 }
 
-form{
-    margin: 60px;
-}
-
-input{
+.leopardo input{
     font-family: 'Candara';
     height: 20px;
     padding: 10px;
@@ -20,7 +16,7 @@ input{
 
 }
 
-input[type=submit]{
+.leopardo input[type=submit]{
     text-align: center;
     font-weight: bold;
     font-family: 'Candara';
@@ -31,7 +27,7 @@ input[type=submit]{
     margin-left: 180px;   
 }
 
-h1{
+.leopardo h1{
     font-family: 'Candara';
     text-align: center;
     margin-top: 40px; 
@@ -42,7 +38,7 @@ h1{
     text-align: center;
 }
 
-#togglePassword, #togglePassword1 {
+.leopardo #togglePassword, #togglePassword1 {
     margin-left: -33px;
     cursor: pointer;
     width: 26px;
@@ -50,6 +46,7 @@ h1{
 
 .leopardo form{
     position: relative;
+    margin: 60px;
 }
   
 .leopardo{
