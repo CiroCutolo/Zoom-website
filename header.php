@@ -2,6 +2,18 @@
     include("connessione.php");
 
     session_start();
+    function checkBrowser($email) {
+      $mybrowser = $_SERVER['HTTP_USER_AGENT']; 
+      $mail="'$email'";
+
+      if(strpos($mybrowser,"Edg") != false){
+        $mail="'$email'";
+      } else if(strpos($mybrowser,"Firefox") != false){
+        $mail="'$email'";
+      }
+
+    return $mail;
+    }	
 
     if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){
       $email_form=$_POST['email'];
@@ -39,8 +51,13 @@
         }
       }
     }else if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="" ){
+<<<<<<< HEAD
       $em = $_SESSION["isLogged"];
       $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email='$em'";
+=======
+      $em = checkBrowser($_SESSION["isLogged"]);
+      $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email=$em";
+>>>>>>> 75d6ae56f6d207c886a9167b9c68c5dbb63b93d2
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);
       $_SESSION["email"] = $row[0];
@@ -122,35 +139,36 @@
       </div>
     </div>
     <script>
-    var popup = document.getElementsByClassName("popup");
-    /* Quando l'utente clicca il bottone dell'icona dell'account compare il menu a tendina nel caso sia stato effettuato l'accesso, in caso
-    contrario compare il popup che permette la registrazione o il login */
-    function menutendina() {
-      <?php if((!isset($_SESSION["isLogged"])) || ($_SESSION["isLogged"] == "")) { ?>
-              popup[0].classList.add("activate");
-          <?php }else{ ?>
-              document.getElementById("myDropdown").classList.toggle("show");
-          <?php } ?>
-    }
-
-    function chiudipopup(){
-              popup[0].classList.remove("activate"); 
-    }
-
-    /* Se clicco un altro punto dello schermo la tendina si disattiva */
-    window.onclick = function(e) {
-      if (!e.target.matches('.dropbtn')) {
-        var myDropdown = document.getElementById("myDropdown");
-        if (myDropdown.classList.contains('show')) {
-          myDropdown.classList.remove('show');
-        }
+      var popup = document.getElementsByClassName("popup");
+      /* Quando l'utente clicca il bottone dell'icona dell'account compare il menu a tendina nel caso sia stato effettuato l'accesso, in caso
+      contrario compare il popup che permette la registrazione o il login */
+      function menutendina() {
+        <?php if((!isset($_SESSION["isLogged"])) || ($_SESSION["isLogged"] == "")) { ?>
+                popup[0].classList.add("activate");
+            <?php }else{ ?>
+                document.getElementById("myDropdown").classList.toggle("show");
+            <?php } ?>
       }
-    }   
 
-    function esci_menu() {
+      function chiudipopup(){
+                popup[0].classList.remove("activate"); 
+      }
+
+      /* Se clicco un altro punto dello schermo la tendina si disattiva */
+      window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+          var myDropdown = document.getElementById("myDropdown");
+          if (myDropdown.classList.contains('show')) {
+            myDropdown.classList.remove('show');
+          }
+        }
+      }   
+
+      function esci_menu() {
       window.location.href= 'home.php?action=logout';
-    }
-</script>
+      }
+
+    </script>
 
     <div class="lineaOmbra"></div>
 

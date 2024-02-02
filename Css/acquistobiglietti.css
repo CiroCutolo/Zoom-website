@@ -12,7 +12,7 @@
 	padding-left: 20.5px;
 }
 
-.selezione form{
+.ticketNumber{
 	display: -webkit-flex;
 	display: flex;
 	flex-flow: row nowrap;
@@ -50,11 +50,12 @@
 	box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3);
 }
 
-.interi fieldset, .ridotti fieldset{
+.interi fieldset, .ridotti fieldset, #dateContainer{
 	background-color: antiquewhite;
 	border-color: #0e84ab;
 	box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.15);
 	margin: 10px;
+	
 }
 
 .numberPicker{float: right;}
@@ -66,4 +67,27 @@
     text-align: center;
     border-radius: 5px;
     font-size: 20px;
+}
+
+.hidden{display: none;}
+
+#dateContainer {
+    background-color: antiquewhite;
+    border: 2px groove #0e84ab;
+    padding: 10px;
+    text-align: center;
+    margin: 10px;
+}
+
+#continueButton {
+    background-color: #0e84ab;
+    margin: 10px;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 30%;
+	
+}
+#continueButton:disabled{
+	background-color: #999;
 }
