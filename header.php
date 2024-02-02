@@ -3,7 +3,7 @@
 
     session_start();
 
-    if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){
+    if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){ //entra solo tramite l'accesso dal popup
       $email_form=$_POST['email'];
       $pw_form=$_POST['pw'];
       //effettuo la connessione al database e seleziono email e password dalla tabella utenti che sono uguali a email e passowrd inseriti nel form.
@@ -46,7 +46,7 @@
         </script>";
         }
       }
-    }else if((isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="") && (isset($_GET["action"]) && ($_GET["action"] == ""))){
+    }else if((isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="") && (isset($_GET["action"]) && ($_GET["action"] == ""))){ //entra solo tramite la registrazione
       $em =  $_SESSION["isLogged"];
       $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email=$em";
       $ret = pg_query($conn,$sql);
