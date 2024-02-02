@@ -2,18 +2,6 @@
     include("connessione.php");
 
     session_start();
-    function checkBrowser($email) {
-      $mybrowser = $_SERVER['HTTP_USER_AGENT']; 
-      $mail="'$email'";
-
-      if(strpos($mybrowser,"Edg") != false){
-        $mail="'$email'";
-      } else if(strpos($mybrowser,"Firefox") != false){
-        $mail="'$email'";
-      }
-
-    return $mail;
-    }	
 
     if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){
       $email_form=$_POST['email'];
@@ -50,8 +38,8 @@
         </script>";
         }
       }
-    }else if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="" ){
-      $em = checkBrowser($_SESSION["isLogged"]);
+    }else if((isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="") && (isset($_GET["action"]) && ($_GET["action"] == ""))){
+      $em =  $_SESSION["isLogged"];
       $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email=$em";
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);

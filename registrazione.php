@@ -1,5 +1,5 @@
 <?php
-    ini_set('display_errors', 0);
+    ini_set('display_errors', 1);
     ini_set('display_startup_errors' ,1);
     error_reporting(E_ALL);
 
@@ -18,12 +18,12 @@
 
     //PRELEVARE I DATI DELL'UTENTE DAL FORM E INSERIRLI NEL DATABASE
     if(isset($_GET["action"]) && ($_GET["action"] == "registra")){ //verifico se il form è stato completato
-
+    
         //prelevo tutti i dati inseriti dall'utente
         $Nome = pg_escape_literal($conn,$_POST["nome"]);
         $Cognome = pg_escape_literal($conn,$_POST["cognome"]); //sostituisce i caratteri speciali per poterli inserire
 
-        $passwordCriptata = password_hash($_POST["Password"], PASSWORD_DEFAULT); //cripto la password
+        $passwordCriptata = password_hash($_POST["Password"], PASSWORD_DEFAULT); //cripta la password
 
         $Password = pg_escape_literal($conn,$passwordCriptata);
         $Email =pg_escape_literal($conn,$_POST["Email"]);
