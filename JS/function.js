@@ -38,13 +38,28 @@ function enable(){
   }
 }
 
-function showCart(){
-  document.querySelector(".tipologia").classList.add("hidden");
+function nextPage(){
+  document.querySelector(".informazioni").classList.add("hidden");
   document.querySelector(".acquisto").classList.add("hidden");
+  document.querySelector(".datiBiglietti").classList.remove("hidden");
 }
 
-function ridotti(){
-    let x = document.getElementById("numeroRidotti").value;
-    document.getElementById("numRidotti").innerHTML = x;
-  
-}
+function carrello(){
+    let interi = document.getElementById("numeroInteri").value;
+    document.getElementById("tableInteri").innerHTML = interi;
+
+    let ridotti = document.getElementById("numeroRidotti").value;
+    document.getElementById("tableRidotti").innerHTML = ridotti;
+
+    let date = document.getElementById("datePicker").value;
+    document.getElementById("tableDate1").innerHTML = date;
+    document.getElementById("tableDate2").innerHTML = date;
+
+    let totInteri = 15.00*interi;
+    let totRidotti = 10.00*ridotti;
+    document.getElementById("tableTotInteri").innerHTML = '€' + totInteri.toFixed(2);
+    document.getElementById("tableTotRidotti").innerHTML = '€' + totRidotti.toFixed(2);
+
+    let tot = totInteri+totRidotti;
+    document.getElementById("totalPrice").innerHTML = '€' + tot.toFixed(2);
+  }
