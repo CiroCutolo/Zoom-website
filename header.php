@@ -46,10 +46,9 @@
         </script>";
         }
       }
-    }else if((isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="") && (isset($_GET["action"]) && ($_GET["action"] == ""))){
-      $em =  $_SESSION["isLogged"];
-      echo "--->" . $em;
-      $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email=$em";
+    }else if((isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="") && (isset($_GET["action"]) && ($_GET["action"] == ""))){ //entra solo tramite la registrazione
+      $em = $_SESSION["isLogged"];
+      $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email='$em'";
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);
       $_SESSION["email"] = $row[0];
