@@ -64,13 +64,21 @@
     <link rel="stylesheet" href="header.css?<?php echo rand();?>">
     <title>Header - Zoom</title>
   </head>
-  <body>
+  <body id="body">
     <div class="header navigation-bar">
       <input type="checkbox" id="check">
       <label for="check">
-        <span class="fas fa-bars" id="btn"></span>
-        <span class="fas fa-times" id="cancel"></span>
+        <span class="fas fa-bars" id="btn" onclick="bloccascroll()"></span>
+        <span class="fas fa-times" id="cancel" onclick="sbloccascroll()"></span>
       </label>
+      <script>
+        function bloccascroll(){
+          document.getElementById("body").classList.add("lock");
+        }
+        function sbloccascroll(){
+          document.getElementById("body").classList.remove("lock");
+        }
+      </script>
       <a name="home">
       <img class="logo" src="img\logo-removebg.png">
       </a>
