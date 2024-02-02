@@ -72,7 +72,7 @@
         <span class="fas fa-times" id="cancel"></span>
       </label>
       <a name="home">
-      <img class="logo" src="logo-removebg.png">
+      <img class="logo" src="img\logo-removebg.png">
       </a>
       <ul>
         <li class="text"><a href="home.php">Home</a></li>
@@ -90,7 +90,8 @@
         </div>
       </ul>
     </div>
-
+    <!--Popup utilizzato per il login e per la registrazione dei nuovi utenti. Non viene visualizzato nel caso in cui viene effettuato il login poichè 
+    è sostituito con un menu a tendina che permette di tenere monitorato l'utente. -->
     <div class="popup">
       <button id="close-btn" onclick="chiudipopup()"><span class="fas fa-times"></span></button>
       <div class = "form">

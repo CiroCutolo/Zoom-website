@@ -12,7 +12,7 @@
             <p class="text2-anfibi">Esplora il nostro parco</p>
             <p><a href="acquistobiglietti.php"><button class="button-anfibi">SCOPRI COME</button></a></p>
             <p class="icon-area">
-              <a href="Animali.php?categoria=Anfibi"><img class="icon" src="image_slider\icona-anfibi.png"></a>
+              <a href="Animali.php"><img class="icon" src="image_slider\icona-anfibi.png"></a>
               <span class="text-area">Anfibi</span>
             </p>
             <img src="image_slider\anfibi.jpg" width="100%">
@@ -29,17 +29,24 @@
         </div>
         <div class="mySlides fade">
           <p class="icon-area">
-            <a href="#"><img class="icon" src="image_slider\icona-rettili.png"></a>
+            <a href="Animali.php"><img class="icon" src="image_slider\icona-rettili.png"></a>
             <span class="text-area">Rettili</span>
           </p>
             <img src="image_slider/rettili.jpg" width="100%">
         </div>
         <div class="mySlides fade">
           <p class="icon-area">
-            <a href="#"><img class="icon" src="image_slider\icona-volatili.png"></a>
+            <a href="Animali.php"><img class="icon" src="image_slider\icona-volatili.png"></a>
             <span class="text-area">Volatili</span>
           </p>
             <img src="image_slider/volatili.jpg" width="100%">
+        </div>
+        <div class="mySlides fade">
+          <p class="icon-area">
+            <a href="Animali.php"><img class="icon" src="image_slider\icona-pesci.png"></a>
+            <span class="text-area">Pesci</span>
+          </p>
+            <img src="image_slider/pesci.jpg" width="100%">
         </div>
 
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -53,6 +60,7 @@
         <span class="dot" onclick="currentSlides(1)"></span>
         <span class="dot" onclick="currentSlides(2)"></span>
         <span class="dot" onclick="currentSlides(3)"></span>
+        <span class="dot" onclick="currentSlides(4)"></span>
     </div>
     <br>
     <script>
