@@ -162,12 +162,12 @@
 						<h3>Seleziona la data</h3>
 
 						<label for="ticketDate" >
-							<input id="datePicker" type="date">
+							<input id="datePicker" type="date" title="Data visita" onchange="enable()">
 						</label>
 					</div>
-					<div class="buttonContainer">
-						<button id="continueButton" disabled>Continua</button>
-					</div>
+					<label class="buttonContainer">
+						<input type="button" id="continueButton" value="Continua" disabled onclick="showCart()">
+					</label>
 				</form>
 			</div>
 		
