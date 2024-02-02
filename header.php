@@ -38,11 +38,19 @@
           $_SESSION["password"] = $row[1];
           $_SESSION["nome"] = $row[2];
           $_SESSION["cognome"] = $row[3];
-
-          echo "<script>
-          alert('Login avvenuto con successo!');
-          window.location.href='$url';
-          </script>";
+          
+          //nel caso in cui provo ad effettuare il login nella pagina in cui mi posso registrare, vengo reindirizzato alla home
+          if(str_contains($url,'registrazione.php')){
+            echo "<script>
+            alert('Login avvenuto con successo!');
+            window.location.href='home.php';
+            </script>";
+          }else{
+            echo "<script>
+            alert('Login avvenuto con successo!');
+            window.location.href='$url';
+            </script>";
+          }
         }else{
         echo "<script>
         alert('Password o email errate!');
