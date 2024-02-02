@@ -65,7 +65,7 @@
 										<span>€ 15,00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroInteri" onchange="show('numeroInteri','numeroRidotti')">
+										<select id="numeroInteri" onchange="showDate('numeroInteri','numeroRidotti');enable()">
 											<?php
 											for($i=0;$i<=10;$i++)
 												echo "<option value=\"$i\">$i</option>"
@@ -103,7 +103,7 @@
 										<span>€ 10,00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroRidotti" onchange="show('numeroInteri','numeroRidotti')">
+										<select id="numeroRidotti" onchange="showDate('numeroInteri','numeroRidotti');enable()">
 											<?php
 												for($i=0;$i<=10;$i++)
 												echo "<option value=\"$i\">$i</option>"
@@ -130,12 +130,12 @@
 						<h3>Seleziona la data</h3>
 
 						<label for="ticketDate" >
-							<input id="datePicker" type="date">
+							<input id="datePicker" type="date" title="Data visita" onchange="enable()">
 						</label>
 					</div>
-					<div class="buttonContainer">
-						<button id="continueButton" disabled>Continua</button>
-					</div>
+					<label class="buttonContainer">
+						<input type="button" id="continueButton" value="Continua" disabled onclick="showCart()">
+					</label>
 				</form>
 			</div>
 		

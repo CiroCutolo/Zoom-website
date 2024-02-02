@@ -13,7 +13,7 @@ function takeOptValue(selectId){
   return value;
 }
 
-function show(elementID1, elementID2){
+function showDate(elementID1, elementID2){
   
   if((takeOptValue(elementID1)!=0)||(takeOptValue(elementID2)!=0)){
     document.getElementById("dateContainer").classList.remove("hidden");
@@ -30,9 +30,15 @@ function getSelectedDate(){
   return document.getElementById("datePicker").value;
 }
 
-function disable(){
-  if(((document.getElementById("numeroRidotti").value!=0)||
-    (document.getElementById("numeroInteri").value!=0))&&document.getElementById("datePicker").value!=null){
-      document.getElementById("continueButton").removeAttribute("disabled");
-    }
+function enable(){
+  if((takeOptValue("numeroInteri")!=0||takeOptValue("numeroRidotti")!=0)&& getSelectedDate()!=''){
+    document.getElementById("continueButton").removeAttribute('disabled');
+  }else{
+    document.getElementById("continueButton").setAttribute('disable');
+  }
+}
+
+function showCart(){
+  document.querySelector(".container").classList.add("hidden");
+
 }
