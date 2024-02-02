@@ -35,6 +35,12 @@
         </div> 
         <div class="Animals-Container" id="animalsContainer">
             <div class="animal All Anfibi Africa" > 
+                <div class="animal-image-section" id="show-details-leone">
+                        <a href="javascript:guardaAnimale('leone')"><img src="leone.jpg" alt=""></a>
+                    <h1>Leone di Aldo</h1>
+                </div>
+            </div>
+            <div class="animal All Anfibi Africa" > 
                 <div class="animal-image-section">
                     <form id="animal-form" action="Animali.php?action=ranamuta">
                         <button type="button" id="show_details_ranamuta" value="ranamuta" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/ranamuta.jpg" alt=""></a></button>
@@ -203,6 +209,33 @@
         </div>
 
         <script src="JS/filterSelection.js?<?php echo rand();?>"></script>
+        
+        <script>
+            function guardaAnimale(obj) {
+                animale=getAnimale(obj);
+
+                document.write('<div class="animal-details-popup" id="a nimal-details-popup">');
+                document.write('<div class="popup-text-container">');
+                document.write('<h1>' + animale.titolo + '</h1>');
+                document.write('<p>' + animale.descrizione + '</p>');
+                document.write('<button id="close-button">Chiudi la scheda</button>');
+                document.write('</div>');
+                document.write('</div>');
+            }
+            function getAnimale(animale) {
+                alert("ajax.php?action=getAnimale&animale="+animale)
+                var strReturn;
+                $.ajax({
+
+                    url: "ajax.php?action=getAnimale&animale="+animale, dataType: "json", success: function(data) {
+                    //data = $.parseJSON(data);
+					strReturn=JSON.parse(JSON.stringify(data));
+                    },
+                    async:false
+                });
+                return strReturn;	
+            }
+        </script>
         
     </body>
 </html>
