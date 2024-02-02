@@ -20,36 +20,36 @@
             <div class="buy-tickets-textcontent-nolog"><a href="registrazione.php">Registrati </a> o <a href="#home" onclick="menutendina()"> accedi </a> per acquistare!</div>
           </div>
           <?php }else{ ?>
-           <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
-             <p class="buy-tickets-textcontent">Adulti
-              <select id="selector1">
+          <form method="post" action="acquistobiglietti.php">
+            <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
+              <p class="buy-tickets-textcontent">Adulti
+                <select id="selector1" name="selectOption[0]">
                 <script>
                   var i = 0;
                   for (i = 0; i <= 10 ; i++){
-                    document.write("<option>" + i + "</option>");
+                     document.write("<option>" + i + "</option>");
                   }
                 </script>
-             </select>
-             </p>
-             <p class="buy-tickets-textcontent">Bambini
-             <select id="selector2">
-               <script>
-                 var i = 0;
-                 for (i = 0; i <= 10 ; i++){
-                   document.write("<option>" + i + "</option>");
-                 }
-               </script>
-             </select>
-             </p>
-             <p class="buy-tickets-textcontent">Data della visita</p>
-             <p><input type="date" class="date-picker" min="<?php echo date('Y-m-d');?>"></input>
-             </p>
-         </div>
-         <div class="btn-tickets-container">
-           <a href="acquistobiglietti.php">
-           <button class="btn-tickets">ACQUISTA</button>
-           </a>
-         </div>
+                </select>
+              </p>
+              <p class="buy-tickets-textcontent">Bambini
+              <select id="selector2" name="selectOption[1]">
+                <script>
+                  var i = 0;
+                  for (i = 0; i <= 10 ; i++){
+                     document.write("<option>" + i + "</option>");
+                  }
+                </script>
+              </select>
+              </p>
+              <p class="buy-tickets-textcontent">Data della visita</p>
+              <p><input type="date" class="date-picker" min="<?php echo date('Y-m-d');?>" name="selectOption[2]"></input>
+              </p>
+            </div>
+            <div class="btn-tickets-container">
+            <input type="submit" value="ACQUISTA" class="btn-tickets">
+           </div>
+         </form>
          <?php } ?>
    </div>
    <div>
