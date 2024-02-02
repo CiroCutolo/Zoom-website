@@ -75,9 +75,11 @@
         <span class="fas fa-bars" id="btn"></span>
         <span class="fas fa-times" id="cancel"></span>
       </label>
+      <a name="home">
       <img class="logo" src="logo-removebg.png">
+      </a>
       <ul>
-        <li class="text"><a name="home" href="home.php">Home</a></li>
+        <li class="text"><a href="home.php">Home</a></li>
         <li class="text"><a href="Animali.php">Animali</a></li>
         <li class="text"><a href="acquistobiglietti.php">Acquisto biglietti</a></li>
         <button class="dropbtn" onclick="menutendina()"></button>

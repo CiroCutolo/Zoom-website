@@ -93,6 +93,10 @@ body{
   text-align: center;
 }
 
+.buy-tickets-textcontent-sottotitolo{
+  font-size: 20px;
+}
+
 .buy-tickets-textcontent{
     padding-top: 5%;
 }

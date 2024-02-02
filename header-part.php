@@ -22,8 +22,9 @@
           <?php }else{ ?>
           <form method="post" action="acquistobiglietti.php">
             <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
+            <p class="buy-tickets-textcontent-sottotitolo">Completa tutti i campi prima di acquistare</p>
               <p class="buy-tickets-textcontent">Adulti
-                <select id="selector1" name="selectOption[0]">
+                <select id="selector1" name="selectOption[0]" onchange="disabilitAcquista()">
                 <script>
                   var i = 0;
                   for (i = 0; i <= 10 ; i++){
@@ -33,7 +34,7 @@
                 </select>
               </p>
               <p class="buy-tickets-textcontent">Bambini
-              <select id="selector2" name="selectOption[1]">
+              <select id="selector2" name="selectOption[1]" onchange="disabilitAcquista()">
                 <script>
                   var i = 0;
                   for (i = 0; i <= 10 ; i++){
@@ -43,11 +44,11 @@
               </select>
               </p>
               <p class="buy-tickets-textcontent">Data della visita</p>
-              <p><input type="date" class="date-picker" min="<?php echo date('Y-m-d');?>" name="selectOption[2]"></input>
+              <p><input type="date" id="data-picker" class="date-picker" min="<?php echo date('Y-m-d');?>" name="selectOption[2]" onchange="disabilitAcquista()"></input>
               </p>
             </div>
             <div class="btn-tickets-container">
-            <input type="submit" value="ACQUISTA" class="btn-tickets">
+            <input id="acquista" type="submit" value="ACQUISTA" class="btn-tickets" disabled>
            </div>
          </form>
          <?php } ?>
@@ -152,5 +153,13 @@
           }
         }
       });
+
+      function disabilitAcquista(){
+          if(document.getElementById("selector1").value == "0" || document.getElementById("selector2").value == "0" || document.getElementById("data-picker").value == ""){
+              document.getElementById("acquista").setAttribute('disabled','');
+          }else{
+              document.getElementById("acquista").removeAttribute('disabled');
+          }
+      }
       </script>
     </html>

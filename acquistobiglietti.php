@@ -65,7 +65,7 @@
 										<span>€ 15,00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroInteri" oninput="show('numeroInteri','numeroRidotti')">
+										<select id="numeroInteri" oninput="showDate('numeroInteri','numeroRidotti')">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
                   								var i = 0;
@@ -119,7 +119,7 @@
 										<span>€ 10,00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroRidotti" oninput="show('numeroInteri','numeroRidotti')">
+										<select id="numeroRidotti" oninput="showDate('numeroInteri','numeroRidotti')">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
                   								var i = 0;
@@ -162,7 +162,7 @@
 						<h3>Seleziona la data</h3>
 
 						<label for="ticketDate" >
-							<input id="datePicker" type="date" title="Data visita" onchange="enable()">
+							<input id="datePicker" <?php if(isset($_POST['selectOption'][2])) {?> value = "<?php echo $_POST['selectOption'][2]; ?>" <?php } ?>type="date" title="Data visita" onchange="enable()">
 						</label>
 					</div>
 					<label class="buttonContainer">
@@ -170,7 +170,6 @@
 					</label>
 				</form>
 			</div>
-		
 			<!-- CARRELLO -->
 			<div class="cart">
 				<h2>Carrello</h2>
