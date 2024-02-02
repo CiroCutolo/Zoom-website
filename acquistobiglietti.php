@@ -120,7 +120,7 @@
 										<span>€ 10,00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroRidotti" onchange="showDate('numeroInteri','numeroRidotti');enable()">
+										<select id="numeroRidotti" oninput="show('numeroInteri','numeroRidotti')">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
                   								var i = 0;
@@ -163,90 +163,94 @@
 						<h3>Seleziona la data</h3>
 
 						<label for="ticketDate" >
-							<input id="datePicker" type="date" title="Data visita" onchange="enable()">
+							<input id="datePicker" <?php if(isset($_POST['selectOption'][2])) {?> value = "<?php echo $_POST['selectOption'][2]; ?>" <?php } ?>type="date" title="Data visita" onchange="enable()">
 						</label>
 					</div>
-
-					<div class="container carrello">
-						<h2>Carrello</h2>
-						<table>
-							<tr>
-								<th>Prodotto</th>
-								<th>Quantità</th>
-								<th>Data</th>
-								<th>Prezzo</th>
-								<th>Totale</th>
-							</tr>
-							<tr>
-								<td>Biglietti Interi</td>
-								<td id="tableInteri">Quantità</td>
-								<td id="tableDate">Data</td>
-								<td>€15,00</td>
-								<td>Totale</td>
-							</tr>
-							<tr>
-								<td>Biglietti Ridotti</td>
-								<td>Quantità</td>
-								<td>Data</td>
-								<td>€10,00</td>
-								<td>Totale</td>
-							</tr>
-							<tr>
-								<td>TOTALE</td>
-							</tr>
-						</table>
-					</div>
 					<label class="buttonContainer">
-						<input type="button" id="continueButton" value="Continua" disabled onclick="showCart();ridotti()">
+						<input type="button" id="continueButton" value="Continua" disabled onclick="showCart()">
 					</label>
 				</form>
 			</div>
-		</div>
-
-		<div class="datiBieglietti">
-			<h2>Dati biglietti</h2>
-			<h3>Biglietti interi</h3>
-			<h4>Partecipante 1</h4>
-			<form action="">
-				<label>
-					Nome:
-					<input type="text">
-				</label>
-				<label>
-					Cognome:
-					<input type="text">
-				</label>
-			</form>
-			<h2>Pagamento</h2>
-			<h3>Metodo di pagamento</h3>
-			<form action="">
-				<label>
-					Nome sulla carta:
-					<input type="text">
-				</label>
-				<label>
-					Numero della carta:
-					<input type="text">
-				</label>
-				<label>
-					Mese:
-					<select>
-						<?php
-						for($i=0;$i<=12;$i++)
-							echo "<option value=\"$i\">$i</option>"
-						?>
-					</select>
-				</label>
-				<label>
-					Anno:
-					<select>
-						<?php
-							for($i=2024;$i<=2044;$i++)
+		
+			<!-- CARRELLO -->
+			<div class="cart">
+				<h2>Carrello</h2>
+				<table>
+					<tr>
+						<td>Prodotto</td>
+						<td>Quantità</td>
+						<td>Data</td>
+						<td>Data Scadenza</td>
+						<td>Prezzo</td>
+						<td>Totale</td>
+					</tr>
+					<tr>
+						<td>Biglietti Interi</td>
+						<td>Quantità</td>
+						<td>Data</td>
+						<td>Data Scadenza</td>
+						<td>€15,00</td>
+						<td>Totale</td>
+					</tr>
+					<tr>
+						<td>Biglietti Ridotti</td>
+						<td>Quantità</td>
+						<td>Data</td>
+						<td>Data Scadenza</td>
+						<td>€10,00</td>
+						<td>Totale</td>
+					</tr>
+					<tr>
+						<td>TOTALE</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<h2>Dati biglietti</h2>
+				<h3>Biglietti interi</h3>
+				<h4>Partecipante 1</h4>
+				<form action="">
+					<label>
+						Nome:
+						<input type="text">
+					</label>
+					<label>
+						Cognome:
+						<input type="text">
+					</label>
+				</form>
+				<h2>Pagamento</h2>
+				<h3>Metodo di pagamento</h3>
+				<form action="">
+					<label>
+						Nome sulla carta:
+						<input type="text">
+					</label>
+					<label>
+						Numero della carta:
+						<input type="text">
+					</label>
+					<label>
+						Mese:
+						<select>
+							<?php
+							for($i=0;$i<=12;$i++)
 								echo "<option value=\"$i\">$i</option>"
 							?>
-					</select>
-				</label>
-			</form>
+						</select>
+					</label>
+					<label>
+						Anno:
+						<select>
+							<?php
+								for($i=2024;$i<=2044;$i++)
+									echo "<option value=\"$i\">$i</option>"
+								?>
+						</select>
+					</label>
+				</form>
+			</div>
+			
 		</div>
 	</body>
 </html>
