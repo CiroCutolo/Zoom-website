@@ -16,8 +16,8 @@
           <?php 
           
           if((!isset($_SESSION["isLogged"])) || ($_SESSION["isLogged"] == "")) { ?>
-            <div class="buy-tickets-textcontent">Registrati o accedi per acquistare!</div>
-
+            <img class="scimmiareg" src="scimmia-registrazione.png">
+            <div class="buy-tickets-textcontent-nolog"><a href="registrazione.php">Registrati </a> o <a href="#home" onclick="menutendina()"> accedi </a> per acquistare!</div>
           </div>
           <?php }else{ ?>
            <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
@@ -46,7 +46,9 @@
              </p>
          </div>
          <div class="btn-tickets-container">
+           <a href="acquistobiglietti.php">
            <button class="btn-tickets">ACQUISTA</button>
+           </a>
          </div>
          <?php } ?>
    </div>
@@ -108,7 +110,9 @@
       </div>
       <div class="price">
         <div class="btn-tickets-container">
+          <a href="acquistobiglietti.php">
           <button class="btn-tickets">LEGGI DI PIÙ</button>
+          </a>
         </div>
       </div>
    </div>

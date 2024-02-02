@@ -44,8 +44,7 @@ select{
 
 }
 
-.animal-container{
-    display: flex;
+.Animals-Container{
     margin-right: auto;
     margin-left: auto;
     position: relative;
@@ -64,7 +63,7 @@ select{
     width: 300px;
     min-height: 300px;
     text-align: center;
-
+    box-sizing: border-box;
 }
 
 .animal-image-section{

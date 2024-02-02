@@ -8,7 +8,7 @@
       $pw_form=$_POST['pw'];
       //effettuo la connessione al database e seleziono email e password dalla tabella utenti che sono uguali a email e passowrd inseriti nel form.
       //prelevo anche il valore del nome e del cognome per poi salvarli all'interno di variabili di sessione per monitorare lo stato dell'utente
-      $sql = "SELECT email,password,nome,cognome FROM utenti WHERE utenti.email='$email_form' and utenti.password='$pw_form' ";
+      $sql = "SELECT email,password,nome,cognome FROM utenti WHERE utenti.email='$email_form'";
       
       //salvo il risultato all'interno della riga restituita dalla quary che sarà sicuramente diversa da flase nel caso in cui trova l'utente
       $ret = pg_query($conn,$sql);
@@ -17,25 +17,36 @@
       //reindirizzo alla pagina precedentemente visitata mostrando un messaggio di successo o insuccesso del login
       $url = $_SERVER['HTTP_REFERER'];
       if($row != false){
+        $password = $row[1];
+        if(password_verify($pw_form,$password)){
         //avvio della sessione nel caso in cui il login va a buon fine
-        $_SESSION["isLogged"] = $email_form;
+          $_SESSION["isLogged"] = $email_form;
 
-        $_SESSION["email"] = $row[0];
-        $_SESSION["nome"] = $row[2];
-        $_SESSION["cognome"] = $row[3];
+          $_SESSION["email"] = $row[0];
+          $_SESSION["password"] = $row[1];
+          $_SESSION["nome"] = $row[2];
+          $_SESSION["cognome"] = $row[3];
 
-        echo "<script>
-        alert('Login avvenuto con successo!');
-        window.location.href='$url';
-        </script>";
-      }else{
+          echo "<script>
+          alert('Login avvenuto con successo!');
+          window.location.href='$url';
+          </script>";
+        }else{
         echo "<script>
         alert('Password o email errate!');
         window.location.href='$url';
         </script>";
+        }
       }
-
-  }
+    }else if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="" ){
+      $em = $_SESSION["isLogged"];
+      $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email=$em";
+      $ret = pg_query($conn,$sql);
+      $row = pg_fetch_row($ret);
+      $_SESSION["email"] = $row[0];
+      $_SESSION["nome"] = $row[1];
+      $_SESSION["cognome"] = $row[2];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -54,7 +65,7 @@
       </label>
       <img class="logo" src="logo-removebg.png">
       <ul>
-        <li class="text"><a href="home.php">Home</a></li>
+        <li class="text"><a name="home" href="home.php">Home</a></li>
         <li class="text"><a href="Animali.php">Animali</a></li>
         <li class="text"><a href="acquistobiglietti.php">Acquisto biglietti</a></li>
         <button class="dropbtn" onclick="menutendina()"></button>
@@ -65,7 +76,7 @@
           </div>
           <div class="lineaOmbra"></div>
           <a href="areapersonale.php">Area Personale</a>
-          <a onclick="esci_2()">Esci</a>
+          <a onclick="esci_menu()">Esci</a>
         </div>
       </ul>
     </div>
@@ -112,8 +123,8 @@
     </div>
     <script>
     var popup = document.getElementsByClassName("popup");
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
+    /* Quando l'utente clicca il bottone dell'icona dell'account compare il menu a tendina nel caso sia stato effettuato l'accesso, in caso
+    contrario compare il popup che permette la registrazione o il login */
     function menutendina() {
       <?php if((!isset($_SESSION["isLogged"])) || ($_SESSION["isLogged"] == "")) { ?>
               popup[0].classList.add("activate");
@@ -126,20 +137,21 @@
               popup[0].classList.remove("activate"); 
     }
 
-    // Close the dropdown if the user clicks outside of it
+    /* Se clicco un altro punto dello schermo la tendina si disattiva */
     window.onclick = function(e) {
-    if (!e.target.matches('.dropbtn')) {
-    var myDropdown = document.getElementById("myDropdown");
-    if (myDropdown.classList.contains('show')) {
-      myDropdown.classList.remove('show');
-    }
-    }
+      if (!e.target.matches('.dropbtn')) {
+        var myDropdown = document.getElementById("myDropdown");
+        if (myDropdown.classList.contains('show')) {
+          myDropdown.classList.remove('show');
+        }
+      }
+    }   
 
-    function esci_2() {
-      window.location.href='/home.php?action=logout';
+    function esci_menu() {
+      window.location.href= 'home.php?action=logout';
     }
-  }
 </script>
+
     <div class="lineaOmbra"></div>
 
   </body>

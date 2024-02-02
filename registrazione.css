@@ -12,8 +12,6 @@ body{
     border-radius: 10px; 
     margin-right: 10px;
     margin-left: 20px;
-
-
 }
 
 .leopardo input[type=submit]{
@@ -38,10 +36,25 @@ body{
     text-align: center;
 }
 
+.leopardo #passwordCONocchio, .leopardo #confermapasswordCONocchio{
+    position: relative;
+    height: 20px;
+    width: 200px;   
+}
+
+.leopardo #confermapasswordCONocchio{
+    left:255px;
+    bottom: 20px;
+}
+
 .leopardo #togglePassword, #togglePassword1 {
-    margin-left: -33px;
+    position: absolute;
+    margin: -30px;
+    left: 123%;
+    top: 218%;
     cursor: pointer;
     width: 26px;
+    float: left;
 }
 
 .leopardo form{
@@ -85,14 +98,14 @@ body{
 
 
 @media screen and (max-width: 900px) {
-    input{
-        width: 70%;
+    .leopardo input{
         margin-bottom: 10px;
     }
     
-    input[type=submit]{
-        margin-top: 20px;
+    .leopardo input[type=submit]{
+        margin-top: 50px;
         width: 50%;    
+        margin-left: 0px;
     }  
 
     #scritta{
@@ -115,13 +128,15 @@ body{
         display: none;
     }
 
-    #togglePassword, #togglePassword1 {
-        margin-left: -35px;
+    .leopardo #confermapasswordCONocchio{
+        left:15%;
+        bottom: 0px;
     }
 
-    input[type=submit]{
-        margin-left: 0px;   
+    .leopardo #togglePassword, #togglePassword1 {
+        margin: -30px;
+        left: 90%;
+        top: 84%;
     }
-    
 }
   
