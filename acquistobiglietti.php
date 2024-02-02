@@ -14,8 +14,8 @@
 			<h2>Tipologie di biglietto</h2>
 			<ul>
 				<li>Intero a data fissa: € 15,00</li>
-				<li>Ridotto a data fissa: € 10,00 per bambini di altezza superiore a 1 mt e fino a 10 anni.</li>
-				<li>Gratuito: Bambini di altezza inferiore a 1 mt, Over 70, disabili e loro accompagnatori.</li>
+				<li>Ridotto a data fissa: € 10,00 per bambini da 4 a 10 anni, persone con disabilita' inferiore al 100%.</li>
+				<li>Gratuito: Under 3, Over 70 e disabili 100% con accompagnatori.</li>
 			</ul>
 	
 			<h2>Orari</h2>
@@ -41,7 +41,8 @@
 		</div>
 
 		<div class="container acquisto">
-			<h3>Acquista il tuo biglietto</h3>
+			<h2>Acquista il tuo biglietto</h2>
+			<h3>Seleziona il numero di biglietti</h3>
 			<p>
 			I biglietti di ingresso non sono in alcun modo rimborsabili.
 			Non è possibile effettuare un cambio data.
@@ -49,95 +50,174 @@
 			</p>
 			<div class="selezione">
 				<form method="post" action="">
-					<div class="interi">
-					<fieldset>
-							<legend class="interi-text">INTERI</legend>
-							<div class="content">
-								<div class="intero-image">
-									<img src="img\man_woman.png" alt="men_woman_image"/>
+					<div class="ticketNumber">
+						<label for="numeroInteri" class="interi">
+							<fieldset>
+								<legend class="interi-text">INTERI</legend>
+								<div class="content">
+									<div class="intero-image">
+										<img src="img\man_woman.png" alt="men_woman_image"/>
+									</div>
+									<a href="#ciao" class="information" onclick="moreInfo('infoPanel-1')">
+										<i class="fa fa-info-circle"></i>
+									</a>
+									<div class="price">
+										<span>€ 15,00</span>
+									</div>
+									<div class="numberPicker">
+										<select id="numeroInteri" onchange="show('numeroInteri','numeroRidotti')">
+											<?php
+											for($i=0;$i<=10;$i++)
+												echo "<option value=\"$i\">$i</option>"
+											?>
+										</select>
+									</div>
+									<div class="note">
+										<p>
+											Adulti e ragazzi dai 10 anni in su
+										</p>
+									</div>
 								</div>
-								<a href="#" class="information" onclick="moreInfo()">
-									<i class="fa fa-info-circle"></i>
-								</a>
-								<div class="price">
-									<span>€ 15,00</span>
-								</div>
-								<div class="numberPicker">
-									<select >
-										<option value="0" selected>0</option>
-										<option value="1" label="1"></option>
-										<option value="2" label="2">2</option>
-										<option value="3" label="3">3</option>
-										<option value="4" label="4">4</option>
-										<option value="5" label="5">5</option>
-										<option value="6" label="6">6</option>
-										<option value="7" label="7">7</option>
-										<option value="8" label="8">8</option>
-										<option value="9" label="9">9</option>
-										<option value="10" label="10">10</option>
-									</select>
-								</div>
-								<div class="note">
+								<div id="infoPanel-1" class="hidden">
 									<p>
-										Adulti e ragazzi dai 10 anni in su
+									Il biglietto d’ingresso non è in alcun caso rimborsabile, né modificabile ad eccezione di eventi straordinari per cui la struttura rimarrà chiusa.
+									</p>
+									<p>
+									Puoi acquistare online il tuo biglietto entro le ore 23.59 del giorno precedente alla tua visita.
 									</p>
 								</div>
-							</div>
-							<div id="infoPanel" style="display: block;">
-								<p>
-								Il biglietto d’ingresso non è in alcun caso rimborsabile, né modificabile ad eccezione di eventi straordinari per cui la struttura rimarrà chiusa.
-								</p><p>
-								Puoi acquistare online il tuo biglietto entro le ore 23.59 del giorno precedente alla tua visita.
-								</p>
-							</div>
-						</fieldset>	
+							</fieldset>	
+						</label>
+						
+						<label for="numeroRidotti" class="ridotti">
+							<fieldset>
+								<legend class="ridotti-text">RIDOTTI</legend>
+								<div class="content">
+									<div class="ridotto-image">
+										<img src="img\elder_child.png" alt="elder_child_image"/>
+									</div>
+									<a href="#ciao" class="information" onclick="moreInfo('infoPanel-2')">
+										<i class="fa fa-info-circle"></i>
+									</a>
+									<div class="price">
+										<span>€ 10,00</span>
+									</div>
+									<div class="numberPicker">
+										<select id="numeroRidotti" onchange="show('numeroInteri','numeroRidotti')">
+											<?php
+												for($i=0;$i<=10;$i++)
+												echo "<option value=\"$i\">$i</option>"
+											?>
+										</select>
+									</div>
+									<div class="note">
+										<p>
+											NB: Ingresso gratuito per bambini di altezza inferiore a 1 metro (da confermare all'ingresso del parco previa misurazione)
+										</p>
+									</div>
+								</div>
+								<div id="infoPanel-2" class="hidden">
+									<p>
+									Il biglietto d’ingresso non è in alcun caso rimborsabile, né modificabile ad eccezione di eventi straordinari per cui la struttura rimarrà chiusa.
+									</p><p>
+									Puoi acquistare online il tuo biglietto entro le ore 23.59 del giorno precedente alla tua visita.
+									</p>
+								</div>
+							</fieldset>
+						</label>
 					</div>
-				
-					<div class="ridotti">
-						<fieldset>
-							<legend class="ridotti-text">RIDOTTI</legend>
-							<div class="content">
-								<div class="ridotto-image">
-									<img src="img\elder_child.png" alt="elder_child_image"/>
-								</div>
-								<a href="#" class="information" onclick="moreInfo()">
-									<i class="fa fa-info-circle"></i>
-								</a>
-								<div class="price">
-									<span>€ 10,00</span>
-								</div>
-								<div class="numberPicker">
-									<select >
-										<option value="0" selected>0</option>
-										<option value="1" label="1"></option>
-										<option value="2" label="2">2</option>
-										<option value="3" label="3">3</option>
-										<option value="4" label="4">4</option>
-										<option value="5" label="5">5</option>
-										<option value="6" label="6">6</option>
-										<option value="7" label="7">7</option>
-										<option value="8" label="8">8</option>
-										<option value="9" label="9">9</option>
-										<option value="10" label="10">10</option>
-									</select>
-								</div>
-								<div class="note">
-									<p>
-										Adulti e ragazzi dai 10 anni in su
-									</p>
-								</div>
-							</div>
-							<div id="infoPanel" style="display: none;">
-								<p>
-								Il biglietto d’ingresso non è in alcun caso rimborsabile, né modificabile ad eccezione di eventi straordinari per cui la struttura rimarrà chiusa.
-								</p><p>
-								Puoi acquistare online il tuo biglietto entro le ore 23.59 del giorno precedente alla tua visita.
-								</p>
-							</div>
-						</fieldset>
+					<div id="dateContainer" class="hidden">
+						<h3>Seleziona la data</h3>
+
+						<label for="ticketDate" >
+							<input id="datePicker" type="date">
+						</label>
+					</div>
+					<div class="buttonContainer">
+						<button id="continueButton" disabled>Continua</button>
 					</div>
 				</form>
 			</div>
+		
+			<!-- CARRELLO -->
+			<div class="cart">
+				<h2>Carrello</h2>
+				<table>
+					<tr>
+						<td>Prodotto</td>
+						<td>Quantità</td>
+						<td>Data</td>
+						<td>Data Scadenza</td>
+						<td>Prezzo</td>
+						<td>Totale</td>
+					</tr>
+					<tr>
+						<td>Biglietti Interi</td>
+						<td>Quantità</td>
+						<td>Data</td>
+						<td>Data Scadenza</td>
+						<td>€15,00</td>
+						<td>Totale</td>
+					</tr>
+					<tr>
+						<td>Biglietti Ridotti</td>
+						<td>Quantità</td>
+						<td>Data</td>
+						<td>Data Scadenza</td>
+						<td>€10,00</td>
+						<td>Totale</td>
+					</tr>
+					<tr>
+						<td>TOTALE</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<h2>Dati biglietti</h2>
+				<h3>Biglietti interi</h3>
+				<h4>Partecipante 1</h4>
+				<form action="">
+					<label>
+						Nome:
+						<input type="text">
+					</label>
+					<label>
+						Cognome:
+						<input type="text">
+					</label>
+				</form>
+				<h2>Pagamento</h2>
+				<h3>Metodo di pagamento</h3>
+				<form action="">
+					<label>
+						Nome sulla carta:
+						<input type="text">
+					</label>
+					<label>
+						Numero della carta:
+						<input type="text">
+					</label>
+					<label>
+						Mese:
+						<select>
+							<?php
+							for($i=0;$i<=12;$i++)
+								echo "<option value=\"$i\">$i</option>"
+							?>
+						</select>
+					</label>
+					<label>
+						Anno:
+						<select>
+							<?php
+								for($i=2024;$i<=2044;$i++)
+									echo "<option value=\"$i\">$i</option>"
+								?>
+						</select>
+					</label>
+				</form>
+			</div>
+			
 		</div>
 	</body>
 </html>
