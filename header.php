@@ -40,7 +40,7 @@
       }
     }else if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="" ){
       $em = $_SESSION["isLogged"];
-      $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email='$em'";
+      $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email=$em";
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);
       $_SESSION["email"] = $row[0];
@@ -123,7 +123,8 @@
     </div>
     <script>
     var popup = document.getElementsByClassName("popup");
-    /* Quando l'utente clicca il bottone dell'utente compare il menu a tendina nel caso sia stato effettuato .... */
+    /* Quando l'utente clicca il bottone dell'icona dell'account compare il menu a tendina nel caso sia stato effettuato l'accesso, in caso
+    contrario compare il popup che permette la registrazione o il login */
     function menutendina() {
       <?php if((!isset($_SESSION["isLogged"])) || ($_SESSION["isLogged"] == "")) { ?>
               popup[0].classList.add("activate");
@@ -136,7 +137,7 @@
               popup[0].classList.remove("activate"); 
     }
 
-    // Close the dropdown if the user clicks outside of it
+    /* Se clicco un altro punto dello schermo la tendina si disattiva */
     window.onclick = function(e) {
       if (!e.target.matches('.dropbtn')) {
         var myDropdown = document.getElementById("myDropdown");
