@@ -108,7 +108,7 @@
             <div class="animal All Anfibi Asia">
                 <div class="animal-image-section">
                         <a href="javascript:showAnimalPopup('atelopusvarius')"><img src="img/atelopusvarius.jpg" alt=""></a>
-                    <h1>Atelopus varius</h1>
+                    <h1>Rana pagliaccio</h1>
                 </div>
             </div>
             <div class="animal All Mammiferi Asia">
@@ -200,6 +200,10 @@
         <div id="popup-container">
 
         </div>
+
+        <?php
+            include 'footer.php'
+        ?>
 
         <script src="https://code.jquery.com/jquery-latest.min.js?<?php echo rand();?>"></script>
         <script src="JS/filterSelection.js?<?php echo rand();?>"></script>

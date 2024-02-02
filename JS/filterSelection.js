@@ -53,7 +53,7 @@ function showAnimalPopup(obj) {
   const closeButton = document.createElement('button');
   closeButton.setAttribute('id', 'close-button');
   closeButton.type = 'button';
-  closeButton.textContent = 'Chiudi la scheda.';
+  closeButton.textContent = 'Chiudi la scheda';
   closeButton.addEventListener('click', function(){
       animalDetailsPopup.classList.remove("open")
 
@@ -65,6 +65,7 @@ function showAnimalPopup(obj) {
   animalDetailsPopup.classList.add("animal-details-popup");
   popupTextContainer.classList.add("popup-text-container");
   animalDetailsPopup.classList.add("open");
+  closeButton.classList.add("close-button");
 }
 function getAnimal(animale) {
   var strReturn;
