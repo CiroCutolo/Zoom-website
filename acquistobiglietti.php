@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="./Css/acquistobiglietti.css?<?php echo rand();?>" type="text/css">
 		<script src="JS\function.js" type="text/javascript" ></script>
+		
 	</head>
 	<body class="acquisto_body">
 		<?php include './header.php';?>
@@ -65,12 +66,12 @@
 										<span>€ 15,00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroInteri" oninput="show('numeroInteri','numeroRidotti')">
+										<select id="numeroInteri" onchange="showDate('numeroInteri','numeroRidotti');enable()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
                   								var i = 0;
                   								for (i = 0; i <= 10 ; i++){
-                    								 document.write("<option>" + i + "</option>");
+                    								 document.write("<option value=" + i +">" + i + "</option>");
                   								}
                 								</script>
 											<?php }else{ ?>
@@ -124,7 +125,7 @@
 												<script>
                   								var i = 0;
                   								for (i = 0; i <= 10 ; i++){
-                    								 document.write("<option>" + i + "</option>");
+                    								 document.write("<option value=" + i +">" + i + "</option>");
                   								}
                 								</script>
 											<?php }else{ ?>
@@ -162,7 +163,7 @@
 						<h3>Seleziona la data</h3>
 
 						<label for="ticketDate" >
-							<input id="datePicker" type="date" title="Data visita" onchange="enable()">
+							<input id="datePicker" <?php if(isset($_POST['selectOption'][2])) {?> value = "<?php echo $_POST['selectOption'][2]; ?>" <?php } ?>type="date" title="Data visita" onchange="enable()">
 						</label>
 					</div>
 					<label class="buttonContainer">

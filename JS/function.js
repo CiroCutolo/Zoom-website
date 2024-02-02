@@ -39,6 +39,12 @@ function enable(){
 }
 
 function showCart(){
-  document.querySelector(".container").classList.add("hidden");
+  document.querySelector(".tipologia").classList.add("hidden");
+  document.querySelector(".acquisto").classList.add("hidden");
+}
 
+function ridotti(){
+    let x = document.getElementById("numeroRidotti").value;
+    document.getElementById("numRidotti").innerHTML = x;
+  
 }

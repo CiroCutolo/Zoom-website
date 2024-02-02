@@ -26,11 +26,19 @@
           $_SESSION["password"] = $row[1];
           $_SESSION["nome"] = $row[2];
           $_SESSION["cognome"] = $row[3];
-
-          echo "<script>
-          alert('Login avvenuto con successo!');
-          window.location.href='$url';
-          </script>";
+          
+          //nel caso in cui provo ad effettuare il login nella pagina in cui mi posso registrare, vengo reindirizzato alla home
+          if(str_contains($url,'registrazione.php')){
+            echo "<script>
+            alert('Login avvenuto con successo!');
+            window.location.href='home.php';
+            </script>";
+          }else{
+            echo "<script>
+            alert('Login avvenuto con successo!');
+            window.location.href='$url';
+            </script>";
+          }
         }else{
         echo "<script>
         alert('Password o email errate!');
@@ -63,9 +71,11 @@
         <span class="fas fa-bars" id="btn"></span>
         <span class="fas fa-times" id="cancel"></span>
       </label>
+      <a name="home">
       <img class="logo" src="logo-removebg.png">
+      </a>
       <ul>
-        <li class="text"><a name="home" href="home.php">Home</a></li>
+        <li class="text"><a href="home.php">Home</a></li>
         <li class="text"><a href="Animali.php">Animali</a></li>
         <li class="text"><a href="acquistobiglietti.php">Acquisto biglietti</a></li>
         <button class="dropbtn" onclick="menutendina()"></button>

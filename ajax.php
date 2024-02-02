@@ -1,16 +1,17 @@
+
+
 <?php
 $action=$_GET['action'];
 
 switch ($action) {
-	case "getAnimale":
+	case "getAnimal":
 
 		$animale=$_GET['animale'];
-		$pagina=$animale . ".php";
 
-		include $pagina;
+		include("dettagliAnimali.php");
 		$returnAnimale = [];
-		$returnAnimale["titolo"]=$animaldetails['animal.title'];//titolo[animale];
-		$returnAnimale["descrizione"]=$animaldetails['animal.description'] ;
+		$returnAnimale["titolo"]=$titolo[$animale];
+		$returnAnimale["descrizione"]=$descrizione[$animale];
 
 
 		echo json_encode($returnAnimale);
