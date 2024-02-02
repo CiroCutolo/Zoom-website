@@ -46,7 +46,7 @@
         </script>";
         }
       }
-    }else if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="" ){
+    }else if((isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="") && (isset($_GET["action"]) && ($_GET["action"] == ""))){ //entra solo tramite la registrazione
       $em = $_SESSION["isLogged"];
       $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email='$em'";
       $ret = pg_query($conn,$sql);
