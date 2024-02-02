@@ -35,10 +35,15 @@
         </div> 
         <div class="Animals-Container" id="animalsContainer">
             <div class="animal All Anfibi Africa" > 
+                <div class="animal-image-section" id="show-details-leone">
+                        <a href="javascript:guardaAnimale('leone')"><img src="leone.jpg" alt=""></a>
+                    <h1>Leone di Aldo</h1>
+                </div>
+            </div>
+            <div class="animal All Anfibi Africa" > 
                 <div class="animal-image-section">
                     <form id="animal-form" action="Animali.php?action=ranamuta">
                         <button type="button" id="show_details_ranamuta" value="ranamuta" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/ranamuta.jpg" alt=""></a></button>
-                    </form>
                     <h1>Rana muta della tanzania</h1>
                 </div>
             </div>
@@ -46,291 +51,154 @@
                 <div class="animal-image-section">
                     <form id="animal-form" action="Animali.php?action=giraffareticolata">
                         <button type="button" id="show-details-giraffareticolata" value="giraffareticolata" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/giraffareticolata.jpg" alt=""></a></button>
-                    </form>
                     <h1>Giraffa reticolata</h1>
                 </div>
             </div>
             <div class="animal All Mammiferi Africa">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-leoneafricano" value="leoneafricano" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/leoneafricano.jpg" alt=""></a></button>
-                    </form>
                     <h1>Leone africano</h1>
                 </div>
             </div>
             <div class="animal All Rettili Africa">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-coccodrillodelnilo" value="coccodrillodelnilo" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/coccodrillodelnilo.jpg" alt=""></a></button>
-                    </form>
                     <h1>Coccodrillo del nilo</h1>
                 </div>
             </div>
             <div class="animal All Volatili Africa">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-faraonacrestata" value="faraonacrestata" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/faraonacrestata.jpg" alt=""></a></button>
-                    </form>
                     <h1>Faraona crestata</h1>
                 </div>
             </div>
             <div class="animal All Pesci Africa">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-neolamprologus" value="neolamprologus" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/neolamprologus.jpg" alt=""></a></button>
-                    </form>
                     <h1>Neolamprologus</h1>
                 </div>
             </div>
             <div class="animal All Anfibi America">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-ranafreccia" value="ranafreccia" name="animal-button" onclick="popupFunc(this)" ><a><img src="image_slider/anfibi.jpg" alt=""></a></button>
-                    </form>
                     <h1>Rana freccia</h1>
                 </div>
             </div>
             <div class="animal All Mammiferi America">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-coyote" value="coyote" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/coyote.jpg" alt=""></a></button>
-                    </form>
                     <h1>Coyote</h1>
                 </div>
             </div>
             <div class="animal All Rettili America">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-iguanadaitubercoli" value="iguanadaitubercoli" name="animal-button" onclick="popupFunc(this)" ><a><img src="image_slider/rettili.jpg" alt=""></a></button>
-                    </form>
                     <h1>Iguana dai tubercoli</h1>
                 </div>
             </div>
             <div class="animal All Volatili America">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-anatramuta" value="anatramuta" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/anatramuta.jpg" alt=""></a></button>
-                    </form>
                     <h1>Anantra muta</h1>
                 </div>
             </div>
             <div class="animal All Pesci America">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-guppy" value="guppy" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/guppy.jpg" alt=""></a></button>
-                    </form>
                     <h1>Guppy</h1>
                 </div>
             </div>
             <div class="animal All Anfibi Asia">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-atelopusvarius" value="atelopusvarius" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/atelopusvarius.jpg" alt=""></a></button>
-                    </form>
                     <h1>Atelopus varius</h1>
                 </div>
             </div>
             <div class="animal All Mammiferi Asia">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-tigremalese" value="tigremalese" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/tigremalese.jpg" alt=""></a></button>
-                    </form>
                     <h1>Tigre malese</h1>
                 </div>
             </div>
             <div class="animal All Rettili Asia">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-gekotokai" value="gekotokai" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/gekotokai.jpg" alt=""></a></button>
-                    </form>
                     <h1>Geko tokai</h1>
                 </div>
             </div>
             <div class="animal All Volatili Asia">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-aironecenerino" value="aironecenerino" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/aironecenerino.jpg" alt=""></a></button>
-                    </form>
                     <h1>Airone cenerino</h1>
                 </div>
             </div>
             <div class="animal All Pesci Asia">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-bettasplendens" value="bettasplendens" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/bettasplendens.jpg" alt=""></a></button>
-                    </form>
                     <h1>Betta splendens</h1>
                 </div>
             </div>
             <div class="animal All Anfibi Europa">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-raganellapadana" value="raganellapadana" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/raganellapadana.jpg" alt=""></a></button>
-                    </form>
                     <h1>Raganella padana</h1>
                 </div>
             </div>
             <div class="animal All Mammiferi Europa">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-riccioeuropeo" value="riccioeuropeo" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/riccioeuropeo.jpg" alt=""></a></button>
-                    </form>
                     <h1>Riccio europeo</h1>
                 </div>
             </div>
             <div class="animal All Rettili Europa">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-tartarugacaretta" value="tartarugacaretta" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/tartarugacaretta.jpg" alt=""></a></button>
-                    </form>
                     <h1>Tartaruga caretta</h1>
                 </div>
             </div>
             <div class="animal All Volatili Europa">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-gruccionecomune" value="gruccionecomune" name="animal-button" onclick="popupFunc(this)" ><a><img src="image_slider/volatili.jpg" alt=""></a></button>
-                    </form>
                     <h1>Gruccione comune</h1>
                 </div>
             </div>
             <div class="animal All Pesci Europa">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-ippocampo" value="ippocampo" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/ippocampo.jpg" alt=""></a></button>
-                    </form>
                     <h1>Ippocampo</h1>
                 </div>
             </div>
             <div class="animal All Anfibi Oceania">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-rospodellecanne" value="rospodellecanne" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/rospodellecanne.jpg" alt=""></a></button>
-                    </form>
                     <h1>Rospo delle canne</h1>
                 </div>
             </div>
             <div class="animal All Mammiferi Oceania">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-dingo" value="dingo" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/dingo.jpg" alt=""></a></button>
-                    </form>
                     <h1>Dingo</h1>
                 </div>
             </div>
             <div class="animal All Rettili Oceania">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-clamidosauro" value="clamidosauro" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/clamidosauro.jpg" alt=""></a></button>
-                    </form>
                     <h1>Clamidosauro</h1>
                 </div>
             </div>
             <div class="animal All Volatili Oceania">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-emu" value="emu" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/emu.jpg" alt=""></a></button>
-                    </form>
                     <h1>Emù</h1>
                 </div>
             </div>
             <div class="animal All Pesci Oceania">
                 <div class="animal-image-section">
-                    <form id="animal-form" action="" method="POST">
                         <button type="button" id="show-details-pescesanpietro" value="pescesanpietro" name="animal-button" onclick="popupFunc(this)" ><a><img src="img/pescesanpietro.jpg" alt=""></a></button>
-                    </form>
                     <h1>Pesce San Pietro</h1>
                 </div>
             </div>
         </div>
-
-        <?php
-        if(isset($_GET["animalValue"])){
-            echo $_GET["animalValue"];
-            $animal = $_GET["animalValue"];
-
-            switch($animal){
-                case "ranamuta":
-                    require('AnimalsPopupsMods/ranamuta.php');
-                break; 
-                case "giraffareticolata":
-                    require('AnimalsPopupsMods/giraffareticolata.php');
-                break; 
-                case "leoneafricano":
-                    require('AnimalsPopupsMods/leoneafricano.php');
-                break; 
-                case "coccodrillodelnilo":
-                    require('AnimalsPopupsMods/coccodrillodelnilo.php');
-                break; 
-                case "faraonacrestata":
-                    require('AnimalsPopupsMods/faraonacrestata.php');
-                break; 
-                case "neolamprologus":
-                    require('AnimalsPopupsMods/neolamprologus.php');
-                break; 
-                case "ranafreccia":
-                    require('AnimalsPopupsMods/ranafreccia.php');
-                break; 
-                case "coyote":
-                    require('AnimalsPopupsMods/coyote.php');
-                break; 
-                case "iguanadaitubercoli":
-                    require('AnimalsPopupsMods/iguanadaitubercoli.php');
-                break; 
-                case "anatramuta":
-                    require('AnimalsPopupsMods/anatramuta.php');
-                break; 
-                case "guppy":
-                    require('AnimalsPopupsMods/guppy.php');
-                break; 
-                case "atelopusvarius":
-                    require('AnimalsPopupsMods/atelopusvarius.php');
-                break; 
-                case "tigremalese":
-                    require('AnimalsPopupsMods/tigremalese.php');
-                break; 
-                case "gekotokai":
-                    require('AnimalsPopupsMods/gekotokai.php');
-                break; 
-                case "aironecenerino":
-                    require('AnimalsPopupsMods/aironecenerino.php');
-                break; 
-                case "bettasplendens":
-                    require('AnimalsPopupsMods/bettasplendens.php');
-                break; 
-                case "raganellapadana":
-                    require('AnimalsPopupsMods/raganellapadana.php');
-                break; 
-                case "riccioeuropeo":
-                    require('AnimalsPopupsMods/riccioeuropeo.php');
-                break; 
-                case "tartarugacaretta":
-                    require('AnimalsPopupsMods/tartarugacaretta.php');
-                break; 
-                case "gruccionecomune":
-                    require('AnimalsPopupsMods/gruccionecomune.php');
-                break; 
-                case "ippocampo":
-                    require('AnimalsPopupsMods/ippocampo.php');
-                break; 
-                case "rospodellecanne":
-                    require('AnimalsPopupsMods/rospodellecanne.php');
-                break; 
-                case "dingo":
-                    require('AnimalsPopupsMods/dingo.php');
-                break; 
-                case "clamidosauro":
-                    require('AnimalsPopupsMods/clamidosauro.php');
-                break; 
-                case "emu":
-                    require('AnimalsPopupsMods/emu.php');
-                break; 
-                case "pescesanpietro":
-                    require('AnimalsPopupsMods/pescesanpietro.php');
-                break; 
-            }
-        }
-        ?> 
 
         <div class="animal-details-popup" id="animal-details-popup">
             <div class="popup-text-container">
@@ -341,6 +209,33 @@
         </div>
 
         <script src="JS/filterSelection.js?<?php echo rand();?>"></script>
+        
+        <script>
+            function guardaAnimale(obj) {
+                animale=getAnimale(obj);
+
+                document.write('<div class="animal-details-popup" id="a nimal-details-popup">');
+                document.write('<div class="popup-text-container">');
+                document.write('<h1>' + animale.titolo + '</h1>');
+                document.write('<p>' + animale.descrizione + '</p>');
+                document.write('<button id="close-button">Chiudi la scheda</button>');
+                document.write('</div>');
+                document.write('</div>');
+            }
+            function getAnimale(animale) {
+                alert("ajax.php?action=getAnimale&animale="+animale)
+                var strReturn;
+                $.ajax({
+
+                    url: "ajax.php?action=getAnimale&animale="+animale, dataType: "json", success: function(data) {
+                    //data = $.parseJSON(data);
+					strReturn=JSON.parse(JSON.stringify(data));
+                    },
+                    async:false
+                });
+                return strReturn;	
+            }
+        </script>
         
     </body>
 </html>
