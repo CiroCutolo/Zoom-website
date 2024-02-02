@@ -5,6 +5,11 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="./Css/acquistobiglietti.css?<?php echo rand();?>" type="text/css">
 		<script src="JS\function.js" type="text/javascript" ></script>
+		<?php 
+		$post = $_POST['selectOption'][0];
+		$post_2 = $_POST['selectOption'][1];
+		$post_3 = $_POST['selectOption'][2];
+		?>
 	</head>
 	<body class="acquisto_body">
 		<?php include './header.php';?>
@@ -66,10 +71,17 @@
 									</div>
 									<div class="numberPicker">
 										<select id="numeroInteri" onchange="show('numeroInteri','numeroRidotti')">
-											<?php
-											for($i=0;$i<=10;$i++)
-												echo "<option value=\"$i\">$i</option>"
-											?>
+											<option value="0" <?php if($_POST['selectOption'][0] == 0) echo ' selected="selected"'; ?>>0</option>
+                  							<option value="1" <?php if($_POST['selectOption'][0] == 1) echo ' selected="selected"'; ?>>1</option>
+                  							<option value="2" <?php if($_POST['selectOption'][0] == 2) echo ' selected="selected"'; ?>>2</option>
+                  							<option value="3" <?php if($_POST['selectOption'][0] == 3) echo ' selected="selected"'; ?>>3</option>
+                  							<option value="4" <?php if($_POST['selectOption'][0] == 4) echo ' selected="selected"'; ?>>4</option>
+                  							<option value="5" <?php if($_POST['selectOption'][0] == 5) echo ' selected="selected"'; ?>>5</option>
+                  							<option value="6" <?php if($_POST['selectOption'][0] == 6) echo ' selected="selected"'; ?>>6</option>
+                  							<option value="7" <?php if($_POST['selectOption'][0] == 7) echo ' selected="selected"'; ?>>7</option>
+                  							<option value="8" <?php if($_POST['selectOption'][0] == 8) echo ' selected="selected"'; ?>>8</option>
+                  							<option value="9" <?php if($_POST['selectOption'][0] == 9) echo ' selected="selected"'; ?>>9</option>
+                  							<option value="10" <?php if($_POST['selectOption'][0] == 10) echo ' selected="selected"'; ?>>10</option>
 										</select>
 									</div>
 									<div class="note">
@@ -104,10 +116,17 @@
 									</div>
 									<div class="numberPicker">
 										<select id="numeroRidotti" onchange="show('numeroInteri','numeroRidotti')">
-											<?php
-												for($i=0;$i<=10;$i++)
-												echo "<option value=\"$i\">$i</option>"
-											?>
+											<option value="0" <?php if($_POST['selectOption'][1] == 0) echo ' selected="selected"'; ?>>0</option>
+                  							<option value="1" <?php if($_POST['selectOption'][1] == 1) echo ' selected="selected"'; ?>>1</option>
+                  							<option value="2" <?php if($_POST['selectOption'][1] == 2) echo ' selected="selected"'; ?>>2</option>
+                  							<option value="3" <?php if($_POST['selectOption'][1] == 3) echo ' selected="selected"'; ?>>3</option>
+                  							<option value="4" <?php if($_POST['selectOption'][1] == 4) echo ' selected="selected"'; ?>>4</option>
+                  							<option value="5" <?php if($_POST['selectOption'][1] == 5) echo ' selected="selected"'; ?>>5</option>
+                  							<option value="6" <?php if($_POST['selectOption'][1] == 6) echo ' selected="selected"'; ?>>6</option>
+                  							<option value="7" <?php if($_POST['selectOption'][1] == 7) echo ' selected="selected"'; ?>>7</option>
+                  							<option value="8" <?php if($_POST['selectOption'][1] == 8) echo ' selected="selected"'; ?>>8</option>
+                  							<option value="9" <?php if($_POST['selectOption'][1] == 9) echo ' selected="selected"'; ?>>9</option>
+                  							<option value="10" <?php if($_POST['selectOption'][1] == 10) echo ' selected="selected"'; ?>>10</option>
 										</select>
 									</div>
 									<div class="note">
