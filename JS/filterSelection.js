@@ -29,41 +29,50 @@ $('body').on("change", 'select', function() {
   }
 });
 
-function popupFunc(clickedElem){
+function showAnimalPopup(obj) {
+  animale=getAnimal(obj);
 
-  $.ajax({
-    url: "Animali.php",
-    type: "get",
-    data: {
-        animalValue: $(clickedElem).val()
-    }
+  const element = document.getElementById("popup-container");
+
+  const animalDetailsPopup = document.createElement('div');
+  animalDetailsPopup.setAttribute('id', 'animal-details-popup');
+  element.appendChild(animalDetailsPopup);
+
+  const popupTextContainer = document.createElement('div');
+  popupTextContainer.setAttribute('id', 'popup-text-container');
+  animalDetailsPopup.appendChild(popupTextContainer);
+
+  const animalTitle = document.createElement('h1');
+  animalTitle.innerHTML = animale.titolo;
+  popupTextContainer.appendChild(animalTitle);
+
+  const animalDescription = document.createElement('p');
+  animalDescription.innerHTML = animale.descrizione;
+  popupTextContainer.appendChild(animalDescription);
+
+  const closeButton = document.createElement('button');
+  closeButton.setAttribute('id', 'close-button');
+  closeButton.type = 'button';
+  closeButton.textContent = 'Chiudi la scheda.';
+  closeButton.addEventListener('click', function(){
+      animalDetailsPopup.classList.remove("open")
+
+      animalDetailsPopup.remove();
   });
-
-  // var btn = clickedElem.id;
-  // const openButton = document.getElementById(btn);
-  // const closeButton = document.getElementById("close-button");
-  // const animaldeatailspopup = document.getElementById("animal-details-popup");
-
-  // openButton.addEventListener("click", () => {
-  //   animaldeatailspopup.classList.add("open");
-  // });
   
-  // closeButton.addEventListener("click", () => {
-  //   animaldeatailspopup.classList.remove("open");
-  // });
+  popupTextContainer.appendChild(closeButton);
 
-
-
+  animalDetailsPopup.classList.add("animal-details-popup");
+  popupTextContainer.classList.add("popup-text-container");
+  animalDetailsPopup.classList.add("open");
 }
-
-// const openButton = document.getElementsByClassName("show-details");
-// const closeButton = document.getElementById("close-button");
-// const animaldeatailspopup = document.getElementById("animal-details-popup");
-
-// openButton.addEventListener("click", () => {
-//   animaldeatailspopup.classList.add("open");
-// });
-
-// closeButton.addEventListener("click", () => {
-//   animaldeatailspopup.classList.remove("open");
-// });
+function getAnimal(animale) {
+  var strReturn;
+  $.ajax({
+      url: "ajax.php?action=getAnimal&animale="+animale, dataType: "json", success: function(data) {
+strReturn=JSON.parse(JSON.stringify(data));
+      },
+      async:false
+  });
+  return strReturn;	
+}
