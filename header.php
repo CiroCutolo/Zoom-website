@@ -51,13 +51,8 @@
         }
       }
     }else if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="" ){
-<<<<<<< HEAD
       $em = $_SESSION["isLogged"];
       $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email='$em'";
-=======
-      $em = checkBrowser($_SESSION["isLogged"]);
-      $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email=$em";
->>>>>>> 75d6ae56f6d207c886a9167b9c68c5dbb63b93d2
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);
       $_SESSION["email"] = $row[0];
