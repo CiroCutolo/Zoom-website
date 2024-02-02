@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="./Css/acquistobiglietti.css?<?php echo rand();?>" type="text/css">
 		<script src="JS\function.js" type="text/javascript" ></script>
+		
 	</head>
 	<body class="acquisto_body">
 		<?php include './header.php';?>
@@ -65,12 +66,12 @@
 										<span>€ 15,00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroInteri" oninput="showDate('numeroInteri','numeroRidotti')">
+										<select id="numeroInteri" onchange="showDate('numeroInteri','numeroRidotti');enable()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
                   								var i = 0;
                   								for (i = 0; i <= 10 ; i++){
-                    								 document.write("<option>" + i + "</option>");
+                    								 document.write("<option value=" + i +">" + i + "</option>");
                   								}
                 								</script>
 											<?php }else{ ?>
@@ -119,12 +120,12 @@
 										<span>€ 10,00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroRidotti" oninput="showDate('numeroInteri','numeroRidotti')">
+										<select id="numeroRidotti" oninput="show('numeroInteri','numeroRidotti')">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
                   								var i = 0;
                   								for (i = 0; i <= 10 ; i++){
-                    								 document.write("<option>" + i + "</option>");
+                    								 document.write("<option value=" + i +">" + i + "</option>");
                   								}
                 								</script>
 											<?php }else{ ?>
@@ -170,6 +171,7 @@
 					</label>
 				</form>
 			</div>
+		
 			<!-- CARRELLO -->
 			<div class="cart">
 				<h2>Carrello</h2>
