@@ -102,7 +102,7 @@
                 <div class="leone">
                     <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="areapersonale.php?action=modifica" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
                         <div style = "text-align:center">   
-                            <p>Ecco i dati del tuo account: è possibile modificarli<br> selezionando i campi interessati.</p>     
+                            <p>Ecco i dati del tuo account: è possibile modificarli<br> selezionando i campi interessati.</p><br>   
                             <span>Nome: </span><input type="text" id="nome" name = "nome" placeholder="Nome" value="<?php echo $nome?>" onchange="abilita()" onkeyup="abilita()">
                             <br><br>
                             <span>Cognome: </span><input type="text" id="cognome" name = "cognome" placeholder="Cognome" value="<?php echo $cognome?>" onchange="abilita()" onkeyup="abilita()">
@@ -151,6 +151,8 @@
                 </div>
             </div>
         </div>
+
+        <?php include 'footer.php';?>
 
 
         <script type="text/javascript">

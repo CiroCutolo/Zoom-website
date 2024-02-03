@@ -80,7 +80,7 @@ body{
     content: "";
     border-radius: 150px;
     margin: 60px 200px 60px 200px;
-    background-image: url("leone.jpg");
+    background-image: url("img/leone.jpg");
     background-repeat: no-repeat;
     background-position: center; 
     background-size: cover;
@@ -104,8 +104,7 @@ body{
     position: relative; 
     height: 700px;
     display: flex;
-    justify-content: right;
-    padding-left: 150px;
+    justify-content: center;
     color: white;
 }
   
@@ -113,7 +112,7 @@ body{
     content: "";
     border-radius: 150px;
     margin: 20px 150px 20px 150px;
-    background-image: url("TIGRE.jpg");
+    background-image: url("img/TIGRE.jpg");
     background-repeat: no-repeat;
     background-position: center; 
     background-size: cover;
@@ -129,7 +128,7 @@ body{
     width: 60%;
     margin: 0 auto;
     z-index: 1;
-    padding-left: 370px;
+    padding-left: 33%;
     margin-top: 80px;
     display: table-row;
     font-size: medium;
@@ -145,7 +144,8 @@ body{
     margin-right: 30px;
     cursor: pointer;
  }
-@media screen and (max-width: 640px) {
+
+@media screen and (max-width: 900px) {
     .leone input{
         width: 60%;
         margin-bottom: 10px;
@@ -175,5 +175,40 @@ body{
 
     .leone #togglePassword {
         margin-left: -30px;
+        top:63px;
+    }
+
+    .tigre{
+        height: 600px;
+        justify-content: center;
+        padding-left: 0px;
+
+    }
+
+    .tigre table{
+        width: 40%;
+        padding-left: 0%;
+        margin-left: 50%;
+        margin-right: 50%;
+
+    }
+
+    .tigre::before {    
+        margin: 50px 20px 50px 20px;
+    }
+
+}
+
+@media screen and(min-width: 565px) and(max-width: 685px){
+    .leone #togglePassword {
+        margin-left: 0px;
+        top:20px;
+    }
+}
+
+@media screen and(min-width: 685px) and(max-width: 900px){
+    .leone #togglePassword {
+        margin-left: 0px;
+        top:20px;
     }
 }

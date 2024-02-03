@@ -4,6 +4,9 @@ body{
     background: #e5d1bf;
     margin: 0;
 }
+.lock{
+    overflow-y: hidden;
+}
  .header *{
    margin: 0; 
    padding: 0;

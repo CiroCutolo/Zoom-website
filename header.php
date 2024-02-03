@@ -3,7 +3,7 @@
 
     session_start();
 
-    if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){ //entra solo tramite l'accesso dal popup
+    if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){
       $email_form=$_POST['email'];
       $pw_form=$_POST['pw'];
       //effettuo la connessione al database e seleziono email e password dalla tabella utenti che sono uguali a email e passowrd inseriti nel form.
@@ -46,7 +46,7 @@
         </script>";
         }
       }
-    }else if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="" ){
+    }else if((isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="") && (isset($_GET["action"]) && ($_GET["action"] == ""))){ //entra solo tramite la registrazione
       $em = $_SESSION["isLogged"];
       $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email='$em'";
       $ret = pg_query($conn,$sql);
@@ -64,13 +64,21 @@
     <link rel="stylesheet" href="header.css?<?php echo rand();?>">
     <title>Header - Zoom</title>
   </head>
-  <body>
+  <body id="body">
     <div class="header navigation-bar">
       <input type="checkbox" id="check">
       <label for="check">
-        <span class="fas fa-bars" id="btn"></span>
-        <span class="fas fa-times" id="cancel"></span>
+        <span class="fas fa-bars" id="btn" onclick="bloccascroll()"></span>
+        <span class="fas fa-times" id="cancel" onclick="sbloccascroll()"></span>
       </label>
+      <script>
+        function bloccascroll(){
+          document.getElementById("body").classList.add("lock");
+        }
+        function sbloccascroll(){
+          document.getElementById("body").classList.remove("lock");
+        }
+      </script>
       <a name="home">
       <img class="logo" src="img\logo-removebg.png">
       </a>

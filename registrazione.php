@@ -99,6 +99,8 @@
             <input type="submit" id="registrati" value="Registrati" disabled>
         </form>
     </div>
+
+    <?php include 'footer.php';?>
    
     <script type = "text/javascript">
 

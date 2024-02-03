@@ -76,7 +76,7 @@ body{
     content: "";
     border-radius: 150px;
     margin: 50px 180px 50px 180px;
-    background-image: url("leopardo1.png");
+    background-image: url("img/leopardo1.png");
     background-repeat: no-repeat;
     background-position: center; 
     background-size: cover;
