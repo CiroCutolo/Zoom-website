@@ -1,4 +1,4 @@
-function toggleElement(elem){
+function moreInfo(elem){
 	var x = document.getElementById(elem);
   if (x.classList.contains("hidden")) {
     x.classList.remove("hidden");
@@ -42,29 +42,52 @@ function nextPage(){
   for(i=0;i<collection.length;i++){
     if(collection[i].classList.contains("hidden")){
       collection[i].classList.remove("hidden");
+      document.getElementById("backButton").parentElement.classList.remove("hidden");
+      document.getElementById("continueButton").parentElement.classList.add("hidden");
+      document.getElementById("payButton").parentElement.classList.remove("hidden");
     }else{
       collection[i].classList.add("hidden");
+      document.getElementById("backButton").parentElement.classList.add("hidden");
+      document.getElementById("continueButton").parentElement.classList.remove("hidden");
+      document.getElementById("payButton").parentElement.classList.add("hidden");
     }
   }
 
 }
 
+const priceInt = 15.00;
+const priceRid = 10.00;
 function carrello(){
     let interi = document.getElementById("numeroInteri").value;
-    document.getElementById("tableInteri").innerHTML = interi;
-
     let ridotti = document.getElementById("numeroRidotti").value;
+
+    if(interi==0 && ridotti == 0){
+      document.querySelector(".carrello").classList.add("hidden");
+    }else{
+      document.querySelector(".carrello").classList.remove("hidden");
+    }
+
+    if(interi !=0){
+      document.getElementById("tableInteri").innerHTML = interi;
+      document.getElementById("interiRow").classList.remove("hidden");
+    }else{
+      document.getElementById("interiRow").classList.add("hidden");
+    }
+
+    
     if(ridotti != 0){
       document.getElementById("tableRidotti").innerHTML = ridotti;
-      document.getElementById("interiRow").classList.remove("hidden");
+      document.getElementById("ridottiRow").classList.remove("hidden");
+    }else{
+      document.getElementById("ridottiRow").classList.add("hidden");
     }
 
     let date = document.getElementById("datePicker").value;
     document.getElementById("tableDate1").innerHTML = date;
     document.getElementById("tableDate2").innerHTML = date;
 
-    let totInteri = 15.00*interi;
-    let totRidotti = 10.00*ridotti;
+    let totInteri = priceInt*interi;
+    let totRidotti = priceRid*ridotti;
     document.getElementById("tableTotInteri").innerHTML = '€' + totInteri.toFixed(2);
     document.getElementById("tableTotRidotti").innerHTML = '€' + totRidotti.toFixed(2);
 
@@ -87,7 +110,7 @@ function carrello(){
   
   }
 
-  function functionNumberPicker(){
+  function functionsNumberPicker(){
     showDate();
     enable();
     carrello()
