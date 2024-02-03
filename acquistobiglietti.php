@@ -227,46 +227,46 @@
 			<div class="container datiBiglietti hidden">
 				<h2>Dati biglietti</h2>
 				<div id="datiInteri">
-					<h3>Biglietti interi</h3>
+					<h3>BIGLIETTI INTERI</h3>
 				</div>
 				<div id="datiRidotti">
-					<h3>Biglietti ridotti</h3>
+					<h3>BIGLIETTI RIDOTTI</h3>
 				</div>
-				<label>
-					<input type="checkbox">pryvacy.
-				</label>
+				<div style="margin:30px 0px 0px 0px;">
+					<input type="checkbox" required>privacy.
+				</div>
 			</div>
 			
 			<!-- Dati di pagamento -->
 			<div class="container pagamento hidden">
 				<h2>Pagamento</h2>
 				<h3>Metodo di pagamento</h3>
-				<label>
-					Nome sulla carta:
+				<div>
+					<span>Intestatario:</span>
 					<input type="text">
-				</label>
-				<label>
-					Numero della carta:
+				</div>
+				<div>
+					<span>Numero della carta:</span>
 					<input type="text">
-				</label>
-				<label>
-					Mese:
+				</div>
+				<div>
+					<span>Mese:</span>
 					<select>
 						<?php
 						for($i=0;$i<=12;$i++)
 							echo "<option value=\"$i\">$i</option>"
 						?>
 					</select>
-				</label>
-				<label>
-					Anno:
+				</div>
+				<div>
+					<span>Anno:</span>
 					<select>
 						<?php
 							for($i=2024;$i<=2044;$i++)
 								echo "<option value=\"$i\">$i</option>"
 							?>
 					</select>
-				</label>				
+				</div>				
 			</div>
 			
 			<!-- Bottoni di navigazione -->			

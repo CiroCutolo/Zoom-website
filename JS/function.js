@@ -99,14 +99,14 @@ function carrello(){
     let interi = document.getElementById("numeroInteri").value;
     for(i=1;i<=interi;i++)
       document.getElementById("datiInteri").innerHTML += "<h4>Partecipante Intero " + i + "</h4>" + 
-        "<label>Nome:<input type=\"text\"><label>" +
-        "<label>Cognome:<input type=\"text\"><label>";
+        "<div><span>Nome:</span><input type=\"text\"></div>" +
+        "<div><span>Cognome:</span><input type=\"text\"></div>";
 
     let ridotti = document.getElementById("numeroRidotti").value;
     for(i=1;i<=ridotti;i++)
       document.getElementById("datiRidotti").innerHTML += "<h4>Partecipante Ridotto " + i + "</h4>" +
-      "<label>Nome:<input type=\"text\"><label>" +
-      "<label>Cognome:<input type=\"text\"><label>";
+      "<div><span>Nome:</span><input type=\"text\"></div>" +
+      "<div><span>Cognome:</span><input type=\"text\"></div>";
   
   }
 
