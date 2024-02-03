@@ -127,21 +127,22 @@
 
                 <div class="tigre">
                     <table>
-                        <tr><th>CODICE BIGLIETTO</th><th>DATA DI ACQUISTO</th><th>PREZZO</th><th>TIPOLOGIA</th></tr>
+                        <tr><th>NOME E COGNOME</th><th>DATA DI VALIDITÀ</th><th>PREZZO</th><th>TIPOLOGIA</th></tr>
                     <?php
                         //PRELEVO I BIGLIETTI ACQUISTATI 
                         //cerca nel database tutti i biglietti corrispondenti all'email dell'utente 
-                        $tmpQuery = "SELECT codice_biglietto, data, prezzo, tipologia FROM biglietti_acquistati A INNER JOIN biglietti B ON A.codice_biglietto = B.codice WHERE utente = '".     $_SESSION["isLogged"] ."'";
+                        $tmpQuery = "SELECT nome, cognome, validita, prezzo, tipologia FROM biglietti_acquistati WHERE utente = '".     $_SESSION["isLogged"] ."'";
                         $result = pg_query($conn, $tmpQuery);
 
                         //scorre tutti i campi della linea del biglietto indicato e li inserisce nelle righe della tabella
                         while($row = pg_fetch_row($result)){
-                            $codiceBiglietto = $row[0];
-                            $data =  date_format(date_create($row[1]),"d-m-Y"); //inverte la data
-                            $prezzo = $row[2]; 
-                            $tipologia = $row[3]; ?>
+                            $nome = $row[0];
+                            $cognome = $row[1];
+                            $validita =  date_format(date_create($row[2]),"d-m-Y"); //inverte la data
+                            $prezzo = $row[3]; 
+                            $tipologia = $row[4]; ?>
 
-                            <tr><td><?php echo $codiceBiglietto?></td><td><?php echo $data?></td><td><?php echo $prezzo?></td><td><?php echo $tipologia?></td></tr>
+                            <tr><td><?php echo $nome . "<br>" . $cognome?></td><td><?php echo $validita?></td><td><?php echo "€" . $prezzo?></td><td><?php echo $tipologia?></td></tr>
 
                         <?php }
                         
@@ -234,9 +235,7 @@
             //creo l'azione mostra/nascondi password
             const togglePassword = document.getElementById("togglePassword");
             const password = document.getElementById("Password");
-
-
-            //per la password    
+  
             togglePassword.addEventListener('click', function () {
                 const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
                 password.setAttribute('type', type);

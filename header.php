@@ -62,7 +62,10 @@
           </div>
           <div class="form-element">
             <label for="password">Password</label>
-            <input onfocus="onFocus()"  type="password" id="password" name="pw" placeholder="Inserisci password">
+            <div class="occhietto">
+              <input onfocus="onFocus()"  type="password" id="password" name="pw" placeholder="Inserisci password">
+              <i class="far fa-eye-slash" id="togglepassword"></i>
+            </div>
           </div>
           <div class="form-element">
             <div id="messaggio" style="display:none; color: red;"></div>
@@ -160,6 +163,18 @@
       function sbloccascroll(){
         document.getElementById("body").classList.remove("lock");
       }
+      
+      //creo l'azione mostra/nascondi password
+      const togglepassword = document.getElementById("togglepassword");
+      const Password = document.getElementById("password");
+    
+      togglepassword.addEventListener('click', function () {
+          const type = Password.getAttribute('type') === 'password' ? 'text' : 'password';
+          Password.setAttribute('type', type);
+
+          this.classList.toggle('fa-eye');
+      });
+
     </script>
   </body>
 </html>

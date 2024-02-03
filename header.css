@@ -286,6 +286,17 @@ label #cancel{
     color: black;
 }
 
+.popup .form-element .occhietto{
+    position: relative;
+}
+
+.popup .form-element .occhietto #togglepassword{
+    position: absolute;
+    margin: -25px;
+    margin-left: 93%;
+    cursor: pointer;
+}
+
 .popup .form .form-element input{
     margin-top: 5px;
     display: block;
