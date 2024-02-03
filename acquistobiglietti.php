@@ -279,7 +279,7 @@
 			</label>
 
 			<label class="buttonContainer hidden">
-				<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="nextPage()">
+				<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="nextPage();removeOldElements()">
 			</label>
 		</form>
 	</body>
