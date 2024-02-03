@@ -116,10 +116,7 @@
 										</p>
 									</div>
 								</div>
-								<div id="infoPanel-1" class="hidden">
-									<p>
-									Il biglietto d’ingresso non è in alcun caso rimborsabile, né modificabile ad eccezione di eventi straordinari per cui la struttura rimarrà chiusa.
-									</p>
+								<div id="infoPanel-1" class="extraPanel hidden">
 									<p>
 									Puoi acquistare online il tuo biglietto entro le ore 23.59 del giorno precedente alla tua visita.
 									</p>
@@ -173,10 +170,8 @@
 										</p>
 									</div>
 								</div>
-								<div id="infoPanel-2" class="hidden">
+								<div id="infoPanel-2" class=" extraPanel hidden">
 									<p>
-									Il biglietto d’ingresso non è in alcun caso rimborsabile, né modificabile ad eccezione di eventi straordinari per cui la struttura rimarrà chiusa.
-									</p><p>
 									Puoi acquistare online il tuo biglietto entro le ore 23.59 del giorno precedente alla tua visita.
 									</p>
 								</div>
