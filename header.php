@@ -3,7 +3,7 @@
 
     session_start();
 
-    if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){ //entra solo tramite l'accesso dal popup
+    if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){
       $email_form=$_POST['email'];
       $pw_form=$_POST['pw'];
       //effettuo la connessione al database e seleziono email e password dalla tabella utenti che sono uguali a email e passowrd inseriti nel form.

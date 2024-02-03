@@ -1,5 +1,5 @@
 <?php
-    ini_set('display_errors', 0);
+    ini_set('display_errors', 1);
     ini_set('display_startup_errors' ,1);
     error_reporting(E_ALL);
 
@@ -99,6 +99,8 @@
             <input type="submit" id="registrati" value="Registrati" disabled>
         </form>
     </div>
+
+    <?php include 'footer.php';?>
    
     <script type = "text/javascript">
 
