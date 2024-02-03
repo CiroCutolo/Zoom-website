@@ -30,9 +30,12 @@ function getLocation() {
   }
 }
 
+var lat;
+var long;
+
 function showPosition(position) {
-  var lat = position.coords.latitude;
-  var long = position.coords.longitude;
+   lat = position.coords.latitude;
+   long = position.coords.longitude;
   x.innerHTML = "Latitude: " + position.coords.latitude + 
   "<br>Longitude: " + position.coords.longitude;
 }
@@ -46,6 +49,7 @@ function idLocation(lat, long) {
   var longitude = "&longitude=" + long;
   var query = latitude + longitude + "&localityLanguage=en";
   const Http = new XMLHttpRequest();
+  var citta = "nulla";
   var bigdatacloud_api =
     "https://api.bigdatacloud.net/data/reverse-geocode-client?";
   bigdatacloud_api += query;
@@ -54,13 +58,15 @@ function idLocation(lat, long) {
   Http.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var myObj = JSON.parse(this.responseText);
-      console.log(myObj);
-      return myObj.locality;
+      console.log(myObj.city);
+      citta = myObj.city;
+      return citta;
     }
   };
 }
 
-x.innerHTML = idLocation(lat,long);
+citta = idLocation(lat,long);
+alert(citta);
 </script>
 
 </html>
