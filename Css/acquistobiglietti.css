@@ -4,7 +4,11 @@
 }
 
 .acquisto_body h1{color: #0e84ab;}
-.acquisto_body h2, .acquisto_body h3, .acquisto_body h4, .warning {color: #fe8500;}
+.acquisto_body h2, .acquisto_body h3, .acquisto_body h4, .warning {color: #fe8500; margin-bottom: 0px;}
+
+.acquisto_body h3{color: #241a08;}
+
+.acquisto_body h2{margin-top: 0px;}
 
 .orari{margin-bottom: 10px;}
 .lastaccess{
@@ -37,6 +41,10 @@
 	padding: 5px;
 }
 
+.selezione{
+	justify-content: center;
+}
+
 .selezione img{
 	float: left;
 	padding: 10px;
@@ -61,7 +69,11 @@
 	border-color: #0e84ab;
 	box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.15);
 	margin: 10px;
-	height: 160px;
+	height: 90%;
+}
+
+#dateContainer{
+	width: 50%;
 }
 
 .numberPicker{float: right;}
@@ -82,7 +94,9 @@
     border: 2px groove #0e84ab;
     padding: 10px;
     text-align: center;
-    margin: 10px;
+    margin-left: 23%;
+	margin-top: 20px;
+	
 }
 
 .naviButton{
@@ -125,3 +139,38 @@
 
 .extraPanel{clear: both;}
 
+#datiRidotti input, #datiInteri input, .pagamento input, .pagamento select, #dateContainer input{
+	font-family: 'Candara';
+    height: 15px;
+    padding: 6px;
+    width: 150px;
+    border: 1px solid #e5d1bf;
+    border-radius: 8px;
+}
+
+#datiInteri div, #datiRidotti div, .pagamento div{
+	margin: 3px;
+}
+
+.pagamento span, #datiRidotti span, #datiInteri span{
+	display: inline-block;
+	width: 150px;
+}
+
+.pagamento select, #dateContainer input{
+    height: auto;
+}
+
+@media (max-width: 1024px){
+    .container.interi.ridotti.content{
+        flex-wrap: wrap;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+}
+
+.naviButton:hover{
+	background-color: #f09c13;
+}
