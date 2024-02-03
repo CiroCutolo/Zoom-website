@@ -29,6 +29,7 @@
         $Email =pg_escape_literal($conn,$_POST["Email"]);
         $Data = $_POST["data_di_nascita"];
 
+        $sessMail=$_POST["Email"];
         
 
         //controlla quanti utenti con l'email prelevata dal form sono presenti(se più di 0, significa che l'utente è già registrato)
@@ -49,7 +50,8 @@
             $query = "INSERT INTO utenti (nome, cognome, password, email, data_di_nascita) VALUES ($Nome, $Cognome, $Password, $Email, '$Data')";
             //esegue la query, inserendo i dati
             $result = pg_query($conn, $query);   
-            $_SESSION["isLogged"]= $Email; //UTENTE REGISTRATO E' ANCHE LOGGATO, SI AVVIA LA SESSIONE?>
+            $_SESSION["isLogged"]= $sessMail; //UTENTE REGISTRATO E' ANCHE LOGGATO, SI AVVIA LA SESSIONE
+            $_SESSION["registrato"]="1";?>
             <script>
                 window.location.href='<?php echo $url?>';
                 //ritorna alla pagina che ha chiamato la registrazione

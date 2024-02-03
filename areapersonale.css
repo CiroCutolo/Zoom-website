@@ -60,6 +60,8 @@ body{
 .leone form{
     position: relative;
     margin: 60px;
+    border: 1px solid red;
+    z-index: 1;
 }
   
 .leone{
@@ -91,6 +93,8 @@ body{
     left: 0px;
     opacity: 0.5;
 }
+
+
 
 #scritta{
     margin-top: -70px;
