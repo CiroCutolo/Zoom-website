@@ -2,18 +2,6 @@
     include("connessione.php");
 
     session_start();
-    function checkBrowser($email) {
-      $mybrowser = $_SERVER['HTTP_USER_AGENT']; 
-      $mail="'$email'";
-
-      if(strpos($mybrowser,"Edg") != false){
-        $mail="'$email'";
-      } else if(strpos($mybrowser,"Firefox") != false){
-        $mail="'$email'";
-      }
-
-    return $mail;
-    }	
 
     if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){
       $email_form=$_POST['email'];
@@ -38,11 +26,19 @@
           $_SESSION["password"] = $row[1];
           $_SESSION["nome"] = $row[2];
           $_SESSION["cognome"] = $row[3];
-
-          echo "<script>
-          alert('Login avvenuto con successo!');
-          window.location.href='$url';
-          </script>";
+          
+          //nel caso in cui provo ad effettuare il login nella pagina in cui mi posso registrare, vengo reindirizzato alla home
+          if(str_contains($url,'registrazione.php')){
+            echo "<script>
+            alert('Login avvenuto con successo!');
+            window.location.href='home.php';
+            </script>";
+          }else{
+            echo "<script>
+            alert('Login avvenuto con successo!');
+            window.location.href='$url';
+            </script>";
+          }
         }else{
         echo "<script>
         alert('Password o email errate!');
@@ -50,9 +46,9 @@
         </script>";
         }
       }
-    }else if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="" ){
-      $em = checkBrowser($_SESSION["isLogged"]);
-      $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email=$em";
+    }else if((isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="") && (isset($_GET["action"]) && ($_GET["action"] == ""))){ //entra solo tramite la registrazione
+      $em = $_SESSION["isLogged"];
+      $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email='$em'";
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);
       $_SESSION["email"] = $row[0];
@@ -68,16 +64,26 @@
     <link rel="stylesheet" href="header.css?<?php echo rand();?>">
     <title>Header - Zoom</title>
   </head>
-  <body>
+  <body id="body">
     <div class="header navigation-bar">
       <input type="checkbox" id="check">
       <label for="check">
-        <span class="fas fa-bars" id="btn"></span>
-        <span class="fas fa-times" id="cancel"></span>
+        <span class="fas fa-bars" id="btn" onclick="bloccascroll()"></span>
+        <span class="fas fa-times" id="cancel" onclick="sbloccascroll()"></span>
       </label>
-      <img class="logo" src="logo-removebg.png">
+      <script>
+        function bloccascroll(){
+          document.getElementById("body").classList.add("lock");
+        }
+        function sbloccascroll(){
+          document.getElementById("body").classList.remove("lock");
+        }
+      </script>
+      <a name="home">
+      <img class="logo" src="img\logo-removebg.png">
+      </a>
       <ul>
-        <li class="text"><a name="home" href="home.php">Home</a></li>
+        <li class="text"><a href="home.php">Home</a></li>
         <li class="text"><a href="Animali.php">Animali</a></li>
         <li class="text"><a href="acquistobiglietti.php">Acquisto biglietti</a></li>
         <button class="dropbtn" onclick="menutendina()"></button>
@@ -92,7 +98,8 @@
         </div>
       </ul>
     </div>
-
+    <!--Popup utilizzato per il login e per la registrazione dei nuovi utenti. Non viene visualizzato nel caso in cui viene effettuato il login poichè 
+    è sostituito con un menu a tendina che permette di tenere monitorato l'utente. -->
     <div class="popup">
       <button id="close-btn" onclick="chiudipopup()"><span class="fas fa-times"></span></button>
       <div class = "form">

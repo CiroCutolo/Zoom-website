@@ -16,14 +16,18 @@
           <?php 
           
           if((!isset($_SESSION["isLogged"])) || ($_SESSION["isLogged"] == "")) { ?>
-            <img class="scimmiareg" src="scimmia-registrazione.png">
-            <div class="buy-tickets-textcontent-nolog"><a href="registrazione.php">Registrati </a> o <a href="#home" onclick="menutendina()"> accedi </a> per acquistare!</div>
+            <div class="buy-tickets-textcontent-nolog">
+              <img class="scimmiareg" src="img\scimmia-registrazione.png">
+              <div><a href="registrazione.php">Registrati </a> o <a href="#home" onclick="menutendina()"> accedi </a> per acquistare!</div>
+            </div>
           </div>
           <?php }else{ ?>
           <form method="post" action="acquistobiglietti.php">
+            <!-- Tramite il metodo post i valori dei select vengono salvati e utilizzati per completare l'acquisto nella pagina successiva-->
             <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
+            <p class="buy-tickets-textcontent-sottotitolo">Completa tutti i campi prima di acquistare</p>
               <p class="buy-tickets-textcontent">Adulti
-                <select id="selector1" name="selectOption[0]">
+                <select id="selector1" name="selectOption[0]" onchange="disabilitAcquista()">
                 <script>
                   var i = 0;
                   for (i = 0; i <= 10 ; i++){
@@ -33,7 +37,7 @@
                 </select>
               </p>
               <p class="buy-tickets-textcontent">Bambini
-              <select id="selector2" name="selectOption[1]">
+              <select id="selector2" name="selectOption[1]" onchange="disabilitAcquista()">
                 <script>
                   var i = 0;
                   for (i = 0; i <= 10 ; i++){
@@ -43,23 +47,23 @@
               </select>
               </p>
               <p class="buy-tickets-textcontent">Data della visita</p>
-              <p><input type="date" class="date-picker" min="<?php echo date('Y-m-d');?>" name="selectOption[2]"></input>
+              <p><input type="date" id="data-picker" class="date-picker" min="<?php echo date('Y-m-d');?>" name="selectOption[2]" onchange="disabilitAcquista()"></input>
               </p>
             </div>
             <div class="btn-tickets-container">
-            <input type="submit" value="ACQUISTA" class="btn-tickets">
+            <input id="acquista" type="submit" value="ACQUISTA" class="btn-tickets" disabled>
            </div>
          </form>
          <?php } ?>
    </div>
    <div>
-     <img class="photo" src="foto-giraffa.png">
+     <img class="photo" src="img/foto-giraffa.png">
    </div>
  </div>
   <br>
  <div class="tag openingtime">
    <div>
-          <img class="photo" src="foto-tucano.png">
+          <img class="photo" src="img/foto-tucano.png">
    </div>
    <div class="buy-tickets-container">
     <!--Modifica dinamica dell'orario di ingresso tramite una funzione php che permette di ricavare la data corrente e di confrontarla con le
@@ -75,7 +79,7 @@
       if( (strtotime($today) > strtotime($winterstart_time) && strtotime($today) < strtotime($winterend_time) ) || ( strtotime($today) == strtotime($winterstart_time) || strtotime($today) == strtotime($winterend_time))) {
       ?>
       <div class="hours">
-        <img src="foto-winter.png">
+        <img src="img/foto-winter.png">
         <h2>Orario Invernale</h2>
         <div>Dal 1° Novembre al 31 Marzo: 9:30 - 17:30</div>
         <div>Weekend e festivi invariati</div>
@@ -84,7 +88,7 @@
       }else if ( (strtotime($today) > strtotime($summerstart_time) && strtotime($today) < strtotime($summerend_time)) || ( strtotime($today) == strtotime($summerstart_time) || strtotime($today) == strtotime($summerend_time))){
       ?>
       <div class="hours">
-        <img src="foto-summer.png">
+        <img src="img/foto-summer.png">
         <h2>Orario Estivo</h2>
         <div>Dal 1° Aprile al 31 Ottobre: 10:00 - 18:00</div>
         <div>Weekend e festivi: 9:30 - 19:00</div>
@@ -93,7 +97,7 @@
       }else{
       ?>
       <div class="hours">
-        <img src="foto-winter.png">
+        <img src="img/foto-winter.png">
         <h2>Orario Invernale</h2>
         <div>Dal 1° Novembre al 31 Marzo: 9:30 - 17:30</div>
         <div>Weekend e festivi invariati</div>
@@ -102,7 +106,7 @@
       }
       ?>
       <div class="price">
-        <img src="foto-tickets.png">
+        <img src="img/foto-tickets.png">
         <h2>Tariffe</h2>
         <div>-Intero: 15€</div>
         <div>-Ridotto: 10€ (4-10 anni, persone con disabilità inferiore al 100%)</div>
@@ -122,13 +126,13 @@
       <div class="buy-tickets-container1">
         <div class="map-text">
           <div>
-            <img src="1.png" width="35%">
+            <img src="img/1.png" width="35%">
             <h2>Consulta la nostra mappa</h2>
             Scopri tutte le aree dei nostri animali ed i nostri servizi
           </div>
         </div>
         <div class="map-content">
-          <img src="zoo-map.png" width="100%">
+          <img src="img/zoo-map.png" width="100%">
         </div>
       </div>
   </div>
@@ -137,6 +141,7 @@
   </body>
       <script src="https://code.jquery.com/jquery-latest.min.js"></script>
       <script type="text/javascript">
+      //tramite jQuery posso visualizzare la pagina man mano che scorro 
       var $ = jQuery;
       $(document).on("scroll", function() {
         var pageTop = $(document).scrollTop();
@@ -152,5 +157,13 @@
           }
         }
       });
+
+      function disabilitAcquista(){
+          if(document.getElementById("selector1").value == "0" || document.getElementById("selector2").value == "0" || document.getElementById("data-picker").value == ""){
+              document.getElementById("acquista").setAttribute('disabled','');
+          }else{
+              document.getElementById("acquista").removeAttribute('disabled');
+          }
+      }
       </script>
     </html>

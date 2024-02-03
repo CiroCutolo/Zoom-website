@@ -85,12 +85,15 @@ body{
 }
 
 .buy-tickets-content .scimmiareg{
-  margin-left: 150px;
   width: 40%;
 }
 
 .buy-tickets-textcontent-nolog{
   text-align: center;
+}
+
+.buy-tickets-textcontent-sottotitolo{
+  font-size: 20px;
 }
 
 .buy-tickets-textcontent{
