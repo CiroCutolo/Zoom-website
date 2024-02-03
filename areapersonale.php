@@ -1,5 +1,5 @@
 <?php
-    ini_set('display_errors', 0);
+    ini_set('display_errors', 1);
     ini_set('display_startup_errors' ,1);
     error_reporting(E_ALL);
 
@@ -30,11 +30,6 @@
         //prelevo tutti i dati dal form
         $Nome = pg_escape_literal($conn,$_POST["nome"]);
         $Cognome = pg_escape_literal($conn,$_POST["cognome"]); //sostituisce i caratteri speciali per poterli inserire
-
-        $passwordCriptata = password_hash($_POST["Password"], PASSWORD_DEFAULT); //cripto la password
-
-        $Password = pg_escape_literal($conn,$passwordCriptata);
-
         $Email =pg_escape_literal($conn,$_POST["Email"]);
         $Data = $_POST["data_di_nascita"];
 
@@ -58,9 +53,15 @@
         }
         else{
             //inserisco i dati aggiornati nel database
-            $query = "UPDATE utenti SET nome=$Nome, cognome=$Cognome, password=$Password, email=$Email, data_di_nascita='$Data' WHERE email = '".  $_SESSION["isLogged"] ."'";
-
+            $query = "UPDATE utenti SET nome=$Nome, cognome=$Cognome, email=$Email, data_di_nascita='$Data' WHERE email = '".  $_SESSION["isLogged"] ."'";
             $result = pg_query($conn, $query); //viene eseguita la query e i dati sono stati aggiornati correttamente: l'utente può visionarli aggiornati nell'area personale 
+            
+            if($_POST["Password"]!=""){ //la password viene criptata e modificata solo se l'utente imposta una nuova password 
+                $passwordCriptata = password_hash($_POST["Password"], PASSWORD_DEFAULT); //cripta la password
+                $Password = pg_escape_literal($conn,$passwordCriptata);
+                $query = "UPDATE utenti SET password=$Password WHERE email = '".  $_SESSION["isLogged"] ."'";
+                $result = pg_query($conn, $query); //viene eseguita la query e la password è stata aggiornata
+            }
         }
     }
 
@@ -107,10 +108,9 @@
                             <br><br>
                             <span>Cognome: </span><input type="text" id="cognome" name = "cognome" placeholder="Cognome" value="<?php echo $cognome?>" onchange="abilita()" onkeyup="abilita()">
                             <br><br>
-
                             <span>Data di nascita: </span><input type="text" id="data_di_nascita" name = "data_di_nascita" placeholder="Data di nascita" max="<?php echo date('Y-m-d');?>"  value="<?php echo $data?>" onchange="abilita()" onkeyup="abilita()">
                             <br><br>
-                            <span>Email: </span><input type="text" id="Email" name = "Email" placeholder="E-mail"  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()">
+                            <span>Email: </span><input type="email" id="Email" name = "Email" placeholder="E-mail"  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()">
                             <br><br>
                             <div id="passwordCONocchio">
                                 <span>Password: </span><input type="password" id="Password" name = "Password" placeholder="Imposta una nuova password">

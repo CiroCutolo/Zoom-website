@@ -64,7 +64,7 @@
             <label for="password">Password</label>
             <div class="occhietto">
               <input onfocus="onFocus()"  type="password" id="password" name="pw" placeholder="Inserisci password">
-              <i class="far fa-eye-slash" id="togglepassword"></i>
+              <i class="far fa-eye-slash" id="togglepassword" onclick="occhio()"></i>
             </div>
           </div>
           <div class="form-element">
@@ -118,7 +118,6 @@
           obj.style.display="block";
           obj.innerHTML="<div style='width: 100%; text-align: center;'>Password o email errate!</div>";
           //mostra un messaggio di errore se le credenziali sono errate 
-
         }
       }
 
@@ -164,6 +163,7 @@
         document.getElementById("body").classList.remove("lock");
       }
       
+      function occhio(){
       //creo l'azione mostra/nascondi password
       const togglepassword = document.getElementById("togglepassword");
       const Password = document.getElementById("password");
@@ -174,6 +174,7 @@
 
           this.classList.toggle('fa-eye');
       });
+    }
 
     </script>
   </body>
