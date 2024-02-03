@@ -1,3 +1,22 @@
+<?php
+
+	// include('connessione.php');
+	// session_start();
+
+	// if(isset($_GET['action']) && ($_GET['action']=="salva")){
+	// 	$emailReg=$_SESSION['isLogged'];
+	// 	$validita=$_POST['datePicker'];
+
+	// 	$query = "INSERT INTO biglietti(codice,prezzo,tipologia,validità) VALUES($emailReg$$$)";
+	// 	$result = pg_query($conn,$query);
+		
+	// }
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>			
@@ -10,47 +29,49 @@
 	<body class="acquisto_body">
 		<?php include './header.php';?>
 
-		<div class="container tipologia">
-			<h1>Biglietti</h1>
-			<h2>Tipologie di biglietto</h2>
-			<ul>
-				<li>Intero a data fissa: € 15,00</li>
-				<li>Ridotto a data fissa: € 10,00 per bambini da 4 a 10 anni, persone con disabilita' inferiore al 100%.</li>
-				<li>Gratuito: Under 3, Over 70 e disabili 100% con accompagnatori.</li>
-			</ul>
-	
-			<h2>Orari</h2>
-			<ul class="orari">
-				<li>Orario invernale:</li>
+		<form method="post" action="acquistobiglietti.php?action=salva">
+			<!-- Informazioni sui biglietti -->
+			<div class="container informazioni">
+				<h1>Biglietti</h1>
+				<h2>Tipologie di biglietto</h2>
 				<ul>
-					<li>Dal 1° Novembre al 31 Marzo: 9:30 – 17:00</li>
-					<li>Weekend e festivi invariati</li>
+					<li>Intero a data fissa: € 15.00</li>
+					<li>Ridotto a data fissa: € 10.00 per bambini da 4 a 10 anni, persone con disabilita' inferiore al 100%.</li>
+					<li>Gratuito: Under 3, Over 70 e disabili 100% con accompagnatori.</li>
 				</ul>
-				<li>Orario estivo:</li>
+		
+				<h2>Orari</h2>
+				<ul class="orari">
+					<li>Orario invernale:</li>
 					<ul>
-					<li>Dal 1° Aprile al 31 Ottobre: 10:00 – 18:00</li>
-					<li>Weekend e festivi: 9:30 - 19:00</li>
+						<li>Dal 1° Novembre al 31 Marzo: 9:30 – 17:00</li>
+						<li>Weekend e festivi invariati</li>
 					</ul>
-			</ul>	
-			<p class="lastaccess">
-				<span class="warning">
-				<i class='fas fa-exclamation-circle' style='font-size:15px'></i>
-				</span>
-				<strong> Ultimo ingresso:</strong> 60 min prima dell'orario di chiusura del parco.
-			</p>
+					<li>Orario estivo:</li>
+						<ul>
+						<li>Dal 1° Aprile al 31 Ottobre: 10:00 – 18:00</li>
+						<li>Weekend e festivi: 9:30 - 19:00</li>
+						</ul>
+				</ul>	
+				<p class="lastaccess">
+					<span class="warning">
+					<i class='fas fa-exclamation-circle' style='font-size:15px'></i>
+					</span>
+					<strong> Ultimo ingresso:</strong> 60 min prima dell'orario di chiusura del parco.
+				</p>
 
-		</div>
+			</div>
 
-		<div class="container acquisto">
-			<h2>Acquista il tuo biglietto</h2>
-			<h3>Seleziona il numero di biglietti</h3>
-			<p>
-			I biglietti di ingresso non sono in alcun modo rimborsabili.
-			Non è possibile effettuare un cambio data.
-			Una volta selezionati tipologia e numero di biglietti, apparirà un calendario per la selezione della data.
-			</p>
-			<div class="selezione">
-				<form method="post" action="">
+			<!-- Acquisto biglietti -->
+			<div class="container acquisto">
+				<h2>Acquista il tuo biglietto</h2>
+				<h3>Seleziona il numero di biglietti</h3>
+				<p>
+				I biglietti di ingresso non sono in alcun modo rimborsabili.
+				Non è possibile effettuare un cambio data.
+				Una volta selezionati tipologia e numero di biglietti, apparirà un calendario per la selezione della data.
+				</p>
+				<div class="selezione">
 					<div class="ticketNumber">
 						<label for="numeroInteri" class="interi">
 							<fieldset>
@@ -63,29 +84,29 @@
 										<i class="fa fa-info-circle"></i>
 									</a>
 									<div class="price">
-										<span>€ 15,00</span>
+										<span>€ 15.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroInteri" onchange="showDate('numeroInteri','numeroRidotti');enable()">
+										<select id="numeroInteri" onchange="showDate();enable();carrello()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
-                  								var i = 0;
-                  								for (i = 0; i <= 10 ; i++){
-                    								 document.write("<option value=" + i +">" + i + "</option>");
-                  								}
-                								</script>
+												var i = 0;
+												for (i = 0; i <= 10 ; i++){
+													document.write("<option value=" + i +">" + i + "</option>");
+												}
+												</script>
 											<?php }else{ ?>
 												<option value="0" <?php if($_POST['selectOption'][0] == 0) echo ' selected="selected"'; ?>>0</option>
-                  								<option value="1" <?php if($_POST['selectOption'][0] == 1) echo ' selected="selected"'; ?>>1</option>
-                  								<option value="2" <?php if($_POST['selectOption'][0] == 2) echo ' selected="selected"'; ?>>2</option>
-                  								<option value="3" <?php if($_POST['selectOption'][0] == 3) echo ' selected="selected"'; ?>>3</option>
-                  								<option value="4" <?php if($_POST['selectOption'][0] == 4) echo ' selected="selected"'; ?>>4</option>
-                  								<option value="5" <?php if($_POST['selectOption'][0] == 5) echo ' selected="selected"'; ?>>5</option>
-                  								<option value="6" <?php if($_POST['selectOption'][0] == 6) echo ' selected="selected"'; ?>>6</option>
-                  								<option value="7" <?php if($_POST['selectOption'][0] == 7) echo ' selected="selected"'; ?>>7</option>
-                  								<option value="8" <?php if($_POST['selectOption'][0] == 8) echo ' selected="selected"'; ?>>8</option>
-                  								<option value="9" <?php if($_POST['selectOption'][0] == 9) echo ' selected="selected"'; ?>>9</option>
-                  								<option value="10" <?php if($_POST['selectOption'][0] == 10) echo ' selected="selected"'; ?>>10</option>
+												<option value="1" <?php if($_POST['selectOption'][0] == 1) echo ' selected="selected"'; ?>>1</option>
+												<option value="2" <?php if($_POST['selectOption'][0] == 2) echo ' selected="selected"'; ?>>2</option>
+												<option value="3" <?php if($_POST['selectOption'][0] == 3) echo ' selected="selected"'; ?>>3</option>
+												<option value="4" <?php if($_POST['selectOption'][0] == 4) echo ' selected="selected"'; ?>>4</option>
+												<option value="5" <?php if($_POST['selectOption'][0] == 5) echo ' selected="selected"'; ?>>5</option>
+												<option value="6" <?php if($_POST['selectOption'][0] == 6) echo ' selected="selected"'; ?>>6</option>
+												<option value="7" <?php if($_POST['selectOption'][0] == 7) echo ' selected="selected"'; ?>>7</option>
+												<option value="8" <?php if($_POST['selectOption'][0] == 8) echo ' selected="selected"'; ?>>8</option>
+												<option value="9" <?php if($_POST['selectOption'][0] == 9) echo ' selected="selected"'; ?>>9</option>
+												<option value="10" <?php if($_POST['selectOption'][0] == 10) echo ' selected="selected"'; ?>>10</option>
 											<?php } ?>
 										</select>
 									</div>
@@ -117,29 +138,29 @@
 										<i class="fa fa-info-circle"></i>
 									</a>
 									<div class="price">
-										<span>€ 10,00</span>
+										<span>€ 10.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroRidotti" oninput="show('numeroInteri','numeroRidotti')">
+										<select id="numeroRidotti" onchange="functionsNumberPicker()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
-                  								var i = 0;
-                  								for (i = 0; i <= 10 ; i++){
-                    								 document.write("<option value=" + i +">" + i + "</option>");
-                  								}
-                								</script>
+												var i = 0;
+												for (i = 0; i <= 10 ; i++){
+													document.write("<option value=" + i +">" + i + "</option>");
+												}
+												</script>
 											<?php }else{ ?>
 												<option value="0" <?php if($_POST['selectOption'][1] == 0) echo ' selected="selected"'; ?>>0</option>
-                  								<option value="1" <?php if($_POST['selectOption'][1] == 1) echo ' selected="selected"'; ?>>1</option>
-                  								<option value="2" <?php if($_POST['selectOption'][1] == 2) echo ' selected="selected"'; ?>>2</option>
-                  								<option value="3" <?php if($_POST['selectOption'][1] == 3) echo ' selected="selected"'; ?>>3</option>
-                  								<option value="4" <?php if($_POST['selectOption'][1] == 4) echo ' selected="selected"'; ?>>4</option>
-                  								<option value="5" <?php if($_POST['selectOption'][1] == 5) echo ' selected="selected"'; ?>>5</option>
-                  								<option value="6" <?php if($_POST['selectOption'][1] == 6) echo ' selected="selected"'; ?>>6</option>
-                  								<option value="7" <?php if($_POST['selectOption'][1] == 7) echo ' selected="selected"'; ?>>7</option>
-                  								<option value="8" <?php if($_POST['selectOption'][1] == 8) echo ' selected="selected"'; ?>>8</option>
-                  								<option value="9" <?php if($_POST['selectOption'][1] == 9) echo ' selected="selected"'; ?>>9</option>
-                  								<option value="10" <?php if($_POST['selectOption'][1] == 10) echo ' selected="selected"'; ?>>10</option>
+												<option value="1" <?php if($_POST['selectOption'][1] == 1) echo ' selected="selected"'; ?>>1</option>
+												<option value="2" <?php if($_POST['selectOption'][1] == 2) echo ' selected="selected"'; ?>>2</option>
+												<option value="3" <?php if($_POST['selectOption'][1] == 3) echo ' selected="selected"'; ?>>3</option>
+												<option value="4" <?php if($_POST['selectOption'][1] == 4) echo ' selected="selected"'; ?>>4</option>
+												<option value="5" <?php if($_POST['selectOption'][1] == 5) echo ' selected="selected"'; ?>>5</option>
+												<option value="6" <?php if($_POST['selectOption'][1] == 6) echo ' selected="selected"'; ?>>6</option>
+												<option value="7" <?php if($_POST['selectOption'][1] == 7) echo ' selected="selected"'; ?>>7</option>
+												<option value="8" <?php if($_POST['selectOption'][1] == 8) echo ' selected="selected"'; ?>>8</option>
+												<option value="9" <?php if($_POST['selectOption'][1] == 9) echo ' selected="selected"'; ?>>9</option>
+												<option value="10" <?php if($_POST['selectOption'][1] == 10) echo ' selected="selected"'; ?>>10</option>
 											<?php } ?>
 										</select>
 									</div>
@@ -163,94 +184,106 @@
 						<h3>Seleziona la data</h3>
 
 						<label for="ticketDate" >
-							<input id="datePicker" <?php if(isset($_POST['selectOption'][2])) {?> value = "<?php echo $_POST['selectOption'][2]; ?>" <?php } ?>type="date" title="Data visita" onchange="enable()">
+							<input id="datePicker" type="date" title="Data visita" onchange="carrello();enable()">
 						</label>
 					</div>
-					<label class="buttonContainer">
-						<input type="button" id="continueButton" value="Continua" disabled onclick="showCart()">
-					</label>
-				</form>
+				</div>
 			</div>
-		
-			<!-- CARRELLO -->
-			<div class="cart">
+
+			<div class="container carrello">
 				<h2>Carrello</h2>
-				<table>
-					<tr>
-						<td>Prodotto</td>
-						<td>Quantità</td>
-						<td>Data</td>
-						<td>Data Scadenza</td>
-						<td>Prezzo</td>
-						<td>Totale</td>
-					</tr>
-					<tr>
-						<td>Biglietti Interi</td>
-						<td>Quantità</td>
-						<td>Data</td>
-						<td>Data Scadenza</td>
-						<td>€15,00</td>
-						<td>Totale</td>
-					</tr>
-					<tr>
-						<td>Biglietti Ridotti</td>
-						<td>Quantità</td>
-						<td>Data</td>
-						<td>Data Scadenza</td>
-						<td>€10,00</td>
-						<td>Totale</td>
-					</tr>
-					<tr>
-						<td>TOTALE</td>
-					</tr>
+				<table class="cartTable">
+					<thead>
+						<tr id="headerRow" class="cartHeader">
+							<th>Prodotto</th>
+							<th>Quantità</th>
+							<th>Data</th>
+							<th>Prezzo</th>
+							<th>Totale</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="interiRow" class="cartRow hidden">
+							<td class="stdCell">Biglietti Interi</td>
+							<td id="tableInteri">0</td>
+							<td id="tableDate1">gg/mm/aaaa</td>
+							<td>€15.00</td>
+							<td id="tableTotInteri">€0.00</td>
+						</tr>
+						<tr id="ridottiRow" class="cartRow hidden">
+							<td class="stdCell">Biglietti Ridotti</td>
+							<td id="tableRidotti">0</td>
+							<td id="tableDate2">gg/mm/aaaa</td>
+							<td>€10.00</td>
+							<td id="tableTotRidotti">€0.00</td>
+						</tr>
+						<tr id="totalRow" class="cartRow">
+							<td class="stdCell">TOTALE</td>
+							<td id="totalPrice" colspan="4">€0.00</td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
-			<div>
+
+			<!-- Inserimento dati biglietto -->
+			<div class="container datiBiglietti hidden">
 				<h2>Dati biglietti</h2>
-				<h3>Biglietti interi</h3>
-				<h4>Partecipante 1</h4>
-				<form action="">
-					<label>
-						Nome:
-						<input type="text">
-					</label>
-					<label>
-						Cognome:
-						<input type="text">
-					</label>
-				</form>
-				<h2>Pagamento</h2>
-				<h3>Metodo di pagamento</h3>
-				<form action="">
-					<label>
-						Nome sulla carta:
-						<input type="text">
-					</label>
-					<label>
-						Numero della carta:
-						<input type="text">
-					</label>
-					<label>
-						Mese:
-						<select>
-							<?php
-							for($i=0;$i<=12;$i++)
-								echo "<option value=\"$i\">$i</option>"
-							?>
-						</select>
-					</label>
-					<label>
-						Anno:
-						<select>
-							<?php
-								for($i=2024;$i<=2044;$i++)
-									echo "<option value=\"$i\">$i</option>"
-								?>
-						</select>
-					</label>
-				</form>
+				<div id="datiInteri">
+					<h3>Biglietti interi</h3>
+				</div>
+				<div id="datiRidotti">
+					<h3>Biglietti ridotti</h3>
+				</div>
+				<label>
+					<input type="checkbox">pryvacy.
+				</label>
 			</div>
 			
-		</div>
+			<!-- Dati di pagamento -->
+			<div class="container pagamento hidden">
+				<h2>Pagamento</h2>
+				<h3>Metodo di pagamento</h3>
+				<label>
+					Nome sulla carta:
+					<input type="text">
+				</label>
+				<label>
+					Numero della carta:
+					<input type="text">
+				</label>
+				<label>
+					Mese:
+					<select>
+						<?php
+						for($i=0;$i<=12;$i++)
+							echo "<option value=\"$i\">$i</option>"
+						?>
+					</select>
+				</label>
+				<label>
+					Anno:
+					<select>
+						<?php
+							for($i=2024;$i<=2044;$i++)
+								echo "<option value=\"$i\">$i</option>"
+							?>
+					</select>
+				</label>				
+			</div>
+			
+			<!-- Bottoni di navigazione -->			
+			<label class="buttonContainer">
+				<input type="button" id="continueButton" value="Continua" disabled onclick="nextPage();generaCampi()">
+			</label>
+						
+			<label class="buttonContainer">
+				<input type="button" id="backButton" value="Indietro" disabled onclick="nextPage();generaCampi()">
+			</label>
+
+			<label>
+				<input type="submit" value="Paga">
+			</label>
+
+		</form>
 	</body>
 </html>
