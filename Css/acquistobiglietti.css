@@ -98,17 +98,17 @@
 	text-align: right;
 }
 
-.headerRow{
+#headerRow{
 	background-color: #0e84ab;
 	color: white;
 }
 
-.interiRow, .ridottiRow{
+#interiRow, #ridottiRow{
 	border: 1px, solid, grey;
 	border-left: none;
 }
 
-.totalRow{background-color: #fe8500;}
+#totalRow{background-color: #fe8500;}
 
 .stdCell{text-align: left;}
 

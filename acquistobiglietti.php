@@ -1,3 +1,22 @@
+<?php
+
+	// include('connessione.php');
+	// session_start();
+
+	// if(isset($_GET['action']) && ($_GET['action']=="salva")){
+	// 	$emailReg=$_SESSION['isLogged'];
+	// 	$validita=$_POST['datePicker'];
+
+	// 	$query = "INSERT INTO biglietti(codice,prezzo,tipologia,validità) VALUES($emailReg$$$)";
+	// 	$result = pg_query($conn,$query);
+		
+	// }
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>			
@@ -10,7 +29,7 @@
 	<body class="acquisto_body">
 		<?php include './header.php';?>
 
-		<form method="post" action="">
+		<form method="post" action="acquistobiglietti.php?action=salva">
 			<!-- Informazioni sui biglietti -->
 			<div class="container informazioni">
 				<h1>Biglietti</h1>
@@ -68,7 +87,7 @@
 										<span>€ 15.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroInteri" onchange="showDate('numeroInteri','numeroRidotti');enable()">
+										<select id="numeroInteri" onchange="showDate();enable();carrello()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
 												var i = 0;
@@ -122,7 +141,7 @@
 										<span>€ 10.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroRidotti" onchange="showDate('numeroInteri','numeroRidotti');enable()">
+										<select id="numeroRidotti" onchange="functionsNumberPicker()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
 												var i = 0;
@@ -175,7 +194,7 @@
 				<h2>Carrello</h2>
 				<table class="cartTable">
 					<thead>
-						<tr class="headerRow">
+						<tr id="headerRow" class="cartHeader">
 							<th>Prodotto</th>
 							<th>Quantità</th>
 							<th>Data</th>
@@ -184,21 +203,21 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="interiRow">
+						<tr id="interiRow" class="cartRow hidden">
 							<td class="stdCell">Biglietti Interi</td>
 							<td id="tableInteri">0</td>
 							<td id="tableDate1">gg/mm/aaaa</td>
 							<td>€15.00</td>
 							<td id="tableTotInteri">€0.00</td>
 						</tr>
-						<tr class="ridottiRow">
+						<tr id="ridottiRow" class="cartRow hidden">
 							<td class="stdCell">Biglietti Ridotti</td>
 							<td id="tableRidotti">0</td>
 							<td id="tableDate2">gg/mm/aaaa</td>
 							<td>€10.00</td>
 							<td id="tableTotRidotti">€0.00</td>
 						</tr>
-						<tr class="totalRow">
+						<tr id="totalRow" class="cartRow">
 							<td class="stdCell">TOTALE</td>
 							<td id="totalPrice" colspan="4">€0.00</td>
 						</tr>
@@ -206,58 +225,65 @@
 				</table>
 			</div>
 
-			<!-- bottone di navigazione -->			
-			<label class="buttonContainer">
-				<input type="button" id="continueButton" value="Continua" disabled onclick="nextPage()">
-			</label>
-
 			<!-- Inserimento dati biglietto -->
 			<div class="container datiBiglietti hidden">
 				<h2>Dati biglietti</h2>
-				<div class="">
-				<h3>Biglietti interi</h3>
-				<h4>Partecipante 1</h4>
-				
+				<div id="datiInteri">
+					<h3>Biglietti interi</h3>
+				</div>
+				<div id="datiRidotti">
+					<h3>Biglietti ridotti</h3>
+				</div>
 				<label>
-					Nome:
-					<input type="text">
+					<input type="checkbox">pryvacy.
 				</label>
-				<label>
-					Cognome:
-					<input type="text">
-				</label>
-				
+			</div>
+			
+			<!-- Dati di pagamento -->
+			<div class="container pagamento hidden">
 				<h2>Pagamento</h2>
 				<h3>Metodo di pagamento</h3>
-				<form action="">
-					<label>
-						Nome sulla carta:
-						<input type="text">
-					</label>
-					<label>
-						Numero della carta:
-						<input type="text">
-					</label>
-					<label>
-						Mese:
-						<select>
-							<?php
-							for($i=0;$i<=12;$i++)
+				<label>
+					Nome sulla carta:
+					<input type="text">
+				</label>
+				<label>
+					Numero della carta:
+					<input type="text">
+				</label>
+				<label>
+					Mese:
+					<select>
+						<?php
+						for($i=0;$i<=12;$i++)
+							echo "<option value=\"$i\">$i</option>"
+						?>
+					</select>
+				</label>
+				<label>
+					Anno:
+					<select>
+						<?php
+							for($i=2024;$i<=2044;$i++)
 								echo "<option value=\"$i\">$i</option>"
 							?>
-						</select>
-					</label>
-					<label>
-						Anno:
-						<select>
-							<?php
-								for($i=2024;$i<=2044;$i++)
-									echo "<option value=\"$i\">$i</option>"
-								?>
-						</select>
-					</label>
-				
+					</select>
+				</label>				
 			</div>
+			
+			<!-- Bottoni di navigazione -->			
+			<label class="buttonContainer">
+				<input type="button" id="continueButton" value="Continua" disabled onclick="nextPage();generaCampi()">
+			</label>
+						
+			<label class="buttonContainer">
+				<input type="button" id="backButton" value="Indietro" disabled onclick="nextPage();generaCampi()">
+			</label>
+
+			<label>
+				<input type="submit" value="Paga">
+			</label>
+
 		</form>
 	</body>
 </html>

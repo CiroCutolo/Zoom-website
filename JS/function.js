@@ -1,5 +1,5 @@
-function moreInfo(panelID){
-	var x = document.getElementById(panelID);
+function toggleElement(elem){
+	var x = document.getElementById(elem);
   if (x.classList.contains("hidden")) {
     x.classList.remove("hidden");
   } else {
@@ -13,9 +13,8 @@ function takeOptValue(selectId){
   return value;
 }
 
-function showDate(elementID1, elementID2){
-  
-  if((takeOptValue(elementID1)!=0)||(takeOptValue(elementID2)!=0)){
+function showDate(){
+  if((takeOptValue('numeroInteri')!=0)||(takeOptValue('numeroRidotti')!=0)){
     document.getElementById("dateContainer").classList.remove("hidden");
   }else{
     document.getElementById("dateContainer").classList.add("hidden");
@@ -34,14 +33,20 @@ function enable(){
   if((takeOptValue("numeroInteri")!=0||takeOptValue("numeroRidotti")!=0)&& getSelectedDate()!=''){
     document.getElementById("continueButton").removeAttribute('disabled');
   }else{
-    document.getElementById("continueButton").setAttribute('disable');
+    document.getElementById("continueButton").setAttribute('disable','');
   }
 }
 
 function nextPage(){
-  document.querySelector(".informazioni").classList.add("hidden");
-  document.querySelector(".acquisto").classList.add("hidden");
-  document.querySelector(".datiBiglietti").classList.remove("hidden");
+  const collection = document.getElementsByClassName("container");
+  for(i=0;i<collection.length;i++){
+    if(collection[i].classList.contains("hidden")){
+      collection[i].classList.remove("hidden");
+    }else{
+      collection[i].classList.add("hidden");
+    }
+  }
+
 }
 
 function carrello(){
@@ -49,7 +54,10 @@ function carrello(){
     document.getElementById("tableInteri").innerHTML = interi;
 
     let ridotti = document.getElementById("numeroRidotti").value;
-    document.getElementById("tableRidotti").innerHTML = ridotti;
+    if(ridotti != 0){
+      document.getElementById("tableRidotti").innerHTML = ridotti;
+      document.getElementById("interiRow").classList.remove("hidden");
+    }
 
     let date = document.getElementById("datePicker").value;
     document.getElementById("tableDate1").innerHTML = date;
@@ -62,4 +70,25 @@ function carrello(){
 
     let tot = totInteri+totRidotti;
     document.getElementById("totalPrice").innerHTML = '€' + tot.toFixed(2);
+  }
+
+  function generaCampi(){
+    let interi = document.getElementById("numeroInteri").value;
+    for(i=1;i<=interi;i++)
+      document.getElementById("datiInteri").innerHTML += "<h4>Partecipante Intero " + i + "</h4>" + 
+        "<label>Nome:<input type=\"text\"><label>" +
+        "<label>Cognome:<input type=\"text\"><label>";
+
+    let ridotti = document.getElementById("numeroRidotti").value;
+    for(i=1;i<=ridotti;i++)
+      document.getElementById("datiRidotti").innerHTML += "<h4>Partecipante Ridotto " + i + "</h4>" +
+      "<label>Nome:<input type=\"text\"><label>" +
+      "<label>Cognome:<input type=\"text\"><label>";
+  
+  }
+
+  function functionNumberPicker(){
+    showDate();
+    enable();
+    carrello()
   }
