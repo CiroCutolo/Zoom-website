@@ -46,8 +46,10 @@
         </script>";
         }
       }
-    }else if((isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="") && (isset($_GET["action"]) && ($_GET["action"] == ""))){ //entra solo tramite la registrazione
+    }else if(((isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!="") && (isset($_GET["action"]) && str_contains($_SERVER['HTTP_REFERER'],'registrazione.php')))){ //entra solo tramite la registrazione
       $em = $_SESSION["isLogged"];
+      echo "--->" . $em;
+      echo "pagina prec" . $_SERVER['HTTP_REFERER'];
       $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email='$em'";
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);
@@ -140,6 +142,7 @@
         </div>
       </div>
     </div>
+
     <script>
       var popup = document.getElementsByClassName("popup");
       /* Quando l'utente clicca il bottone dell'icona dell'account compare il menu a tendina nel caso sia stato effettuato l'accesso, in caso
