@@ -100,6 +100,7 @@ body{
 @media screen and (max-width: 900px) {
     .leopardo input{
         margin-bottom: 10px;
+        width: 80%;  
     }
     
     .leopardo input[type=submit]{
@@ -107,7 +108,16 @@ body{
         width: 50%;    
         margin-left: 0px;
     }  
-
+    .leopardo #confermapasswordCONocchio{
+        left:15%;
+        bottom: 0px;
+        width: 80%;  
+    }
+    .leopardo #passwordCONocchio{
+        left:15%;
+        bottom: 0px;
+        width: 80%;  
+    }
     #scritta{
         font-size: medium;  
         margin-left: 0px;
@@ -128,10 +138,6 @@ body{
         display: none;
     }
 
-    .leopardo #confermapasswordCONocchio{
-        left:15%;
-        bottom: 0px;
-    }
 
     .leopardo #togglePassword, #togglePassword1 {
         margin: -30px;

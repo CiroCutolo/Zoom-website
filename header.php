@@ -2,50 +2,8 @@
     include("connessione.php");
 
     session_start();
-    if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){ //entra solo tramite il login dal popup
-      $email_form=$_POST['email'];
-      $pw_form=$_POST['pw'];
-      //effettuo la connessione al database e seleziono email e password dalla tabella utenti che sono uguali a email e passowrd inseriti nel form.
-      //prelevo anche il valore del nome e del cognome per poi salvarli all'interno di variabili di sessione per monitorare lo stato dell'utente
-      $sql = "SELECT email,password,nome,cognome FROM utenti WHERE utenti.email='$email_form'";
-      
-      //salvo il risultato all'interno della riga restituita dalla quary che sarà sicuramente diversa da flase nel caso in cui trova l'utente
-      $ret = pg_query($conn,$sql);
-      $row = pg_fetch_row($ret);
-      
-      //reindirizzo alla pagina precedentemente visitata mostrando un messaggio di successo o insuccesso del login
-      $url = $_SERVER['HTTP_REFERER'];
-      if($row != false){
-        $password = $row[1];
-        if(password_verify($pw_form,$password)){
-        //avvio della sessione nel caso in cui il login va a buon fine
-          $_SESSION["isLogged"] = $email_form;
 
-          $_SESSION["email"] = $row[0];
-          $_SESSION["password"] = $row[1];
-          $_SESSION["nome"] = $row[2];
-          $_SESSION["cognome"] = $row[3];
-          
-          //nel caso in cui provo ad effettuare il login nella pagina in cui mi posso registrare, vengo reindirizzato alla home
-          if(str_contains($url,'registrazione.php')){
-            echo "<script>
-            alert('Login avvenuto con successo!');
-            window.location.href='home.php';
-            </script>";
-          }else{
-            echo "<script>
-            alert('Login avvenuto con successo!');
-            window.location.href='$url';
-            </script>";
-          }
-        }else{
-        echo "<script>
-        alert('Password o email errate!');
-        window.location.href='$url';
-        </script>";
-        }
-      }
-    }else if((isset($_SESSION["registrato"]) && $_SESSION["registrato"]=="1")){ //entra solo tramite la registrazione
+    if((isset($_SESSION["registrato"]) && $_SESSION["registrato"]=="1")){ //entra solo tramite la registrazione per salvare le info dell'utente per il menu a tendina
       $em = $_SESSION["isLogged"];
       $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email='$em'";
       $ret = pg_query($conn,$sql);
@@ -60,9 +18,11 @@
   <head>
     <meta charset="utf-8">
     <script src="https://kit.fontawesome.com/9491817803.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js?<?php echo rand();?>"></script>
     <link rel="stylesheet" href="header.css?<?php echo rand();?>">
     <title>Header - Zoom</title>
   </head>
+
   <body id="body">
     <div class="header navigation-bar">
       <input type="checkbox" id="check">
@@ -70,14 +30,6 @@
         <span class="fas fa-bars" id="btn" onclick="bloccascroll()"></span>
         <span class="fas fa-times" id="cancel" onclick="sbloccascroll()"></span>
       </label>
-      <script>
-        function bloccascroll(){
-          document.getElementById("body").classList.add("lock");
-        }
-        function sbloccascroll(){
-          document.getElementById("body").classList.remove("lock");
-        }
-      </script>
       <a name="home">
       <img class="logo" src="img\logo-removebg.png">
       </a>
@@ -103,19 +55,22 @@
       <button id="close-btn" onclick="chiudipopup()"><span class="fas fa-times"></span></button>
       <div class = "form">
         <h2>Accedi</h2>
-        <form action="home.php?action=accedi" method="post">
+        <form>
           <div class="form-element">
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="Inserisci email" onchange="abilitalogin()" onkeyup="abilitalogin()">
+            <input onfocus="onFocus()" type="text" id="email" name="email" placeholder="Inserisci email">
           </div>
           <div class="form-element">
             <label for="password">Password</label>
-            <input type="password" id="password" name="pw" placeholder="Inserisci password" onchange="abilitalogin()" onkeyup="abilitalogin()">
+            <input onfocus="onFocus()"  type="password" id="password" name="pw" placeholder="Inserisci password">
+          </div>
+          <div class="form-element">
+            <div id="messaggio" style="display:none; color: red;"></div>
           </div>
           <div class="button-container">
             <div class="button-section">
               <div class="form-element" id="login">
-                <input id="login-btn" type="submit" value="Accedi" disabled>
+                <input id="login-btn" type="button" onclick="checkLogin()" value="Accedi">
               </div>
             </div>
             <div class="button-section">
@@ -127,20 +82,49 @@
             </div>
           </div>
         </form>
-          <script>
-            function abilitalogin(){
-              if (document.getElementById("email").value == "" || document.getElementById("password").value == ""){
-                document.getElementById("login-btn").setAttribute('disabled',"");
-              }else{
-                document.getElementById("login-btn").removeAttribute('disabled');
-              }
-            }
-          </script>
         </div>
       </div>
     </div>
+    <div class="lineaOmbra"></div>
 
     <script>
+      function login(mail,pwd) { //chiamata ad ajax per controllare le credenziali inserite dall'utente
+        var strReturn;
+        $.ajax({
+            url: "ajax.php?action=login&email="+mail + "&password=" + pwd, dataType: "json", success: function(data) {
+            strReturn=JSON.parse(JSON.stringify(data));
+              },
+              async:false
+          });
+          return strReturn;	
+        }
+
+      function checkLogin(){ //azioni conseguenti al login andato a buon fine o errato 
+        mail=document.getElementById("email").value;
+        pwd=document.getElementById("password").value;
+        cklog=login(mail,pwd); //salva il risultato della chiamata ajax 
+
+        if (document.getElementById("email").value == "" || document.getElementById("password").value == ""){ //controlla se i campi sono vuoti
+          mess=document.getElementById("messaggio");
+          mess.style.display="block";
+          mess.innerHTML="<div style='width: 100%; text-align: center;'>Inserisci tutti i campi!</div>";
+        }else if (cklog.stato=="OK") { //login andato a buon fine, ritorna alla home
+          window.location.href='home.php';
+        }else if(cklog.stato="NOK"){ //login errato
+          obj=document.getElementById("messaggio");
+          obj.style.display="block";
+          obj.innerHTML="<div style='width: 100%; text-align: center;'>Password o email errate!</div>";
+          //mostra un messaggio di errore se le credenziali sono errate 
+
+        }
+      }
+
+      function onFocus() { //elimina il messaggio di errore delle credenziali se ci si sposta su uno dei campi 
+          obj=document.getElementById("messaggio");
+          obj.style.display="none";
+          obj.innerHTML="<div style='width: 100%; text-align: center;'></div>";
+      }
+
       var popup = document.getElementsByClassName("popup");
       /* Quando l'utente clicca il bottone dell'icona dell'account compare il menu a tendina nel caso sia stato effettuato l'accesso, in caso
       contrario compare il popup che permette la registrazione o il login */
@@ -170,9 +154,12 @@
       window.location.href= 'home.php?action=logout';
       }
 
+      function bloccascroll(){
+        document.getElementById("body").classList.add("lock");
+      }
+      function sbloccascroll(){
+        document.getElementById("body").classList.remove("lock");
+      }
     </script>
-
-    <div class="lineaOmbra"></div>
-
   </body>
 </html>

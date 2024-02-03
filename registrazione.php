@@ -6,6 +6,14 @@
     include("connessione.php"); //connessione al database
     session_start();
 
+    if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!=""){?>
+            <script>
+                window.location.href='/home.php';
+            </script>
+    <?php die;
+    }
+
+
     $_SESSION["isLogged"]=""; // VARIABILE DI SESSIONE PER INDICARE UTENTE LOGGATO
     $utenteEsistente = false;
 

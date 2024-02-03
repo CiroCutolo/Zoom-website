@@ -138,7 +138,9 @@ body{
 .tigre th{
     padding: 10px;
 }
-
+.tigre td {
+    font-weight: bold;
+}
 #areapersonale #dati, #areapersonale #storico, #areapersonale #logout {
     color: black;
     margin-right: 30px;
@@ -147,13 +149,14 @@ body{
 
 @media screen and (max-width: 900px) {
     .leone input{
-        width: 60%;
+        width: 80%;
         margin-bottom: 10px;
     }
     
     .leone input[type=submit]{
         margin-top: 20px;
-        width: 50%;    
+        width: 50%; 
+        margin-left: 0px;   
     }  
 
     #scritta{
@@ -186,10 +189,12 @@ body{
     }
 
     .tigre table{
-        width: 40%;
+
+
         padding-left: 0%;
-        margin-left: 50%;
-        margin-right: 50%;
+        margin-left: 10%;
+        margin-right: 10%;
+        font-size: 0.9em;
 
     }
 
@@ -197,18 +202,4 @@ body{
         margin: 50px 20px 50px 20px;
     }
 
-}
-
-@media screen and(min-width: 565px) and(max-width: 685px){
-    .leone #togglePassword {
-        margin-left: 0px;
-        top:20px;
-    }
-}
-
-@media screen and(min-width: 685px) and(max-width: 900px){
-    .leone #togglePassword {
-        margin-left: 0px;
-        top:20px;
-    }
 }
