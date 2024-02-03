@@ -2,8 +2,7 @@
     include("connessione.php");
 
     session_start();
-
-    if(isset($_GET["action"]) && ($_GET["action"] == "accedi") && (isset($_SESSION["registrato"]) && $_SESSION["registrato"]!="1")){ //entra solo tramite il login dal popup
+    if(isset($_GET["action"]) && ($_GET["action"] == "accedi")){ //entra solo tramite il login dal popup
       $email_form=$_POST['email'];
       $pw_form=$_POST['pw'];
       //effettuo la connessione al database e seleziono email e password dalla tabella utenti che sono uguali a email e passowrd inseriti nel form.
