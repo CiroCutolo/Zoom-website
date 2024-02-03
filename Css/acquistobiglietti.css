@@ -3,7 +3,7 @@
 	padding: 20px;
 }
 
-.acquisto_body h1 {color: #0e84ab;}
+.acquisto_body h1{color: #0e84ab;}
 .acquisto_body h2, .acquisto_body h3, .acquisto_body h4, .warning {color: #fe8500;}
 
 .orari{margin-bottom: 10px;}
@@ -61,7 +61,7 @@
 	border-color: #0e84ab;
 	box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.15);
 	margin: 10px;
-	
+	height: 160px;
 }
 
 .numberPicker{float: right;}
@@ -122,4 +122,6 @@
 .cartTable th, .cartTable td{
 	padding: 10px;
 }
+
+.extraPanel{clear: both;}
 
