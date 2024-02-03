@@ -17,7 +17,8 @@
   </div>
   <p id="demo"></p>
   <div> ©2024 Gruppo 22. Design by Gruppo 22 </div>
-  </footer>
+  <img id= "border-footer" src="borderfooter.svg">
+</footer>
 </body>
 <script>
 const x = document.getElementById("demo");
