@@ -3,6 +3,7 @@
     <head>
         <title>Animali - Zoom</title>
         <meta charset="utf-8">
+        <meta name="author" content="Ciro Cutolo">
         <script src="https://kit.fontawesome.com/9491817803.js?<?php echo rand();?>" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="Css/Fonts.css?<?php echo rand();?>">
         <link rel="stylesheet" href="Css/Animali.css?<?php echo rand();?>">

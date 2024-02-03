@@ -36,7 +36,7 @@
 				<h2>Tipologie di biglietto</h2>
 				<ul>
 					<li>Intero a data fissa: € 15.00</li>
-					<li>Ridotto a data fissa: € 10.00 per bambini da 4 a 10 anni, persone con disabilita' inferiore al 100%.</li>
+					<li>Ridotto a data fissa: € 10.00 per bambini da 4 a 10 anni, persone con disabilità inferiore al 100%.</li>
 					<li>Gratuito: Under 3, Over 70 e disabili 100% con accompagnatori.</li>
 				</ul>
 		
@@ -112,7 +112,7 @@
 									</div>
 									<div class="note">
 										<p>
-											Adulti e ragazzi dai 10 anni in su
+											Adulti e ragazzi dai 10 anni in su.
 										</p>
 									</div>
 								</div>
@@ -166,7 +166,10 @@
 									</div>
 									<div class="note">
 										<p>
-											NB: Ingresso gratuito per bambini di altezza inferiore a 1 metro (da confermare all'ingresso del parco previa misurazione)
+											Bambini da 4 a 10 anni, persone con disabilità inferiore al 100%
+										</p>
+										<p>
+											<strong>Attenzione:</strong> Ingresso gratuito per bambini di altezza inferiore a 1 metro (da confermare all'ingresso del parco previa misurazione).
 										</p>
 									</div>
 								</div>
@@ -190,12 +193,12 @@
 				</div>
 			</div>
 
-			<div class="container carrello">
+			<div class="container carrello hidden">
 				<h2>Carrello</h2>
 				<table class="cartTable">
 					<thead>
 						<tr id="headerRow" class="cartHeader">
-							<th>Prodotto</th>
+							<th class="lftCell">Prodotto</th>
 							<th>Quantità</th>
 							<th>Data</th>
 							<th>Prezzo</th>
@@ -204,21 +207,21 @@
 					</thead>
 					<tbody>
 						<tr id="interiRow" class="cartRow hidden">
-							<td class="stdCell">Biglietti Interi</td>
+							<td class="lftCell">Biglietti Interi</td>
 							<td id="tableInteri">0</td>
 							<td id="tableDate1">gg/mm/aaaa</td>
 							<td>€15.00</td>
 							<td id="tableTotInteri">€0.00</td>
 						</tr>
 						<tr id="ridottiRow" class="cartRow hidden">
-							<td class="stdCell">Biglietti Ridotti</td>
+							<td class="lftCell">Biglietti Ridotti</td>
 							<td id="tableRidotti">0</td>
 							<td id="tableDate2">gg/mm/aaaa</td>
 							<td>€10.00</td>
 							<td id="tableTotRidotti">€0.00</td>
 						</tr>
 						<tr id="totalRow" class="cartRow">
-							<td class="stdCell">TOTALE</td>
+							<td class="lftCell">TOTALE</td>
 							<td id="totalPrice" colspan="4">€0.00</td>
 						</tr>
 					</tbody>
@@ -273,17 +276,16 @@
 			
 			<!-- Bottoni di navigazione -->			
 			<label class="buttonContainer">
-				<input type="button" id="continueButton" value="Continua" disabled onclick="nextPage();generaCampi()">
+				<input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="nextPage();generaCampi()">
 			</label>
-						
-			<label class="buttonContainer">
-				<input type="button" id="backButton" value="Indietro" disabled onclick="nextPage();generaCampi()">
-			</label>
-
-			<label>
-				<input type="submit" value="Paga">
+					
+			<label class="buttonContainer hidden">
+				<input class="naviButton" id="payButton" type="submit" value="Paga">
 			</label>
 
+			<label class="buttonContainer hidden">
+				<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="nextPage()">
+			</label>
 		</form>
 	</body>
 </html>

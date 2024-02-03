@@ -30,9 +30,12 @@ function getLocation() {
   }
 }
 
+var lat;
+var long;
+
 function showPosition(position) {
-  var lat = position.coords.latitude;
-  var long = position.coords.longitude;
+   lat = position.coords.latitude;
+   long = position.coords.longitude;
   x.innerHTML = "Latitude: " + position.coords.latitude + 
   "<br>Longitude: " + position.coords.longitude;
 
@@ -42,6 +45,7 @@ function showPosition(position) {
   var longitude = "&longitude=" + long;
   var query = latitude + longitude + "&localityLanguage=en";
   const Http = new XMLHttpRequest();
+  var citta = "nulla";
   var bigdatacloud_api =
     "https://api.bigdatacloud.net/data/reverse-geocode-client?";
   bigdatacloud_api += query;
