@@ -8,15 +8,17 @@
 </head>
 <body>
 <footer>
-<div class="lineaOmbra"></div>
-  <div class="row">
-    <a href="#"><i class="fa fa-facebook"></i></a>
-    <a href="#"><i class="fa fa-instagram"></i></a>
-    <a href="#"><i class="fa fa-youtube"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
+  <div class="lineaOmbra"></div>
+    <div>
+    <p id="demo"></p>
+    <div> ©2024 Gruppo 22. Design by Gruppo 22 </div>
+    <div class="row">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+      <a href="#"><i class="fa fa-youtube"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+    </div>
   </div>
-  <p id="demo"></p>
-  <div> ©2024 Gruppo 22. Design by Gruppo 22 </div>
   <img id= "border-footer" src="borderfooter.svg">
 </footer>
 </body>

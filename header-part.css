@@ -156,9 +156,7 @@ hr{
 footer{
   height: 50%;
   text-align: center;
-}
-footer .div{
-  text-align: center;
+  position: relative;
 }
 footer .row{
   width:100%;
