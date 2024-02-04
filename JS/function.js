@@ -35,10 +35,8 @@ function enable(){
   var vardate = $('#datePicker').val();
 
   if(((valRidotti > 0) || (valInteri > 0)) && (vardate != '')){
-    alert("prego, procedi");
     document.getElementById("continueButton").removeAttribute('disabled');
   }else{
-    alert("inserire almeno un biglietto ed una data valida per continuare")
     document.getElementById("continueButton").setAttribute('disabled', '');
   }
 }
