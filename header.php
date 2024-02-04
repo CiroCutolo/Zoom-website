@@ -20,7 +20,7 @@
     <script src="https://kit.fontawesome.com/9491817803.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js?<?php echo rand();?>"></script>
     <link rel="stylesheet" href="header.css?<?php echo rand();?>">
-    <title>Header - Zoom</title>
+    <title>Header - Zoom </title>
   </head>
 
   <body id="body">
