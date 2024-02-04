@@ -74,7 +74,7 @@ function carrello(){
 
     if(interi !=0){
       document.getElementById("tableInteri").innerHTML = interi +
-      "<input name=\"interiToDb\" type=\"text\" value=\"" + interi + "\">";
+      "<input name=\"interiToDb\" type=\"hidden\" value=\"" + interi + "\">";
       document.getElementById("interiRow").classList.remove("hidden");
     }else{
       document.getElementById("interiRow").classList.add("hidden");
@@ -83,7 +83,7 @@ function carrello(){
     
     if(ridotti != 0){
       document.getElementById("tableRidotti").innerHTML = ridotti +
-      "<input name=\"ridottiToDb\" type=\"text\" value=\"" + ridotti + "\">";
+      "<input name=\"ridottiToDb\" type=\"hidden\" value=\"" + ridotti + "\">";
       document.getElementById("ridottiRow").classList.remove("hidden");
     }else{
       document.getElementById("ridottiRow").classList.add("hidden");

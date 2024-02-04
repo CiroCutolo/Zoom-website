@@ -284,20 +284,20 @@
 			<div class="container pagamento hidden">
 				<h2>Pagamento</h2>
 				<div>
-					<h3 style="display: inline;">Metodo di pagamento</h3><img style="height: 15px; display: inline;" src="img/payment.png" alt="">
+					<h3 style="display: inline;">Metodo di pagamento</h3><img style="height: 20px; display: inline;" src="img/payment.png" alt="">
 				</div>								
 				<br>
 				<div>
 					<span>Intestatario:</span>
-					<input id="Intestatario" name="inp-intestatario" type="text" onfocus="onFocus()">
+					<input id="Intestatario" name="inp-intestatario" type="text" autocomplete="off" onfocus="onFocus()">
 				</div>
 				<div>
 					<span>Numero della carta:</span>
-					<input id="Numero della carta" name="inp-carta" type="text" onfocus="onFocus()">
+					<input id="Numero della carta" name="inp-carta" type="text" autocomplete="off" onfocus="onFocus()">
 				</div>
 				<div>
 					<span>Mese di scadenza:</span>
-					<select id="Mese di scadenza" name="mese">
+					<select id="Mese di scadenza" name="mese" autocomplete="off">
 						<?php
 						for($i=1;$i<=12;$i++)
 							echo "<option value=\"$i\">$i</option>"
@@ -306,7 +306,7 @@
 				</div>
 				<div>
 					<span>Anno di scadenza:</span>
-					<select id="Anno di scadenza" name="anno">
+					<select id="Anno di scadenza" name="anno" autocomplete="off">
 						<?php
 							for($i=2024;$i<=2044;$i++)
 								echo "<option value=\"$i\">$i</option>"
@@ -315,7 +315,7 @@
 				</div>	
 				<div>
 					<span>CVV:</span>
-					<input id="cvv" name="cvv-carta" type="password" onfocus="onFocus()">
+					<input id="cvv" name="cvv-carta" type="password" maxlength="3" autocomplete="off" onfocus="onFocus()">
 				</div>			
 			</div>
 			
