@@ -297,6 +297,16 @@ label #cancel{
     cursor: pointer;
 }
 
+.popup .form-element .occhietto #occhio{
+    position: absolute;
+    margin: -36px;
+    margin-left: 93%;
+    z-index: 1;
+    width: 6px;
+    border: none;
+    color: white;
+}
+
 .popup .form .form-element input{
     margin-top: 5px;
     display: block;
