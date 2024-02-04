@@ -98,14 +98,14 @@ function carrello(){
     let interi = document.getElementById("numeroInteri").value;
     for(i=1;i<=interi;i++)
       document.getElementById("datiInteri").innerHTML += "<h3>Biglietti Interi</h3><h4>Partecipante Intero " + i + "</h4>" + 
-        "<div><span>Nome:</span><input id=\"nome" + i + "\" name=\"inp-nomeIntero" + i + "\" type=\"text\"></div>" +
-        "<div><span>Cognome:</span><input id=\"cognome" + i + "\" name=\"inp-cognomeIntero" + i + "\" type=\"text\"></div>";
+        "<div><span>Nome: " +i + "</span><input type=\"intero\" id=\"nome " + i + "\" name=\"inp-nomeIntero" + i + "\" type=\"text\"></div>" +
+        "<div><span>Cognome: " +i + "</span><input type=\"intero\" id=\"cognome " + i + "\" name=\"inp-cognomeIntero" + i + "\" type=\"text\"></div>";
 
     let ridotti = document.getElementById("numeroRidotti").value;
     for(i=1;i<=ridotti;i++)
       document.getElementById("datiRidotti").innerHTML += "<h3>Biglietti Ridotti</h3><h4>Partecipante Ridotto " + i + "</h4>" +
-        "<div><span>Nome:</span><input id=\"nome" + i + "\" name=\"inp-nomeRidotto" + i + "\" type=\"text\"></div>" +
-        "<div><span>Cognome:</span><input id=\"cognome" + i + "\" name=\"inp-cognomeRidotto" + i + "\" type=\"text\"></div>";
+        "<div><span>Nome: " +i + "</span><input id=\"nome " + i + "\" name=\"inp-nomeRidotto" + i + "\" type=\"text\"></div>" +
+        "<div><span>Cognome: " +i + "</span><input id=\"cognome " + i + "\" name=\"inp-cognomeRidotto" + i + "\" type=\"text\"></div>";
   }
 
   function removeOldElements(){
@@ -156,6 +156,7 @@ function carrello(){
         obj=document.getElementById("mess");
               obj.style.display="block";
               obj.innerHTML="<div><b>Il campo " + elements[i].id + " è obbligatorio</b></div>";	
+              elements[i].focus();	
         break;
       }
       position = campo.search("inp-");
@@ -164,7 +165,8 @@ function carrello(){
           okCampi=false;
           obj=document.getElementById("mess");
                 obj.style.display="block";
-                obj.innerHTML="<div><b>Il campo " + elements[i].id + " è obbligatorio</b></div>";				
+                obj.innerHTML="<div><b>Il campo " + elements[i].id + " è obbligatorio</b></div>";	
+                elements[i].focus();			
           break;
         }
       }

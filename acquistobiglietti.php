@@ -1,5 +1,5 @@
 <?php
-	ini_set('display_errors', 0);
+	ini_set('display_errors', 1);
 	include('connessione.php');
 	session_start();
 
@@ -362,6 +362,7 @@
 				document.getElementById("numeroRidotti").value=cNumeroRidotti;
 			if (cDatePicker!=null)
 				document.getElementById("datePicker").value=cDatePicker;
+			enable()
 		</script>
 	</body>
 </html>

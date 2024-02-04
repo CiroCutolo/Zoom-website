@@ -59,7 +59,7 @@
               </p>
             </div>
             <div class="btn-tickets-container">
-            <input id="acquista" type="submit" value="ACQUISTA" class="btn-tickets" disabled>
+            <input id="acquista" type="submit" onclick="salvaCookie();" value="ACQUISTA" class="btn-tickets" disabled>
            </div>
          </form>
          <?php } ?>
@@ -168,7 +168,7 @@
 
       //disabilita il tasto di acquisto se compili almeno uno dei due campi select e la data
       function disabilitAcquista(){
-          if(( (document.getElementById("selector1").value > 0) || (document.getElementById("selector2").value > 0)) && (document.getElementById("data-picker").value != "")){
+          if(( (document.getElementById("numeroInteri").value > 0) || (document.getElementById("numeroRidotti").value > 0)) && (document.getElementById("datePicker").value != "")){
               document.getElementById("acquista").removeAttribute('disabled');
           }else{
               document.getElementById("acquista").setAttribute('disabled','');
@@ -186,5 +186,6 @@
 				document.getElementById("numeroRidotti").value=cNumeroRidotti;
 			if (cDatePicker!=null)
 				document.getElementById("datePicker").value=cDatePicker;
+        disabilitAcquista();
       </script>
     </html>
