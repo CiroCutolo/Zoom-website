@@ -57,7 +57,7 @@ function showPosition(position) {
     if (this.readyState == 4 && this.status == 200) {
       var myObj = JSON.parse(this.responseText);
       //return myObj.city;
-      x.innerHTML=myObj.city;
+      x.innerHTML="Tu sei qui: " + myObj.city + ". Proprio vicino a noi! Vieni a trovarci!";
     }
   }
 }

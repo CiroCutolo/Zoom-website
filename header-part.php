@@ -25,7 +25,7 @@
           <form method="post" action="acquistobiglietti.php">
             <!-- Tramite il metodo post i valori dei select vengono salvati e utilizzati per completare l'acquisto nella pagina successiva-->
             <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
-            <p class="buy-tickets-textcontent-sottotitolo">Completa <b>tutti</b> i campi prima di acquistare</p>
+            <p class="buy-tickets-textcontent-sottotitolo">Seleziona <b>almeno</b> una tipologia di biglietti e la data prima di acquistare</p>
               <p class="buy-tickets-textcontent">Interi
                 <select id="selector1" name="selectOption[0]" onchange="disabilitAcquista()">
                 <script>
@@ -158,11 +158,14 @@
         }
       });
 
+      //disabilita il tasto di acquisto se compili almeno uno dei due campi select e la data
       function disabilitAcquista(){
-          if(document.getElementById("selector1").value == "0" || document.getElementById("selector2").value == "0" || document.getElementById("data-picker").value == ""){
-              document.getElementById("acquista").setAttribute('disabled','');
-          }else{
+          if(( (document.getElementById("selector1").value > 0) || (document.getElementById("selector2").value > 0)) && (document.getElementById("data-picker").value != "")){
+              alert("abilitato");
               document.getElementById("acquista").removeAttribute('disabled');
+          }else{
+              alert("disabilitato");
+              document.getElementById("acquista").setAttribute('disabled','');
           }
       }
       </script>
