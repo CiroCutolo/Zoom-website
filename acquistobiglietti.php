@@ -52,7 +52,8 @@
 		<title>Acquisto biglietti - Zoom</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="./Css/acquistobiglietti.css?<?php echo rand();?>" type="text/css">
-		<script src="JS\function.js" type="text/javascript" ></script>
+		<script src="JS\function.js?<?php echo rand();?>" type="text/javascript" ></script>
+		<script src="https://code.jquery.com/jquery-latest.min.js?<?php echo rand();?>"></script>
 		
 	</head>
 	<body class="acquisto_body">
@@ -167,7 +168,7 @@
 										<span>€ 10.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroRidotti" onchange="functionsNumberPicker()">
+										<select id="numeroRidotti" onchange="enable();functionsNumberPicker();">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
 												var i = 0;
@@ -275,7 +276,10 @@
 			<!-- Dati di pagamento -->
 			<div class="container pagamento hidden">
 				<h2>Pagamento</h2>
-				<h3>Metodo di pagamento</h3>
+				<div>
+					<h3 style="display: inline;">Metodo di pagamento</h3><img style="height: 15px; display: inline;" src="img/payment.png" alt="">
+				</div>								
+				<br>
 				<div>
 					<span>Intestatario:</span>
 					<input id="Intestatario" name="inp-intestatario" type="text" onfocus="onFocus()">
@@ -301,7 +305,11 @@
 								echo "<option value=\"$i\">$i</option>"
 							?>
 					</select>
-				</div>				
+				</div>	
+				<div>
+					<span>CVV:</span>
+					<input id="cvv" name="cvv-carta" type="password" onfocus="onFocus()">
+				</div>			
 			</div>
 			
 			<!-- Bottoni di navigazione -->			

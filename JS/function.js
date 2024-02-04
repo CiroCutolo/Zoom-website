@@ -30,10 +30,16 @@ function getSelectedDate(){
 }
 
 function enable(){
-  if((takeOptValue("numeroInteri")!=0||takeOptValue("numeroRidotti")!=0)&& getSelectedDate()!=''){
+  var valRidotti = $('#numeroRidotti').find('option:selected').val();
+  var valInteri = $('#numeroInteri').find('option:selected').val();
+  var vardate = $('#datePicker').val();
+
+  if(((valRidotti > 0) || (valInteri > 0)) && (vardate != '')){
+    alert("prego, procedi");
     document.getElementById("continueButton").removeAttribute('disabled');
   }else{
-    document.getElementById("continueButton").setAttribute('disable','');
+    alert("inserire almeno un biglietto ed una data valida per continuare")
+    document.getElementById("continueButton").setAttribute('disabled', '');
   }
 }
 
@@ -54,6 +60,7 @@ function nextPage(){
   }
 
 }
+
 
 const priceInt = 15.00;
 const priceRid = 10.00;
@@ -127,5 +134,5 @@ function carrello(){
   function functionsNumberPicker(){
     showDate();
     enable();
-    carrello()
+    carrello();
   }
