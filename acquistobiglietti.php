@@ -298,7 +298,7 @@
 					</div>
 					<div>
 						<span>Numero della carta:</span>
-						<input id="cardNumber" name="inp-carta" type="text" autocomplete="off" onfocus="onFocus()">
+						<input id="cardNumber" name="inp-carta" type="number" autocomplete="off" onfocus="onFocus()">
 					</div>
 					<div>
 						<span>Mese di scadenza:</span>
