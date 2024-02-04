@@ -1,11 +1,11 @@
 <?php
-    ini_set('display_errors', 1);
+    ini_set('display_errors', 0);
     ini_set('display_startup_errors' ,1);
     error_reporting(E_ALL);
 
-    session_start();
     include("connessione.php"); //connessione al database
-    
+    session_start();
+
     //if (isset(($_SESSION["isLogged"])) && $_SESSION["isLogged"]=="") //se la sessione è aperta, ma l'utente non ha fatto il login
         //header('Location: /home.php'); 
 
@@ -22,15 +22,12 @@
     $utenteEsistente = false;
 
 
-
-
     //PRELEVARE I DATI MODIFICATI DALL'UTENTE NEL FORM PER INSERIRLI NEL DATABASE
     if(isset($_GET["action"]) && ($_GET["action"] == "modifica")){ //verifico se il form è stato completato
 
         //prelevo tutti i dati dal form
         $Nome = pg_escape_literal($conn,$_POST["nome"]);
         $Cognome = pg_escape_literal($conn,$_POST["cognome"]); //sostituisce i caratteri speciali per poterli inserire
-        $Email =pg_escape_literal($conn,$_POST["Email"]);
         $Data = $_POST["data_di_nascita"];
 
         $tmpQuery = "SELECT email FROM utenti WHERE email = '". $_SESSION["isLogged"] ."'"; //seleziona l'email dell'utente che si trova nell'area personale, la quale è quella collegata alla sessione
@@ -40,7 +37,7 @@
             $oldEmail = $row[0]; //salva in oldEmail l'email selezionata precedentemente, per controllare poi se l'utente la cambia inserendone una già esistente
         }
 
-        //controlla quanti utenti con l'email prelevata dal form sono presenti(se più di 0, significa che l'utente è già esistente)
+        //controllo quanti utenti con l'email prelevata dal form sono presenti(se più di 0, significa che l'utente è già esistente)
         $tmpQuery = "SELECT COUNT (nome) AS numero FROM utenti WHERE email = '". $_POST["Email"] ."'"; //conta gli utenti
         $result = pg_query($conn,$tmpQuery); //salva nella prima colonna il numero di utenti presenti con l'email specificata
 
@@ -53,10 +50,10 @@
         }
         else{
             //inserisco i dati aggiornati nel database
-            $query = "UPDATE utenti SET nome=$Nome, cognome=$Cognome, email=$Email, data_di_nascita='$Data' WHERE email = '".  $_SESSION["isLogged"] ."'";
+            $query = "UPDATE utenti SET nome=$Nome, cognome=$Cognome, data_di_nascita='$Data' WHERE email = '".  $_SESSION["isLogged"] ."'";
             $result = pg_query($conn, $query); //viene eseguita la query e i dati sono stati aggiornati correttamente: l'utente può visionarli aggiornati nell'area personale 
-            
-            if($_POST["Password"]!=""){ //la password viene criptata e modificata solo se l'utente imposta una nuova password 
+
+            if($_POST["Password"]!=""){ //la password viene criptata e aggiornata solo se l'utente imposta una nuova password 
                 $passwordCriptata = password_hash($_POST["Password"], PASSWORD_DEFAULT); //cripta la password
                 $Password = pg_escape_literal($conn,$passwordCriptata);
                 $query = "UPDATE utenti SET password=$Password WHERE email = '".  $_SESSION["isLogged"] ."'";
@@ -91,8 +88,9 @@
 
     </head>
 
+    <?php include ('header.php'); ?>
+
     <body>
-        <?php include 'header.php';?>    
         <div id="areapersonale" style = "text-align:center">
             <br>
             <a title="Guarda i tuoi dati" href="javascript:mostraDati()"><i class="fa fa-2x fa-user" id="dati"></i></a>
@@ -110,7 +108,7 @@
                             <br><br>
                             <span>Data di nascita: </span><input type="text" id="data_di_nascita" name = "data_di_nascita" placeholder="Data di nascita" max="<?php echo date('Y-m-d');?>"  value="<?php echo $data?>" onchange="abilita()" onkeyup="abilita()">
                             <br><br>
-                            <span>Email: </span><input type="email" id="Email" name = "Email" placeholder="E-mail"  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()">
+                            <span>Email: </span><input type="email" id="Email" name = "Email" placeholder="E-mail"  value="<?php echo $email?>" onchange="abilita()" onkeyup="abilita()" disabled>
                             <br><br>
                             <div id="passwordCONocchio">
                                 <span>Password: </span><input type="password" id="Password" name = "Password" placeholder="Imposta una nuova password">

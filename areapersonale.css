@@ -132,7 +132,9 @@ body{
     margin-top: 80px;
     display: table-row;
     font-size: medium;
-    overflow-y: scroll; 
+    overflow-y: scroll;
+    overflow:hidden;
+
 
 }
 

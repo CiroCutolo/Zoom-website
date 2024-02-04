@@ -9,17 +9,16 @@
 <body>
 <footer>
   <div class="lineaOmbra"></div>
-    <div>
-    <p id="demo"></p>
-    <div> ©2024 Gruppo 22. Design by Gruppo 22 </div>
+    <div class="text-footer">
     <div class="row">
       <a href="#"><i class="fa fa-facebook"></i></a>
       <a href="#"><i class="fa fa-instagram"></i></a>
       <a href="#"><i class="fa fa-youtube"></i></a>
       <a href="#"><i class="fa fa-twitter"></i></a>
     </div>
+    <p id="demo"></p>
+    <div> ©2024 Gruppo 22. Design by Gruppo 22 </div>
   </div>
-  <img id= "border-footer" src="borderfooter.svg">
 </footer>
 </body>
 <script>

@@ -10,6 +10,13 @@
 
 .acquisto_body h2{margin-top: 0px;}
 
+.acquisto_body .mess{
+	width: 100%; 
+	text-align: center; 
+	font-size:larger;
+	margin-left: 50%;
+}
+
 .orari{margin-bottom: 10px;}
 .lastaccess{
 	margin-top: 0;
@@ -161,6 +168,8 @@
     height: auto;
 }
 
+
+
 @media (max-width: 1024px){
     .container.interi.ridotti.content{
         flex-wrap: wrap;
@@ -169,6 +178,10 @@
         justify-content: center;
     }
 
+}
+
+.carrello{
+	padding: 20px;
 }
 
 .naviButton:hover{

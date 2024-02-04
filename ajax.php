@@ -48,6 +48,15 @@ switch ($action) {
 
 		echo json_encode($returnAnimale);
 		break;	
+	case "getIsLogged":
+		$strReturn = [];
+		if (isset($_SESSION["isLogged"]))
+			$strReturn["isLogged"]=$_SESSION["isLogged"];
+		else
+			$strReturn["isLogged"]="";
+		echo json_encode($strReturn);
+		break;
+				
 	case "altracosa":
 		break;
 		

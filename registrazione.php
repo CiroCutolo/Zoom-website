@@ -3,8 +3,8 @@
     ini_set('display_startup_errors' ,1);
     error_reporting(E_ALL);
 
+    include ('header.php');
     include("connessione.php"); //connessione al database
-    session_start();
 
     if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]!=""){?>
             <script>
@@ -58,8 +58,8 @@
             $query = "INSERT INTO utenti (nome, cognome, password, email, data_di_nascita) VALUES ($Nome, $Cognome, $Password, $Email, '$Data')";
             //esegue la query, inserendo i dati
             $result = pg_query($conn, $query);   
-            $_SESSION["isLogged"]= $sessMail; //UTENTE REGISTRATO E' ANCHE LOGGATO, SI AVVIA LA SESSIONE
-            $_SESSION["registrato"]="1";?>
+            $_SESSION["isLogged"]= $sessMail; //UTENTE REGISTRATO E' ANCHE LOGGATO, SI AVVIA LA SESSIONE (email dell'utente senza le virgolette aggiunte dalla funzione pg_escape_literal)
+            $_SESSION["entra"]="1";?>
             <script>
                 window.location.href='<?php echo $url?>';
                 //ritorna alla pagina che ha chiamato la registrazione
@@ -80,8 +80,7 @@
     </head>
 
     <body>
-    <?php include 'header.php';?>
-		
+
     <div class="leopardo">	
         <form onsubmit = "return controllaForm()" id = "form" nome= "form" action="registrazione.php?action=registra&paginaSorgente=<?php echo $_GET['paginaSorgente']?>" method="POST" autocomplete="off" enctype="application/x-www-form-urlencoded">
         
