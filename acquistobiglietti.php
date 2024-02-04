@@ -302,7 +302,7 @@
 			
 			<!-- Bottoni di navigazione -->			
 			<label class="buttonContainer">
-				<input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="continueButtonFunction();controlla()" >
+				<input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="continueButtonFunction()" >
 			</label>
 
 			<label class="buttonContainer hidden">
