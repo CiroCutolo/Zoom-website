@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="slider.css">
-    <title></title>
+    <link rel="stylesheet" href="Css/slider.css">
+    <title>Slider</title>
   </head>
   <body>
     <div class="slidershow-container">

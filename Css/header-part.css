@@ -1,10 +1,10 @@
 @import url(Css/Fonts.css);
-body{
+.footer_body, .header-part_body{
     font-family: 'Candara';
     height: 120px;
     background: #e5d1bf;
 }
-*{
+.footer_body *,.header-part_body *{
    margin: 0;
    padding: 0;
    list-style: none;
@@ -157,7 +157,7 @@ hr{
 
 footer{
   height: 150px;
-  background-image: url("borderfooter.svg");
+  background-image: url("../img/borderfooter.svg");
   text-align: center;
   position: relative;
 }

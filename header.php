@@ -16,11 +16,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <title>Header</title>
     <meta charset="utf-8">
+    <meta name="author" content="Claudia Carucci,Aurora Campione">
+    <meta name="description" content="barra menu responsive">
     <script src="https://kit.fontawesome.com/9491817803.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js?<?php echo rand();?>"></script>
-    <link rel="stylesheet" href="header.css?<?php echo rand();?>">
-    <title>Header - Zoom </title>
+    <link rel="stylesheet" href="Css/header.css?<?php echo rand();?>">
   </head>
 
   <body id="body">
