@@ -1,15 +1,16 @@
-.container {
-	padding: 40px 10px 0 40px;
+.container, .carrello {
+	padding: 30px 10px 10px 40px;
 }
 
 .acquisto_body h1{color: #0e84ab;}
-.acquisto_body h2, .acquisto_body h3, .acquisto_body h4, .warning {color: #fe8500; margin-bottom: 0px;}
+.acquisto_body h2, .acquisto_body h3, .acquisto_body h4, .warning {color: #fe8500}
 
 .acquisto_body h3{color: #241a08;}
 
 .acquisto_body h2{margin-top: 0px;}
 
 .acquisto_body #mess{
+	color: #fe8500  ;
 	width: 100%; 
 	text-align: center; 
 	font-size:larger;
@@ -65,8 +66,8 @@
     background-color: #0e84ab;
     border: 2px solid white;
 	margin: 10px 10px 10px 0;
-    height: 80px;
-    width: 80px;
+    height: 90px;
+    width: 90px;
 }
 
 .interi-text, .ridotti-text, .data-text{
@@ -75,6 +76,7 @@
 	padding: 5px;
 	font-weight: bold;
 	box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3);
+	font-size: 25px;
 }
 
 #datePicker{
@@ -106,6 +108,7 @@
     text-align: center;
     border-radius: 5px;
     font-size: 20px;
+	margin-bottom: 50px;
 }
 
 .hidden{display: none;}
@@ -117,12 +120,13 @@
 
 .naviButton{
     background-color: #0e84ab;
-    margin: 10px;
+    margin: 10px 15px 10px 0;
     color: white;
     text-transform: uppercase;
     padding: 10px;
-    border-radius: 15px;
-	float: right;
+    border-radius: 20px;
+    float: right;
+    width: 90px;
 	
 }
 .naviButton:disabled{
@@ -174,6 +178,16 @@
 
 .pagamento select, #dateContainer input{width: 164px;}
 
+.naviButton:hover{
+	background-color: #f09c13;
+}
+
+.payMethod{
+	height: 25px; 
+	display: inline;
+}
+
+.payment-text{width: auto;}
 
 @media (max-width: 1024px){
     .container.interi.ridotti.content{
@@ -183,12 +197,4 @@
         justify-content: center;
     }
 
-}
-
-.carrello{
-	padding: 20px;
-}
-
-.naviButton:hover{
-	background-color: #f09c13;
 }
