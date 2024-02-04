@@ -40,6 +40,12 @@
                     <h1>Leone di Aldo</h1>
                 </div>
             </div> -->
+            <div class="animal All Mammiferi Asia Oceania" > 
+                <div class="animal-image-section">
+                        <a href="javascript:showAnimalPopup('cinopiteco')"><img src="img/macaco.jpg" alt=""></a>
+                    <h1>Cinopiteco</h1>
+                </div>
+            </div>
             <div class="animal All Anfibi Africa" > 
                 <div class="animal-image-section">
                         <a href="javascript:showAnimalPopup('ranamuta')"><img src="img/ranamuta.jpg" alt=""></a>

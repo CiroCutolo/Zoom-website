@@ -2,6 +2,9 @@
 $titolo = [];
 $descrizione = [];
 
+$titolo["cinopiteco"] = "Cinopiteco";
+$descrizione["cinopiteco"] = "Il cinopiteco (Macaca nigra) è una scimmia del Vecchio Mondo appartenente alla sottofamiglia dei Cercopitecini. Differisce dalle altre specie di macachi per il caratteristico colore nero, il maschio è più grande dell'esemplare femmina (con una lunghezza di 65 cm e un peso di 10 kg). Ha la coda molto corta e sulla testa ha una cresta di lunghi peli che normalmente restato appiattiti e che si rizzano quando l'animale è eccitato. Questa specie si riunisce in gruppi misti di più di 100 individui. Solitamente vive nelle foreste e conduce un'esistenza tranquilla cercando di non dare nell'occhio. Nel 2011, il fotografo naturalista David Slater, durante un viaggio in Indonesia, stava scattando delle fotografie ad una femmina di Macaca nigra; durante la preparazione dell'attrezzatura, il macaco si è impossessato della macchina fotografica, scattando diverse fotografie. Alcune erano sfocate, mentre altre erano foto tecnicamente perfette, ribattezzate da Slater 'monkey's selfie'.";
+
 $titolo["aironecenerino"] = "Airone cenerino";
 $descrizione["aironecenerino"] = "L'airone cenerino (Ardea cinerea Linnaeus, 1758) è un uccello appartenente alla famiglia Ardeidae. Originario delle regioni temperate del Vecchio Mondo, oltre che dell'Africa, è la specie di airone che si spinge più a nord, tanto che in estate è facile incontrarlo lungo le coste norvegesi, ben oltre il circolo polare artico. Da adulto arriva ad una statura di 90-98 centimetri e un peso compreso tra 1020 e 2073 grammi. L'apertura alare può facilmente raggiungere 1,70 metri. Le sue piume sono grigiastre nella parte superiore e bianche in quella inferiore. Le zampe e il becco sono gialli. L'adulto ha piume nere sul collo e un ciuffo nucale nero molto evidente che si diparte dalla sommità posteriore e superiore dell'occhio. Nei giovani predomina il colore grigio.";
 
