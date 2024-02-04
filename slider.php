@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="slider.css">
+    <link rel="stylesheet" href="Css/slider.css">
     <title>Slider</title>
   </head>
   <body>

@@ -157,7 +157,7 @@ hr{
 
 footer{
   height: 150px;
-  background-image: url("borderfooter.svg");
+  background-image: url("../img/borderfooter.svg");
   text-align: center;
   position: relative;
 }

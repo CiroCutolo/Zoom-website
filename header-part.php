@@ -6,7 +6,7 @@
     <meta name="author" content="Claudia Carucci">
     <meta name="description" content="parte centrale della pagina">
     <script src="https://kit.fontawesome.com/9491817803.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="header-part.css?<?php echo rand();?>">
+    <link rel="stylesheet" href="Css/header-part.css?<?php echo rand();?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>

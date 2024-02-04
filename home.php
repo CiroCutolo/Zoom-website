@@ -21,7 +21,6 @@ if(isset($_GET["action"]) && ($_GET["action"] == "logout")){ //verifico se il fo
       eraseCookie("numeroRidotti");
       eraseCookie("datePicker");
 
-      alert(0)
       window.location.href= 'home.php';
   </script>
 <?php }?>
