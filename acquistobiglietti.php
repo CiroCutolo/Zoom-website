@@ -257,10 +257,13 @@
 				<h2>Dati biglietti</h2>
 				<div id="datiInteri">
 					<h3>BIGLIETTI INTERI</h3>
-					<input id="priceIntero" type="hidden">
+					<input id="priceIntero" type="hidden" value="15.00">
+					<input id="tipologiaIntero" type="hidden" value="intero">
 				</div>
 				<div id="datiRidotti">
 					<h3>BIGLIETTI RIDOTTI</h3>
+					<input id="priceRidotto" type="hidden" value="10.00">
+					<input id="tipologiaRidotto" type="hidden" value="ridotto">
 				</div>
 				<div>
 					<input id="Privacy" name="privacy" type="checkbox" onfocus="onFocus()">privacy.
