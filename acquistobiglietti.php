@@ -326,7 +326,7 @@
 					</div>	
 					<div>
 						<span>CVV:</span>
-						<input id="cvv" name="cvv-carta" type="password" maxlength="3" autocomplete="off" onfocus="onFocus()">
+						<input id="cvv" name="inp-carta" type="password" maxlength="3" autocomplete="off" onfocus="onFocus()">
 					</div>
 				</div>			
 			</div>
@@ -334,7 +334,7 @@
 			<!-- Bottoni di navigazione -->
 			<div>			
 				<label class="buttonContainer">
-					<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="salvaCookie();generaCampi();controlla()"></a>
+					<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="functionsContinueButton()"></a>
 				</label>
 
 				<label class="buttonContainer hidden">
