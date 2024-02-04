@@ -55,16 +55,6 @@ function nextPage(){
 
 }
 
-function switchButton(){
-
-}
-
-function continueButtonFunction(){
-  nextPage();
-  generaCampi();
-  switchButton();
-}
-
 const priceInt = 15.00;
 const priceRid = 10.00;
 function carrello(){

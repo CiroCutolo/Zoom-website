@@ -1,48 +1,48 @@
 <?php
-	// include('connessione.php');
-	// session_start();
+	include('connessione.php');
+	session_start();
 
-	// if(isset($_GET['action']) && ($_GET['action']=="salva")){
-	// 	$numInteri = $_POST['interiToDb'];
-	// 	for($i=1;$i<=$numInteri;$i++){
+	if(isset($_GET['action']) && ($_GET['action']=="salva")){
+		$numInteri = $_POST['interiToDb'];
+		for($i=1;$i<=$numInteri;$i++){
 
-	// 		$nome=$_POST['nomeIntero' + $i];
-	// 		$cognome=$_POST['cognomeIntero'+$i];
-	// 		$validita=$_POST['datePicker'];	
-	// 		$prezzo=$_POST['priceIntero'];	
-	// 		$tipologia=$_POST['tipologiaIntero'];		
-	// 		$user=$_SESSION['isLogged'];
+			$nome=$_POST['nomeIntero' + $i];
+			$cognome=$_POST['cognomeIntero'+$i];
+			$validita=$_POST['datePicker'];	
+			$prezzo=$_POST['priceIntero'];	
+			$tipologia=$_POST['tipologiaIntero'];		
+			$user=$_SESSION['isLogged'];
 		
-	// 		$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente, id_biglietto) 
-	// 				VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
-	// 		$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-	// 		$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
-	// 		if(!$result){
-	// 			echo pg_last_error($conn);
-	// 		}
-	// 	}
-	// 	$numRidotti = $_POST['ridottiToDb'];
-	// 	for($i=1;$i<=$numRidotti;$i++){
+			$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente, id_biglietto) 
+					VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
+			$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
+			$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
+			if(!$result){
+				echo pg_last_error($conn);
+			}
+		}
+		$numRidotti = $_POST['ridottiToDb'];
+		for($i=1;$i<=$numRidotti;$i++){
 
-	// 		$nome=$_POST['nomeRidotti' + $i];
-	// 		$cognome=$_POST['cognomeRidotti'+$i];
-	// 		$validita=$_POST['datePicker'];	
-	// 		$prezzo=$_POST['priceRidotto'];	
-	// 		$tipologia=$_POST['tipologiaRidotto'];		
-	// 		$user=$_SESSION['isLogged'];
+			$nome=$_POST['nomeRidotti' + $i];
+			$cognome=$_POST['cognomeRidotti'+$i];
+			$validita=$_POST['datePicker'];	
+			$prezzo=$_POST['priceRidotto'];	
+			$tipologia=$_POST['tipologiaRidotto'];		
+			$user=$_SESSION['isLogged'];
 		
-	// 		$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente, id_biglietto) 
-	// 				VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
-	// 		$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-	// 		$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
-	// 		if(!$result){
-	// 			echo pg_last_error($conn);
-	// 		}
-	// 	}
+			$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente, id_biglietto) 
+					VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
+			$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
+			$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
+			if(!$result){
+				echo pg_last_error($conn);
+			}
+		}
 
 				
-	// }
-	// pg_close($conn);
+	}
+	pg_close($conn);
 
 ?>
 
