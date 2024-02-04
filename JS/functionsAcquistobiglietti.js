@@ -7,20 +7,19 @@ function moreInfo(elem){
   }
 }
 
+// funzione che restituisce il numero di biglietti selezionato tramite <select>
 function takeOptValue(selectId){
   var e = document.getElementById(selectId);
   var value = e.value;
   return value;
 }
 
-function getTicketNumber(type){
-  return document.getElementById(type).value;
-}
-
+// restituisce la data selezionata
 function getSelectedDate(){
   return document.getElementById("datePicker").value;
 }
 
+// abilita il button per passare alla sezione di inserimento dati e pagamento
 function enable(){
   var valRidotti = $('#numeroRidotti').find('option:selected').val();
   var valInteri = $('#numeroInteri').find('option:selected').val();
@@ -33,6 +32,7 @@ function enable(){
   }
 }
 
+//consente di passare alla sezione di inserimento dati e pagamento
 function nextPage(){
   const collection = document.getElementsByClassName("container");
   for(i=0;i<collection.length;i++){
@@ -51,7 +51,8 @@ function nextPage(){
 
 }
 
-
+//tiene aggioranto il carrello con i dati selezionati
+//le variabili globali consentono il calcolo dinamico del prezzo finale
 const priceInt = 15.00;
 const priceRid = 10.00;
 function carrello(){
@@ -94,6 +95,7 @@ function carrello(){
     document.getElementById("totalPrice").innerHTML = '€' + tot.toFixed(2);
   }
 
+//genera i campi di input per l'inserimento dei dati di ciascun biglietto
   function generaCampi(){
     let interi = document.getElementById("numeroInteri").value;
     for(i=1;i<=interi;i++)
@@ -108,6 +110,7 @@ function carrello(){
         "<div><span>Cognome: " +i + "</span><input id=\"cognome " + i + "\" name=\"inp-cognomeRidotto" + i + "\" type=\"text\"></div>";
   }
 
+  //consente rimozione dei dati biglietto inseriti nel caso l'utente torna alla pagina di selezione
   function removeOldElements(){
     const elementInteri = document.getElementById("datiInteri");
 
@@ -123,17 +126,32 @@ function carrello(){
 
   }
 
+  //invoca le funzioni utilizzate dai selettori del numero di biglietti
   function functionsNumberPicker(){
     enable();
     carrello();
   }
 
+  //invoca le funzioni utilizzate dal selettore della data
   function functionDataPicker(){
     carrello();
     enable();
   }
 
-  function getIsLogged() { //chiamata ad ajax per controllare se l'utente ha effettuato l'accesso
+  //invoca le funzioni utilizzate dal button "Continua"
+  function functionsContinueButton(){
+    generaCampi();
+    controlla();
+  }
+
+  //invoca le funzioni utilizzate dal button "Indietro"
+  function functionsBackButton(){
+    nextPage();
+    removeOldElements();
+  }
+
+  //chiamata ad ajax per controllare se l'utente ha effettuato l'accesso
+  function getIsLogged() { 
     var strReturn;
     $.ajax({
       url: "ajax.php?action=getIsLogged", dataType: "json", success: function(data) {
@@ -143,6 +161,7 @@ function carrello(){
     });
     return strReturn;	
   }
+
 
   function controllaCampiVuoti(){
     var elements = document.forms["frmPaga"].elements;
@@ -180,7 +199,8 @@ function carrello(){
     }
   }
 
-  function controlla() { //controlla la risposta di ajax
+  //controlla la risposta di ajax
+  function controlla() { 
     checkLog=getIsLogged();
     isLogged=checkLog.isLogged;
 
@@ -194,9 +214,9 @@ function carrello(){
     }
   }
 
-
+  //se l'utente non ha effettuato l'accesso, cliccando il pulsante continua gli sarà mostrato il popup di login, che si chiuderà dopo l'accesso
   function controllaLogin(){
-    //se l'utente non ha effettuato l'accesso, cliccando il pulsante continua gli sarà mostrato il popup di login, che si chiuderà dopo l'accesso
+    
     ret = false;
     if(isLogged==""){
       popup[0].classList.add("activate");
@@ -205,8 +225,8 @@ function carrello(){
     return ret;
   }
   
-
-  function onFocus() { //elimina il messaggio di errore riferito alle credenziali se ci si sposta su uno dei campi 
+  //elimina il messaggio di errore riferito alle credenziali se ci si sposta su uno dei campi 
+  function onFocus() { 
     obj=document.getElementById("mess");
     obj.style.display="none";
     obj.innerHTML="<div></div>";

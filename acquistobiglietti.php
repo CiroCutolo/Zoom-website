@@ -334,7 +334,7 @@
 			<!-- Bottoni di navigazione -->
 			<div>			
 				<label class="buttonContainer">
-					<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="generaCampi();controlla()"></a>
+					<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="functionsContinueButton()"></a>
 				</label>
 
 				<label class="buttonContainer hidden">
@@ -342,7 +342,7 @@
 				</label>
 
 				<label class="buttonContainer hidden">
-					<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="nextPage();removeOldElements()">
+					<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="functionsBackButton()">
 				</label>
 			</div>
 		</form>
