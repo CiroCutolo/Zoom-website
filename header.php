@@ -58,13 +58,13 @@
         <form id = "frmPopup">
           <div class="form-element">
             <label for="email">Email</label>
-            <input onfocus="onFocus()" type="text" id="email" name="email" placeholder="Inserisci email">
+            <input onfocus="onFocus()" type="text" id="email" placeholder="Inserisci email">
           </div>
           <div class="form-element">
             <label for="password">Password</label>
             <div class="occhietto">
-              <input onfocus="onFocus()"  type="password" id="password" name="pw" placeholder="Inserisci password">
-              <input type="button" id="occhio" onclick="clickOcchio()"><i class="far fa-eye-slash" id="togglepassword"></i></button>
+              <input onfocus="onFocus()"  type="password" id="password" placeholder="Inserisci password">
+              <i class="far fa-eye-slash" id="togglep"></i>
             </div>
           </div>
           <div class="form-element">
@@ -168,17 +168,16 @@
         document.getElementById("body").classList.remove("lock");
       }
       
-      function clickOcchio(){
-        alert(0);
-        //creo l'azione mostra/nascondi password
-        const togglepassword = document.getElementById("togglepassword");
-        const Password = document.getElementById("password");
-        
-        const type = Password.getAttribute('type') === 'password' ? 'text' : 'password';
-        Password.setAttribute('type', type);
+      //creo l'azione mostra/nascondi password
+      const toggleP = document.getElementById("togglep");
+      const Pass = document.getElementById("password");
 
-        //this.classList.toggle('fa-eye');
-      }
+      toggleP.addEventListener('click', function () {
+          const type = Pass.getAttribute('type') === 'password' ? 'text' : 'password';
+          Pass.setAttribute('type', type);
+
+          toggleP.classList.toggle('fa-eye');
+      });
 
     </script>
   </body>

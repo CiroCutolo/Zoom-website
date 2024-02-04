@@ -6,10 +6,6 @@
     include("connessione.php"); //connessione al database
     session_start();
 
-    //if (isset(($_SESSION["isLogged"])) && $_SESSION["isLogged"]=="") //se la sessione è aperta, ma l'utente non ha fatto il login
-        //header('Location: /home.php'); 
-
-
     if(!isset($_SESSION["isLogged"])){
         header('Location: /home.php');
     }
@@ -140,7 +136,7 @@
                             $prezzo = $row[3]; 
                             $tipologia = $row[4]; ?>
 
-                            <tr><td><?php echo $nome . "<br>" . $cognome?></td><td><?php echo $validita?></td><td><?php echo "€" . $prezzo?></td><td><?php echo $tipologia?></td></tr>
+                            <tr><td><?php echo $nome . "<br>" . $cognome?></td><td><?php echo $validita?></td><td><?php echo "€" . $prezzo .".00"?></td><td><?php echo $tipologia?></td></tr>
 
                         <?php }
                         

@@ -290,7 +290,7 @@ label #cancel{
     position: relative;
 }
 
-.popup .form-element .occhietto #togglepassword{
+.popup .form-element .occhietto #togglep{
     position: absolute;
     margin: -25px;
     margin-left: 93%;
