@@ -213,7 +213,7 @@
         ?>
 
         <script src="https://code.jquery.com/jquery-latest.min.js?<?php echo rand();?>"></script>
-        <script src="JS/filterSelection.js?<?php echo rand();?>"></script>
+        <script src="JS/functionsAnimali.js?<?php echo rand();?>"></script>
 
     </body>
 </html>

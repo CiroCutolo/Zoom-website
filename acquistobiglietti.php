@@ -63,7 +63,7 @@
 		<meta name="author" content="Gaetano Frasca">
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="./Css/acquistobiglietti.css?<?php echo rand();?>" type="text/css">
-		<script src="JS\function.js?<?php echo rand();?>" type="text/javascript" ></script>
+		<script src="JS\functionsAcquistobiglietti.js?<?php echo rand();?>" type="text/javascript" ></script>
 		<script src="https://code.jquery.com/jquery-latest.min.js?<?php echo rand();?>"></script>
 		
 	</head>
