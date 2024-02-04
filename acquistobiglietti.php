@@ -13,7 +13,7 @@
 			$tipologia=$_POST['tipologiaIntero'];		
 			$user=$_SESSION['isLogged'];
 		
-			$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente, id_biglietto) 
+			$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
 					VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
 			$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
 			$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
@@ -257,11 +257,12 @@
 				<h2>Dati biglietti</h2>
 				<div id="datiInteri">
 					<h3>BIGLIETTI INTERI</h3>
+					<input id="priceIntero" type="hidden">
 				</div>
 				<div id="datiRidotti">
 					<h3>BIGLIETTI RIDOTTI</h3>
 				</div>
-				<div style="margin:30px 0px 0px 0px;">
+				<div>
 					<input id="Privacy" name="privacy" type="checkbox" onfocus="onFocus()">privacy.
 				</div>
 			</div>
