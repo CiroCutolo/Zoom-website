@@ -2,7 +2,7 @@
 	include('connessione.php');
 	session_start();
 
-	if(isset($_GET['action']) && ($_GET['action']=="salva")){
+	/*if(isset($_GET['action']) && ($_GET['action']=="salva")){
 		$numInteri = $_POST['interiToDb'];
 		for($i=1;$i<=$numInteri;$i++){
 
@@ -38,11 +38,9 @@
 			if(!$result){
 				echo pg_last_error($conn);
 			}
-		}
-
-				
+		}		
 	}
-	pg_close($conn);
+	pg_close($conn);*/
 
 ?>
 
@@ -306,11 +304,11 @@
 			
 			<!-- Bottoni di navigazione -->			
 			<label class="buttonContainer">
-				<input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="nextPage();generaCampi();controlla()" >
+				<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="generaCampi();controlla()"></a>
 			</label>
 
 			<label class="buttonContainer hidden">
-				<input class="naviButton" id="payButton" type="button" value="Paga">
+				<input class="naviButton" id="payButton" type="button" value="Paga" onclick="controllaCampiVuoti()">
 			</label>
 
 			<label class="buttonContainer hidden">
@@ -319,7 +317,7 @@
 		</form>
 
 		<script>
-			function getIsLogged() { 
+			function getIsLogged() { //chiamata ad ajax per controllare se l'utente ha fatto l'accesso
 				var strReturn;
 				$.ajax({
 					url: "ajax.php?action=getIsLogged", dataType: "json", success: function(data) {
@@ -339,7 +337,7 @@
 						okCampi=false;
 						obj=document.getElementById("mess");
           				obj.style.display="block";
-          				obj.innerHTML="<div><b>" + elements[i].id + " è un campo obbligatorio</b></div>";	
+          				obj.innerHTML="<div><b>Il campo " + elements[i].id + " è obbligatorio</b></div>";	
 						break;
 					}
 					position = campo.search("inp-");
@@ -348,31 +346,35 @@
 							okCampi=false;
 							obj=document.getElementById("mess");
           					obj.style.display="block";
-          					obj.innerHTML="<div><b>" + elements[i].id + " è un campo obbligatorio</b></div>";				
+          					obj.innerHTML="<div><b>Il campo " + elements[i].id + " è obbligatorio</b></div>";				
 							break;
 						}
-						console.log(elements[i].value)
 					}
+				}
+				if(okCampi){
+					document.getElementById("frmPaga").action="acquistobiglietti.php?action=salva"
+					document.getElementById("frmPaga").submit();
 				}
 				return okCampi;
 			}
 
-			function controlla() {
+			function controlla() { //controlla la risposta di ajax
 				checkLog=getIsLogged();
 				isLogged=checkLog.isLogged;
 
-				if (controllaCampiVuoti()) {
-					if (!controllaLogin()) {
-						//se i campi sono tutti compilati e l'utente ha effettuato l'accesso, il pulsante paga invia i dati al server
-						document.getElementById("frmPaga").action="acquistobiglietti.php?action=salva"
-						document.getElementById("frmPaga").submit();
-					}
+				if (!controllaLogin()) {
+					//se l'utente ha effettuato l'accesso, il pulsante continua permette l'accesso all'area di pagamento
+					nextPage();
+				}
+				else{//altrimenti lo riporta all'inizio della pagina aprendo il popup di login
+					var continua = document.getElementById("continua");
+					continua.href = "#home";				
 				}
 			}
 
 		
 			function controllaLogin(){
-				//se l'utente non ha effettuato l'accesso, cliccando il pulsante paga gli sarà mostrato il popup di login, che si chiuderà dopo l'accesso
+				//se l'utente non ha effettuato l'accesso, cliccando il pulsante continua gli sarà mostrato il popup di login, che si chiuderà dopo l'accesso
 				ret = false;
 				if(isLogged==""){
 					popup[0].classList.add("activate");
