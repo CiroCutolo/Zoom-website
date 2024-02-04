@@ -3,44 +3,50 @@
 	session_start();
 
 	if(isset($_GET['action']) && ($_GET['action']=="salva")){
-		$numInteri = $_POST['interiToDb'];
-		for($i=1;$i<=$numInteri;$i++){
-
-			$nome=$_POST['nomeIntero' + $i];
-			$cognome=$_POST['cognomeIntero'+$i];
-			$validita=$_POST['datePicker'];	
-			$prezzo=$_POST['priceIntero'];	
-			$tipologia=$_POST['tipologiaIntero'];		
-			$user=$_SESSION['isLogged'];
 		
-			$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
-					VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
-			$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-			$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
-			if(!$result){
-				echo pg_last_error($conn);
-			}
-		}
-		$numRidotti = $_POST['ridottiToDb'];
-		for($i=1;$i<=$numRidotti;$i++){
+		if(isset($_POST['interiToDb'])){
+			echo $_POST['interiToDb'];
+			$numInteri = $_POST['interiToDb'];
+			for($i=1;$i<=$numInteri;$i++){
 
-			$nome=$_POST['nomeRidotti' + $i];
-			$cognome=$_POST['cognomeRidotti'+$i];
-			$validita=$_POST['datePicker'];	
-			$prezzo=$_POST['priceRidotto'];	
-			$tipologia=$_POST['tipologiaRidotto'];		
-			$user=$_SESSION['isLogged'];
-		
-			$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente, id_biglietto) 
-					VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
-			$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-			$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
-			if(!$result){
-				echo pg_last_error($conn);
+				$nome=$_POST['inp-nomeIntero' + $i];
+				$cognome=$_POST['inp-cognomeIntero'+$i];
+				$validita=$_POST['d-date'];	
+				$prezzo=$_POST['priceIntero'];	
+				$tipologia=$_POST['tipologiaIntero'];		
+				$user=$_SESSION['isLogged'];
+			
+				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
+						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
+				$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
+				$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
+				if(!$result){
+					echo pg_last_error($conn);
+				}
 			}
+		}else{
+			echo "non funziono";
 		}
+		if(isset($_POST['ridottiToDb'])){
+			$numRidotti = $_POST['ridottiToDb'];
+			for($i=1;$i<=$numRidotti;$i++){
 
-				
+				$nome=$_POST['inp-nomeRidotti' + $i];
+				$cognome=$_POST['inp-cognomeRidotti'+$i];
+				$validita=$_POST['d-date'];	
+				$prezzo=$_POST['priceRidotto'];	
+				$tipologia=$_POST['tipologiaRidotto'];		
+				$user=$_SESSION['isLogged'];
+			
+				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente, id_biglietto) 
+						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
+				$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
+				$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
+				if(!$result){
+					echo pg_last_error($conn);
+				}
+			}
+		}		
 	}
 	pg_close($conn);
 
@@ -59,7 +65,7 @@
 	<body class="acquisto_body">
 		<?php include './header.php';?>
 
-		<form id="frmPaga" method="post">
+		<form id="frmPaga" method="post" action="acquistobiglietti.php?action=salva">
 			<!-- Informazioni sui biglietti -->
 			<div class="container informazioni">
 				<h1>Biglietti</h1>
@@ -117,7 +123,7 @@
 										<span>€ 15.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroInteri" onchange="showDate();enable();carrello()">
+										<select id="numeroInteri" onchange="functionsNumberPicker()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
 												var i = 0;
@@ -212,7 +218,7 @@
 						<h3>Seleziona la data</h3>
 
 						<label for="ticketDate" >
-							<input id="datePicker" type="date" title="Data visita" min="<?php echo date('Y-m-d');?>" onchange="carrello();enable()">
+							<input id="datePicker" name="d-date" type="date" title="Data visita" min="<?php echo date('Y-m-d');?>" onchange="carrello();enable()">
 						</label>
 					</div>
 				</div>
@@ -258,13 +264,13 @@
 				<h2>Dati biglietti</h2>
 				<div id="datiInteri">
 					<h3>BIGLIETTI INTERI</h3>
-					<input id="priceIntero" type="hidden" value="15.00">
-					<input id="tipologiaIntero" type="hidden" value="intero">
+					<input name="priceIntero" type="hidden" value="15.00">
+					<input name="tipologiaIntero" type="hidden" value="intero">
 				</div>
 				<div id="datiRidotti">
 					<h3>BIGLIETTI RIDOTTI</h3>
-					<input id="priceRidotto" type="hidden" value="10.00">
-					<input id="tipologiaRidotto" type="hidden" value="ridotto">
+					<input name="priceRidotto" type="hidden" value="10.00">
+					<input name="tipologiaRidotto" type="hidden" value="ridotto">
 				</div>
 				<div style="margin:30px 0px 0px 0px;">
 					<input id="PoliticheContrattuali" name="privacy" type="checkbox" onfocus="onFocus()">Accetta le politiche contrattuali.
@@ -314,20 +320,20 @@
 			
 			<!-- Bottoni di navigazione -->			
 			<label class="buttonContainer">
-				<input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="nextPage();generaCampi();controlla()" >
+				<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="generaCampi();controlla()"></a>
 			</label>
 
 			<label class="buttonContainer hidden">
-				<input class="naviButton" id="payButton" type="button" value="Paga">
+				<input class="naviButton" id="payButton" type="button" value="Paga" onclick="controllaCampiVuoti()">
 			</label>
 
 			<label class="buttonContainer hidden">
-				<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="nextPage();removeOldElements()">
+				<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="nextPage();removeOldElements();onFocus()">
 			</label>
 		</form>
 
 		<script>
-			function getIsLogged() { 
+			function getIsLogged() { //chiamata ad ajax per controllare se l'utente ha effettuato l'accesso
 				var strReturn;
 				$.ajax({
 					url: "ajax.php?action=getIsLogged", dataType: "json", success: function(data) {
@@ -336,51 +342,57 @@
 					async:false
 				});
 				return strReturn;	
-				}
+			}
 
 			function controllaCampiVuoti(){
 				var elements = document.forms["frmPaga"].elements;
 				okCampi=true;
-				for (i=0; i<elements.length; i++){
+
+				for (i=0; i<elements.length; i++){ //controlla gli elementi del form tramite il loro 'name'
 					campo=elements[i].name;
-					if (campo=="privacy" && !elements[i].checked) {
+
+					if (campo=="privacy" && !elements[i].checked) { //verifica che il campo privacy sia stato settato
 						okCampi=false;
 						obj=document.getElementById("mess");
           				obj.style.display="block";
-          				obj.innerHTML="<div><b>" + elements[i].id + " è un campo obbligatorio</b></div>";	
+          				obj.innerHTML="<div><b>Il campo " + elements[i].id + " è obbligatorio</b></div>";	
 						break;
 					}
 					position = campo.search("inp-");
-					if (position>=0) {
+					if (position>=0) { //verifica che tutti gli altri (nome,cognome,intestatario,numero carta) campi siano stati settati
 						if (elements[i].value=="") {
 							okCampi=false;
 							obj=document.getElementById("mess");
           					obj.style.display="block";
-          					obj.innerHTML="<div><b>" + elements[i].id + " è un campo obbligatorio</b></div>";				
+          					obj.innerHTML="<div><b>Il campo " + elements[i].id + " è obbligatorio</b></div>";				
 							break;
 						}
-						console.log(elements[i].value)
 					}
+					
 				}
-				return okCampi;
+
+				if(okCampi){ //se i campi sono stati tutti settati, vengono inviati i dati al server tramite l'azione del form
+					document.getElementById("frmPaga").action="acquistobiglietti.php?action=salva"
+					document.getElementById("frmPaga").submit();
+				}
 			}
 
-			function controlla() {
+			function controlla() { //controlla la risposta di ajax
 				checkLog=getIsLogged();
 				isLogged=checkLog.isLogged;
 
-				if (controllaCampiVuoti()) {
-					if (!controllaLogin()) {
-						//se i campi sono tutti compilati e l'utente ha effettuato l'accesso, il pulsante paga invia i dati al server
-						document.getElementById("frmPaga").action="acquistobiglietti.php?action=salva"
-						document.getElementById("frmPaga").submit();
-					}
+				if (!controllaLogin()) {
+					//se l'utente ha effettuato l'accesso, il pulsante 'continua' permette l'accesso all'area di pagamento
+					nextPage();
+				}
+				else{//altrimenti lo riporta all'inizio della pagina aprendo il popup di login
+					var continua = document.getElementById("continua");
+					continua.href = "#home";				
 				}
 			}
 
-		
 			function controllaLogin(){
-				//se l'utente non ha effettuato l'accesso, cliccando il pulsante paga gli sarà mostrato il popup di login, che si chiuderà dopo l'accesso
+				//se l'utente non ha effettuato l'accesso, cliccando il pulsante continua gli sarà mostrato il popup di login, che si chiuderà dopo l'accesso
 				ret = false;
 				if(isLogged==""){
 					popup[0].classList.add("activate");
@@ -388,13 +400,12 @@
 				}
 				return ret;
 			}
-			
 
-			function onFocus() { //elimina il messaggio di errore delle credenziali se ci si sposta su uno dei campi 
+			function onFocus() { //elimina il messaggio di errore riferito alle credenziali 
 				obj=document.getElementById("mess");
 				obj.style.display="none";
 				obj.innerHTML="<div></div>";
       		}
-		</script>										
+		</script>										 
 	</body>
 </html>

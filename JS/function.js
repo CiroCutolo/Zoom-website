@@ -75,7 +75,8 @@ function carrello(){
     }
 
     if(interi !=0){
-      document.getElementById("tableInteri").innerHTML = interi;
+      document.getElementById("tableInteri").innerHTML = interi +
+      "<input name=\"interiToDb\" type=\"text\" value=\"" + interi + "\">";
       document.getElementById("interiRow").classList.remove("hidden");
     }else{
       document.getElementById("interiRow").classList.add("hidden");
@@ -83,7 +84,8 @@ function carrello(){
 
     
     if(ridotti != 0){
-      document.getElementById("tableRidotti").innerHTML = ridotti;
+      document.getElementById("tableRidotti").innerHTML = ridotti +
+      "<input name=\"interiToDb\" type=\"text\" value=\"" + interi + "\">";
       document.getElementById("ridottiRow").classList.remove("hidden");
     }else{
       document.getElementById("ridottiRow").classList.add("hidden");
@@ -106,14 +108,14 @@ function carrello(){
     let interi = document.getElementById("numeroInteri").value;
     for(i=1;i<=interi;i++)
       document.getElementById("datiInteri").innerHTML += "<h4>Partecipante Intero " + i + "</h4>" + 
-        "<div><span>Nome:</span><input name=\"inp-nomeIntero" + i + "\" type=\"text\"></div>" +
-        "<div><span>Cognome:</span><input name=\"inp-cognomeIntero" + i + "\" type=\"text\"></div>";
+        "<div><span>Nome:</span><input id=\"Nome\" name=\"inp-nomeIntero" + i + "\" type=\"text\"></div>" +
+        "<div><span>Cognome:</span><input id=\"Cognome\" name=\"inp-cognomeIntero" + i + "\" type=\"text\"></div>";
 
     let ridotti = document.getElementById("numeroRidotti").value;
     for(i=1;i<=ridotti;i++)
       document.getElementById("datiRidotti").innerHTML += "<h4>Partecipante Ridotto " + i + "</h4>" +
-        "<div><span>Nome:</span><input id=\"inp-nomeRidotto" + i + "\" type=\"text\"></div>" +
-        "<div><span>Cognome:</span><input id=\"inp-cognomeRidotto" + i + "\" type=\"text\"></div>";
+        "<div><span>Nome:</span><input id=\"nome\" name=\"inp-nomeRidotto" + i + "\" type=\"text\"></div>" +
+        "<div><span>Cognome:</span><input id=\"cognome\" name=\"inp-cognomeRidotto" + i + "\" type=\"text\"></div>";
   }
 
   function removeOldElements(){
