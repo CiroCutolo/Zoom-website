@@ -1,10 +1,11 @@
-@import url(Css/Fonts.css);
+@import url(Fonts.css);
+
 .footer_body, .header-part_body{
     font-family: 'Candara';
     height: 120px;
     background: #e5d1bf;
 }
-.footer_body *,.header-part_body *{
+*{
    margin: 0;
    padding: 0;
    list-style: none;
@@ -183,4 +184,5 @@ footer .text-footer{
   color:black;
   font-weight: bold;
   font-size: larger;
+  margin: 0px;
 }

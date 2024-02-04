@@ -1,5 +1,5 @@
 <?php
-	ini_set('display_errors', 1);
+	ini_set('display_errors', 0);
 	include('connessione.php');
 	session_start();
 
@@ -334,7 +334,7 @@
 			<!-- Bottoni di navigazione -->
 			<div>			
 				<label class="buttonContainer">
-					<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="functionsContinueButton()"></a>
+					<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="salvaCookie();generaCampi();controlla()"></a>
 				</label>
 
 				<label class="buttonContainer hidden">
@@ -346,9 +346,6 @@
 				</label>
 			</div>
 		</form>
-
-		<?php include('footer.php');?>
-
 
 		<script>
 			function salvaCookie(){
