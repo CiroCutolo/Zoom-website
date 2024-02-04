@@ -3,7 +3,7 @@
 
     session_start();
 
-    if((isset($_SESSION["registrato"]) && $_SESSION["registrato"]=="1")){ //entra solo tramite la registrazione per salvare le info dell'utente per il menu a tendina
+    if((isset($_SESSION["entra"]) && $_SESSION["entra"]=="1")){ //entra solo tramite la registrazione per salvare le info dell'utente per il menu a tendina
       $em = $_SESSION["isLogged"];
       $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email='$em'";
       $ret = pg_query($conn,$sql);
@@ -20,7 +20,7 @@
     <script src="https://kit.fontawesome.com/9491817803.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js?<?php echo rand();?>"></script>
     <link rel="stylesheet" href="header.css?<?php echo rand();?>">
-    <title>Header - Zoom</title>
+    <title>Header - Zoom </title>
   </head>
 
   <body id="body">
@@ -64,7 +64,7 @@
             <label for="password">Password</label>
             <div class="occhietto">
               <input onfocus="onFocus()"  type="password" id="password" name="pw" placeholder="Inserisci password">
-              <i class="far fa-eye-slash" id="togglepassword" onclick="occhio()"></i>
+              <input type="button" id="occhio" onclick="clickOcchio()"><i class="far fa-eye-slash" id="togglepassword"></i></button>
             </div>
           </div>
           <div class="form-element">
@@ -102,6 +102,8 @@
           return strReturn;	
         }
 
+      var path = window.location.pathname;
+
       function checkLogin(){ //azioni conseguenti al login andato a buon fine o errato 
         mail=document.getElementById("email").value;
         pwd=document.getElementById("password").value;
@@ -112,7 +114,11 @@
           mess.style.display="block";
           mess.innerHTML="<div style='width: 100%; text-align: center;'>Inserisci tutti i campi!</div>";
         }else if (cklog.stato=="OK") { //login andato a buon fine, ritorna alla home
-          window.location.href='home.php';
+          if (window.location.pathname!="/acquistobiglietti.php")
+            window.location.href='home.php';
+          else 
+            popup[0].classList.remove("activate"); 
+
         }else if(cklog.stato="NOK"){ //login errato
           obj=document.getElementById("messaggio");
           obj.style.display="block";
@@ -163,18 +169,17 @@
         document.getElementById("body").classList.remove("lock");
       }
       
-      function occhio(){
-      //creo l'azione mostra/nascondi password
-      const togglepassword = document.getElementById("togglepassword");
-      const Password = document.getElementById("password");
-    
-      togglepassword.addEventListener('click', function () {
-          const type = Password.getAttribute('type') === 'password' ? 'text' : 'password';
-          Password.setAttribute('type', type);
+      function clickOcchio(){
+        alert(0);
+        //creo l'azione mostra/nascondi password
+        const togglepassword = document.getElementById("togglepassword");
+        const Password = document.getElementById("password");
+        
+        const type = Password.getAttribute('type') === 'password' ? 'text' : 'password';
+        Password.setAttribute('type', type);
 
-          this.classList.toggle('fa-eye');
-      });
-    }
+        //this.classList.toggle('fa-eye');
+      }
 
     </script>
   </body>
