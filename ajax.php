@@ -36,8 +36,9 @@ switch ($action) {
 		$retLogin["stato"]=$login;
 		echo json_encode($retLogin);
 		break;
-	case "getAnimal":
 
+	case "getAnimal":
+		//fornisce il titolo e la descrizione dell'animale specificato, da inserire poi nel popup
 		$animale=$_GET['animale'];
 
 		include("dettagliAnimali.php");
@@ -50,6 +51,7 @@ switch ($action) {
 		break;	
 		
 	case "getIsLogged":
+		//controlla se l'utente è loggato per poter procedere con l'acquisto dei biglietti
 		$strReturn = [];
 		if (isset($_SESSION["isLogged"]))
 			$strReturn["isLogged"]=$_SESSION["isLogged"];
