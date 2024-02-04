@@ -104,26 +104,32 @@ body{
     }
     
     .leopardo input[type=submit]{
-        margin-top: 70px;
+        margin-top: 50px;
         width: 50%;    
         margin-left: 0px;
-    }  
-    .leopardo #confermapasswordCONocchio{
-        left:15%;
-        bottom: -30px;
-        width: 100%;
-        margin: auto;
-        position: relative;
-        margin-right: 20%;
+    }
 
-    }
-    .leopardo #passwordCONocchio{
-        left:15%;
-        bottom: -30px;
+    .leopardo #confermapasswordCONocchio{
+        bottom: 0px;
         width: 100%;
-        position: relative;
-  
+        margin-top: 30px;
+        margin-left: -255px;
     }
+
+    .leopardo #passwordCONocchio{
+        bottom: 0px;
+        width: 100%;
+        display: block;
+    }
+
+    .leopardo #togglePassword, #togglePassword1 {
+        padding-top: 27px;
+        margin-left: -20px;
+        width: 26px;
+        right: 200px;
+        margin: -50px;
+    }
+
     #scritta{
         font-size: medium;  
         margin-left: 0px;
