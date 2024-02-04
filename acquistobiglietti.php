@@ -1,21 +1,50 @@
 <?php
-
 	// include('connessione.php');
 	// session_start();
 
 	// if(isset($_GET['action']) && ($_GET['action']=="salva")){
-	// 	$emailReg=$_SESSION['isLogged'];
-	// 	$validita=$_POST['datePicker'];
+	// 	$numInteri = $_POST['interiToDb'];
+	// 	for($i=1;$i<=$numInteri;$i++){
 
-	// 	$query = "INSERT INTO biglietti(codice,prezzo,tipologia,validità) VALUES($emailReg$$$)";
-	// 	$result = pg_query($conn,$query);
+	// 		$nome=$_POST['nomeIntero' + $i];
+	// 		$cognome=$_POST['cognomeIntero'+$i];
+	// 		$validita=$_POST['datePicker'];	
+	// 		$prezzo=$_POST['priceIntero'];	
+	// 		$tipologia=$_POST['tipologiaIntero'];		
+	// 		$user=$_SESSION['isLogged'];
 		
+	// 		$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente, id_biglietto) 
+	// 				VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
+	// 		$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
+	// 		$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
+	// 		if(!$result){
+	// 			echo pg_last_error($conn);
+	// 		}
+	// 	}
+	// 	$numRidotti = $_POST['ridottiToDb'];
+	// 	for($i=1;$i<=$numRidotti;$i++){
+
+	// 		$nome=$_POST['nomeRidotti' + $i];
+	// 		$cognome=$_POST['cognomeRidotti'+$i];
+	// 		$validita=$_POST['datePicker'];	
+	// 		$prezzo=$_POST['priceRidotto'];	
+	// 		$tipologia=$_POST['tipologiaRidotto'];		
+	// 		$user=$_SESSION['isLogged'];
+		
+	// 		$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente, id_biglietto) 
+	// 				VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
+	// 		$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
+	// 		$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
+	// 		if(!$result){
+	// 			echo pg_last_error($conn);
+	// 		}
+	// 	}
+
+				
 	// }
+	// pg_close($conn);
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -182,7 +211,7 @@
 						<h3>Seleziona la data</h3>
 
 						<label for="ticketDate" >
-							<input id="datePicker" type="date" title="Data visita" onchange="carrello();enable()">
+							<input id="datePicker" type="date" title="Data visita" min="<?php echo date('Y-m-d');?>" onchange="carrello();enable()">
 						</label>
 					</div>
 				</div>
@@ -253,7 +282,7 @@
 					<span>Mese:</span>
 					<select>
 						<?php
-						for($i=0;$i<=12;$i++)
+						for($i=1;$i<=12;$i++)
 							echo "<option value=\"$i\">$i</option>"
 						?>
 					</select>
@@ -271,7 +300,7 @@
 			
 			<!-- Bottoni di navigazione -->			
 			<label class="buttonContainer">
-				<input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="nextPage();generaCampi()">
+				<input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="continueButtonFunction()">
 			</label>
 					
 			<label class="buttonContainer hidden">

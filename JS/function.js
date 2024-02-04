@@ -55,6 +55,16 @@ function nextPage(){
 
 }
 
+function switchButton(){
+
+}
+
+function continueButtonFunction(){
+  nextPage();
+  generaCampi();
+  switchButton();
+}
+
 const priceInt = 15.00;
 const priceRid = 10.00;
 function carrello(){
@@ -99,15 +109,18 @@ function carrello(){
     let interi = document.getElementById("numeroInteri").value;
     for(i=1;i<=interi;i++)
       document.getElementById("datiInteri").innerHTML += "<h4>Partecipante Intero " + i + "</h4>" + 
-        "<div><span>Nome:</span><input type=\"text\"></div>" +
-        "<div><span>Cognome:</span><input type=\"text\"></div>";
+        "<div><span>Nome:</span><input id=\"nomeIntero" + i + "\" type=\"text\"></div>" +
+        "<div><span>Cognome:</span><input id=\"cognomeIntero" + i + "\" type=\"text\"></div>"; //+
+        // "<input id=\"priceIntero\" type=\"hidden\" value=\"15.00\">" +
+        // "<input id=\"tipologiaIntero\" type=\"hidden\" value=\"intero\">";
 
     let ridotti = document.getElementById("numeroRidotti").value;
     for(i=1;i<=ridotti;i++)
       document.getElementById("datiRidotti").innerHTML += "<h4>Partecipante Ridotto " + i + "</h4>" +
-      "<div><span>Nome:</span><input type=\"text\"></div>" +
-      "<div><span>Cognome:</span><input type=\"text\"></div>";
-  
+        "<div><span>Nome:</span><input id=\"nomeRidotto" + i + "\" type=\"text\"></div>" +
+        "<div><span>Cognome:</span><input id=\"cognomeRidotto" + i + "\" type=\"text\"></div>"; //+
+        // "<input id=\"priceRidotto\" type=\"hidden\" value=\"10.00\">" +
+        // "<input id=\"tipologiaRidotto\" type=\"hidden\" value=\"ridotto\">";
   }
 
   function removeOldElements(){
