@@ -2,45 +2,53 @@
 	include('connessione.php');
 	session_start();
 
-	/*if(isset($_GET['action']) && ($_GET['action']=="salva")){
-		$numInteri = $_POST['interiToDb'];
-		for($i=1;$i<=$numInteri;$i++){
-
-			$nome=$_POST['nomeIntero' + $i];
-			$cognome=$_POST['cognomeIntero'+$i];
-			$validita=$_POST['datePicker'];	
-			$prezzo=$_POST['priceIntero'];	
-			$tipologia=$_POST['tipologiaIntero'];		
-			$user=$_SESSION['isLogged'];
+	if(isset($_GET['action']) && ($_GET['action']=="salva")){
 		
-			$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
-					VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
-			$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-			$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
-			if(!$result){
-				echo pg_last_error($conn);
+		if(isset($_POST['interiToDb'])){
+			echo $_POST['interiToDb'];
+			$numInteri = $_POST['interiToDb'];
+			for($i=1;$i<=$numInteri;$i++){
+
+				$nome=$_POST['inp-nomeIntero' + $i];
+				$cognome=$_POST['inp-cognomeIntero'+$i];
+				$validita=$_POST['datePicker'];	
+				$prezzo=$_POST['priceIntero'];	
+				$tipologia=$_POST['tipologiaIntero'];		
+				$user=$_SESSION['isLogged'];
+			
+				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
+						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
+				$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
+				$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
+				if(!$result){
+					echo pg_last_error($conn);
+				}
 			}
+		}else{
+			echo "non funziono";
 		}
-		$numRidotti = $_POST['ridottiToDb'];
-		for($i=1;$i<=$numRidotti;$i++){
+		if(isset($_POST['ridottiToDb'])){
+			$numRidotti = $_POST['ridottiToDb'];
+			for($i=1;$i<=$numRidotti;$i++){
 
-			$nome=$_POST['nomeRidotti' + $i];
-			$cognome=$_POST['cognomeRidotti'+$i];
-			$validita=$_POST['datePicker'];	
-			$prezzo=$_POST['priceRidotto'];	
-			$tipologia=$_POST['tipologiaRidotto'];		
-			$user=$_SESSION['isLogged'];
-		
-			$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente, id_biglietto) 
-					VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
-			$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-			$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
-			if(!$result){
-				echo pg_last_error($conn);
+				$nome=$_POST['inp-nomeRidotti' + $i];
+				$cognome=$_POST['inp-cognomeRidotti'+$i];
+				$validita=$_POST['datePicker'];	
+				$prezzo=$_POST['priceRidotto'];	
+				$tipologia=$_POST['tipologiaRidotto'];		
+				$user=$_SESSION['isLogged'];
+			
+				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente, id_biglietto) 
+						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
+				$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
+				$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
+				if(!$result){
+					echo pg_last_error($conn);
+				}
 			}
 		}		
 	}
-	pg_close($conn);*/
+	pg_close($conn);
 
 ?>
 
@@ -56,7 +64,7 @@
 	<body class="acquisto_body">
 		<?php include './header.php';?>
 
-		<form id="frmPaga" method="post">
+		<form id="frmPaga" method="post" action="acquistobiglietti.php?action=salva">
 			<!-- Informazioni sui biglietti -->
 			<div class="container informazioni">
 				<h1>Biglietti</h1>
@@ -114,7 +122,7 @@
 										<span>€ 15.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroInteri" name="sel-interi" onchange="showDate();enable();carrello()">
+										<select id="numeroInteri" onchange="functionsNumberPicker()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
 												var i = 0;
@@ -352,6 +360,7 @@
 							break;
 						}
 					}
+					
 				}
 
 				if(okCampi){ //se i campi sono stati tutti settati, vengono inviati i dati al server tramite l'azione del form
@@ -391,6 +400,6 @@
 				obj.style.display="none";
 				obj.innerHTML="<div></div>";
       		}
-		</script>										
+		</script>										 -->
 	</body>
 </html>

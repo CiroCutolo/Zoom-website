@@ -30,10 +30,10 @@ function getSelectedDate(){
 }
 
 function enable(){
-  if((takeOptValue("numeroInteri")!=0||takeOptValue("numeroRidotti")!=0)&& getSelectedDate()!=''){
+  if((takeOptValue("numeroInteri")>0||takeOptValue("numeroRidotti")>0)&& getSelectedDate()!=''){
     document.getElementById("continueButton").removeAttribute('disabled');
   }else{
-    document.getElementById("continueButton").setAttribute('disable','');
+    document.getElementById("continueButton").setAttribute('disabled','true');
   }
 }
 
@@ -68,7 +68,8 @@ function carrello(){
     }
 
     if(interi !=0){
-      document.getElementById("tableInteri").innerHTML = interi;
+      document.getElementById("tableInteri").innerHTML = interi +
+      "<input id=\"interiToDb\" type=\"text\" value=\"" + interi + "\">";
       document.getElementById("interiRow").classList.remove("hidden");
     }else{
       document.getElementById("interiRow").classList.add("hidden");
@@ -76,7 +77,8 @@ function carrello(){
 
     
     if(ridotti != 0){
-      document.getElementById("tableRidotti").innerHTML = ridotti;
+      document.getElementById("tableRidotti").innerHTML = ridotti +
+      "<input id=\"interiToDb\" type=\"text\" value=\"" + interi + "\">";
       document.getElementById("ridottiRow").classList.remove("hidden");
     }else{
       document.getElementById("ridottiRow").classList.add("hidden");
@@ -105,8 +107,8 @@ function carrello(){
     let ridotti = document.getElementById("numeroRidotti").value;
     for(i=1;i<=ridotti;i++)
       document.getElementById("datiRidotti").innerHTML += "<h4>Partecipante Ridotto " + i + "</h4>" +
-        "<div><span>Nome:</span><input id=\"Nome\" name=\"inp-nomeRidotto" + i + "\" type=\"text\"></div>" +
-        "<div><span>Cognome:</span><input id=\"Cognome\" name=\"inp-cognomeRidotto" + i + "\" type=\"text\"></div>";
+        "<div><span>Nome:</span><input id=\"nome\" name=\"inp-nomeRidotto" + i + "\" type=\"text\"></div>" +
+        "<div><span>Cognome:</span><input id=\"cognome\" name=\"inp-cognomeRidotto" + i + "\" type=\"text\"></div>";
   }
 
   function removeOldElements(){
