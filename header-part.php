@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <title>Header-Part</title>>
     <meta charset="utf-8">
+    <meta name="author" content="Claudia Carucci">
+    <meta name="description" content="parte centrale della pagina">
     <script src="https://kit.fontawesome.com/9491817803.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="header-part.css?<?php echo rand();?>">
+    <link rel="stylesheet" href="Css/header-part.css?<?php echo rand();?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title></title>
   </head>
-  <body class="header-part_body">
+  <body>
+  
+  <script>
+			cNumeroInteri=getCookie("numeroInteri");
+			cNumeroRidotti=getCookie("numeroRidotti");
+			cDatePicker=getCookie("datePicker");
+  </script>
   <div class="tag tickets">
     <div class="buy-tickets-container">
           <div class="buy-tickets-content">
@@ -27,7 +35,7 @@
             <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
             <p class="buy-tickets-textcontent-sottotitolo">Seleziona <b>almeno</b> una tipologia di biglietti e la data prima di acquistare</p>
               <p class="buy-tickets-textcontent">Interi
-                <select id="selector1" name="selectOption[0]" onchange="disabilitAcquista()">
+                <select id="numeroInteri" name="selectOption[0]" onchange="disabilitAcquista()">
                 <script>
                   var i = 0;
                   for (i = 0; i <= 10 ; i++){
@@ -37,7 +45,7 @@
                 </select>
               </p>
               <p class="buy-tickets-textcontent">Ridotti
-              <select id="selector2" name="selectOption[1]" onchange="disabilitAcquista()">
+              <select id="numeroRidotti" name="selectOption[1]" onchange="disabilitAcquista()">
                 <script>
                   var i = 0;
                   for (i = 0; i <= 10 ; i++){
@@ -47,7 +55,7 @@
               </select>
               </p>
               <p class="buy-tickets-textcontent">Data della visita</p>
-              <p><input type="date" id="data-picker" class="date-picker" min="<?php echo date('Y-m-d');?>" name="selectOption[2]" onchange="disabilitAcquista()"></input>
+              <p><input type="date" id="datePicker" class="date-picker" min="<?php echo date('Y-m-d');?>" name="selectOption[2]" onchange="disabilitAcquista()"></input>
               </p>
             </div>
             <div class="btn-tickets-container">
@@ -166,5 +174,17 @@
               document.getElementById("acquista").setAttribute('disabled','');
           }
       }
+
+      function salvaCookie(){
+				setCookie("numeroInteri", document.getElementById("numeroInteri").value,7);
+				setCookie("numeroRidotti", document.getElementById("numeroRidotti").value,7);
+				setCookie("datePicker", document.getElementById("datePicker").value,7);	
+			}
+			if (cNumeroInteri!=null)
+				document.getElementById("numeroInteri").value=cNumeroInteri;
+			if (cNumeroRidotti!=null)
+				document.getElementById("numeroRidotti").value=cNumeroRidotti;
+			if (cDatePicker!=null)
+				document.getElementById("datePicker").value=cDatePicker;
       </script>
     </html>

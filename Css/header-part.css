@@ -60,7 +60,7 @@
   margin: 0% 20% 0% 20%;
 }
 
-#selector1{
+#numeroInteri{
   width: 100%;
   height: 50px;
   border: none;
@@ -69,7 +69,7 @@
   padding-left: 5px;
 }
 
-#selector2{
+#numeroRidotti{
   width: 100%;
   height: 50px;
   border: none;
@@ -77,6 +77,7 @@
   background-color: #a4d2d3;
   padding-left: 5px;
 }
+
 .buy-tickets-content{
     padding-top: 10px;
     padding-left: 30px;
@@ -156,7 +157,7 @@ hr{
 
 footer{
   height: 150px;
-  background-image: url("borderfooter.svg");
+  background-image: url("../img/borderfooter.svg");
   text-align: center;
   position: relative;
 }
