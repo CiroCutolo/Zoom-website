@@ -29,8 +29,6 @@
 					}
 				}
 			}
-		}else{
-			echo "non funziono";
 		}
 		if(isset($_POST['ridottiToDb'])){
 			$numRidotti = $_POST['ridottiToDb'];
@@ -110,7 +108,8 @@
 				<p>
 				I biglietti di ingresso non sono in alcun modo rimborsabili.<br>
 				Non è possibile effettuare un cambio data.<br>
-				<b>Una volta selezionati tipologia e numero di biglietti, sarà possibile selezionare la data della visita.</b>
+				<b>Una volta selezionati tipologia, numero di biglietti e data sarà possibile procedere con il pagamento.</b><br>
+				Nel carrello verranno mostrati i biglietti selezionati.
 				</p>
 				<div class="selezione">
 					<div class="ticketNumber">
@@ -121,10 +120,10 @@
 									<div class="intero-image">
 										<img src="img\man_woman.png" alt="men_woman_image"/>
 									</div>
-									<a href="#." class="information" onclick="moreInfo('infoPanel-1')">
+									<a href="javascript:moreInfo('infoPanel-1')" class="information">
 										<i class="fa fa-info-circle"></i>
 									</a>
-									<div class="price">
+									<div class="buyPrice">
 										<span>€ 15.00</span>
 									</div>
 									<div class="numberPicker">
@@ -172,10 +171,10 @@
 									<div class="ridotto-image">
 										<img src="img\elder_child.png" alt="elder_child_image"/>
 									</div>
-									<a href="#." class="information" onclick="moreInfo('infoPanel-2')">
+									<a href="javascript:moreInfo('infoPanel-2')" class="information">
 										<i class="fa fa-info-circle"></i>
 									</a>
-									<div class="price">
+									<div class="buyPrice">
 										<span>€ 10.00</span>
 									</div>
 									<div class="numberPicker">
@@ -222,7 +221,7 @@
 					<div id="dateContainer">
 						<fieldset>
 							<legend class="data-text">DATA DI VISITA</legend>
-							<p>Seleziona per procede all'acquisto.</p>
+							<p>Seleziona la data i cui intendi visitare il nostro zoo.</p>
 						<label for="ticketDate" >
 							<input id="datePicker" name="d-date" <?php if(isset($_POST['selectOption'][2])) {?> value = "<?php echo $_POST['selectOption'][2]; ?>" <?php } ?>type="date" title="Data visita" min="<?php echo date('Y-m-d');?>" onchange="functionDataPicker()">
 						</label>
@@ -279,7 +278,7 @@
 					<input name="tipologiaRidotto" type="hidden" value="ridotto">
 				</div>
 				<div style="margin:30px 0px 0px 0px;">
-					<input id="PoliticheContrattuali" name="privacy" type="checkbox" onfocus="onFocus()">Accetta le politiche contrattuali.
+					<input id="PoliticheContrattuali" name="privacy" type="checkbox" onfocus="onFocus()">Accetto le politiche contrattuali.
 				</div>
 			</div>
 			
@@ -326,18 +325,20 @@
 				</div>			
 			</div>
 			
-			<!-- Bottoni di navigazione -->			
-			<label class="buttonContainer">
-				<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="generaCampi();controlla()"></a>
-			</label>
+			<!-- Bottoni di navigazione -->
+			<div>			
+				<label class="buttonContainer">
+					<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="generaCampi();controlla()"></a>
+				</label>
 
-			<label class="buttonContainer hidden">
-				<input class="naviButton" id="payButton" type="button" value="Paga" onclick="controllaCampiVuoti()">
-			</label>
+				<label class="buttonContainer hidden">
+					<input class="naviButton" id="payButton" type="button" value="Paga" onclick="controllaCampiVuoti()">
+				</label>
 
-			<label class="buttonContainer hidden">
-				<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="nextPage();removeOldElements()">
-			</label>
+				<label class="buttonContainer hidden">
+					<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="nextPage();removeOldElements()">
+				</label>
+			</div>
 		</form>
 
 		<?php //include('footer.php');?>

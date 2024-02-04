@@ -13,14 +13,6 @@ function takeOptValue(selectId){
   return value;
 }
 
-function showDate(){
-  if((takeOptValue('numeroInteri')!=0)||(takeOptValue('numeroRidotti')!=0)){
-    document.getElementById("dateContainer").classList.remove("hidden");
-  }else{
-    document.getElementById("dateContainer").classList.add("hidden");
-  }
-}
-
 function getTicketNumber(type){
   return document.getElementById(type).value;
 }
@@ -132,7 +124,6 @@ function carrello(){
   }
 
   function functionsNumberPicker(){
-    showDate();
     enable();
     carrello();
   }
@@ -217,4 +208,4 @@ function carrello(){
     obj=document.getElementById("mess");
     obj.style.display="none";
     obj.innerHTML="<div></div>";
-      }
+  }

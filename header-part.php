@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title></title>
   </head>
-  <body>
+  <body class="header-part_body">
   <div class="tag tickets">
     <div class="buy-tickets-container">
           <div class="buy-tickets-content">

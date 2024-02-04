@@ -5,7 +5,7 @@
 .acquisto_body h1{color: #0e84ab;}
 .acquisto_body h2, .acquisto_body h3, .acquisto_body h4, .warning {color: #fe8500}
 
-.acquisto_body h3{color: #241a08;}
+.acquisto_body h3{color: black;}
 
 .acquisto_body h2{margin-top: 0px;}
 
@@ -40,7 +40,7 @@
    	flex: 1;
 }
 
-.price {
+.buyPrice {
     color: #fe8500;
     font-size: 30px;
     font-weight: bolder;
@@ -65,7 +65,7 @@
     color: white;
     background-color: #0e84ab;
     border: 2px solid white;
-	margin: 10px 10px 10px 0;
+	margin: 10px 10px 40px 0;
     height: 90px;
     width: 90px;
 }
@@ -178,10 +178,6 @@
 
 .pagamento select, #dateContainer input{width: 164px;}
 
-.naviButton:hover{
-	background-color: #f09c13;
-}
-
 .payMethod{
 	height: 30px; 
 	display: inline;
@@ -189,12 +185,20 @@
 
 .payment-text{width: auto;}
 
-@media (max-width: 1024px){
+/* @media (max-width: 1024px){
     .container.interi.ridotti.content{
         flex-wrap: wrap;
         align-items: center;
         text-align: center;
         justify-content: center;
     }
+
+} */
+
+@media (max-width: 1200px){
+	.ticketNumber{
+		flex-direction: column;
+	
+	}
 
 }

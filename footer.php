@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="header-part.css?<?php echo rand();?>">
     <title>Document</title>
 </head>
-<body>
+<body class="footer_body">
 <footer>
   <div class="lineaOmbra"></div>
     <div class="text-footer">
