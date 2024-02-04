@@ -320,7 +320,7 @@
 			</label>
 
 			<label class="buttonContainer hidden">
-				<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="nextPage();removeOldElements()">
+				<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="nextPage();removeOldElements();onFocus()">
 			</label>
 		</form>
 
@@ -383,7 +383,6 @@
 				}
 			}
 
-		
 			function controllaLogin(){
 				//se l'utente non ha effettuato l'accesso, cliccando il pulsante continua gli sarà mostrato il popup di login, che si chiuderà dopo l'accesso
 				ret = false;
@@ -393,13 +392,12 @@
 				}
 				return ret;
 			}
-			
 
-			function onFocus() { //elimina il messaggio di errore riferito alle credenziali se ci si sposta su uno dei campi 
+			function onFocus() { //elimina il messaggio di errore riferito alle credenziali 
 				obj=document.getElementById("mess");
 				obj.style.display="none";
 				obj.innerHTML="<div></div>";
       		}
-		</script>										 -->
+		</script>										 
 	</body>
 </html>
