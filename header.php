@@ -8,7 +8,7 @@
       $sql = "SELECT email,nome,cognome FROM utenti WHERE utenti.email='$em'";
       $ret = pg_query($conn,$sql);
       $row = pg_fetch_row($ret);
-      setcookie("utente_loggato",$row[0], time() + 3600);
+      $_SESSION["email"] = $row[0];
       $_SESSION["nome"] = $row[1];
       $_SESSION["cognome"] = $row[2];
     }
@@ -41,7 +41,7 @@
         <div class="dropdown-content" id="myDropdown">
           <div class="contenitore-info">
             <div class="logo-iniziali"> <div class="iniziali"><?php echo mb_substr($_SESSION["nome"],0,1) . mb_substr($_SESSION["cognome"],0,1) ?></div></div>
-            <div class="info-utente"><h3><?php echo $_SESSION["nome"] . " " . $_SESSION["cognome"] ?></h3><?php echo $_COOKIE["utente_loggato"] ?></div>
+            <div class="info-utente"><h3><?php echo $_SESSION["nome"] . " " . $_SESSION["cognome"] ?></h3><?php echo $_SESSION["email"] ?></div>
           </div>
           <div class="lineaOmbra"></div>
           <a href="areapersonale.php">Area Personale</a>
@@ -58,13 +58,13 @@
         <form id = "frmPopup">
           <div class="form-element">
             <label for="email">Email</label>
-            <input onfocus="onFocus()" type="text" id="email" name="email" placeholder="Inserisci email">
+            <input onfocus="onFocus()" type="text" id="email" placeholder="Inserisci email">
           </div>
           <div class="form-element">
             <label for="password">Password</label>
             <div class="occhietto">
-              <input onfocus="onFocus()"  type="password" id="password" name="pw" placeholder="Inserisci password">
-              <input type="button" id="occhio" onclick="clickOcchio()"><i class="far fa-eye-slash" id="togglepassword"></i></button>
+              <input onfocus="onFocus()"  type="password" id="password" placeholder="Inserisci password">
+              <i class="far fa-eye-slash" id="togglep"></i>
             </div>
           </div>
           <div class="form-element">
@@ -168,17 +168,16 @@
         document.getElementById("body").classList.remove("lock");
       }
       
-      function clickOcchio(){
-        alert(0);
-        //creo l'azione mostra/nascondi password
-        const togglepassword = document.getElementById("togglepassword");
-        const Password = document.getElementById("password");
-        
-        const type = Password.getAttribute('type') === 'password' ? 'text' : 'password';
-        Password.setAttribute('type', type);
+      //creo l'azione mostra/nascondi password
+      const toggleP = document.getElementById("togglep");
+      const Pass = document.getElementById("password");
 
-        //this.classList.toggle('fa-eye');
-      }
+      toggleP.addEventListener('click', function () {
+          const type = Pass.getAttribute('type') === 'password' ? 'text' : 'password';
+          Pass.setAttribute('type', type);
+
+          toggleP.classList.toggle('fa-eye');
+      });
 
     </script>
   </body>

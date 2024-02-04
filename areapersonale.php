@@ -6,10 +6,6 @@
     include("connessione.php"); //connessione al database
     session_start();
 
-    //if (isset(($_SESSION["isLogged"])) && $_SESSION["isLogged"]=="") //se la sessione è aperta, ma l'utente non ha fatto il login
-        //header('Location: /home.php'); 
-
-
     if(!isset($_SESSION["isLogged"])){
         header('Location: /home.php');
     }
