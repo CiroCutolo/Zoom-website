@@ -262,7 +262,7 @@
 					<h3>BIGLIETTI RIDOTTI</h3>
 				</div>
 				<div style="margin:30px 0px 0px 0px;">
-					<input id="Privacy" name="privacy" type="checkbox" onfocus="onFocus()">privacy.
+					<input id="PoliticheContrattuali" name="privacy" type="checkbox" onfocus="onFocus()">Accetta le politiche contrattuali.
 				</div>
 			</div>
 			
