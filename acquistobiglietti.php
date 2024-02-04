@@ -1,4 +1,5 @@
 <?php
+	ini_set('display_errors', 0);
 	include('connessione.php');
 	session_start();
 
@@ -16,10 +17,16 @@
 				$user=$_SESSION['isLogged'];
 				
 				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
-						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', '$user')";
-				$result = pg_query($conn,$query);
+						VALUES($1, $2, $3, $4, $5, $6)";
+				$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
+				
 				if(!$result){
 					echo pg_last_error($conn);
+				}else{
+					$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
+					if(!$result){
+						echo pg_last_error($conn);
+					}
 				}
 			}
 		}else{
@@ -206,7 +213,7 @@
 											Bambini da 4 a 10 anni, persone con disabilità inferiore al 100%
 										</p>
 										<p>
-											<strong>Attenzione:</strong> Ingresso gratuito per bambini di altezza inferiore a 1 metro (da confermare all'ingresso del parco previa misurazione).
+											<strong>Attenzione:</strong> Ingresso gratuito per bambini di altezza inferiore a 1 metro<br>(da confermare all'ingresso del parco previa misurazione).
 										</p>
 									</div>
 								</div>
@@ -218,12 +225,12 @@
 							</fieldset>
 						</label>
 					</div>
-					<div id="dateContainer" class="hidden">
+					<div id="dateContainer">
 						<fieldset>
 							<legend class="data-text">DATA DI VISITA</legend>
 							<p>Seleziona per procede all'acquisto.</p>
 						<label for="ticketDate" >
-							<input id="datePicker" name="d-date" <?php if(isset($_POST['selectOption'][2])) {?> value = "<?php echo $_POST['selectOption'][2]; ?>" <?php } ?>type="date" title="Data visita" min="<?php echo date('Y-m-d');?>" onchange="carrello();enable()">
+							<input id="datePicker" name="d-date" <?php if(isset($_POST['selectOption'][2])) {?> value = "<?php echo $_POST['selectOption'][2]; ?>" <?php } ?>type="date" title="Data visita" min="<?php echo date('Y-m-d');?>" onchange="functionDataPicker()">
 						</label>
 						</fieldset>
 					</div>
@@ -270,12 +277,10 @@
 			<div class="container datiBiglietti hidden">
 				<h2>Dati biglietti</h2>
 				<div id="datiInteri">
-					<h3>BIGLIETTI INTERI</h3>
 					<input name="priceIntero" type="hidden" value="15.00">
 					<input name="tipologiaIntero" type="hidden" value="intero">
 				</div>
 				<div id="datiRidotti">
-					<h3>BIGLIETTI RIDOTTI</h3>
 					<input name="priceRidotto" type="hidden" value="10.00">
 					<input name="tipologiaRidotto" type="hidden" value="ridotto">
 				</div>
@@ -284,44 +289,46 @@
 				</div>
 			</div>
 			
-			<div id="mess" style="display:none; color: orange;"></div>
+			<div id="mess" style="display:none"></div>
 
 			<!-- Dati di pagamento -->
 			<div class="container pagamento hidden">
-				<h2>Pagamento</h2>
-				<div>
-					<h3 style="display: inline;">Metodo di pagamento</h3><img style="height: 20px; display: inline;" src="img/payment.png" alt="">
-				</div>								
-				<br>
-				<div>
-					<span>Intestatario:</span>
-					<input id="Intestatario" name="inp-intestatario" type="text" autocomplete="off" onfocus="onFocus()">
+				<h2>Metodo di pagamento</h2>
+				<div class="payment-header">
+					<span class="payment-text"><h3>Carta di credito</h3></span>
+					<span><img class="payMethod" src="img/payment.png" alt="payment_method_image"></span>
 				</div>
-				<div>
-					<span>Numero della carta:</span>
-					<input id="Numero della carta" name="inp-carta" type="text" autocomplete="off" onfocus="onFocus()">
-				</div>
-				<div>
-					<span>Mese di scadenza:</span>
-					<select id="Mese di scadenza" name="mese" autocomplete="off">
-						<?php
-						for($i=1;$i<=12;$i++)
-							echo "<option value=\"$i\">$i</option>"
-						?>
-					</select>
-				</div>
-				<div>
-					<span>Anno di scadenza:</span>
-					<select id="Anno di scadenza" name="anno" autocomplete="off">
-						<?php
-							for($i=2024;$i<=2044;$i++)
+				<div class="payInfo">
+					<div>
+						<span>Intestatario:</span>
+						<input id="intestatario" name="inp-intestatario" type="text" autocomplete="off" onfocus="onFocus()">
+					</div>
+					<div>
+						<span>Numero della carta:</span>
+						<input id="cardNumber" name="inp-carta" type="number" autocomplete="off" onfocus="onFocus()">
+					</div>
+					<div>
+						<span>Mese di scadenza:</span>
+						<select id="meseScadenza" name="mese" autocomplete="off">
+							<?php
+							for($i=1;$i<=12;$i++)
 								echo "<option value=\"$i\">$i</option>"
 							?>
-					</select>
-				</div>	
-				<div>
-					<span>CVV:</span>
-					<input id="cvv" name="inp-carta" type="password" maxlength="3" autocomplete="off" onfocus="onFocus()">
+						</select>
+					</div>
+					<div>
+						<span>Anno di scadenza:</span>
+						<select id="annoScadenza" name="anno" autocomplete="off">
+							<?php
+								for($i=2024;$i<=2044;$i++)
+									echo "<option value=\"$i\">$i</option>"
+								?>
+						</select>
+					</div>	
+					<div>
+						<span>CVV:</span>
+						<input id="cvv" name="cvv-carta" type="password" maxlength="3" autocomplete="off" onfocus="onFocus()">
+					</div>
 				</div>			
 			</div>
 			

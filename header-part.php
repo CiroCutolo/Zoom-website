@@ -167,10 +167,8 @@
       //disabilita il tasto di acquisto se compili almeno uno dei due campi select e la data
       function disabilitAcquista(){
           if(( (document.getElementById("selector1").value > 0) || (document.getElementById("selector2").value > 0)) && (document.getElementById("data-picker").value != "")){
-              alert("abilitato");
               document.getElementById("acquista").removeAttribute('disabled');
           }else{
-              alert("disabilitato");
               document.getElementById("acquista").setAttribute('disabled','');
           }
       }
