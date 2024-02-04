@@ -11,15 +11,12 @@
 				$nome=$_POST['inp-nomeIntero' . $i];
 				$cognome=$_POST['inp-cognomeIntero' . $i];
 				$validita=$_POST['d-date'];	
-				$prezzo=$_POST['priceIntero'];	
+				$prezzo=$_POST['priceIntero'];
 				$tipologia=$_POST['tipologiaIntero'];		
 				$user=$_SESSION['isLogged'];
 				
 				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
 						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', '$user')";
-
-				//$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-				//$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user, $i));
 				$result = pg_query($conn,$query);
 				if(!$result){
 					echo pg_last_error($conn);
@@ -40,8 +37,7 @@
 			
 				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
 						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', '$user')";
-				// $result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-				// $result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user, $i));
+		
 				$result = pg_query($conn,$query);
 				if(!$result){
 					echo pg_last_error($conn);

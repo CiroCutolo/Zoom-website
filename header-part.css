@@ -116,9 +116,10 @@ body{
 .date-picker{
   background-color: #a4d2d3;
   border: none;
-  width: 100%;
+  width: 98%;
   height: 50px;
   border-radius: 10px;
+  padding-left: 10px;
 }
 
 .hours, .price {
@@ -177,6 +178,8 @@ footer .row a{
 }
 
 footer .text-footer{
-  margin-top: 40px;
-  color:white;
+  margin-top: 30px;
+  color:black;
+  font-weight: bold;
+  font-size: larger;
 }

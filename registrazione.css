@@ -104,19 +104,25 @@ body{
     }
     
     .leopardo input[type=submit]{
-        margin-top: 50px;
+        margin-top: 70px;
         width: 50%;    
         margin-left: 0px;
     }  
     .leopardo #confermapasswordCONocchio{
         left:15%;
-        bottom: 0px;
-        width: 80%;  
+        bottom: -30px;
+        width: 100%;
+        margin: auto;
+        position: relative;
+        margin-right: 20%;
+
     }
     .leopardo #passwordCONocchio{
         left:15%;
-        bottom: 0px;
-        width: 80%;  
+        bottom: -30px;
+        width: 100%;
+        position: relative;
+  
     }
     #scritta{
         font-size: medium;  
