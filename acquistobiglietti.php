@@ -307,7 +307,7 @@
 			</label>
 
 			<label class="buttonContainer hidden">
-				<input class="naviButton" id="payButton" type="button" value="Paga" >
+				<input class="naviButton" id="payButton" type="button" value="Paga">
 			</label>
 
 			<label class="buttonContainer hidden">
@@ -350,18 +350,15 @@
 						}
 						console.log(elements[i].value)
 					}
-					
 				}
-
+				return okCampi;
 			}
 
 			function controlla() {
 				checkLog=getIsLogged();
 				isLogged=checkLog.isLogged;
 
-				
-
-				if (okCampi) {
+				if (controllaCampiVuoti()) {
 					if (!controllaLogin()) {
 						//se i campi sono tutti compilati e l'utente ha effettuato l'accesso, il pulsante paga invia i dati al server
 						document.getElementById("frmPaga").action="acquistobiglietti.php?action=salva"
