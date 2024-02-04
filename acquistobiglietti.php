@@ -18,9 +18,9 @@
 				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
 						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', '$user')";
 
-				// $result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-				// $result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user, $i));
-				$result = pg_query($conn,$query);
+				$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
+				$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user, $i));
+				// $result = pg_query($conn,$query);
 				if(!$result){
 					echo pg_last_error($conn);
 				}
@@ -72,8 +72,8 @@
 				<h1>Biglietti</h1>
 				<h2>Tipologie di biglietto</h2>
 				<ul>
-					<li>Intero a data fissa: € 15.00</li>
-					<li>Ridotto a data fissa: € 10.00 per bambini da 4 a 10 anni, persone con disabilità inferiore al 100%.</li>
+					<li>Intero: € 15.00</li>
+					<li>Ridotto: € 10.00 per bambini da 4 a 10 anni, persone con disabilità inferiore al 100%.</li>
 					<li>Gratuito: Under 3, Over 70 e disabili 100% con accompagnatori.</li>
 				</ul>
 		
@@ -104,9 +104,9 @@
 				<h2>Acquista il tuo biglietto</h2>
 				<h3>Seleziona il numero di biglietti</h3>
 				<p>
-				I biglietti di ingresso non sono in alcun modo rimborsabili.
-				Non è possibile effettuare un cambio data.
-				Una volta selezionati tipologia e numero di biglietti, apparirà un calendario per la selezione della data.
+				I biglietti di ingresso non sono in alcun modo rimborsabili.<br>
+				Non è possibile effettuare un cambio data.<br>
+				<b>Una volta selezionati tipologia e numero di biglietti, sarà possibile selezionare la data della visita.</b>
 				</p>
 				<div class="selezione">
 					<div class="ticketNumber">
@@ -117,7 +117,7 @@
 									<div class="intero-image">
 										<img src="img\man_woman.png" alt="men_woman_image"/>
 									</div>
-									<a href="#ciao" class="information" onclick="moreInfo('infoPanel-1')">
+									<a href="#." class="information" onclick="moreInfo('infoPanel-1')">
 										<i class="fa fa-info-circle"></i>
 									</a>
 									<div class="price">
@@ -168,7 +168,7 @@
 									<div class="ridotto-image">
 										<img src="img\elder_child.png" alt="elder_child_image"/>
 									</div>
-									<a href="#ciao" class="information" onclick="moreInfo('infoPanel-2')">
+									<a href="#." class="information" onclick="moreInfo('infoPanel-2')">
 										<i class="fa fa-info-circle"></i>
 									</a>
 									<div class="price">
@@ -216,15 +216,18 @@
 						</label>
 					</div>
 					<div id="dateContainer" class="hidden">
-						<h3>Seleziona la data</h3>
-
+						<fieldset>
+							<legend class="data-text">DATA DI VISITA</legend>
+							<p>Seleziona per procede all'acquisto.</p>
 						<label for="ticketDate" >
 							<input id="datePicker" name="d-date" <?php if(isset($_POST['selectOption'][2])) {?> value = "<?php echo $_POST['selectOption'][2]; ?>" <?php } ?>type="date" title="Data visita" min="<?php echo date('Y-m-d');?>" onchange="carrello();enable()">
 						</label>
+						</fieldset>
 					</div>
 				</div>
 			</div>
 
+			<!-- Carrello -->
 			<div class="carrello hidden">
 				<h2>Carrello</h2>
 				<table class="cartTable">
@@ -333,83 +336,8 @@
 			</label>
 		</form>
 
-		<script>
-			function getIsLogged() { //chiamata ad ajax per controllare se l'utente ha effettuato l'accesso
-				var strReturn;
-				$.ajax({
-					url: "ajax.php?action=getIsLogged", dataType: "json", success: function(data) {
-					strReturn=JSON.parse(JSON.stringify(data));
-					},
-					async:false
-				});
-				return strReturn;	
-			}
+		<?php //include('footer.php');?>
 
-			function controllaCampiVuoti(){
-				var elements = document.forms["frmPaga"].elements;
-				okCampi=true;
 
-				for (i=0; i<elements.length; i++){ //controlla gli elementi del form tramite il loro 'name'
-					campo=elements[i].name;
-
-					if (campo=="privacy" && !elements[i].checked) { //verifica che il campo privacy sia stato settato
-						okCampi=false;
-						obj=document.getElementById("mess");
-          				obj.style.display="block";
-          				obj.innerHTML="<div><b>Il campo " + elements[i].id + " è obbligatorio</b></div>";	
-						break;
-					}
-					position = campo.search("inp-");
-					if (position>=0) { //verifica che tutti gli altri (nome,cognome,intestatario,numero carta) campi siano stati settati
-						if (elements[i].value=="") {
-							okCampi=false;
-							obj=document.getElementById("mess");
-          					obj.style.display="block";
-          					obj.innerHTML="<div><b>Il campo " + elements[i].id + " è obbligatorio</b></div>";				
-							break;
-						}
-					}
-					
-				}
-
-				if(okCampi){ //se i campi sono stati tutti settati, vengono inviati i dati al server tramite l'azione del form
-					document.getElementById("frmPaga").action="acquistobiglietti.php?action=salva"
-					document.getElementById("frmPaga").submit();
-					alert("Pagamento avvenuto con successo :)");
-				}
-			}
-
-			function controlla() { //controlla la risposta di ajax
-				checkLog=getIsLogged();
-				isLogged=checkLog.isLogged;
-
-				if (!controllaLogin()) {
-					//se l'utente ha effettuato l'accesso, il pulsante 'continua' permette l'accesso all'area di pagamento
-					nextPage();
-				}
-				else{//altrimenti lo riporta all'inizio della pagina aprendo il popup di login
-					var continua = document.getElementById("continua");
-					continua.href = "#home";				
-				}
-			}
-
-		
-			function controllaLogin(){
-				//se l'utente non ha effettuato l'accesso, cliccando il pulsante continua gli sarà mostrato il popup di login, che si chiuderà dopo l'accesso
-				ret = false;
-				if(isLogged==""){
-					popup[0].classList.add("activate");
-					ret = true;
-				}
-				return ret;
-			}
-			
-
-			function onFocus() { //elimina il messaggio di errore riferito alle credenziali se ci si sposta su uno dei campi 
-				obj=document.getElementById("mess");
-				obj.style.display="none";
-				obj.innerHTML="<div></div>";
-      		}
-		</script>
 	</body>
 </html>
