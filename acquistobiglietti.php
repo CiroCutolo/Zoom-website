@@ -218,7 +218,7 @@
 						<h3>Seleziona la data</h3>
 
 						<label for="ticketDate" >
-							<input id="datePicker" name="d-date" type="date" title="Data visita" min="<?php echo date('Y-m-d');?>" onchange="carrello();enable()">
+							<input id="datePicker" name="d-date" <?php if(isset($_POST['selectOption'][2])) {?> value = "<?php echo $_POST['selectOption'][2]; ?>" <?php } ?>type="date" title="Data visita" min="<?php echo date('Y-m-d');?>" onchange="carrello();enable()">
 						</label>
 					</div>
 				</div>
