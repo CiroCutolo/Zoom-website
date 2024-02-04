@@ -5,21 +5,22 @@
 	if(isset($_GET['action']) && ($_GET['action']=="salva")){
 		
 		if(isset($_POST['interiToDb'])){
-			echo $_POST['interiToDb'];
 			$numInteri = $_POST['interiToDb'];
 			for($i=1;$i<=$numInteri;$i++){
 
-				$nome=$_POST['inp-nomeIntero' + $i];
-				$cognome=$_POST['inp-cognomeIntero'+$i];
-				$validita=$_POST['datePicker'];	
+				$nome=$_POST['inp-nomeIntero' . $i];
+				$cognome=$_POST['inp-cognomeIntero' . $i];
+				$validita=$_POST['d-date'];	
 				$prezzo=$_POST['priceIntero'];	
 				$tipologia=$_POST['tipologiaIntero'];		
 				$user=$_SESSION['isLogged'];
-			
+				
 				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
-						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
-				$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-				$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
+						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', '$user')";
+
+				// $result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
+				// $result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user, $i));
+				$result = pg_query($conn,$query);
 				if(!$result){
 					echo pg_last_error($conn);
 				}
@@ -30,18 +31,18 @@
 		if(isset($_POST['ridottiToDb'])){
 			$numRidotti = $_POST['ridottiToDb'];
 			for($i=1;$i<=$numRidotti;$i++){
-
-				$nome=$_POST['inp-nomeRidotti' + $i];
-				$cognome=$_POST['inp-cognomeRidotti'+$i];
-				$validita=$_POST['datePicker'];	
+				$nome=$_POST['inp-nomeRidotto' . $i];
+				$cognome=$_POST['inp-cognomeRidotto' . $i];
+				$validita=$_POST['d-date'];	
 				$prezzo=$_POST['priceRidotto'];	
 				$tipologia=$_POST['tipologiaRidotto'];		
 				$user=$_SESSION['isLogged'];
 			
-				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente, id_biglietto) 
-						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', $user)";
-				$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-				$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user));
+				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
+						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', '$user')";
+				// $result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
+				// $result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user, $i));
+				$result = pg_query($conn,$query);
 				if(!$result){
 					echo pg_last_error($conn);
 				}
@@ -58,7 +59,8 @@
 		<title>Acquisto biglietti - Zoom</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="./Css/acquistobiglietti.css?<?php echo rand();?>" type="text/css">
-		<script src="JS\function.js" type="text/javascript" ></script>
+		<script src="JS\function.js?<?php echo rand();?>" type="text/javascript" ></script>
+		<script src="https://code.jquery.com/jquery-latest.min.js?<?php echo rand();?>"></script>
 		
 	</head>
 	<body class="acquisto_body">
@@ -122,7 +124,7 @@
 										<span>€ 15.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroInteri" onchange="functionsNumberPicker()">
+										<select id="numeroInteri" onclick="functionsNumberPicker()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
 												var i = 0;
@@ -173,7 +175,7 @@
 										<span>€ 10.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroRidotti" name="sel-ridotti" onchange="functionsNumberPicker()">
+										<select id="numeroRidotti" name="sel-ridotti" onclick="functionsNumberPicker()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
 												var i = 0;
@@ -263,13 +265,13 @@
 				<h2>Dati biglietti</h2>
 				<div id="datiInteri">
 					<h3>BIGLIETTI INTERI</h3>
-					<input id="priceIntero" type="hidden" value="15.00">
-					<input id="tipologiaIntero" type="hidden" value="intero">
+					<input name="priceIntero" type="hidden" value="15.00">
+					<input name="tipologiaIntero" type="hidden" value="intero">
 				</div>
 				<div id="datiRidotti">
 					<h3>BIGLIETTI RIDOTTI</h3>
-					<input id="priceRidotto" type="hidden" value="10.00">
-					<input id="tipologiaRidotto" type="hidden" value="ridotto">
+					<input name="priceRidotto" type="hidden" value="10.00">
+					<input name="tipologiaRidotto" type="hidden" value="ridotto">
 				</div>
 				<div style="margin:30px 0px 0px 0px;">
 					<input id="PoliticheContrattuali" name="privacy" type="checkbox" onfocus="onFocus()">Accetta le politiche contrattuali.
@@ -281,7 +283,10 @@
 			<!-- Dati di pagamento -->
 			<div class="container pagamento hidden">
 				<h2>Pagamento</h2>
-				<h3>Metodo di pagamento</h3>
+				<div>
+					<h3 style="display: inline;">Metodo di pagamento</h3><img style="height: 15px; display: inline;" src="img/payment.png" alt="">
+				</div>								
+				<br>
 				<div>
 					<span>Intestatario:</span>
 					<input id="Intestatario" name="inp-intestatario" type="text" onfocus="onFocus()">
@@ -307,7 +312,11 @@
 								echo "<option value=\"$i\">$i</option>"
 							?>
 					</select>
-				</div>				
+				</div>	
+				<div>
+					<span>CVV:</span>
+					<input id="cvv" name="cvv-carta" type="password" onfocus="onFocus()">
+				</div>			
 			</div>
 			
 			<!-- Bottoni di navigazione -->			
@@ -320,7 +329,7 @@
 			</label>
 
 			<label class="buttonContainer hidden">
-				<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="nextPage();removeOldElements();onFocus()">
+				<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="nextPage();removeOldElements()">
 			</label>
 		</form>
 
@@ -366,6 +375,7 @@
 				if(okCampi){ //se i campi sono stati tutti settati, vengono inviati i dati al server tramite l'azione del form
 					document.getElementById("frmPaga").action="acquistobiglietti.php?action=salva"
 					document.getElementById("frmPaga").submit();
+					alert("Pagamento avvenuto con successo :)");
 				}
 			}
 
@@ -383,6 +393,7 @@
 				}
 			}
 
+		
 			function controllaLogin(){
 				//se l'utente non ha effettuato l'accesso, cliccando il pulsante continua gli sarà mostrato il popup di login, che si chiuderà dopo l'accesso
 				ret = false;
@@ -392,12 +403,13 @@
 				}
 				return ret;
 			}
+			
 
-			function onFocus() { //elimina il messaggio di errore riferito alle credenziali 
+			function onFocus() { //elimina il messaggio di errore riferito alle credenziali se ci si sposta su uno dei campi 
 				obj=document.getElementById("mess");
 				obj.style.display="none";
 				obj.innerHTML="<div></div>";
       		}
-		</script>										 
+		</script>
 	</body>
 </html>

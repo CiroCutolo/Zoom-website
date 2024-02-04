@@ -30,10 +30,14 @@ function getSelectedDate(){
 }
 
 function enable(){
-  if((takeOptValue("numeroInteri")>0||takeOptValue("numeroRidotti")>0)&& getSelectedDate()!=''){
+  var valRidotti = $('#numeroRidotti').find('option:selected').val();
+  var valInteri = $('#numeroInteri').find('option:selected').val();
+  var vardate = $('#datePicker').val();
+
+  if(((valRidotti > 0) || (valInteri > 0)) && (vardate != '')){
     document.getElementById("continueButton").removeAttribute('disabled');
   }else{
-    document.getElementById("continueButton").setAttribute('disabled','true');
+    document.getElementById("continueButton").setAttribute('disabled', '');
   }
 }
 
@@ -55,6 +59,7 @@ function nextPage(){
 
 }
 
+
 const priceInt = 15.00;
 const priceRid = 10.00;
 function carrello(){
@@ -69,7 +74,7 @@ function carrello(){
 
     if(interi !=0){
       document.getElementById("tableInteri").innerHTML = interi +
-      "<input id=\"interiToDb\" type=\"text\" value=\"" + interi + "\">";
+      "<input name=\"interiToDb\" type=\"text\" value=\"" + interi + "\">";
       document.getElementById("interiRow").classList.remove("hidden");
     }else{
       document.getElementById("interiRow").classList.add("hidden");
@@ -78,7 +83,7 @@ function carrello(){
     
     if(ridotti != 0){
       document.getElementById("tableRidotti").innerHTML = ridotti +
-      "<input id=\"interiToDb\" type=\"text\" value=\"" + interi + "\">";
+      "<input name=\"ridottiToDb\" type=\"text\" value=\"" + ridotti + "\">";
       document.getElementById("ridottiRow").classList.remove("hidden");
     }else{
       document.getElementById("ridottiRow").classList.add("hidden");

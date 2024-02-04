@@ -136,7 +136,7 @@
                             $prezzo = $row[3]; 
                             $tipologia = $row[4]; ?>
 
-                            <tr><td><?php echo $nome . "<br>" . $cognome?></td><td><?php echo $validita?></td><td><?php echo "€" . $prezzo?></td><td><?php echo $tipologia?></td></tr>
+                            <tr><td><?php echo $nome . "<br>" . $cognome?></td><td><?php echo $validita?></td><td><?php echo "€" . $prezzo .".00"?></td><td><?php echo $tipologia?></td></tr>
 
                         <?php }
                         
