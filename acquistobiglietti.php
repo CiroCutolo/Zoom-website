@@ -63,13 +63,19 @@
 		<meta name="author" content="Gaetano Frasca">
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="./Css/acquistobiglietti.css?<?php echo rand();?>" type="text/css">
-		<script src="JS\function.js?<?php echo rand();?>" type="text/javascript" ></script>
+		<script src="JS\functionsAcquistobiglietti.js?<?php echo rand();?>" type="text/javascript" ></script>
 		<script src="https://code.jquery.com/jquery-latest.min.js?<?php echo rand();?>"></script>
-		
+	
 	</head>
 	<body class="acquisto_body">
 		<?php include './header.php';?>
-
+		<script>
+				
+			cNumeroInteri=getCookie("numeroInteri");
+			cNumeroRidotti=getCookie("numeroRidotti");
+			cDatePicker=getCookie("datePicker");
+				
+		</script>	
 		<form id="frmPaga" method="post" action="acquistobiglietti.php?action=salva">
 			<!-- Informazioni sui biglietti -->
 			<div class="container informazioni">
@@ -328,7 +334,7 @@
 			
 			<!-- Bottoni di navigazione -->			
 			<label class="buttonContainer">
-				<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="generaCampi();controlla()"></a>
+				<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="salvaCookie();generaCampi();controlla()"></a>
 			</label>
 
 			<label class="buttonContainer hidden">
@@ -343,5 +349,18 @@
 		<?php //include('footer.php');?>
 
 
+		<script>
+			function salvaCookie(){
+				setCookie("numeroInteri", document.getElementById("numeroInteri").value,7);
+				setCookie("numeroRidotti", document.getElementById("numeroRidotti").value,7);
+				setCookie("datePicker", document.getElementById("datePicker").value,7);	
+			}
+			if (cNumeroInteri!=null)
+				document.getElementById("numeroInteri").value=cNumeroInteri;
+			if (cNumeroRidotti!=null)
+				document.getElementById("numeroRidotti").value=cNumeroRidotti;
+			if (cDatePicker!=null)
+				document.getElementById("datePicker").value=cDatePicker;
+		</script>
 	</body>
 </html>

@@ -119,13 +119,13 @@
 
             <div id="mostra_acquisti" class="nascosto" >
 
-                <div class="tigre">
+                <div class="tigre" id="table">
                     <table>
                         <tr><th>NOME E COGNOME</th><th>DATA DI VALIDITÀ</th><th>PREZZO</th><th>TIPOLOGIA</th></tr>
                     <?php
                         //PRELEVO I BIGLIETTI ACQUISTATI 
                         //cerca nel database tutti i biglietti corrispondenti all'email dell'utente 
-                        $tmpQuery = "SELECT nome, cognome, validita, prezzo, tipologia FROM biglietti_acquistati WHERE utente = '".     $_SESSION["isLogged"] ."'";
+                        $tmpQuery = "SELECT nome, cognome, validita, prezzo, tipologia FROM biglietti_acquistati WHERE utente = '".     $_SESSION["isLogged"] ."' ORDER BY validita ASC, cognome " ;
                         $result = pg_query($conn, $tmpQuery);
 
                         //scorre tutti i campi della linea del biglietto indicato e li inserisce nelle righe della tabella
@@ -139,8 +139,6 @@
                             <tr><td><?php echo $nome . "<br>" . $cognome?></td><td><?php echo $validita?></td><td><?php echo "€" . $prezzo .".00"?></td><td><?php echo $tipologia?></td></tr>
 
                         <?php }
-                        
-
                         ?>
                     </table>
                 </div>

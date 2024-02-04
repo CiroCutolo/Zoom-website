@@ -34,6 +34,7 @@ function showAnimalPopup(obj) {
 
   const element = document.getElementById("popup-container");
 
+  //through next declarations, "showAnimalPopup" creates and appends the usefull elements to the 'popup container'.
   const animalDetailsPopup = document.createElement('div');
   animalDetailsPopup.setAttribute('id', 'animal-details-popup');
   element.appendChild(animalDetailsPopup);
@@ -54,6 +55,9 @@ function showAnimalPopup(obj) {
   closeButton.setAttribute('id', 'close-button');
   closeButton.type = 'button';
   closeButton.textContent = 'Chiudi la scheda';
+
+  //the function below removes the popup created, so as not to weigh the document.
+
   closeButton.addEventListener('click', function(){
       animalDetailsPopup.classList.remove("open")
 
@@ -62,16 +66,21 @@ function showAnimalPopup(obj) {
   
   popupTextContainer.appendChild(closeButton);
 
+  // add to any of the elements created, their own class, to apply the style attributes.
+
   animalDetailsPopup.classList.add("animal-details-popup");
   popupTextContainer.classList.add("popup-text-container");
   animalDetailsPopup.classList.add("open");
   closeButton.classList.add("close-button");
 }
+
+
+//the function below gets an object with the attributes gotten by the file ajax.php.
 function getAnimal(animale) {
   var strReturn;
   $.ajax({
       url: "ajax.php?action=getAnimal&animale="+animale, dataType: "json", success: function(data) {
-strReturn=JSON.parse(JSON.stringify(data));
+        strReturn=JSON.parse(JSON.stringify(data));
       },
       async:false
   });
