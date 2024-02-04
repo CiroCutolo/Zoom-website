@@ -136,3 +136,80 @@ function carrello(){
     enable();
     carrello()
   }
+
+  function getIsLogged() { //chiamata ad ajax per controllare se l'utente ha effettuato l'accesso
+    var strReturn;
+    $.ajax({
+      url: "ajax.php?action=getIsLogged", dataType: "json", success: function(data) {
+      strReturn=JSON.parse(JSON.stringify(data));
+      },
+      async:false
+    });
+    return strReturn;	
+  }
+
+  function controllaCampiVuoti(){
+    var elements = document.forms["frmPaga"].elements;
+    okCampi=true;
+
+    for (i=0; i<elements.length; i++){ //controlla gli elementi del form tramite il loro 'name'
+      campo=elements[i].name;
+
+      if (campo=="privacy" && !elements[i].checked) { //verifica che il campo privacy sia stato settato
+        okCampi=false;
+        obj=document.getElementById("mess");
+              obj.style.display="block";
+              obj.innerHTML="<div><b>Il campo " + elements[i].id + " è obbligatorio</b></div>";	
+        break;
+      }
+      position = campo.search("inp-");
+      if (position>=0) { //verifica che tutti gli altri (nome,cognome,intestatario,numero carta) campi siano stati settati
+        if (elements[i].value=="") {
+          okCampi=false;
+          obj=document.getElementById("mess");
+                obj.style.display="block";
+                obj.innerHTML="<div><b>Il campo " + elements[i].id + " è obbligatorio</b></div>";				
+          break;
+        }
+      }
+      
+    }
+
+    if(okCampi){ //se i campi sono stati tutti settati, vengono inviati i dati al server tramite l'azione del form
+      document.getElementById("frmPaga").action="acquistobiglietti.php?action=salva"
+      document.getElementById("frmPaga").submit();
+      alert("Pagamento avvenuto con successo :)");
+    }
+  }
+
+  function controlla() { //controlla la risposta di ajax
+    checkLog=getIsLogged();
+    isLogged=checkLog.isLogged;
+
+    if (!controllaLogin()) {
+      //se l'utente ha effettuato l'accesso, il pulsante 'continua' permette l'accesso all'area di pagamento
+      nextPage();
+    }
+    else{//altrimenti lo riporta all'inizio della pagina aprendo il popup di login
+      var continua = document.getElementById("continua");
+      continua.href = "#home";				
+    }
+  }
+
+
+  function controllaLogin(){
+    //se l'utente non ha effettuato l'accesso, cliccando il pulsante continua gli sarà mostrato il popup di login, che si chiuderà dopo l'accesso
+    ret = false;
+    if(isLogged==""){
+      popup[0].classList.add("activate");
+      ret = true;
+    }
+    return ret;
+  }
+  
+
+  function onFocus() { //elimina il messaggio di errore riferito alle credenziali se ci si sposta su uno dei campi 
+    obj=document.getElementById("mess");
+    obj.style.display="none";
+    obj.innerHTML="<div></div>";
+      }
