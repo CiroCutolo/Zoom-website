@@ -113,14 +113,10 @@
           mess=document.getElementById("messaggio");
           mess.style.display="block";
           mess.innerHTML="<div style='width: 100%; text-align: center;'>Inserisci tutti i campi!</div>";
-        }else if (cklog.stato=="OK") { //login andato a buon fine, ritorna alla home
-          if (window.location.pathname!="/acquistobiglietti.php"){
-            window.location.href='home.php';
-          }
-          else{ 
-            popup[0].classList.remove("activate"); 
-            window.location.reload(); 
-          }
+
+        }else if (cklog.stato=="OK") { //login andato a buon fine
+          popup[0].classList.remove("activate"); //rimuove il popup
+          window.location.reload(); //aggiorna la pagina corrente
 
         }else if(cklog.stato="NOK"){ //login errato
           obj=document.getElementById("messaggio");
