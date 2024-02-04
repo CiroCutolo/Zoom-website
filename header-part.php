@@ -26,7 +26,7 @@
             <!-- Tramite il metodo post i valori dei select vengono salvati e utilizzati per completare l'acquisto nella pagina successiva-->
             <p class="buy-tickets-textcontent">ACQUISTA IL TUO BIGLIETTO</p>
             <p class="buy-tickets-textcontent-sottotitolo">Completa <b>tutti</b> i campi prima di acquistare</p>
-              <p class="buy-tickets-textcontent">Adulti
+              <p class="buy-tickets-textcontent">Interi
                 <select id="selector1" name="selectOption[0]" onchange="disabilitAcquista()">
                 <script>
                   var i = 0;
@@ -36,7 +36,7 @@
                 </script>
                 </select>
               </p>
-              <p class="buy-tickets-textcontent">Bambini
+              <p class="buy-tickets-textcontent">Ridotti
               <select id="selector2" name="selectOption[1]" onchange="disabilitAcquista()">
                 <script>
                   var i = 0;
