@@ -114,7 +114,7 @@
 										<span>€ 15.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroInteri" onchange="showDate();enable();carrello()">
+										<select id="numeroInteri" name="sel-interi" onchange="showDate();enable();carrello()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
 												var i = 0;
@@ -165,7 +165,7 @@
 										<span>€ 10.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroRidotti" onchange="functionsNumberPicker()">
+										<select id="numeroRidotti" name="sel-ridotti" onchange="functionsNumberPicker()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
 												var i = 0;
@@ -209,7 +209,7 @@
 						<h3>Seleziona la data</h3>
 
 						<label for="ticketDate" >
-							<input id="datePicker" type="date" title="Data visita" min="<?php echo date('Y-m-d');?>" onchange="carrello();enable()">
+							<input id="datePicker" name="d-date" type="date" title="Data visita" min="<?php echo date('Y-m-d');?>" onchange="carrello();enable()">
 						</label>
 					</div>
 				</div>
@@ -317,7 +317,7 @@
 		</form>
 
 		<script>
-			function getIsLogged() { //chiamata ad ajax per controllare se l'utente ha fatto l'accesso
+			function getIsLogged() { //chiamata ad ajax per controllare se l'utente ha effettuato l'accesso
 				var strReturn;
 				$.ajax({
 					url: "ajax.php?action=getIsLogged", dataType: "json", success: function(data) {
@@ -326,14 +326,16 @@
 					async:false
 				});
 				return strReturn;	
-				}
+			}
 
 			function controllaCampiVuoti(){
 				var elements = document.forms["frmPaga"].elements;
 				okCampi=true;
-				for (i=0; i<elements.length; i++){
+
+				for (i=0; i<elements.length; i++){ //controlla gli elementi del form tramite il loro 'name'
 					campo=elements[i].name;
-					if (campo=="privacy" && !elements[i].checked) {
+
+					if (campo=="privacy" && !elements[i].checked) { //verifica che il campo privacy sia stato settato
 						okCampi=false;
 						obj=document.getElementById("mess");
           				obj.style.display="block";
@@ -341,7 +343,7 @@
 						break;
 					}
 					position = campo.search("inp-");
-					if (position>=0) {
+					if (position>=0) { //verifica che tutti gli altri (nome,cognome,intestatario,numero carta) campi siano stati settati
 						if (elements[i].value=="") {
 							okCampi=false;
 							obj=document.getElementById("mess");
@@ -351,11 +353,11 @@
 						}
 					}
 				}
-				if(okCampi){
+
+				if(okCampi){ //se i campi sono stati tutti settati, vengono inviati i dati al server tramite l'azione del form
 					document.getElementById("frmPaga").action="acquistobiglietti.php?action=salva"
 					document.getElementById("frmPaga").submit();
 				}
-				return okCampi;
 			}
 
 			function controlla() { //controlla la risposta di ajax
@@ -363,7 +365,7 @@
 				isLogged=checkLog.isLogged;
 
 				if (!controllaLogin()) {
-					//se l'utente ha effettuato l'accesso, il pulsante continua permette l'accesso all'area di pagamento
+					//se l'utente ha effettuato l'accesso, il pulsante 'continua' permette l'accesso all'area di pagamento
 					nextPage();
 				}
 				else{//altrimenti lo riporta all'inizio della pagina aprendo il popup di login
@@ -384,7 +386,7 @@
 			}
 			
 
-			function onFocus() { //elimina il messaggio di errore delle credenziali se ci si sposta su uno dei campi 
+			function onFocus() { //elimina il messaggio di errore riferito alle credenziali se ci si sposta su uno dei campi 
 				obj=document.getElementById("mess");
 				obj.style.display="none";
 				obj.innerHTML="<div></div>";

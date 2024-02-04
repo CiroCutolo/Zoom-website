@@ -55,7 +55,7 @@
       <button id="close-btn" onclick="chiudipopup()"><span class="fas fa-times"></span></button>
       <div class = "form">
         <h2>Accedi</h2>
-        <form>
+        <form id = "frmPopup">
           <div class="form-element">
             <label for="email">Email</label>
             <input onfocus="onFocus()" type="text" id="email" name="email" placeholder="Inserisci email">
@@ -114,10 +114,13 @@
           mess.style.display="block";
           mess.innerHTML="<div style='width: 100%; text-align: center;'>Inserisci tutti i campi!</div>";
         }else if (cklog.stato=="OK") { //login andato a buon fine, ritorna alla home
-          if (window.location.pathname!="/acquistobiglietti.php")
+          if (window.location.pathname!="/acquistobiglietti.php"){
             window.location.href='home.php';
-          else 
+          }
+          else{ 
             popup[0].classList.remove("activate"); 
+            window.location.reload(); 
+          }
 
         }else if(cklog.stato="NOK"){ //login errato
           obj=document.getElementById("messaggio");
