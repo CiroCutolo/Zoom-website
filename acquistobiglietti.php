@@ -263,8 +263,8 @@
 					<input id="priceRidotto" type="hidden" value="10.00">
 					<input id="tipologiaRidotto" type="hidden" value="ridotto">
 				</div>
-				<div>
-					<input id="Privacy" name="privacy" type="checkbox" onfocus="onFocus()">privacy.
+				<div style="margin:30px 0px 0px 0px;">
+					<input id="PoliticheContrattuali" name="privacy" type="checkbox" onfocus="onFocus()">Accetta le politiche contrattuali.
 				</div>
 			</div>
 			

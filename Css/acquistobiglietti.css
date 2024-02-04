@@ -10,11 +10,10 @@
 
 .acquisto_body h2{margin-top: 0px;}
 
-.acquisto_body .mess{
+.acquisto_body #mess{
 	width: 100%; 
 	text-align: center; 
 	font-size:larger;
-	margin-left: 50%;
 }
 
 .orari{margin-bottom: 10px;}
@@ -82,6 +81,7 @@
 #dateContainer{
 	width: 50%;
 }
+
 
 .numberPicker{float: right;}
 
