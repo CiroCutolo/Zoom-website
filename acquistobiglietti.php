@@ -11,7 +11,7 @@
 
 				$nome=$_POST['inp-nomeIntero' + $i];
 				$cognome=$_POST['inp-cognomeIntero'+$i];
-				$validita=$_POST['datePicker'];	
+				$validita=$_POST['d-date'];	
 				$prezzo=$_POST['priceIntero'];	
 				$tipologia=$_POST['tipologiaIntero'];		
 				$user=$_SESSION['isLogged'];
@@ -33,7 +33,7 @@
 
 				$nome=$_POST['inp-nomeRidotti' + $i];
 				$cognome=$_POST['inp-cognomeRidotti'+$i];
-				$validita=$_POST['datePicker'];	
+				$validita=$_POST['d-date'];	
 				$prezzo=$_POST['priceRidotto'];	
 				$tipologia=$_POST['tipologiaRidotto'];		
 				$user=$_SESSION['isLogged'];
@@ -263,13 +263,13 @@
 				<h2>Dati biglietti</h2>
 				<div id="datiInteri">
 					<h3>BIGLIETTI INTERI</h3>
-					<input id="priceIntero" type="hidden" value="15.00">
-					<input id="tipologiaIntero" type="hidden" value="intero">
+					<input name="priceIntero" type="hidden" value="15.00">
+					<input name="tipologiaIntero" type="hidden" value="intero">
 				</div>
 				<div id="datiRidotti">
 					<h3>BIGLIETTI RIDOTTI</h3>
-					<input id="priceRidotto" type="hidden" value="10.00">
-					<input id="tipologiaRidotto" type="hidden" value="ridotto">
+					<input name="priceRidotto" type="hidden" value="10.00">
+					<input name="tipologiaRidotto" type="hidden" value="ridotto">
 				</div>
 				<div style="margin:30px 0px 0px 0px;">
 					<input id="PoliticheContrattuali" name="privacy" type="checkbox" onfocus="onFocus()">Accetta le politiche contrattuali.
