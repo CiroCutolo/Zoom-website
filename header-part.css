@@ -154,27 +154,29 @@ hr{
 }
 
 footer{
-  height: 50%;
+  height: 150px;
+  background-image: url("borderfooter.svg");
   text-align: center;
-}
-footer .div{
-  text-align: center;
+  position: relative;
 }
 footer .row{
+  margin-bottom: 0px;
   width:100%;
-  margin:1% 0%;
   padding:0.6% 0%;
   color:gray;
   font-size: x-large;
 }
-  
+footer .row a:hover{
+  color: white;
+}
 footer .row a{
   text-decoration:none;
-  color:gray;
+  color:black;
   transition:0.5s;
   margin-right: 0.5%;
 }
-  
-footer .row a:hover{
-  color:#fff;
+
+footer .text-footer{
+  margin-top: 40px;
+  color:white;
 }

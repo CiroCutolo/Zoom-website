@@ -180,6 +180,10 @@
 
 }
 
+.carrello{
+	padding: 20px;
+}
+
 .naviButton:hover{
 	background-color: #f09c13;
 }

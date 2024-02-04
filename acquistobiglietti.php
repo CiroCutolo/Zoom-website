@@ -188,7 +188,7 @@
 				</div>
 			</div>
 
-			<div class="container carrello hidden">
+			<div class="carrello hidden">
 				<h2>Carrello</h2>
 				<table class="cartTable">
 					<thead>
