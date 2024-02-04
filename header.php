@@ -23,6 +23,7 @@
     <script src="https://kit.fontawesome.com/9491817803.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js?<?php echo rand();?>"></script>
     <link rel="stylesheet" href="Css/header.css?<?php echo rand();?>">
+
   </head>
 
   <body id="body">
@@ -202,6 +203,7 @@
 			function eraseCookie(name) {   
 				document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 			}
+      
     </script>
   </body>
 </html>

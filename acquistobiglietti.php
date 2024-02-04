@@ -334,7 +334,7 @@
 			<!-- Bottoni di navigazione -->
 			<div>			
 				<label class="buttonContainer">
-					<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="generaCampi();controlla()"></a>
+					<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="salvaCookie();generaCampi();controlla()"></a>
 				</label>
 
 				<label class="buttonContainer hidden">
