@@ -176,7 +176,7 @@
           const type = Pass.getAttribute('type') === 'password' ? 'text' : 'password';
           Pass.setAttribute('type', type);
 
-          toggleP.classList.toggle('fa-eye');
+          this.classList.toggle('fa-eye');
       });
 
     </script>
