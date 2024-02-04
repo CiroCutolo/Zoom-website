@@ -219,7 +219,7 @@
 							</fieldset>
 						</label>
 					</div>
-					<div id="dateContainer" class="hidden">
+					<div id="dateContainer">
 						<fieldset>
 							<legend class="data-text">DATA DI VISITA</legend>
 							<p>Seleziona per procede all'acquisto.</p>
