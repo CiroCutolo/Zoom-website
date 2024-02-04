@@ -5,7 +5,7 @@
       <meta charset="utf-8">
       <meta name="author" content="Claudia Carucci">
       <meta name="description" content="footer della pagina">
-      <link rel="stylesheet" href="header-part.css?<?php echo rand();?>">
+      <link rel="stylesheet" href="Css/header-part.css?<?php echo rand();?>">
 </head>
 <body class="footer_body">
 <footer>

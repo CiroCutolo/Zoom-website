@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="Css/Fonts.css?<?php echo rand();?>">
         <link rel="stylesheet" href="Css/Animali.css?<?php echo rand();?>">
         <link rel="stylesheet" href="header.css?<?php echo rand();?>">
+        <link rel="stylesheet" href="header-part.css?<?php echo rand();?>">
     </head>
     <body>
         <?php include 'header.php' ?>

@@ -1,5 +1,5 @@
 <?php
-	ini_set('display_errors', 1);
+	ini_set('display_errors', 0);
 	include('connessione.php');
 	session_start();
 
@@ -346,9 +346,6 @@
 				</label>
 			</div>
 		</form>
-
-		<?php include('footer.php');?>
-
 
 		<script>
 			function salvaCookie(){
