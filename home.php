@@ -17,6 +17,11 @@
 if(isset($_GET["action"]) && ($_GET["action"] == "logout")){ //verifico se il form è stato completato
   session_destroy();?>
   <script>
+      eraseCookie("numeroInteri");
+      eraseCookie("numeroRidotti");
+      eraseCookie("datePicker");
+
+      alert(0)
       window.location.href= 'home.php';
   </script>
 <?php }?>
