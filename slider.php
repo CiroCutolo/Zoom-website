@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="slider.css">
-    <title></title>
+    <title>Slider</title>
   </head>
   <body>
     <div class="slidershow-container">
