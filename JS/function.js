@@ -78,7 +78,7 @@ function carrello(){
     
     if(ridotti != 0){
       document.getElementById("tableRidotti").innerHTML = ridotti +
-      "<input name=\"interiToDb\" type=\"text\" value=\"" + interi + "\">";
+      "<input name=\"ridottiToDb\" type=\"text\" value=\"" + ridotti + "\">";
       document.getElementById("ridottiRow").classList.remove("hidden");
     }else{
       document.getElementById("ridottiRow").classList.add("hidden");
