@@ -11,16 +11,13 @@
 				$nome=$_POST['inp-nomeIntero' . $i];
 				$cognome=$_POST['inp-cognomeIntero' . $i];
 				$validita=$_POST['d-date'];	
-				$prezzo=$_POST['priceIntero'];	
+				$prezzo=$_POST['priceIntero'];
 				$tipologia=$_POST['tipologiaIntero'];		
 				$user=$_SESSION['isLogged'];
 				
 				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
 						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', '$user')";
-
-				$result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-				$result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user, $i));
-				// $result = pg_query($conn,$query);
+				$result = pg_query($conn,$query);
 				if(!$result){
 					echo pg_last_error($conn);
 				}
@@ -40,8 +37,7 @@
 			
 				$query = "INSERT INTO biglietti_acquistati(nome, cognome, validita, prezzo, tipologia, utente) 
 						VALUES('$nome', '$cognome', '$validita', '$prezzo', '$tipologia', '$user')";
-				// $result = pg_prepare($conn, "InsertBigliettoAcquistato", $query);
-				// $result = pg_execute($conn, "InsertBigliettoAcquistato", array($nome, $cognome, $validita, $prezzo, $tipologia, $user, $i));
+		
 				$result = pg_query($conn,$query);
 				if(!$result){
 					echo pg_last_error($conn);
@@ -57,6 +53,7 @@
 <html lang="en">
 	<head>			
 		<title>Acquisto biglietti - Zoom</title>
+		<meta name="author" content="Gaetano Frasca">
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="./Css/acquistobiglietti.css?<?php echo rand();?>" type="text/css">
 		<script src="JS\function.js?<?php echo rand();?>" type="text/javascript" ></script>
@@ -92,7 +89,7 @@
 				</ul>	
 				<p class="lastaccess">
 					<span class="warning">
-					<i class='fas fa-exclamation-circle' style='font-size:15px'></i>
+					<i class='fas fa-exclamation-circle'></i>
 					</span>
 					<strong> Ultimo ingresso:</strong> 60 min prima dell'orario di chiusura del parco.
 				</p>

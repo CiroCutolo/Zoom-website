@@ -107,17 +107,29 @@ body{
         margin-top: 50px;
         width: 50%;    
         margin-left: 0px;
-    }  
+    }
+
     .leopardo #confermapasswordCONocchio{
-        left:15%;
         bottom: 0px;
-        width: 80%;  
+        width: 100%;
+        margin-top: 30px;
+        margin-left: -255px;
     }
+
     .leopardo #passwordCONocchio{
-        left:15%;
         bottom: 0px;
-        width: 80%;  
+        width: 100%;
+        display: block;
     }
+
+    .leopardo #togglePassword, #togglePassword1 {
+        padding-top: 27px;
+        margin-left: -20px;
+        width: 26px;
+        right: 200px;
+        margin: -50px;
+    }
+
     #scritta{
         font-size: medium;  
         margin-left: 0px;
