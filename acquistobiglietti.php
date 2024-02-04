@@ -302,11 +302,11 @@
 			
 			<!-- Bottoni di navigazione -->			
 			<label class="buttonContainer">
-				<input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="continueButtonFunction()">
+				<input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="continueButtonFunction();controlla()" >
 			</label>
 
 			<label class="buttonContainer hidden">
-				<input class="naviButton" id="payButton" type="button" onclick="paga()" value="Paga" >
+				<input class="naviButton" id="payButton" type="button" value="Paga" >
 			</label>
 
 			<label class="buttonContainer hidden">
@@ -326,10 +326,7 @@
 				return strReturn;	
 				}
 
-			function paga() {
-				checkLog=getIsLogged();
-				isLogged=checkLog.isLogged;
-
+			function controllaCampiVuoti(){
 				var elements = document.forms["frmPaga"].elements;
 				okCampi=true;
 				for (i=0; i<elements.length; i++){
@@ -354,6 +351,12 @@
 					}
 					
 				}
+
+			}
+
+			function controlla() {
+				checkLog=getIsLogged();
+				isLogged=checkLog.isLogged;
 
 				
 
