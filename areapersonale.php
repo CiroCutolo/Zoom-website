@@ -55,6 +55,7 @@
                 $query = "UPDATE utenti SET password=$Password WHERE email = '".  $_SESSION["isLogged"] ."'";
                 $result = pg_query($conn, $query); //viene eseguita la query e la password è stata aggiornata
             }
+            $_SESSION["entra"]="1";
         }
     }
 
