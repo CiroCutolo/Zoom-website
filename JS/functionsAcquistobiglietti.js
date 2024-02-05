@@ -197,9 +197,6 @@ function carrello(){
       document.getElementById("frmPaga").action="acquistobiglietti.php?action=salva"
       document.getElementById("frmPaga").submit();
       alert("Pagamento avvenuto con successo :)");
-      eraseCookie("numeroInteri");
-      eraseCookie("numeroRidotti");
-      eraseCookie("datePicker");
     }
   }
 
