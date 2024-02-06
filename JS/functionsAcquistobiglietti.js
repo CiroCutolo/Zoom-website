@@ -140,6 +140,7 @@ function carrello(){
   //invoca le funzioni utilizzate dal button "Continua"
   function functionsContinueButton(){
     salvaCookie();
+    carrello();
     generaCampi();
     controlla();
   }
