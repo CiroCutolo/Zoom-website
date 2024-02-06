@@ -74,7 +74,7 @@
 			cDatePicker=getCookie("datePicker");
 				
 		</script>	
-		<form id="frmPaga" method="post" action="acquistobiglietti.php?action=salva">
+		<form id="frmPaga" method="post" action="acquistobiglietti.php?action=salva" autocomplete="off">
 			<!-- Informazioni sui biglietti -->
 			<div class="container informazioni">
 				<h1>Biglietti</h1>
@@ -126,14 +126,14 @@
 									<div class="intero-image">
 										<img src="img\man_woman.png" alt="men_woman_image"/>
 									</div>
-									<a href="javascript:moreInfo('infoPanel-1')" class="information">
+									<a href="javascript:toggleElm('#infoPanel-1')" class="information">
 										<i class="fa fa-info-circle"></i>
 									</a>
 									<div class="buyPrice">
 										<span>€ 15.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroInteri" onclick="functionsNumberPicker()">
+										<select id="numeroInteri" name="sel-interi" onclick="functionsNumberPicker()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
 												var i = 0;
@@ -177,7 +177,7 @@
 									<div class="ridotto-image">
 										<img src="img\elder_child.png" alt="elder_child_image"/>
 									</div>
-									<a href="javascript:moreInfo('infoPanel-2')" class="information">
+									<a href="javascript:toggleElm('#infoPanel-2')" class="information">
 										<i class="fa fa-info-circle"></i>
 									</a>
 									<div class="buyPrice">
@@ -275,17 +275,17 @@
 			<!-- Inserimento dati biglietto -->
 			<div class="container datiBiglietti hidden">
 				<h2>Dati biglietti</h2>
-				<div id="datiInteri">
+				<label id="datiInteri">
 					<input name="priceIntero" type="hidden" value="15.00">
 					<input name="tipologiaIntero" type="hidden" value="intero">
-				</div>
-				<div id="datiRidotti">
+				</label>
+				<label id="datiRidotti">
 					<input name="priceRidotto" type="hidden" value="10.00">
 					<input name="tipologiaRidotto" type="hidden" value="ridotto">
-				</div>
-				<div style="margin:30px 0px 0px 0px;">
+				</label>
+				<label class="policy-label">
 					<input id="PoliticheContrattuali" name="privacy" type="checkbox" onfocus="onFocus()">Accetto le politiche contrattuali.
-				</div>
+				</label>
 			</div>
 			
 			<div id="mess" style="display:none"></div>
@@ -298,54 +298,57 @@
 					<span><img class="payMethod" src="img/payment.png" alt="payment_method_image"></span>
 				</div>
 				<div class="payInfo">
-					<div>
+					<label class="int-card-label">
 						<span>Intestatario:</span>
-						<input id="intestatario" name="inp-intestatario" type="text" autocomplete="off" onfocus="onFocus()">
-					</div>
-					<div>
+						<input id="intestatario" name="inp-intestatario" type="text" onfocus="onFocus()">
+					</label>
+					<label class="number-card-label">
 						<span>Numero della carta:</span>
-						<input id="cardNumber" name="inp-carta" type="number" autocomplete="off" onfocus="onFocus()">
-					</div>
-					<div>
+						<input id="cardNumber" name="inp-carta" type="number" maxlength="16" onfocus="onFocus()">
+					</label>
+					<label class="month-card-label">
 						<span>Mese di scadenza:</span>
-						<select id="meseScadenza" name="mese" autocomplete="off">
+						<select id="meseScadenza" name="mese">
+							<option disabled selected value></option>
 							<?php
 							for($i=1;$i<=12;$i++)
 								echo "<option value=\"$i\">$i</option>"
 							?>
 						</select>
-					</div>
-					<div>
+					</label>
+					<label class="year-card-label">
 						<span>Anno di scadenza:</span>
-						<select id="annoScadenza" name="anno" autocomplete="off">
+						<select id="annoScadenza" name="anno" >
+							<option disabled selected value></option>
 							<?php
 								for($i=2024;$i<=2044;$i++)
 									echo "<option value=\"$i\">$i</option>"
 								?>
 						</select>
-					</div>	
-					<div>
+					</label>	
+					<label class="cvv-label">
 						<span>CVV:</span>
-						<input id="cvv" name="inp-carta" type="password" maxlength="3" autocomplete="off" onfocus="onFocus()">
-					</div>
+						<input id="cvv" name="inp-carta" type="password" maxlength="3" onfocus="onFocus()">
+					</label>
 				</div>			
 			</div>
 			
 			<!-- Bottoni di navigazione -->
-			<div>			
-				<label class="buttonContainer">
-					<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" disabled onclick="functionsContinueButton()"></a>
+			<div class="naviButtonContainer">			
+				<label class="continueButtonContainer">
+					<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" title="Passa alla sezione pagamento" disabled onclick="functionsContinueButton()"></a>
 				</label>
 
-				<label class="buttonContainer hidden">
-					<input class="naviButton" id="payButton" type="button" value="Paga" onclick="controllaCampiVuoti()">
+				<label class="payButtonContainer hidden">
+					<input class="naviButton" id="payButton" type="button" value="Paga" title="Effettua il pagamento" onclick="controllaCampiVuoti()">
 				</label>
 
-				<label class="buttonContainer hidden">
-					<input class="naviButton" type="button" id="backButton" value="Indietro" onclick="functionsBackButton()">
+				<label class="backButtonContainer hidden">
+					<input class="naviButton" type="button" id="backButton" value="Indietro" title="Passa alla sezione precedente" onclick="functionsBackButton()">
 				</label>
 			</div>
 		</form>
+
 
 		<script>
 			function salvaCookie(){

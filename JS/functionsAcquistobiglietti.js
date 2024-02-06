@@ -1,5 +1,7 @@
-function moreInfo(elem){
-	var x = document.getElementById(elem);
+//funzioen consente di nascondere o mostrare un elemento a seconda della presenza o meno
+//della classe hidden
+function toggleElm(elem){
+  var x = document.querySelector(elem);
   if (x.classList.contains("hidden")) {
     x.classList.remove("hidden");
   } else {
@@ -21,31 +23,28 @@ function getSelectedDate(){
 
 // abilita il button per passare alla sezione di inserimento dati e pagamento
 function enable(){
-  var valRidotti = $('#numeroRidotti').find('option:selected').val();
-  var valInteri = $('#numeroInteri').find('option:selected').val();
-  var vardate = $('#datePicker').val();
-
-  if(((valRidotti > 0) || (valInteri > 0)) && (vardate != '')){
+  if((takeOptValue("numeroInteri")>0||takeOptValue("numeroRidotti")>0)&& getSelectedDate()!=''){
     document.getElementById("continueButton").removeAttribute('disabled');
   }else{
-    document.getElementById("continueButton").setAttribute('disabled', '');
+    document.getElementById("continueButton").setAttribute('disabled','true');
   }
 }
 
 //consente di passare alla sezione di inserimento dati e pagamento
 function nextPage(){
+  //switch bottoni tramite funzione toggleElm()
+  toggleElm(".continueButtonContainer");
+  toggleElm(".payButtonContainer");
+  toggleElm(".backButtonContainer");
+
+  //contents switch
   const collection = document.getElementsByClassName("container");
   for(i=0;i<collection.length;i++){
     if(collection[i].classList.contains("hidden")){
       collection[i].classList.remove("hidden");
-      document.getElementById("backButton").parentElement.classList.remove("hidden");
-      document.getElementById("continueButton").parentElement.classList.add("hidden");
-      document.getElementById("payButton").parentElement.classList.remove("hidden");
+
     }else{
       collection[i].classList.add("hidden");
-      document.getElementById("backButton").parentElement.classList.add("hidden");
-      document.getElementById("continueButton").parentElement.classList.remove("hidden");
-      document.getElementById("payButton").parentElement.classList.add("hidden");
     }
   }
 
@@ -100,14 +99,14 @@ function carrello(){
     let interi = document.getElementById("numeroInteri").value;
     for(i=1;i<=interi;i++)
       document.getElementById("datiInteri").innerHTML += "<h3>Biglietti Interi</h3><h4>Partecipante Intero " + i + "</h4>" + 
-        "<div><span>Nome: </span><input type=\"intero\" id=\"nome " + i + "\" name=\"inp-nomeIntero" + i + "\" type=\"text\"></div>" +
-        "<div><span>Cognome: </span><input type=\"intero\" id=\"cognome " + i + "\" name=\"inp-cognomeIntero" + i + "\" type=\"text\"></div>";
+        "<div><span>Nome: </span><input type=\"intero\" id=\"nomeIntero " + i + "\" name=\"inp-nomeIntero" + i + "\" type=\"text\"></div>" +
+        "<div><span>Cognome: </span><input type=\"intero\" id=\"cognomeIntero " + i + "\" name=\"inp-cognomeIntero" + i + "\" type=\"text\"></div>";
 
     let ridotti = document.getElementById("numeroRidotti").value;
     for(i=1;i<=ridotti;i++)
       document.getElementById("datiRidotti").innerHTML += "<h3>Biglietti Ridotti</h3><h4>Partecipante Ridotto " + i + "</h4>" +
-        "<div><span>Nome: </span><input id=\"nome " + i + "\" name=\"inp-nomeRidotto" + i + "\" type=\"text\"></div>" +
-        "<div><span>Cognome: </span><input id=\"cognome " + i + "\" name=\"inp-cognomeRidotto" + i + "\" type=\"text\"></div>";
+        "<div><span>Nome: </span><input id=\"nomeRidotto " + i + "\" name=\"inp-nomeRidotto" + i + "\" type=\"text\"></div>" +
+        "<div><span>Cognome: </span><input id=\"cognomeRidotto " + i + "\" name=\"inp-cognomeRidotto" + i + "\" type=\"text\"></div>";
   }
 
   //consente rimozione dei dati biglietto inseriti nel caso l'utente torna alla pagina di selezione
