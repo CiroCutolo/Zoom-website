@@ -15,7 +15,8 @@
 
 <?php
 if(isset($_GET["action"]) && ($_GET["action"] == "logout")){ //verifico se il form è stato completato
-  session_destroy();?>
+  session_destroy();
+  session_unset()?>
   <script>
 
       eraseCookie("numeroInteri");

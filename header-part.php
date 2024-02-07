@@ -166,7 +166,7 @@
         }
       });
 
-      //disabilita il tasto di acquisto se compili almeno uno dei due campi select e la data
+      //abilita il tasto di acquisto se compili almeno uno dei due campi select e la data
       function disabilitAcquista(){
           if(( (document.getElementById("numeroInteri").value > 0) || (document.getElementById("numeroRidotti").value > 0)) && (document.getElementById("datePicker").value != "")){
               document.getElementById("acquista").removeAttribute('disabled');
