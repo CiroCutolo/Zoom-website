@@ -228,7 +228,7 @@
 						<fieldset>
 							<legend class="data-text">DATA DI VISITA</legend>
 							<p>Seleziona la data i cui intendi visitare il nostro zoo.</p>
-						<label for="datePicker" >
+						<label for="ticketDate" >
 							<input id="datePicker" name="d-date" <?php if(isset($_POST['selectOption'][2])) {?> value = "<?php echo $_POST['selectOption'][2]; ?>" <?php } ?>type="date" title="Data visita" min="<?php echo date('Y-m-d');?>" onchange="functionDataPicker()">
 						</label>
 						</fieldset>
@@ -298,17 +298,17 @@
 					<span><img class="payMethod" src="img/payment.png" alt="payment_method_image"></span>
 				</div>
 				<div class="payInfo">
-					<label for="intestatario" class="int-card-label">
+					<label class="int-card-label">
 						<span>Intestatario:</span>
 						<input id="intestatario" name="inp-intestatario" type="text" onfocus="onFocus()">
 					</label>
-					<label for="cardNumber" class="number-card-label">
+					<label class="number-card-label">
 						<span>Numero della carta:</span>
 						<input id="cardNumber" name="inp-carta" type="number" maxlength="16" onfocus="onFocus()">
 					</label>
-					<label for="meseScadenza" class="month-card-label">
+					<label class="month-card-label">
 						<span>Mese di scadenza:</span>
-						<select id="meseScadenza" name="inp-mese">
+						<select id="meseScadenza" name="mese">
 							<option disabled selected value></option>
 							<?php
 							for($i=1;$i<=12;$i++)
@@ -316,9 +316,9 @@
 							?>
 						</select>
 					</label>
-					<label for="annoScadenza" class="year-card-label">
+					<label class="year-card-label">
 						<span>Anno di scadenza:</span>
-						<select id="annoScadenza" name="inp-anno" >
+						<select id="annoScadenza" name="anno" >
 							<option disabled selected value></option>
 							<?php
 								for($i=2024;$i<=2044;$i++)
@@ -326,7 +326,7 @@
 								?>
 						</select>
 					</label>	
-					<label for="cvv" class="cvv-label">
+					<label class="cvv-label">
 						<span>CVV:</span>
 						<input id="cvv" name="inp-carta" type="password" maxlength="3" onfocus="onFocus()">
 					</label>
@@ -335,15 +335,15 @@
 			
 			<!-- Bottoni di navigazione -->
 			<div class="naviButtonContainer">			
-				<label for="continueButton" class="continueButtonContainer">
+				<label class="continueButtonContainer">
 					<a id="continua" ><input class="naviButton" type="button" id="continueButton" value="Continua" title="Passa alla sezione pagamento" disabled onclick="functionsContinueButton()"></a>
 				</label>
 
-				<label for="payButton" class="payButtonContainer hidden">
+				<label class="payButtonContainer hidden">
 					<input class="naviButton" id="payButton" type="button" value="Paga" title="Effettua il pagamento" onclick="controllaCampiVuoti()">
 				</label>
 
-				<label for="backButton" class="backButtonContainer hidden">
+				<label class="backButtonContainer hidden">
 					<input class="naviButton" type="button" id="backButton" value="Indietro" title="Passa alla sezione precedente" onclick="functionsBackButton()">
 				</label>
 			</div>
