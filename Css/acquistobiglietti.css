@@ -185,13 +185,6 @@
 
 .payment-text{width: auto;}
 
-.policy-label{margin:30px 0px 0px 0px;}
-
-.pagamento label {
-    display: block;
-    margin-bottom: 5px;
-}
-
 /* @media (max-width: 1024px){
     .container.interi.ridotti.content{
         flex-wrap: wrap;
@@ -201,12 +194,6 @@
     }
 
 } */
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
 @media (max-width: 1200px){
 	.ticketNumber{
