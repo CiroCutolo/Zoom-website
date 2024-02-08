@@ -133,7 +133,7 @@
 										<span>€ 15.00</span>
 									</div>
 									<div class="numberPicker">
-										<select id="numeroInteri" onclick="functionsNumberPicker()">
+										<select id="numeroInteri" name="sel-interi" onclick="functionsNumberPicker()">
 											<?php if(!isset($_POST['selectOption'][0])){ ?>
 												<script>
 												var i = 0;

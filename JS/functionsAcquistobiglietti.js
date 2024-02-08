@@ -114,13 +114,13 @@ function carrello(){
   function removeOldElements(){
     const elementInteri = document.getElementById("datiInteri");
 
-    while(elementInteri.childElementCount != 1){
+    while(elementInteri.childElementCount != 2){
       elementInteri.removeChild(elementInteri.lastChild);
     }
 
     const elementRidotti = document.getElementById("datiRidotti");
     
-    while(elementRidotti.childElementCount != 1){
+    while(elementRidotti.childElementCount != 2){
       elementRidotti.removeChild(elementRidotti.lastChild);
     }
 
